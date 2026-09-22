@@ -173,8 +173,10 @@ p{margin:0 0 1em}
 .product p:not(.sub):not(.tag){color:var(--ink-2)}
 .product .link{align-self:flex-start;margin-top:18px}
 .product .more{margin-bottom:4px}
-.product.next{color:var(--ink-3)}
+.product.next{color:var(--ink-3);grid-column:1/-1;flex-direction:row;align-items:baseline;gap:14px;padding:18px 0 20px}
 .product.next p{color:var(--ink-3)}
+.product.next .tag{margin:0}
+.product.next h3{font-size:22px;margin:0}
 .art-cluster{position:relative;height:120px;width:210px;margin-bottom:10px}
 .art-cluster span{position:absolute;width:96px;height:96px}
 .art-cluster span:nth-child(1){left:0;top:14px}
