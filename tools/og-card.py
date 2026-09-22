@@ -27,8 +27,8 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" vie
 </style></defs>
 <rect width="1200" height="1200" fill="#FFFFFF"/>
 <g transform="translate(0,285)">
-<g transform="translate(80,84)"><circle cx="14" cy="14" r="12.5" fill="none" stroke="#4F5B3F" stroke-width="2.6"/><path d="M4 18h20" stroke="#4F5B3F" stroke-width="2.6" stroke-linecap="round"/>
-<text x="40" y="24" font-family="Fraunces, Georgia, serif" font-size="34" fill="#1B1E17">Nokime</text></g>
+<g transform="translate(80,74)"><g transform="scale(0.1875)" fill="none" stroke-linecap="square" stroke-linejoin="round"><circle cx="120" cy="120" r="91" stroke="#4F5B3F" stroke-width="14"/><circle cx="120" cy="120" r="71" stroke="#1B1E17" stroke-width="3"/><path d="M69 171V69l102 102V69" stroke="#1B1E17" stroke-width="18"/><circle cx="120" cy="29" r="7" fill="#4F5B3F" stroke="none"/><circle cx="120" cy="211" r="7" fill="#4F5B3F" stroke="none"/></g>
+<text x="58" y="34" font-family="Fraunces, Georgia, serif" font-size="34" fill="#1B1E17">Nokime</text></g>
 <text x="80" y="176" font-family="IBM Plex Sans, Helvetica, sans-serif" font-size="17" letter-spacing="2.4" fill="#63675A">OUTILS POUR LA RESTAURATION</text>
 <text font-family="Fraunces, Georgia, serif" font-size="74" fill="#1B1E17" letter-spacing="-0.5">
 <tspan x="80" y="300">Une maison d’outils</tspan><tspan x="80" y="386">pour la restauration.</tspan></text>
