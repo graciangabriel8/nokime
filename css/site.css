@@ -307,11 +307,11 @@ p{margin:0 0 1em}
 .job{display:grid;grid-template-columns:150px 1fr auto;gap:8px 32px;padding:26px 0;border-bottom:1px solid var(--hair);align-items:start}
 .job.demo{opacity:.85}
 .job .tag{margin:0 0 6px}
-.job .tag.stage{color:var(--accent)} .job .tag.alternance{color:var(--brass-ink)} .job .tag.saison{color:var(--ink-2)}
+.job .tag.stage,.job .tag.alternance,.job .tag.saison{color:var(--ink-2)}
 .job-where{margin:0;font-size:14px;color:var(--ink-2)}
 .job-main h3{font-size:24px;margin:0 0 2px;line-height:1.15}
 .job-rest{font-family:var(--serif);font-size:18px;color:var(--ink-2);margin:0 0 8px}
-.job-rest .distinction{color:var(--brass-ink);margin-left:4px}
+.job-rest .distinction{color:var(--accent);margin-left:4px}
 .job-facts{margin:0;color:var(--ink-2);font-size:15px}
 .job .more{margin-top:10px}
 .job-act{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
@@ -337,10 +337,16 @@ p{margin:0 0 1em}
 .f-count{position:absolute;right:0;top:0;font-size:12px;color:var(--ink-3)}
 .jobs-form .cta-row{align-items:center;margin-top:26px}
 .jobs-form .note{margin:0;color:var(--ink-3);font-size:14px}
-.jobs-form .note.ok{color:var(--ok);margin-top:14px}
+.jobs-form .note.ok{color:var(--accent);margin-top:14px}
 @media (max-width:820px){
   .job{grid-template-columns:1fr;gap:6px}
   .job-act{flex-direction:row;align-items:center;justify-content:flex-start;margin-top:6px}
   .facts-grid,.f-grid{grid-template-columns:1fr}
   .jobs-select{margin-left:0}
 }
+
+/* Jobs pages: two colours only — the green for actions, greys for everything else; no brass */
+body.jobs .tag.brass{color:var(--ink-3)}
+body.jobs .step-n{color:var(--accent)}
+body.jobs .tier.featured{border-color:var(--accent)}
+body.jobs .pull{border-color:var(--accent)}
