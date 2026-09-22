@@ -83,7 +83,7 @@ window.NOKIME_I18N = {
     stat1n: "1,839", stat1l: "products already priced, with their season",
     stat2n: "135", stat2l: "techniques, and 45 bases",
     stat3n: "Offline", stat3l: "your data stays with you",
-    stat4n: "€49 excl. VAT", stat4l: "per month, or €490 excl. VAT per year",
+    stat4n: "€49", stat4l: "excl. VAT, per month, or €490 a year",
     prodKicker: "Three tools, one house.",
     mTag: "Founders’ offer open", mSub: "The cost of the plate, and what the service does.",
     mText: "Cost per portion, food-cost ratio, gross margin and floor price for every dish; your purchase prices and yields per product; one typical service — brigade, overheads, break-even — read in plain words. One file, offline, with Copius’s 1,839 products already priced.",
