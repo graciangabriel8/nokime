@@ -264,6 +264,21 @@ p{margin:0 0 1em}
 .foot-bottom a{color:var(--ink-3)}
 .foot-bottom a:hover{color:var(--ink)}
 
+/* ---------- hero still life: six atlas drawings, loosely set ---------- */
+.hero-art{position:relative;height:400px}
+.hero-art span{position:absolute;display:block}
+.hero-art span:nth-child(1){left:6%;top:30%;width:44%}
+.hero-art span:nth-child(2){left:60%;top:2%;width:22%}
+.hero-art span:nth-child(3){left:68%;top:58%;width:20%}
+.hero-art span:nth-child(4){left:40%;top:64%;width:22%}
+.hero-art span:nth-child(5){left:30%;top:0;width:24%}
+.hero-art span:nth-child(6){left:2%;top:0;width:20%}
+.hero-art .art{width:100%;height:auto;aspect-ratio:1}
+.feature-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.feature .kicker{margin-bottom:12px}
+@media (max-width:960px){.feature-grid{grid-template-columns:1fr;gap:32px}.hero-art{height:300px}}
+@media (max-width:720px){.hero-art{height:auto;display:flex;gap:12px;margin-top:8px}.hero-art span{position:static;width:22%!important}}
+
 /* ---------- responsive ---------- */
 @media (max-width:960px){
   .hero-grid,.founders-grid{grid-template-columns:1fr;gap:36px}

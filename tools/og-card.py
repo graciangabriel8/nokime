@@ -31,8 +31,8 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" vie
 <text x="40" y="24" font-family="Fraunces, Georgia, serif" font-size="34" fill="#1B1E17">Nokime</text></g>
 <text x="80" y="176" font-family="IBM Plex Sans, Helvetica, sans-serif" font-size="17" letter-spacing="2.4" fill="#63675A">OUTILS POUR LA RESTAURATION</text>
 <text font-family="Fraunces, Georgia, serif" font-size="74" fill="#1B1E17" letter-spacing="-0.5">
-<tspan x="80" y="270">Le coût de l’assiette,</tspan><tspan x="80" y="356">avant le service.</tspan><tspan x="80" y="442">Pas après le bilan.</tspan></text>
-<text x="80" y="540" font-family="IBM Plex Sans, Helvetica, sans-serif" font-size="24" fill="#4F5346">Faits par un cuisinier qui code.</text>
+<tspan x="80" y="300">Une maison d’outils</tspan><tspan x="80" y="386">pour la restauration.</tspan></text>
+<text x="80" y="500" font-family="IBM Plex Sans, Helvetica, sans-serif" font-size="24" fill="#4F5346">Des outils qui se connaissent. Faits par un cuisinier qui code.</text>
 {drawing("sea-bass", 830, 150, 250)}{drawing("asparagus", 1000, 100, 170)}{drawing("lemon", 980, 330, 170)}
 <rect x="80" y="576" width="1040" height="1" fill="#E9EAE2"/>
 </g>

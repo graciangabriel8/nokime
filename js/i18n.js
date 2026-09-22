@@ -36,7 +36,7 @@ window.NOKIME_I18N = {
     footTag: "Tools for restaurants, made in the kitchen.", footLegal: "Legal notice", footNav: "Footer",
     langSwitch: "Passer en français", themeSwitch: "Switch theme", menuLabel: "Menu",
     titleHome: "Nokime — tools for restaurants",
-    descHome: "Nokime builds tools for the people who run a kitchen: what a dish costs, what it leaves at the menu price, and an illustrated atlas of ingredients. Made by a cook who codes.",
+    descHome: "Nokime is a house of tools for restaurants: an illustrated atlas of ingredients and a costing tool that share the same products, prices and seasons. Made by a cook who codes.",
     titleManager: "Nokime Manager — the cost of the plate",
     descManager: "Nokime Manager: food cost per portion, ratio, gross margin and floor price for every dish; your purchase prices; one typical service read in plain words. Offline, with 1,839 products already priced.",
     titleCopius: "Nokime Copius — the illustrated atlas of cooking",
@@ -54,10 +54,11 @@ window.NOKIME_I18N = {
     whyKicker: "Why a house.", whyS: "A restaurant that trusts one tool takes a second from the same hand.", whoS: "Gabriel Gracian-Leroudier, cook and developer.", methodS: "One tool at a time, quiet rather than complete.",
 
     /* home */
-    heroEyebrow: "Nokime · tools for restaurants",
-    heroTitle: "What the plate costs, before service. Not after the year-end.",
-    heroLead: "Tools for the people who run a kitchen. Made by a cook who codes.",
-    heroCta1: "Discover Nokime Manager", heroCta2: "See the Copius atlas",
+    featKicker: "The cost of a dish, live.", featLead: "Copius’s prices and seasons, Manager’s arithmetic: one set of data, from one tool to the next.",
+    heroEyebrow: "Nokime",
+    heroTitle: "A house of tools for restaurants.",
+    heroLead: "Tools that know each other. Made by a cook who codes.",
+    heroCta1: "See the tools", heroCta2: "Write to us",
     demoTitle: "One dish, live",
     demoHint: "Change a quantity or the price.",
     demoTotal: "Food cost per portion", demoPrice: "Menu price excl. VAT", demoRatio: "Food-cost ratio",
@@ -94,7 +95,7 @@ window.NOKIME_I18N = {
 
     /* manager */
     mgrEyebrow: "Nokime Manager",
-    mgrTitle: "What a dish costs, what it leaves, and what the service does.",
+    mgrTitle: "What the plate costs, before service. Not after the year-end.",
     mgrLead: "One file, offline, with 1,839 products already priced.",
     mgrCta1: "Join the founders", mgrCta2: "Ask a question",
     mgrDemoKicker: "Try it on a dish.",
@@ -133,7 +134,7 @@ window.NOKIME_I18N = {
     cpCta3: "Propose a pilot class",
 
     /* group */
-    grEyebrow: "The group", grTitle: "A house of tools for restaurants.",
+    grEyebrow: "The group", grTitle: "One name, several tools.",
     grLead: "Nokime is the name of the house. The tools carry it before their own.",
     grP1: "The idea is simple. A restaurant that trusts one tool will take a second from the same hand more readily than it will go looking for a new one. So every tool is built to be joined by the next: same products, same prices, same seasons, same way of presenting a number.",
     grP2: "Copius, the atlas, is the base: it knows the products. Manager uses it to price a menu. Stock, orders and brigade will use it in turn.",
