@@ -4,7 +4,7 @@ block of js/i18n.js, or the English view keeps that string in French. Prints wha
 missing, and the `en` keys no page uses (informational). Exit 1 on a missing key."""
 import re, pathlib, sys
 root = pathlib.Path(__file__).resolve().parent.parent
-pages = sorted(root.glob("**/index.html"))
+pages = sorted(root.glob("**/index.html")) + [root / "404.html"]
 used = {}
 for p in pages:
     s = p.read_text(encoding="utf-8")

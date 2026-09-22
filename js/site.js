@@ -202,9 +202,10 @@
   /* ---------- navigation ---------- */
   function markCurrent() {
     var here = location.pathname.replace(/index\.html$/, "");
+    var brand = document.querySelector(".brand"), home = brand ? brand.pathname.replace(/index\.html$/, "") : "/";
     $$(".nav a").forEach(function (a) {
       var target = a.pathname.replace(/index\.html$/, "");
-      if (target === here && target !== "/" ) a.setAttribute("aria-current", "page");
+      if (target !== home && here.indexOf(target) === 0) a.setAttribute("aria-current", "page");
     });
   }
 

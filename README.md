@@ -1,6 +1,6 @@
 # Nokime — site du groupe
 
-The group's public site: Nokime Manager, Nokime Copius, the group, contact, legal. Static, no build step, no dependencies.
+The group's public site: Nokime Manager, Nokime Copius, Nokime Jobs, the group, contact, legal. Static, no build step, no dependencies.
 
 - French is the source language and lives in the HTML; `js/site.js` reads it out of every `data-t` element at load, so pages read without JavaScript. English lives in `js/i18n.js`.
 - Fonts are self-hosted in `fonts/` (latin subset, OFL — see `fonts/LICENSE.txt`); nothing loads from a third party.

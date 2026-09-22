@@ -24,7 +24,7 @@
   var demo = /[?&]demo=1/.test(location.search);
   var today = new Date().toISOString().slice(0, 10);
   var OFFERS = (window.NOKIME_JOBS || []).concat(demo ? (window.NOKIME_JOBS_DEMO || []) : [])
-    .filter(function (o) { return !o.expires || o.expires >= today; })
+    .filter(function (o) { var x = o.expires || o.end; return /^\d{4}-\d{2}-\d{2}$/.test(String(x)) && x >= today; })   /* undated or malformed: not shown */
     .sort(function (a, b) { return (b.published || "").localeCompare(a.published || ""); });
 
   var state = { kind: "all", region: "all", housing: false };
@@ -37,7 +37,8 @@
   function applyMail(o) {
     var subj = t("applySubject", { role: o.role, restaurant: o.restaurant });
     var body = t("applyBody", { role: o.role, restaurant: o.restaurant, start: fmtDate(o.start) });
-    return "mailto:" + encodeURIComponent(o.contact.email) + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(body);
+    var c = o.contact || {};
+    return "mailto:" + esc(c.email || "") + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(body);
   }
 
   function renderList() {
@@ -55,10 +56,10 @@
         '<div class="job-side"><span class="tag ' + esc(o.kind) + '">' + esc(t("kind_" + o.kind)) + (o.demo ? " · " + esc(t("jobsDemoTag")) : "") + "</span>" +
           '<p class="job-where">' + esc(o.city) + '<span class="muted"> · ' + esc(regionOf(o)) + "</span></p></div>" +
         '<div class="job-main"><h3>' + esc(o.role) + '</h3><p class="job-rest">' + esc(o.restaurant) + (o.distinction ? ' <span class="distinction" title="' + esc(t("distinctionTitle")) + '">✦</span>' : "") + "</p>" +
-          '<p class="job-facts">' + esc(t("jobsDates", { a: fmtDate(o.start), b: fmtDate(o.end) })) + (o.hours ? " · " + esc(t("jobsHours", { h: o.hours })) : "") + (o.pay ? " · " + esc(o.pay) : "") + (o.housing ? " · " + esc(t("jobsHoused")) : "") + "</p>" +
+          '<p class="job-facts">' + esc(t("jobsDates", { a: fmtDate(o.start), b: fmtDate(o.end) })) + (o.hours ? " · " + esc(t("jobsHours", { h: o.hours })) : "") + (o.pay ? " · " + esc(o.pay) : "") + (o.housing ? " · " + esc(t("jobsHoused")) : "") + (o.published ? " · " + esc(t("jobsPublished", { d: fmtDate(o.published) })) : "") + "</p>" +
           (o.text ? '<details class="more"><summary>' + esc(t("more")) + "</summary><p>" + esc(o.text) + "</p></details>" : "") + "</div>" +
         '<div class="job-act"><a class="btn primary" href="' + applyMail(o) + '"><span>' + esc(t("jobsApply")) + "</span></a>" +
-          (o.contact.phone ? '<a class="link" href="tel:' + esc(o.contact.phone.replace(/\s/g, "")) + '">' + esc(o.contact.phone) + "</a>" : "") + "</div></article>";
+          ((o.contact && o.contact.phone) ? '<a class="link" href="tel:' + esc(o.contact.phone.replace(/\s/g, "")) + '">' + esc(o.contact.phone) + "</a>" : "") + "</div></article>";
     }).join("");
   }
 
@@ -78,6 +79,7 @@
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
       var f = function (n) { var el = form.elements[n]; return el ? (el.type === "checkbox" ? (el.checked ? "oui" : "non") : String(el.value || "").trim()) : ""; };
       var kind = (form.querySelector("[name=kind]:checked") || {}).value || "";
       var lines = [
@@ -85,14 +87,14 @@
         ["Poste", f("role")], ["Début", f("start")], ["Fin", f("end")], ["Heures par semaine", f("hours")], ["Rémunération", f("pay")], ["Logement", f("housing")],
         ["Contact", f("contactName")], ["Email", f("email")], ["Téléphone", f("phone")], ["", ""], ["Description", f("text")]
       ];
-      var body = lines.map(function (l) { return l[0] ? l[0] + " : " + l[1] : ""; }).join("\n") + "\n\nEnvoyé depuis nokime · jobs";
-      location.href = "mailto:" + ADDRESS + "?subject=" + encodeURIComponent("Nokime Jobs — offre : " + f("restaurant")) + "&body=" + encodeURIComponent(body);
+      var body = lines.map(function (l) { return l[0] ? l[0] + " : " + l[1] : ""; }).join("\n") + "\n\nEnvoyé depuis Nokime Jobs";
+      location.href = "mailto:" + ADDRESS + "?subject=" + encodeURIComponent("Nokime Jobs — offre : " + f("restaurant")) + "&body=" + encodeURIComponent(body);
       var ok = $("#postSent"); if (ok) ok.hidden = false;
     });
     var kindInputs = $$("[name=kind]", form), pay = form.elements.pay;
     kindInputs.forEach(function (r) { r.addEventListener("change", function () { if (pay && !pay.value.trim() && r.value === "stage") pay.value = I18N.fr.payLegal; /* offers are French, whatever the reader's language */ }); });
     var txt = form.elements.text, cnt = $("#textCount");
-    if (txt && cnt) { var upd = function () { cnt.textContent = txt.value.length + " / 600"; }; txt.addEventListener("input", upd); upd(); }
+    if (txt && cnt) { var upd = function () { cnt.textContent = txt.value.length + " / 300"; }; txt.addEventListener("input", upd); upd(); }
   }
 
   function renderAll() { renderFilters(); renderList(); }
