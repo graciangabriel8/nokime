@@ -27,7 +27,7 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" vie
 </style></defs>
 <rect width="1200" height="1200" fill="#FFFFFF"/>
 <g transform="translate(0,285)">
-<g transform="translate(80,74)"><g transform="scale(0.1875)" fill="none" stroke-linecap="square" stroke-linejoin="round"><circle cx="120" cy="120" r="91" stroke="#5E7D45" stroke-width="14"/><circle cx="120" cy="120" r="71" stroke="#1B1E17" stroke-width="3"/><path d="M69 171V69l102 102V69" stroke="#1B1E17" stroke-width="18"/><circle cx="120" cy="29" r="7" fill="#5E7D45" stroke="none"/><circle cx="120" cy="211" r="7" fill="#5E7D45" stroke="none"/></g>
+<g transform="translate(80,74)"><g transform="scale(0.1875)" fill="none" stroke-linecap="square" stroke-linejoin="round"><circle cx="120" cy="120" r="91" stroke="#7A9E5E" stroke-width="14"/><circle cx="120" cy="120" r="71" stroke="#1B1E17" stroke-width="3"/><path d="M69 171V69l102 102V69" stroke="#1B1E17" stroke-width="18"/><circle cx="120" cy="29" r="7" fill="#7A9E5E" stroke="none"/><circle cx="120" cy="211" r="7" fill="#7A9E5E" stroke="none"/></g>
 <text x="58" y="34" font-family="Fraunces, Georgia, serif" font-size="34" fill="#1B1E17">Nokime</text></g>
 <text x="80" y="176" font-family="IBM Plex Sans, Helvetica, sans-serif" font-size="17" letter-spacing="2.4" fill="#63675A">OUTILS POUR LA RESTAURATION</text>
 <text font-family="Fraunces, Georgia, serif" font-size="74" fill="#1B1E17" letter-spacing="-0.5">
