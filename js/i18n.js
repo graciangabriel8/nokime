@@ -61,7 +61,7 @@ window.NOKIME_I18N = {
     more: "More", dataQ: "And my data?", demoNoteQ: "Where do these prices come from?",
     v1s: "Cost, ratio, gross margin and floor, dish by dish.", v2s: "Your purchase prices and yields, product by product.", v3s: "One typical service, in plain words: brigade, overheads, break-even.",
     ver1s: "The 499 products a cook is expected to know.", ver2s: "The whole atlas, the pairings and the lab.", ver3s: "Defined with a first pilot class.",
-    whyKicker: "Why a house.", whyS: "A restaurant that trusts one tool takes a second from the same hand.", whoS: "Gabriel Gracian-Leroudier, cook and developer.", methodS: "One tool at a time, quiet rather than complete.",
+    whyKicker: "Why a house.", whyS: "A restaurant that trusts one tool takes a second from the same hand.", methodS: "One tool at a time, quiet rather than complete.",
 
     /* home */
     featKicker: "The cost of a dish, live.", featLead: "Copius’s prices and seasons, Manager’s arithmetic: one set of data, from one tool to the next.",
@@ -148,8 +148,6 @@ window.NOKIME_I18N = {
     grLead: "Nokime is the name of the house. The tools carry it before their own.",
     grP1: "The idea is simple. A restaurant that trusts one tool will take a second from the same hand more readily than it will go looking for a new one. So every tool is built to be joined by the next: same products, same prices, same seasons, same way of presenting a number.",
     grP2: "Copius, the atlas, is the base: it knows the products. Manager uses it to price a menu. Stock, orders and brigade will use it in turn.",
-    whoKicker: "Who.",
-    whoP: "Nokime is built by Gabriel Gracian-Leroudier, cook and developer. The tools are born in the kitchen, first for his own use, and are tested on his own dishes before being offered to others.",
     methodKicker: "The method.",
     methodP1: "One tool at a time. The next does not start before a restaurant pays for the previous one: that is the only proof that counts.",
     methodP2: "Quiet rather than complete. A tool shows few things and gives the detail when asked; a dull job deserves some pleasure.",
