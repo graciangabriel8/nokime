@@ -167,7 +167,7 @@
          '<div class="demo-row"><span>' + esc(t.demoRatio) + '</span><b class="mono" data-ratio></b></div>' +
          '<p class="verdict" data-verdict></p>' +
          '<p class="demo-season"><span>' + esc(t.demoSeason) + '</span> <span data-season></span></p>' +
-         '<p class="demo-note">' + esc(t.demoNote) + "</p>";
+         '<details class="more"><summary>' + esc(t.demoNoteQ) + '</summary><p class="demo-note">' + esc(t.demoNote) + "</p></details>";
     el.innerHTML = h;
 
     function update() {
