@@ -11,4 +11,5 @@ The group's public site: Nokime Manager, Nokime Copius, the group, contact, lega
 - The live demo on the home and Manager pages uses the mid-point of each product's Copius price band, all-kg products only.
 
 Serve locally: `python3 -m http.server 8647` (or `preview_start` name `nokime`).
+Before a commit that touches `css/` or `js/`: `python3 tools/bump.py` (raises `?v=N` on every asset link, so a push never pairs new HTML with cached CSS).
 Check that every French key has its English: `python3 tools/check-i18n.py`.
