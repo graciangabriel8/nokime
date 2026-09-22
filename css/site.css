@@ -248,6 +248,7 @@ p{margin:0 0 1em}
 .ver{border-top:1px solid var(--rule);padding-top:18px}
 .ver h3{font-size:24px;margin-bottom:8px}
 .ver > p{color:var(--ink-2);margin:0}
+.ver .ver-price{font-family:var(--serif);font-size:21px;color:var(--ink);margin:8px 0 0;font-variant-numeric:tabular-nums}
 .prose{max-width:720px}
 .prose p,.prose li{font-size:17px;color:var(--ink-2)}
 .prose h2{font-size:clamp(24px,2.6vw,32px);margin:44px 0 12px;color:var(--ink)}
