@@ -80,7 +80,6 @@ window.NOKIME_I18N = {
     cText: "Ingredients, techniques, bases and chefs, drawn and bilingual. Every product with its price band, its season and its pairings, and a lab to test a plate before you cook it.",
     cLink: "See Nokime Copius",
     nTag: "Next", nTitle: "Stock, orders, brigade.",
-    nText: "The next tools arrive in the same house, with the same products. One more feature, not one more brand.",
     howKicker: "Three moves.",
     s1t: "Paste your menu", s1p: "A typed sheet, a file or a list: every line is recognised and priced.",
     s2t: "Correct with your prices", s2p: "Your purchase price replaces the band, once, and it stays.",
