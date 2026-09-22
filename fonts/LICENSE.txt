@@ -1,0 +1,8 @@
+The font files in this directory are redistributed under the SIL Open Font License, Version 1.1
+(https://openfontlicense.org), latin subset only.
+
+  Fraunces — Copyright 2020 The Fraunces Project Authors (github.com/undercasetype/Fraunces)
+  IBM Plex Sans, IBM Plex Mono — Copyright © 2017 IBM Corp. (github.com/IBM/plex)
+
+They are used by the Nokime website only; the fonts themselves are not sold and their names are not used
+to promote derived works.

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nokime — outils pour la restauration</title>
+<meta name="description" content="Nokime construit des outils pour ceux qui tiennent une cuisine : ce que coûte un plat, ce qu’il laisse au prix carte, et un atlas illustré des ingrédients. Faits par un cuisinier qui code.">
+<meta name="theme-color" content="#F7F6F1">
+<meta property="og:title" content="Nokime — outils pour la restauration">
+<meta property="og:description" content="Le coût de l’assiette, avant le service. Pas après le bilan.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234F5B3F' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M4.5 15h15'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+<script>(function(){try{var t=localStorage.getItem("nokime-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);var l=localStorage.getItem("nokime-lang");if(l==="fr"||l==="en")document.documentElement.setAttribute("lang",l);}catch(e){}})();</script>
+</head>
+<body data-title="titleHome" data-desc="descHome">
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="./">
+      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M4.5 15h15"/></svg>
+      <span>Nokime</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Navigation">
+      <a href="manager/" data-t="navManager">Manager</a>
+      <a href="copius/" data-t="navCopius">Copius</a>
+      <a href="groupe/" data-t="navGroup">Le groupe</a>
+      <a href="contact/" data-t="navContact">Contact</a>
+    </nav>
+    <div class="head-tools">
+      <button class="tbtn" id="langBtn" type="button" aria-label="Switch to English">EN</button>
+      <button class="tbtn" id="themeBtn" type="button" aria-label="Changer de thème"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" stroke="none"/></svg></button>
+      <a class="btn small" href="contact/" data-t="navCta">Nous écrire</a>
+      <button class="tbtn menu" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow" data-t="heroEyebrow">Nokime · outils pour la restauration</p>
+        <h1 class="display" data-t="heroTitle">Le coût de l’assiette, avant le service. Pas après le bilan.</h1>
+        <p class="lead" data-t="heroLead">Nokime construit des outils pour ceux qui tiennent une cuisine : ce que coûte un plat, ce qu’il laisse au prix carte, le seuil sous lequel il ne paie plus la salle. Faits par un cuisinier qui code.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="manager/"><span data-t="heroCta1">Découvrir Nokime Manager</span><span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn" href="copius/"><span data-t="heroCta2">Voir l’atlas Copius</span></a>
+        </div>
+      </div>
+      <div class="demo" data-demo="bar"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat"><p class="stat-n" data-t="stat1n">1 839</p><p class="stat-l" data-t="stat1l">produits déjà chiffrés, avec leur saison</p></div>
+        <div class="stat"><p class="stat-n" data-t="stat2n">135</p><p class="stat-l" data-t="stat2l">techniques, et 45 bases</p></div>
+        <div class="stat"><p class="stat-n" data-t="stat3n">Hors ligne</p><p class="stat-l" data-t="stat3l">vos données restent chez vous</p></div>
+        <div class="stat"><p class="stat-n" data-t="stat4n">49 € HT</p><p class="stat-l" data-t="stat4l">par mois, ou 490 € par an</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="outils">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="kicker" data-t="prodKicker">Deux outils, une seule maison.</h2>
+        <p class="lead" data-t="prodIntro">Chaque outil part des mêmes produits, des mêmes prix, des mêmes saisons. Ce qui est chiffré dans l’un est connu de l’autre.</p>
+      </div>
+      <div class="products">
+        <article class="product">
+          <div class="art-cluster" aria-hidden="true"><span data-art="sea-bass"></span><span data-art="asparagus"></span><span data-art="lemon"></span></div>
+          <p class="tag brass" data-t="mTag">Offre fondateurs ouverte</p>
+          <h3><span class="brandword">Nokime</span> Manager</h3>
+          <p class="sub" data-t="mSub">Le coût de l’assiette, et ce que fait le service.</p>
+          <p data-t="mText">Coût par portion, ratio matière, marge brute et prix plancher pour chaque plat ; vos prix d’achat et vos rendements par produit ; un service type — brigade, charges, point mort — lu en clair. Un fichier, hors ligne, avec les 1 839 produits de Copius déjà chiffrés.</p>
+          <a class="link" href="manager/"><span data-t="mLink">Voir Nokime Manager</span> →</a>
+        </article>
+        <article class="product">
+          <div class="art-cluster" aria-hidden="true"><span data-art="porcini"></span><span data-art="strawberry"></span><span data-art="artichoke"></span></div>
+          <p class="tag live" data-t="cTag">En ligne · copius.fr</p>
+          <h3><span class="brandword">Nokime</span> Copius</h3>
+          <p class="sub" data-t="cSub">L’atlas illustré de la cuisine.</p>
+          <p data-t="cText">Ingrédients, techniques, bases et chefs, dessinés et bilingues. Chaque produit avec sa fourchette de prix, sa saison et ses accords, et un laboratoire pour tester une assiette avant de la faire.</p>
+          <a class="link" href="copius/"><span data-t="cLink">Voir Nokime Copius</span> →</a>
+        </article>
+        <article class="product next">
+          <div class="art-cluster" aria-hidden="true"><span data-art="leek"></span><span data-art="carrot"></span><span data-art="onion"></span></div>
+          <p class="tag" data-t="nTag">Ensuite</p>
+          <h3 data-t="nTitle">Stock, commandes, brigade.</h3>
+          <p data-t="nText">Les prochains outils arrivent dans la même maison, avec les mêmes produits. Une fonction de plus, pas une marque de plus.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2 class="kicker" data-t="howKicker">Trois gestes.</h2>
+      <p class="lead" data-t="howIntro">De la carte au seuil, sans ressaisie.</p>
+      <ol class="steps">
+        <li class="step"><span class="step-n" aria-hidden="true">01</span><h3 data-t="s1t">Collez votre carte</h3><p data-t="s1p">Une fiche tapée, un fichier, ou simplement la liste des ingrédients : chaque ligne est reconnue et chiffrée avec la fourchette Copius.</p></li>
+        <li class="step"><span class="step-n" aria-hidden="true">02</span><h3 data-t="s2t">Corrigez avec vos prix</h3><p data-t="s2p">Votre prix d’achat remplace la fourchette, une fois par produit, et il reste. Le rendement convertit la quantité dans l’assiette en quantité achetée.</p></li>
+        <li class="step"><span class="step-n" aria-hidden="true">03</span><h3 data-t="s3t">Lisez le seuil</h3><p data-t="s3p">Coût par portion, ratio matière, marge brute, et le prix sous lequel le plat ne paie plus sa part de brigade et de charges, aux couverts que vous faites vraiment.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section manifesto">
+    <div class="wrap">
+      <h2 class="kicker" data-t="manKicker">Pourquoi une maison, et pas un outil de plus.</h2>
+      <p data-t="manP1">Un restaurant n’a pas besoin de six logiciels et de six mots de passe. Il a besoin d’outils qui se connaissent : le produit chiffré dans l’atlas est celui de la fiche, qui sera celui du stock. Une seule maison, et chaque outil qui arrive est une fonction de plus.</p>
+      <blockquote class="pull" data-t="manQuote">Le comptable donne le chiffre de l’an dernier, juste et inutile. L’outil donne le chiffre pendant qu’on peut encore agir.</blockquote>
+      <p data-t="manP2">C’est la seule promesse de Nokime : des chiffres pendant qu’ils servent, présentés comme on présente une assiette.</p>
+    </div>
+  </section>
+
+  <section class="section founders" id="fondateurs">
+    <div class="wrap founders-grid">
+      <div>
+        <h2 class="kicker" data-t="fKicker">Cinq établissements fondateurs.</h2>
+        <p class="lead" data-t="fText">Les cinq premiers restaurants qui rejoignent Nokime Manager ont l’outil offert pendant six mois, et la lecture mensuelle d’exploitation à 99 € HT au lieu de 149. En échange : vos plats réels, et votre avis franc.</p>
+        <ul class="checks">
+          <li data-t="fP1">L’outil, offert six mois.</li>
+          <li data-t="fP2">L’Analyse mensuelle à 99 € HT.</li>
+          <li data-t="fP3">Une voix directe sur ce qui se construit.</li>
+        </ul>
+      </div>
+      <aside class="founders-card">
+        <p class="tag brass" data-t="fTag">Offre fondateurs</p>
+        <p class="big">5</p>
+        <p class="small" data-t="fSeats">places</p>
+        <a class="btn primary" data-mail="founders" href="mailto:contact@copius.fr"><span data-t="fCta">Demander une place</span><span class="arrow" aria-hidden="true">→</span></a>
+        <p class="small" data-t="fSmall">Un courriel suffit.</p>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="./"><svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M4.5 15h15"/></svg><span>Nokime</span></a>
+        <p class="small" data-t="footTag">Outils pour la restauration, faits en cuisine.</p>
+      </div>
+      <nav aria-label="Pied de page" data-t-attr="aria-label:footNav">
+        <a href="manager/" data-t="navManager">Manager</a>
+        <a href="copius/" data-t="navCopius">Copius</a>
+        <a href="groupe/" data-t="navGroup">Le groupe</a>
+        <a href="contact/" data-t="navContact">Contact</a>
+      </nav>
+      <div class="foot-links">
+        <a href="mailto:contact@copius.fr">contact@copius.fr</a>
+        <a href="https://copius.fr" rel="noopener">copius.fr</a>
+        <a href="https://www.instagram.com/copius.fr/" rel="noopener">Instagram · @copius.fr</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span data-year>2026</span> Nokime</span>
+      <a href="mentions-legales/" data-t="footLegal">Mentions légales</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/art.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>
