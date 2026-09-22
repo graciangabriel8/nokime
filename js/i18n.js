@@ -43,18 +43,18 @@ window.NOKIME_I18N = {
   en: {
     /* shared */
     navManager: "Manager", navCopius: "Copius", navGroup: "The group", navContact: "Contact", navCta: "Write to us",
-    footTag: "Tools for restaurants, made in the kitchen.", footLegal: "Legal notice", footNav: "Footer",
+    footTag: "Tools for restaurants.", footLegal: "Legal notice", footNav: "Footer",
     langSwitch: "Passer en français", themeSwitch: "Switch theme", menuLabel: "Menu",
     titleHome: "Nokime — tools for restaurants",
-    descHome: "Nokime is a house of tools for restaurants: an illustrated atlas of ingredients and a costing tool that share the same products, prices and seasons. Made by a cook who codes.",
+    descHome: "Nokime is a house of tools for restaurants: an illustrated atlas of ingredients and a costing tool that share the same products, prices and seasons.",
     titleManager: "Nokime Manager — the cost of the plate",
     descManager: "Nokime Manager: food cost per portion, ratio, gross margin and floor price for every dish; your purchase prices; one typical service read in plain words. Offline, with 1,839 products already priced.",
     titleCopius: "Nokime Copius — the illustrated atlas of cooking",
     descCopius: "Copius: 1,839 ingredients, 135 techniques, 45 bases and 68 chefs, drawn and bilingual, each product with its price band, season and pairings. Three versions: free, full, school.",
     titleGroup: "The group — Nokime",
-    descGroup: "Nokime is a house of tools for restaurants: one name, tools that share the same products and prices, built by a cook who codes.",
+    descGroup: "Nokime is a house of tools for restaurants: one name, tools that share the same products and prices.",
     titleContact: "Contact — Nokime",
-    descContact: "One email is enough. Restaurants, teachers, press: one address, read by the person who builds the tools.",
+    descContact: "One email is enough. Restaurants, teachers, press: one address.",
     titleLegal: "Legal notice — Nokime",
     descLegal: "Publisher, host, personal data and credits for the Nokime website.",
 
@@ -67,7 +67,7 @@ window.NOKIME_I18N = {
     featKicker: "The cost of a dish, live.", featLead: "Copius’s prices and seasons, Manager’s arithmetic: one set of data, from one tool to the next.",
     heroEyebrow: "Nokime",
     heroTitle: "A house of tools for restaurants.",
-    heroLead: "Tools that know each other. Made by a cook who codes.",
+    heroLead: "Tools that know each other, for the people who run a kitchen.",
     heroCta1: "See the tools", heroCta2: "Write to us",
     demoTitle: "One dish, live",
     demoHint: "Change a quantity or the price.",
@@ -159,7 +159,7 @@ window.NOKIME_I18N = {
 
     /* contact */
     ctEyebrow: "Contact", ctTitle: "One email is enough.",
-    ctLead: "One address, read by the person who builds the tools.",
+    ctLead: "One address, and an answer.",
     r1t: "You run a restaurant", r1p: "To join the five founding restaurants of Nokime Manager, or to ask about the tool.", r1cta: "Write about Manager",
     r2t: "You teach", r2p: "For a pilot class with Copius, or to talk about the school version.", r2cta: "Write about Copius",
     r3t: "Press, partners, the curious", r3p: "For everything else.", r3cta: "Write",
