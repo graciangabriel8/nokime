@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nokime Jobs — stages, alternances et saisons en cuisine</title>
+<meta name="description" content="Nokime Jobs : des offres de stage, d’alternance et de saison dans des cuisines qui en valent la peine. Gratuit pour les candidats ; les restaurants publient et répondent directement.">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:title" content="Nokime Jobs — stages, alternances et saisons en cuisine">
+<meta property="og:description" content="Des stages et des saisons dans des cuisines qui en valent la peine.">
+<meta property="og:image" content="https://graciangabriel8.github.io/nokime/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234F5B3F' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M4.5 15h15'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../css/fonts.css?v=7">
+<link rel="stylesheet" href="../css/site.css?v=7">
+<script>(function(){try{var t=localStorage.getItem("nokime-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);var l=localStorage.getItem("nokime-lang");if(l==="fr"||l==="en")document.documentElement.setAttribute("lang",l);}catch(e){}})();</script>
+</head>
+<body data-title="titleJobs" data-desc="descJobs">
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="../">
+      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M4.5 15h15"/></svg>
+      <span>Nokime</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Navigation">
+      <a href="../manager/" data-t="navManager">Manager</a>
+      <a href="../copius/" data-t="navCopius">Copius</a>
+      <a href="../jobs/" data-t="navJobs">Jobs</a>
+      <a href="../groupe/" data-t="navGroup">Le groupe</a>
+      <a href="../contact/" data-t="navContact">Contact</a>
+    </nav>
+    <div class="head-tools">
+      <button class="tbtn" id="langBtn" type="button" aria-label="Switch to English">EN</button>
+      <button class="tbtn" id="themeBtn" type="button" aria-label="Changer de thème"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" stroke="none"/></svg></button>
+      <a class="btn small" href="../contact/" data-t="navCta">Nous écrire</a>
+      <button class="tbtn menu" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow" data-t="jobsEyebrow">Nokime Jobs</p>
+      <h1 class="display" data-t="jobsTitle">Des stages et des saisons dans des cuisines qui en valent la peine.</h1>
+      <p class="lead" data-t="jobsLead">Gratuit pour ceux qui cherchent. Les restaurants publient, une offre à la fois, et vous répondent directement.</p>
+      <details class="more"><summary data-t="more">En savoir plus</summary><p data-t="jobsMore">Une offre dit tout avant que vous écriviez : le poste, les dates, les heures, la rémunération, le logement. Vous écrivez au restaurant, pas à nous. Nokime ne garde ni CV ni candidature.</p></details>
+      <div class="cta-row">
+        <a class="btn primary" href="#offres"><span data-t="jobsCta1">Voir les offres</span><span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn" href="publier/"><span data-t="jobsCta2">Publier une offre</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight" id="offres">
+    <div class="wrap">
+      <div class="jobs-bar">
+        <h2 class="kicker" data-t="jobsKicker">Les offres.</h2>
+        <span class="jobs-count muted" id="jobsCount"></span>
+      </div>
+      <div class="jobs-filters" role="group" data-t-attr="aria-label:jobsFilters" aria-label="Filtres">
+        <button class="chip" type="button" data-kind="all" aria-pressed="true" data-t="kindAll">Tous</button>
+        <button class="chip" type="button" data-kind="stage" data-t="kind_stage">Stage</button>
+        <button class="chip" type="button" data-kind="alternance" data-t="kind_alternance">Alternance</button>
+        <button class="chip" type="button" data-kind="saison" data-t="kind_saison">Saison</button>
+        <button class="chip" type="button" id="jobsHousing" aria-pressed="false" data-t="jobsHoused">Logé</button>
+        <select class="jobs-select" id="jobsRegion" data-t-attr="aria-label:jobsRegionLabel" aria-label="Région"></select>
+      </div>
+      <div class="jobs-list" id="jobsList"></div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2 class="kicker" data-t="jobsHowKicker">Trois gestes.</h2>
+      <ol class="steps">
+        <li class="step"><span class="step-n" aria-hidden="true">01</span><h3 data-t="j1t">Vous lisez l’offre</h3><p data-t="j1p">Le poste, les dates, les heures, la rémunération, le logement : tout est écrit avant que vous écriviez.</p></li>
+        <li class="step"><span class="step-n" aria-hidden="true">02</span><h3 data-t="j2t">Vous écrivez au restaurant</h3><p data-t="j2p">Par mail ou par téléphone, directement. Nokime ne garde ni CV ni candidature.</p></li>
+        <li class="step"><span class="step-n" aria-hidden="true">03</span><h3 data-t="j3t">L’école fait la convention</h3><p data-t="j3p">Pour un stage, la convention passe par votre établissement. Pour une saison, c’est un contrat avec le restaurant.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="kicker" data-t="jobsWhatKicker">Ce que dit une offre.</h2>
+      <p class="lead" data-t="jobsWhatLead">Trois sortes d’offres, chacune avec ses règles.</p>
+      <div class="facts-grid">
+        <details class="more"><summary data-t="w1s">Stage</summary><p data-t="w1p">Réservé aux élèves et étudiants, avec une convention signée par l’école. Au-delà de deux mois, la gratification est obligatoire, au taux légal ou plus.</p></details>
+        <details class="more"><summary data-t="w2s">Alternance</summary><p data-t="w2p">Un contrat d’apprentissage ou de professionnalisation : un salaire, un rythme école-entreprise, une durée d’un à trois ans.</p></details>
+        <details class="more"><summary data-t="w3s">Saison</summary><p data-t="w3p">Un contrat saisonnier, avec des dates, un nombre d’heures et, souvent, un logement. Les offres d’hiver se publient dès septembre, celles d’été dès mars.</p></details>
+        <details class="more"><summary data-t="w4s">Ce que nous vérifions</summary><p data-t="w4p">Que l’établissement existe, que l’offre dit son type et ses dates, et qu’elle ne contient aucune mention discriminatoire. Les offres sont rédigées en français.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section founders">
+    <div class="wrap">
+      <h2 class="kicker" data-t="distKicker">En préparation : une distinction.</h2>
+      <p class="lead" data-t="distLead">Une marque pour les cuisines où les stagiaires reviennent. Décernée sur leurs réponses, jamais un classement.</p>
+      <details class="more"><summary data-t="more">En savoir plus</summary><p data-t="distMore">À la fin d’un stage, un questionnaire court, sans texte libre : heures réellement faites, repos, gratification versée à temps, ce qu’on a appris, comment on a été traité, si l’on reviendrait. Une cuisine reçoit la distinction à partir de plusieurs réponses concordantes. Rien n’est publié sur les autres.</p></details>
+    </div>
+  </section>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../"><svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M4.5 15h15"/></svg><span>Nokime</span></a>
+        <p class="small" data-t="footTag">Outils pour la restauration, faits en cuisine.</p>
+      </div>
+      <nav aria-label="Pied de page" data-t-attr="aria-label:footNav">
+        <a href="../manager/" data-t="navManager">Manager</a>
+        <a href="../copius/" data-t="navCopius">Copius</a>
+      <a href="../jobs/" data-t="navJobs">Jobs</a>
+        <a href="../groupe/" data-t="navGroup">Le groupe</a>
+        <a href="../contact/" data-t="navContact">Contact</a>
+      </nav>
+      <div class="foot-links">
+        <a href="mailto:contact@copius.fr">contact@copius.fr</a>
+        <a href="https://copius.fr" rel="noopener">copius.fr</a>
+        <a href="https://www.instagram.com/copius.fr/" rel="noopener">Instagram · @copius.fr</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span data-year>2026</span> Nokime</span>
+      <a href="../mentions-legales/" data-t="footLegal">Mentions légales</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/art.js?v=7"></script>
+<script src="../js/i18n.js?v=7"></script>
+<script src="../js/site.js?v=7"></script>
+<script src="../js/jobs-offers.js?v=7"></script>
+<script src="../js/jobs.js?v=7"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Raise the ?v=N on every stylesheet and script link in the six pages, so a push never
+"""Raise the ?v=N on every stylesheet and script link in every page (any depth), so a push never
 serves new HTML with a browser's cached CSS or JS (GitHub Pages caches for ten minutes).
 Run before every commit that touches css/ or js/:
 
@@ -8,7 +8,7 @@ Run before every commit that touches css/ or js/:
 import re, pathlib
 root = pathlib.Path(__file__).resolve().parent.parent
 pages = sorted(root.glob("**/index.html"))
-pat = re.compile(r'((?:href|src)="(?:\.\./)?(?:css|js)/[\w-]+\.(?:css|js))(?:\?v=(\d+))?"')
+pat = re.compile(r'((?:href|src)="(?:\.\./)*(?:css|js)/[\w-]+\.(?:css|js))(?:\?v=(\d+))?"')
 current = max((int(v) for p in pages for _, v in pat.findall(p.read_text(encoding="utf-8")) if v), default=0)
 nxt = current + 1
 for p in pages:
