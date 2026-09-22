@@ -8,7 +8,7 @@
 window.NOKIME_I18N = {
   fr: {
     demoTitle: "Un plat, en direct",
-    demoHint: "Change a quantity or the price.",
+    demoHint: "Modifiez une quantité ou le prix.",
     demoTotal: "Coût matière par portion",
     demoPrice: "Prix carte HT",
     demoRatio: "Ratio matière",
@@ -59,7 +59,7 @@ window.NOKIME_I18N = {
     heroLead: "Tools for the people who run a kitchen. Made by a cook who codes.",
     heroCta1: "Discover Nokime Manager", heroCta2: "See the Copius atlas",
     demoTitle: "One dish, live",
-    demoHint: "Change a quantity or the price; everything recalculates.",
+    demoHint: "Change a quantity or the price.",
     demoTotal: "Food cost per portion", demoPrice: "Menu price excl. VAT", demoRatio: "Food-cost ratio",
     demoIn: "On target, 30 to 38 %.", demoUnder: "Under 30 %: comfortable.", demoOver: "Over 38 %: the dish is not paying for the room.",
     demoSeason: "Season of the costliest product:", demoAllYear: "all year", demoFrom: "{a} to {b}",
