@@ -21,20 +21,20 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" vie
 <defs><style>
 @font-face{{font-family:"Fraunces";src:url(data:font/ttf;base64,{fraunces}) format("truetype")}}
 @font-face{{font-family:"IBM Plex Sans";src:url(data:font/ttf;base64,{plex}) format("truetype")}}
-.f1{{fill:#E9E9E6}}.f2{{fill:#D7D7D3}}.f3{{fill:#BCBCB6}}.dot{{fill:#585853}}
-.s{{fill:none;stroke:#585853;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}}
-.sf{{stroke:#585853;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}}
+.f1{{fill:#2F2F2C}}.f2{{fill:#3A3A36}}.f3{{fill:#4A4A45}}.dot{{fill:#B8B5AE}}
+.s{{fill:none;stroke:#B8B5AE;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}}
+.sf{{stroke:#B8B5AE;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}}
 </style></defs>
-<rect width="1200" height="1200" fill="#FFFFFF"/>
+<rect width="1200" height="1200" fill="#15170F"/>
 <g transform="translate(0,285)">
-<g transform="translate(80,74)"><g transform="scale(0.1875)" fill="none" stroke-linecap="square" stroke-linejoin="round"><circle cx="120" cy="120" r="91" stroke="#7A9E5E" stroke-width="14"/><circle cx="120" cy="120" r="71" stroke="#1B1E17" stroke-width="3"/><path d="M69 171V69l102 102V69" stroke="#1B1E17" stroke-width="18"/><circle cx="120" cy="29" r="7" fill="#7A9E5E" stroke="none"/><circle cx="120" cy="211" r="7" fill="#7A9E5E" stroke="none"/></g>
-<text x="58" y="34" font-family="Fraunces, Georgia, serif" font-size="34" fill="#1B1E17">Nokime</text></g>
-<text x="80" y="176" font-family="IBM Plex Sans, Helvetica, sans-serif" font-size="17" letter-spacing="2.4" fill="#63675A">OUTILS POUR LA RESTAURATION</text>
-<text font-family="Fraunces, Georgia, serif" font-size="74" fill="#1B1E17" letter-spacing="-0.5">
+<g transform="translate(80,74)"><g transform="scale(0.1875)" fill="none" stroke-linecap="square" stroke-linejoin="round"><circle cx="120" cy="120" r="91" stroke="#BFD5A5" stroke-width="14"/><circle cx="120" cy="120" r="71" stroke="#ECEBE2" stroke-width="3"/><path d="M69 171V69l102 102V69" stroke="#ECEBE2" stroke-width="18"/><circle cx="120" cy="29" r="7" fill="#BFD5A5" stroke="none"/><circle cx="120" cy="211" r="7" fill="#BFD5A5" stroke="none"/></g>
+<text x="58" y="34" font-family="Fraunces, Georgia, serif" font-size="34" fill="#ECEBE2">Nokime</text></g>
+<text x="80" y="176" font-family="IBM Plex Sans, Helvetica, sans-serif" font-size="17" letter-spacing="2.4" fill="#8C907F">OUTILS POUR LA RESTAURATION</text>
+<text font-family="Fraunces, Georgia, serif" font-size="74" fill="#ECEBE2" letter-spacing="-0.5">
 <tspan x="80" y="300">Une maison d’outils</tspan><tspan x="80" y="386">pour la restauration.</tspan></text>
-<text x="80" y="500" font-family="IBM Plex Sans, Helvetica, sans-serif" font-size="24" fill="#4F5346">Des outils qui se connaissent, pour ceux qui tiennent une cuisine.</text>
+<text x="80" y="500" font-family="IBM Plex Sans, Helvetica, sans-serif" font-size="24" fill="#BDBFAE">Des outils qui se connaissent, pour ceux qui tiennent une cuisine.</text>
 {drawing("sea-bass", 830, 150, 250)}{drawing("asparagus", 1000, 100, 170)}{drawing("lemon", 980, 330, 170)}
-<rect x="80" y="576" width="1040" height="1" fill="#E9EAE2"/>
+<rect x="80" y="576" width="1040" height="1" fill="#2A2D22"/>
 </g>
 </svg>'''
 tmp = pathlib.Path(tempfile.mkdtemp()); src = tmp / "og.svg"; src.write_text(svg, encoding="utf-8")

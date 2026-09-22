@@ -1,11 +1,11 @@
 /* Nokime — site script. No build step, no dependencies.
    Language: French is read out of the page itself at load; English comes from i18n.js.
-   Theme: an explicit choice is stamped on <html data-theme>; with none, the OS decides.
+   Dark only: there is no theme code.
    The demo: real Copius price bands (js/art.js), mid-point of the band, all-kg products. */
 (function () {
   "use strict";
 
-  var LS_LANG = "nokime-lang", LS_THEME = "nokime-theme";
+  var LS_LANG = "nokime-lang";
   var ADDRESS = "contact@copius.fr";
   var I18N = window.NOKIME_I18N || { fr: {}, en: {} };
   var ART = window.NOKIME_ART || {};
@@ -76,25 +76,11 @@
     if (dk && t[dk] && md) md.setAttribute("content", t[dk]);
     var lb = $("#langBtn");
     if (lb) { lb.textContent = lang === "fr" ? "EN" : "FR"; lb.setAttribute("lang", lang === "fr" ? "en" : "fr"); lb.setAttribute("aria-label", t.langSwitch || ""); }
-    var tb = $("#themeBtn"); if (tb && t.themeSwitch) tb.setAttribute("aria-label", t.themeSwitch);
     var mb = $("#menuBtn"); if (mb && t.menuLabel) mb.setAttribute("aria-label", t.menuLabel);
     $$("[data-art]").forEach(drawInto);
     $$("[data-demo]").forEach(renderDemo);
   }
   function setLang(l) { lang = l; try { localStorage.setItem(LS_LANG, l); } catch (e) {} applyLang(); }
-
-  /* ---------- theme ---------- */
-  function systemDark() { return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches; }
-  function currentTheme() { return document.documentElement.getAttribute("data-theme") || (systemDark() ? "dark" : "light"); }
-  function paintMeta() {
-    var bg = getComputedStyle(document.documentElement).getPropertyValue("--bg").trim();
-    $$('meta[name="theme-color"]').forEach(function (m) { m.setAttribute("content", bg); });
-  }
-  function setTheme(th) {
-    document.documentElement.setAttribute("data-theme", th);
-    try { localStorage.setItem(LS_THEME, th); } catch (e) {}
-    paintMeta();
-  }
 
   /* ---------- drawings ---------- */
   function art(id, label) {
@@ -212,23 +198,15 @@
   /* ---------- boot ---------- */
   harvest();
   applyLang();
-  paintMeta();
   markCurrent();
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
   var lb = $("#langBtn"); if (lb) lb.addEventListener("click", function () { setLang(lang === "fr" ? "en" : "fr"); });
-  var tb = $("#themeBtn"); if (tb) tb.addEventListener("click", function () { setTheme(currentTheme() === "dark" ? "light" : "dark"); });
   var mb = $("#menuBtn"), nav = $("#nav");
   if (mb && nav) {
     mb.addEventListener("click", function () {
       var open = nav.classList.toggle("open"); mb.setAttribute("aria-expanded", String(open));
     });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && nav.classList.contains("open")) { nav.classList.remove("open"); mb.setAttribute("aria-expanded", "false"); } });
-  }
-  if (window.matchMedia) {
-    var mq = window.matchMedia("(prefers-color-scheme: dark)"), onChange = function () {
-      if (!document.documentElement.getAttribute("data-theme")) paintMeta();
-    };
-    if (mq.addEventListener) mq.addEventListener("change", onChange); else if (mq.addListener) mq.addListener(onChange);
   }
 })();

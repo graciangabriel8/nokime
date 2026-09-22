@@ -27,7 +27,6 @@ window.NOKIME_I18N = {
     preset2: "Risotto aux cèpes",
     months: ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"],
     langSwitch: "Switch to English",
-    themeSwitch: "Changer de thème",
     menuLabel: "Menu",
     /* Nokime Jobs — rendered by js/jobs.js */
     kind_stage: "Stage", kind_alternance: "Alternance", kind_saison: "Saison", kindAll: "Tous",
@@ -45,7 +44,7 @@ window.NOKIME_I18N = {
     /* shared */
     navManager: "Manager", navCopius: "Copius", navGroup: "The group", navContact: "Contact", navCta: "Write to us",
     footTag: "Tools for restaurants.", footLegal: "Legal notice", footNav: "Footer",
-    langSwitch: "Passer en français", themeSwitch: "Switch theme", menuLabel: "Menu",
+    langSwitch: "Passer en français", menuLabel: "Menu",
     titleNotFound: "Page not found — Nokime", nfEyebrow: "Error 404", nfTitle: "This page does not exist.", nfLead: "The address may have changed. Everything that exists is one click from here.", nfHome: "Back to the home page",
     titleHome: "Nokime — tools for restaurants",
     descHome: "Nokime is a house of tools for restaurants: an illustrated atlas of ingredients, a costing tool and a board of internships and seasons in kitchens, sharing the same products, prices and seasons.",
