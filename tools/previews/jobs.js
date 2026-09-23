@@ -1,5 +1,5 @@
-// Nokime Jobs: the board with its three example offers (each tagged "exemple" on the card) —
-// see the offers, keep the seasons, open one, write to the restaurant, then the restaurants' side.
+// Nokime Jobs: the board with its example offers (each tagged "exemple" on the card) —
+// see the offers, keep the seasons, open one, write to the establishment, then the establishments' side.
 // Filmed on https://graciangabriel8.github.io/nokime-jobs/?demo=1 (the live site; ?demo=1 is its
 // own switch for the example offers, never shown in the public list).
 const card = () => H.$$('article.job').find(a => a.offsetParent !== null);
@@ -21,6 +21,6 @@ return {
   CLICKS: [[2.1, null],                                   // the button is pressed; the scroll below is the page's own anchor, driven per frame
            [4.4, () => H.$('[data-kind=saison]').click()],
            [5.9, () => card().querySelector('details summary').click()],
-           [8.1, null],                                   // "Écrire au restaurant" opens the visitor's mail app: pressed, not followed
+           [8.1, null],                                   // "Écrire à l'établissement" opens the visitor's mail app: pressed, not followed
            [9.5, () => H.$('[data-kind=all]').click()]],
 };

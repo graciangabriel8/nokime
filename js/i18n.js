@@ -36,7 +36,7 @@ window.NOKIME_I18N = {
     langSwitch: "Passer en français", menuLabel: "Menu",
     titleNotFound: "Page not found — Nokime", nfEyebrow: "Error 404", nfTitle: "This page does not exist.", nfLead: "The address may have changed. Everything that exists is one click from here.", nfHome: "Back to the home page",
     titleHome: "Nokime — tools for restaurants",
-    descHome: "Nokime is a house of tools for restaurants: an illustrated atlas of ingredients, a costing tool and a board of internships and seasons in kitchens, sharing the same products, prices and seasons.",
+    descHome: "Nokime is a house of tools for restaurants: an illustrated atlas of ingredients, a costing tool and a board of internships and seasons in hotels and restaurants, sharing the same products, prices and seasons.",
     titleManager: "Nokime Manager — the cost of the plate",
     descManager: "Nokime Manager: food cost per portion, ratio, gross margin and floor price for every dish; your purchase prices; one typical service read in plain words. Offline, with 1,839 products already priced.",
     titleCopius: "Nokime Copius — the illustrated atlas of cooking",
@@ -55,7 +55,7 @@ window.NOKIME_I18N = {
 
     shotLabel: "Nokime Manager in use, with the example dishes", shotCap: "The tool, with its example dishes. Lower the price, and the dish drops below its floor.",
     cpShotLabel: "Nokime Copius in use, from search to the pairing lab", cpShotCap: "The live atlas. Search for asparagus, step over to butter, and the lab judges the pairing.",
-    jbShotLabel: "Nokime Jobs in use, filmed with example offers", jbShotCap: "The site, filmed with example offers. Filter the seasons, read the offer, write to the restaurant.",
+    jbShotLabel: "Nokime Jobs in use, filmed with example offers", jbShotCap: "The site, filmed with example offers. Filter the seasons, read the offer, write to the establishment.",
     /* home */
     featKicker: "The cost of a dish, live.", featLead: "Copius’s prices and seasons, Manager’s arithmetic: one set of data, from one tool to the next.",
     heroEyebrow: "Nokime",
@@ -159,13 +159,13 @@ window.NOKIME_I18N = {
     r3t: "Press, partners, the curious", r3p: "For everything else.", r3cta: "Write",
     ctMailLabel: "The address", ctNote: "The address is Copius’s, until the house has its own.",
     /* Nokime Jobs */
-    navJobs: "Jobs", titleJobs: "Nokime Jobs — internships, apprenticeships and seasons in kitchens",
-    descJobs: "Nokime Jobs: internship, apprenticeship and seasonal offers in kitchens worth working in. Free for candidates; restaurants post and answer directly.",
-    jobsEyebrow: "Nokime Jobs", jobsTitle: "Internships and seasons in kitchens worth working in.",
-    jobsLead: "Free for those who are looking. Restaurants post, one offer at a time, and answer you directly.",
-    jobsMore: "An offer says everything before you write: the position, the dates, the hours, the pay when the restaurant states it, the lodging. You write to the restaurant, not to us.",
+    navJobs: "Jobs", titleJobs: "Nokime Jobs — internships, apprenticeships and seasons in hotels and restaurants",
+    descJobs: "Nokime Jobs: internship, apprenticeship and seasonal offers in hotels and restaurants, in the kitchen, the dining room, the rooms division and the spa, from establishments worth working in. Free for candidates; establishments post and answer directly.",
+    jobsEyebrow: "Nokime Jobs", jobsTitle: "Internships and seasons in hotels and restaurants worth working in.",
+    jobsLead: "Free for those who are looking, in the kitchen, the dining room, the rooms division and the spa. Hotels and restaurants post their offers and answer you directly.",
+    jobsMore: "An offer says everything before you write: the position, the dates, the hours, the pay when the establishment states it, the lodging. You write to the establishment, not to us.",
     jobsCta1: "See the offers", jobsCta2: "Post an offer",
 
-    jTag: "Open for offers", jSub: "Internships, apprenticeships and seasons in kitchens.", jLink: "See Nokime Jobs",
+    jTag: "Open for offers", jSub: "Internships, apprenticeships and seasons in hotels and restaurants.", jLink: "See Nokime Jobs",
   }
 };
