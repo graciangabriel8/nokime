@@ -20,7 +20,7 @@ guard args.count >= 4 else { FileHandle.standardError.write("usage: manager-prev
 let URLSTR = args[1], LANG = args[2], OUT = args[3]
 let DARK = args.count > 4 && args[4] == "dark"
 let VW: CGFloat = 1280, VH: CGFloat = 900, ZOOM: CGFloat = 0.88
-let OW = 1280, OH = 900, FPS: Int32 = 30, DUR = 14.0, FADE = 0.5
+let OW = 1280, OH = 900, FPS: Int32 = 60, DUR = 14.0, FADE = 0.5
 let debugFrames = Set((ProcessInfo.processInfo.environment["FRAMES"] ?? "").split(separator: ",").compactMap { Int($0) })
 
 let TIMELINE = #"""
@@ -52,7 +52,13 @@ let TIMELINE = #"""
                 [6.7,'price',()=>{const i=$('#d_price');i.focus();i.select();}],
                 [11.1,'cancel',()=>btn($('.modal'),/Annuler|Cancel/).click()],
                 [12.5,'tab',()=>$('[data-view=exploitation]').click()]];
-  const PRICES=[34,33,32,31,30,29,28,27,26,25,24,23,22,21,20,19];
+  /* Manager rebuilds the bar on every input, so the marker moves only when the price does: the price
+     counts down 0.10 € a frame (34 → 19 in 2.5 s at 60 fps), and the marker glides with it. */
+  const PRICES=[]; for(let c=340; c>=190; c--) PRICES.push((c/10).toString());
+  /* The page's own animations (the sheet sliding in, the marker moving) are paused and stepped to the video
+     time of each frame, so they play at their real speed however long a snapshot takes. */
+  const A=new WeakMap();
+  const drive=t=>{for(const a of document.getAnimations()){ if(!A.has(a)){A.set(a,t);a.pause();} const el=(t-A.get(a))*1000, end=a.effect?a.effect.getComputedTiming().endTime:0; if(isFinite(end)&&el>=end) a.finish(); else a.currentTime=el; }};
   window.__frame=function(t){ try {
     const done=MOVES.filter(m=>t>=m[0]);
     let p;
@@ -61,7 +67,8 @@ let TIMELINE = #"""
     cur.style.transform='translate('+(p[0]-2)+'px,'+(p[1]-2)+'px)';
     for(const c of CLICKS){ if(t>=c[0]&&!S.done[c[1]]){S.done[c[1]]=1;c[2]();S.rip=[p[0],p[1],c[0]];} }
     if(S.rip){const d=(t-S.rip[2])/0.45; if(d<=1){rip.style.left=S.rip[0]+'px';rip.style.top=S.rip[1]+'px';rip.style.opacity=String(0.9*(1-d));rip.style.transform='scale('+(0.35+d*0.9)+')';} else rip.style.opacity='0';}
-    if(t>=7.0&&t<9.6){const i=Math.min(PRICES.length-1,Math.floor((t-7.0)/(2.4/PRICES.length)));const inp=$('#d_price');if(inp&&inp.value!==String(PRICES[i])){inp.value=String(PRICES[i]);inp.dispatchEvent(new Event('input',{bubbles:true}));}}
+    if(t>=7.0&&t<9.6){const i=Math.min(PRICES.length-1,Math.floor((t-7.0)/(2.5/PRICES.length)));const inp=$('#d_price');if(inp&&inp.value!==PRICES[i]){inp.value=PRICES[i];inp.dispatchEvent(new Event('input',{bubbles:true}));}}
+    drive(t);
     return 1;
   } catch(e) { return 'timeline error at t='+t+': '+e.message; } };
   return 1;
@@ -128,7 +135,7 @@ let TIMELINE = #"""
         let writer = try! AVAssetWriter(outputURL: url, fileType: .mp4)
         let input = AVAssetWriterInput(mediaType: .video, outputSettings: [
             AVVideoCodecKey: AVVideoCodecType.h264, AVVideoWidthKey: OW, AVVideoHeightKey: OH,
-            AVVideoCompressionPropertiesKey: [AVVideoAverageBitRateKey: 1_300_000, AVVideoProfileLevelKey: AVVideoProfileLevelH264HighAutoLevel, AVVideoMaxKeyFrameIntervalKey: 90]])
+            AVVideoCompressionPropertiesKey: [AVVideoAverageBitRateKey: 1_700_000, AVVideoProfileLevelKey: AVVideoProfileLevelH264HighAutoLevel, AVVideoMaxKeyFrameIntervalKey: 120]])
         let adaptor = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: input, sourcePixelBufferAttributes: [
             kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32ARGB, kCVPixelBufferWidthKey as String: OW, kCVPixelBufferHeightKey as String: OH])
         writer.add(input); writer.startWriting(); writer.startSession(atSourceTime: .zero)
@@ -139,7 +146,7 @@ let TIMELINE = #"""
             let t = Double(i) / Double(FPS)
             let r = await js("window.__frame(\(t))")
             if let e = r as? String { FileHandle.standardError.write((e + "\n").data(using: .utf8)!); exit(4) }   // a broken take stops here, never ships
-            await pause(24)
+            await pause(10)
             guard let img = await snapshot() else { FileHandle.standardError.write("snapshot failed at \(i)\n".data(using: .utf8)!); exit(2) }
             if i == 0 { first = img; writeJPEG(img, OUT + ".jpg") }
             if debugFrames.contains(i) { writePNG(img, OUT + "-f\(i).png") }
