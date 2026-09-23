@@ -64,6 +64,7 @@ window.NOKIME_I18N = {
     ver1s: "The 499 products a cook is expected to know.", ver2s: "The whole atlas, the pairings and the lab.", ver3s: "Defined with a first pilot class.",
     whyKicker: "Why a house.", whyS: "A restaurant that trusts one tool takes a second from the same hand.", methodS: "One tool at a time, quiet rather than complete.",
 
+    shotLabel: "Nokime Manager in use, with the example dishes", shotCap: "The tool, with its example dishes. Lower the price, and the dish drops below its floor.",
     /* home */
     featKicker: "The cost of a dish, live.", featLead: "Copius’s prices and seasons, Manager’s arithmetic: one set of data, from one tool to the next.",
     heroEyebrow: "Nokime",

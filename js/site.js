@@ -78,6 +78,15 @@
     if (lb) { lb.textContent = lang === "fr" ? "EN" : "FR"; lb.setAttribute("lang", lang === "fr" ? "en" : "fr"); lb.setAttribute("aria-label", t.langSwitch || ""); }
     var mb = $("#menuBtn"); if (mb && t.menuLabel) mb.setAttribute("aria-label", t.menuLabel);
     $$("[data-art]").forEach(drawInto);
+    $$("video[data-src-fr]").forEach(function (v) {
+      var src = v.getAttribute("data-src-" + lang) || v.getAttribute("data-src-fr"), poster = v.getAttribute("data-poster-" + lang);
+      if (poster) v.setAttribute("poster", poster);
+      if (v.currentSrc.indexOf(src.replace(/^(\.\.\/)+/, "")) === -1) {
+        /* play only once the new source can: a play() issued with the swap is aborted by the load */
+        if (!v.hasAttribute("data-still")) v.addEventListener("canplay", function () { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }, { once: true });
+        v.src = src; v.load();
+      }
+    });
     $$("[data-demo]").forEach(renderDemo);
   }
   function setLang(l) { lang = l; try { localStorage.setItem(LS_LANG, l); } catch (e) {} applyLang(); }
@@ -196,6 +205,10 @@
   }
 
   /* ---------- boot ---------- */
+  /* reduced motion: the preview stays still on its poster, with controls to play it */
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    $$("video[data-src-fr]").forEach(function (v) { v.setAttribute("data-still", ""); v.removeAttribute("autoplay"); v.pause(); v.controls = true; });
+  }
   harvest();
   applyLang();
   markCurrent();

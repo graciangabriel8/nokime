@@ -13,3 +13,5 @@ The group's public site: Nokime Manager, Nokime Copius, Nokime Jobs, the group, 
 Serve locally: `python3 -m http.server 8647` (or `preview_start` name `nokime`).
 Before a commit that touches `css/` or `js/`: `python3 tools/bump.py` (raises `?v=N` on every asset link, so a push never pairs new HTML with cached CSS).
 Check that every French key has its English: `python3 tools/check-i18n.py`.
+
+The Manager page's video is a real recording of the tool (`media/manager-preview-{fr,en}.mp4` + posters), made by `tools/manager-preview.swift` — usage at the top of that file. Re-record after a visible change to Manager.
