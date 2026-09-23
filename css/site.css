@@ -139,6 +139,7 @@ p{margin:0 0 1em}
 
 /* ---------- proof strip ---------- */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:28px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.stats.three{grid-template-columns:repeat(3,1fr)}
 .stat-n{font-family:var(--serif);font-size:34px;line-height:1;margin:0 0 6px;font-variant-numeric:tabular-nums}
 .stat-l{margin:0;font-size:14px;color:var(--ink-2)}
 
@@ -280,7 +281,8 @@ p{margin:0 0 1em}
   .hero-grid,.founders-grid{grid-template-columns:1fr;gap:36px}
   .products{grid-template-columns:1fr}
   .steps,.views,.tiers,.contact-grid,.versions{grid-template-columns:1fr;gap:24px}
-  .stats{grid-template-columns:1fr 1fr}
+  .stats,.stats.three{grid-template-columns:1fr 1fr}
+  .stats.three .stat:last-child{grid-column:1/-1}
   .mosaic{grid-template-columns:repeat(4,1fr)}
   .foot-grid{grid-template-columns:1fr;gap:20px}
 }

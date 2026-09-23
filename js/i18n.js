@@ -65,6 +65,8 @@ window.NOKIME_I18N = {
     whyKicker: "Why a house.", whyS: "A restaurant that trusts one tool takes a second from the same hand.", methodS: "One tool at a time, quiet rather than complete.",
 
     shotLabel: "Nokime Manager in use, with the example dishes", shotCap: "The tool, with its example dishes. Lower the price, and the dish drops below its floor.",
+    cpShotLabel: "Nokime Copius in use, from search to the pairing lab", cpShotCap: "The live atlas. Search for asparagus, step over to butter, and the lab judges the pairing.",
+    jbShotLabel: "Nokime Jobs in use, with the example offers", jbShotCap: "The site, with its example offers. Filter the seasons, read the offer, write to the restaurant.",
     /* home */
     featKicker: "The cost of a dish, live.", featLead: "Copius’s prices and seasons, Manager’s arithmetic: one set of data, from one tool to the next.",
     heroEyebrow: "Nokime",
@@ -84,7 +86,6 @@ window.NOKIME_I18N = {
     stat1n: "1,839", stat1l: "products already priced, with their season",
     stat2n: "135", stat2l: "techniques, and 45 bases",
     stat3n: "Offline", stat3l: "your data stays with you",
-    stat4n: "€49", stat4l: "excl. VAT, per month, or €490 a year",
     prodKicker: "Three tools, one house.",
     mTag: "Founders’ offer open", mSub: "The cost of the plate, and what the service does.",
     mText: "Cost per portion, food-cost ratio, gross margin and floor price for every dish; your purchase prices and yields per product; one typical service — brigade, overheads, break-even — read in plain words. One file, offline, with Copius’s 1,839 products already priced.",
