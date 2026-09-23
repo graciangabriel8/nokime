@@ -1,5 +1,5 @@
 // The Manager preview on the Nokime site: the real tool, filmed. Loads Manager in an off-screen
-// WKWebView (dark, example dishes, no stored data), plays a scripted timeline — a cursor opens a
+// WKWebView (light, as the tool looks by default; example dishes, no stored data), plays a scripted timeline — a cursor opens a
 // dish, opens its sheet, steps the price down until the plate falls under its floor, cancels,
 // then shows Exploitation — snapshots every frame and writes an H.264 MP4 and a JPEG poster with
 // AVFoundation (there is no ffmpeg on this machine). Manager must be served first:
@@ -8,6 +8,7 @@
 //   swiftc -O tools/manager-preview.swift -o /tmp/manager-preview
 //   /tmp/manager-preview http://localhost:8645/ fr media/manager-preview-fr
 //   /tmp/manager-preview http://localhost:8645/ en media/manager-preview-en
+//   (a fourth argument, dark, films the tool's dark theme instead)
 //
 // FRAMES=30,90,200 writes those frames as PNGs next to the output, to check the timeline.
 import AVFoundation
@@ -17,6 +18,7 @@ import WebKit
 let args = CommandLine.arguments
 guard args.count >= 4 else { FileHandle.standardError.write("usage: manager-preview <url> <fr|en> <out-prefix>\n".data(using: .utf8)!); exit(1) }
 let URLSTR = args[1], LANG = args[2], OUT = args[3]
+let DARK = args.count > 4 && args[4] == "dark"
 let VW: CGFloat = 1280, VH: CGFloat = 900, ZOOM: CGFloat = 0.88
 let OW = 1280, OH = 900, FPS: Int32 = 30, DUR = 14.0, FADE = 0.5
 let debugFrames = Set((ProcessInfo.processInfo.environment["FRAMES"] ?? "").split(separator: ",").compactMap { Int($0) })
@@ -24,10 +26,10 @@ let debugFrames = Set((ProcessInfo.processInfo.environment["FRAMES"] ?? "").spli
 let TIMELINE = #"""
 (function(){
   const cur=document.createElement('div');
-  cur.innerHTML='<svg width="22" height="28" viewBox="0 0 22 28"><path d="M2 2v21l5.2-5 3.6 8.2 3.4-1.5-3.6-8H18z" fill="#F1F0EA" stroke="#15170F" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+  cur.innerHTML='<svg width="22" height="28" viewBox="0 0 22 28"><path d="M2 2v21l5.2-5 3.6 8.2 3.4-1.5-3.6-8H18z" fill="CURSOR_FILL" stroke="CURSOR_LINE" stroke-width="1.6" stroke-linejoin="round"/></svg>';
   Object.assign(cur.style,{position:'fixed',left:'0',top:'0',zIndex:2147483647,pointerEvents:'none'});
   const rip=document.createElement('div');
-  Object.assign(rip.style,{position:'fixed',width:'40px',height:'40px',marginLeft:'-20px',marginTop:'-20px',borderRadius:'50%',border:'2px solid #BBEB8A',zIndex:2147483646,pointerEvents:'none',opacity:'0'});
+  Object.assign(rip.style,{position:'fixed',width:'40px',height:'40px',marginLeft:'-20px',marginTop:'-20px',borderRadius:'50%',border:'2px solid RIPPLE',zIndex:2147483646,pointerEvents:'none',opacity:'0'});
   document.body.append(rip,cur);
   const S={pos:{},done:{},rip:null};
   const $=s=>document.querySelector(s);
@@ -106,7 +108,7 @@ let TIMELINE = #"""
         cfg.websiteDataStore = .nonPersistent()
         if #available(macOS 14.0, *) { cfg.preferences.inactiveSchedulingPolicy = .none }
         web = WKWebView(frame: NSRect(x: 0, y: 0, width: VW, height: VH), configuration: cfg)
-        web.appearance = NSAppearance(named: .darkAqua)
+        web.appearance = NSAppearance(named: DARK ? .darkAqua : .aqua)
         web.pageZoom = ZOOM
         web.navigationDelegate = self
         window = NSWindow(contentRect: NSRect(x: -6000, y: -6000, width: VW, height: VH), styleMask: [.borderless], backing: .buffered, defer: false)
@@ -117,7 +119,9 @@ let TIMELINE = #"""
         await pause(900)
         if LANG == "en" { await js("document.getElementById('langBtn').click(); 1"); await pause(300) }
         await js("window.scrollTo(0,0); 1")
-        await js(TIMELINE)
+        await js(TIMELINE.replacingOccurrences(of: "CURSOR_FILL", with: DARK ? "#F1F0EA" : "#1B1E17")
+                         .replacingOccurrences(of: "CURSOR_LINE", with: DARK ? "#15170F" : "#FFFFFF")
+                         .replacingOccurrences(of: "RIPPLE", with: DARK ? "#BBEB8A" : "#5E7D45"))
         await pause(200)
 
         let url = URL(fileURLWithPath: OUT + ".mp4"); try? FileManager.default.removeItem(at: url)
