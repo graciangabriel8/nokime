@@ -54,7 +54,7 @@ window.NOKIME_I18N = {
     whyKicker: "Why a house.", whyS: "A restaurant that trusts one tool takes a second from the same hand.", methodS: "One tool at a time, quiet rather than complete.",
 
     shotLabel: "Nokime Manager in use, with the example dishes", shotCap: "The tool, with its example dishes. Lower the price, and the dish drops below its floor.",
-    cpShotLabel: "Nokime Copius in use, from search to the pairing lab", cpShotCap: "The live atlas. Search for asparagus, step over to butter, and the lab judges the pairing.",
+    cpShotLabel: "Nokime Copius in use, from search to the pairing lab", cpShotCap: "The full version. Search for asparagus, step over to butter, and the lab judges the pairing.",
     jbShotLabel: "Nokime Jobs in use, filmed with example offers", jbShotCap: "The site, filmed with example offers. Filter the seasons, read the offer, write to the establishment.",
     /* home */
     featKicker: "The cost of a dish, live.", featLead: "Copius’s prices and seasons, Manager’s arithmetic: one set of data, from one tool to the next.",

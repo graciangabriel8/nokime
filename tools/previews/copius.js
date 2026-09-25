@@ -1,7 +1,8 @@
 // Nokime Copius: its own motto, filmed — start from a product, follow its pairings, test a plate.
 // Search "asperge" (the filters fold away, the results stay under the tabs), open the
 // asparagus, follow its pairing to butter, close, open the Lab, type each ingredient into its box
-// and pick it from the list: "a classic pairing". Filmed on https://copius.fr/atlas.html (the live site).
+// and pick it from the list: "a classic pairing". Filmed on the full version, served locally:
+// http://localhost:8643/atlas.html?full (copius.fr shows only the free version since Copius e95effc, 25 Sept 2026).
 const WORD = LANG === 'en' ? 'asparagus' : 'asperge';
 const A = LANG === 'en' ? 'aspar' : 'asper', B = LANG === 'en' ? 'butt' : 'beur';
 const T0 = 1.9, T1 = 3.1;   // typing, one letter at a time
