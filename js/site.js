@@ -21,6 +21,14 @@
 
   /* ---------- language ---------- */
   var lang = (function () {
+    // ?lang=en or ?lang=fr in a shared link wins, and is remembered so the next page keeps it
+    var q = /[?&]lang=(fr|en)(?:&|$)/.exec(location.search);
+    // then it leaves the address bar, or a reload would undo a later click on the FR/EN button
+    if (q) {
+      try { localStorage.setItem(LS_LANG, q[1]); } catch (e) {}
+      try { history.replaceState(history.state, "", location.pathname + location.search.replace(/([?&])lang=(?:fr|en)(&|$)/, function (m, a, b) { return b ? a : ""; }) + location.hash); } catch (e) {}
+      return q[1];
+    }
     try { var v = localStorage.getItem(LS_LANG); if (v === "fr" || v === "en") return v; } catch (e) {}
     var n = (navigator.language || "fr").toLowerCase();
     return n.indexOf("fr") === 0 ? "fr" : "en";
