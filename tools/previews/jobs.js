@@ -1,6 +1,6 @@
 // Nokime Jobs: the board with its example offers (each tagged "exemple" on the card) —
 // see the offers, keep the seasons, open one, write to the establishment, then the establishments' side.
-// Filmed on https://graciangabriel8.github.io/nokime-jobs/?demo=1 (the live site; ?demo=1 is its
+// Filmed on https://jobs.nokime.fr/?demo=1 (the live site; ?demo=1 is its
 // own switch for the example offers, never shown in the public list).
 const card = () => H.$$('article.job').find(a => a.offsetParent !== null);
 return {
