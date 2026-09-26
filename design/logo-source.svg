@@ -1,15 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
-  <title id="title">Nokime Medallion logo for dark surfaces</title>
-  <desc id="desc">Nokime wordmark paired with the Medallion symbol.</desc>
-  <g transform="translate(64 60)">
-    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="120" cy="120" r="91" stroke="#b5c394" stroke-width="12"/>
-      <circle cx="120" cy="120" r="71" stroke="#e9e5da" stroke-width="3"/>
-      <path d="M69 171V69l102 102V69" stroke="#e9e5da" stroke-width="18" stroke-linecap="square"/>
-    </g>
-    <circle cx="120" cy="29" r="7" fill="#b5c394"/>
-    <circle cx="120" cy="211" r="7" fill="#b5c394"/>
-  </g>
-  <text x="355" y="190" fill="#e9e5da" font-family="Cormorant Garamond, Iowan Old Style, Georgia, serif" font-size="122" font-weight="500" letter-spacing="-2">Nokime</text>
-  <text x="364" y="235" fill="#aaa89d" font-family="Arial, sans-serif" font-size="20" font-weight="500" letter-spacing="3.2">A HOUSE OF TOOLS</text>
+  <title id="title">Nokime, la découpe arrondie, for dark surfaces</title>
+  <desc id="desc">The Nokime symbol: a rounded block cut by one N-shaped knife stroke into two pieces, cream for the dining room and green for the kitchen. Wordmark « nokime » in Archivo Bold at 112 % width. Chosen by Gabriel on 26 Sept 2026. Light surfaces: #15170F and #3E6B1F on #F3F1E8; one colour: both pieces in one colour, the cut stays.</desc>
+  <rect width="1200" height="360" fill="#15170F"/>
+  <g transform="translate(150 60)"><path fill="#ECEBE2" d="M15 181V59A44 44 0 0 1 59 15H150V137.65L67.5 41.65V225H59A44 44 0 0 1 15 181Z"/><path fill="#BBEB8A" d="M90 225V102.35L172.5 198.35V15H181A44 44 0 0 1 225 59V181A44 44 0 0 1 181 225Z"/></g>
+  <text x="440" y="236" fill="#ECEBE2" font-family="Archivo, Helvetica, sans-serif" font-weight="700" font-stretch="112%" font-size="170" letter-spacing="-2.5">nokime</text>
 </svg>

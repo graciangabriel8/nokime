@@ -68,15 +68,12 @@ p{margin:0 0 1em}
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
 .head-row{display:flex;align-items:center;gap:28px;height:64px}
 .brand{display:inline-flex;align-items:center;gap:9px;font-family:var(--serif);font-size:23px;letter-spacing:-.01em;color:var(--ink)}
-/* the medallion: olive ring, ink N; the thin inner ring and the two dots only from 26px up */
-.mark{width:24px;height:24px;flex:none}
-.mark .ring{fill:none;stroke:var(--accent);stroke-width:14}
-.mark .inner{fill:none;stroke:currentColor;stroke-width:3}
-.mark .n{fill:none;stroke:currentColor;stroke-width:18;stroke-linecap:square;stroke-linejoin:round}
-.mark .dot{fill:var(--accent)}
-.site-head .mark .inner,.site-head .mark .dot{display:none}
-.site-head .mark .ring{stroke-width:17}
-.site-foot .mark{width:28px;height:28px}
+/* the découpe: one knife cut through a block, cream for the dining room, green for the kitchen; the wordmark is Archivo, subset to its six letters */
+.mark{width:26px;height:26px;flex:none}
+.mark .cut-a{fill:currentColor}
+.mark .cut-b{fill:var(--accent)}
+.brand .word{font-family:'Nokime Wordmark',var(--sans);font-weight:700;font-stretch:112%;font-size:22px;letter-spacing:-.015em;line-height:1}
+.site-foot .mark{width:30px;height:30px}
 .nav{display:flex;gap:22px;margin-left:8px}
 .nav a{font-size:15px;color:var(--ink-2);padding:6px 0;border-bottom:1px solid transparent;transition:color .15s,border-color .15s}
 .nav a:hover,.nav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--ink)}
