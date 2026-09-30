@@ -45,7 +45,6 @@ p{margin:0 0 1em}
 .eyebrow,.tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--ink-3);margin:0 0 14px}
 .tag.brass{color:var(--brass-ink)}
 .tag.live{color:var(--ok)}
-.view .tag{margin:-2px 0 8px} /* under a card title, so the titles of a row stay level */
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 .small{font-size:13.5px;color:var(--ink-3)}
 .brandword{color:var(--ink-3)}
