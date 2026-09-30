@@ -183,9 +183,6 @@ p{margin:0 0 1em}
 
 .founders{background:var(--bg-2)}
 .founders-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
-.checks{list-style:none;padding:0;margin:20px 0 0}
-.checks li{padding:8px 0 8px 28px;position:relative;color:var(--ink-2)}
-.checks li::before{content:"";position:absolute;left:2px;top:15px;width:13px;height:7px;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
 .founders-card{background:var(--card);border:1px solid var(--hair);border-radius:var(--r);padding:28px;box-shadow:var(--shadow)}
 .founders-card .big{font-family:var(--serif);font-size:96px;line-height:.9;margin:6px 0 10px}
 .founders-card .btn{margin-top:14px}
@@ -214,6 +211,8 @@ p{margin:0 0 1em}
 .checks{list-style:none;margin:14px 0 0;padding:0;display:grid;align-content:start;gap:10px}
 .checks li{position:relative;padding-left:26px;color:var(--ink-2);font-size:15px;line-height:1.5}
 .checks li::before{content:"";position:absolute;left:4px;top:.5em;width:5px;height:10px;border:solid var(--accent);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.checks li.no{padding-left:0;color:var(--ink-3)}
+.checks li.no::before{display:none}
 @media (min-width:961px){
   @supports (grid-template-rows:subgrid){
     .tiers,.versions{row-gap:0}
