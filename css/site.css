@@ -200,10 +200,10 @@ p{margin:0 0 1em}
 .tier.featured,.ver.featured{border-color:var(--brass);box-shadow:var(--lift)}
 .tier .badge,.ver .badge{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);white-space:nowrap;padding:4px 12px;border:1px solid var(--brass);border-radius:999px;
   background:var(--brass-soft);color:var(--brass-ink);font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;line-height:1.4}
-.tier .name,.ver .name{font-family:var(--serif);font-size:24px;line-height:1.2;font-weight:400;margin:0}
+.tier .name,.ver .name{font-family:var(--sans);font-size:21px;line-height:1.2;font-weight:600;letter-spacing:-.01em;margin:0}
 .tier .for,.ver .for{margin:8px 0 0;color:var(--ink-2);font-size:15px}
 .tier .pricing,.ver .pricing{margin:22px 0 0}
-.tier .price,.ver .price{font-family:var(--serif);font-size:48px;line-height:1;margin:0;font-variant-numeric:tabular-nums}
+.tier .price,.ver .price{font-family:var(--sans);font-size:46px;line-height:1;font-weight:600;letter-spacing:-.03em;margin:0;font-variant-numeric:tabular-nums}
 .tier .per,.ver .per{color:var(--ink-3);font-size:14px;margin:6px 0 0}
 .tier .alt{font-size:14px;color:var(--ink-2);margin:4px 0 0}
 .tiers .btn,.versions .btn{display:flex;justify-content:center;width:100%;margin-top:22px}
