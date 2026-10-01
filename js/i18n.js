@@ -119,7 +119,7 @@ window.NOKIME_I18N = {
     tier1for: "The cost of the plate, dish by dish.",
     tier1f2: "Offline, with 1,839 products already priced.",
     tier1f3: "Three views: Menu, Products, Operation.",
-    tier1f4: "Three documents: allergen chart, recipe sheet, Excel workbook.",
+    tier1f4: "Three documents: allergen chart, recipe sheet, Excel workbook.", tier1loyal: "Loyalty: −10 % per year of subscription, down to −30 %.",
     tier2for: "Your operation, read in plain words.",
     tier2f2: "The tool: three views, three documents.",
     tier3badge: "5 seats",
