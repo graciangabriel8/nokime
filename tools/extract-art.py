@@ -10,7 +10,8 @@ if len(sys.argv) < 2: sys.exit("usage: extract-art.py <path to Manager's data/in
 SRC = pathlib.Path(sys.argv[1])
 IDS = ["sea-bass","asparagus","butter","lemon","rice","porcini","parmesan","shallot",
        "salmon","potato","scallop","truffle","lobster","artichoke","strawberry",
-       "leek","cod","egg","basil","carrot","onion","garlic","thyme"]
+       "leek","cod","egg","basil","carrot","onion","garlic","thyme",
+       "chicken","langoustine","fraise-des-bois","cilantro"]
 s = SRC.read_text(encoding="utf-8")
 rows = json.loads(s.split("=", 1)[1].strip().rstrip(";"))
 by = {r["id"]: r for r in rows}

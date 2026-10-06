@@ -6,6 +6,7 @@
   --ink:#ECEBE2;--ink-2:#BDBFAE;--ink-3:#8C907F;
   --accent:#BBEB8A;--accent-ink:#15170F;--accent-soft:#2C3F1F;--accent-soft-ink:#D9F2B8;
   --brass:#D6B36A;--brass-ink:#D6B36A;--brass-soft:#2E2716;
+  --blue:#93A3FF;
   --ok:#A6E7A9;--bad:#E48B7C;--bad-soft:#35201C;
   --art-1:#2F2F2C;--art-2:#3A3A36;--art-3:#4A4A45;--art-line:#B8B5AE;
   --band:#0E100A;--band-ink:#ECEBE2;--band-ink-2:#BDBFAE;--band-hair:#262A1F;
@@ -138,7 +139,9 @@ p{margin:0 0 1em}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:28px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
 .stats.three{grid-template-columns:repeat(3,1fr)}
 .stat-n{font-family:var(--serif);font-size:34px;line-height:1;margin:0 0 6px;font-variant-numeric:tabular-nums}
-.problems .stat-n{font-size:26px;line-height:1.15;text-wrap:balance}   /* questions, not figures: smaller and allowed to wrap */
+.problems .stat-n{font-size:26px;line-height:1.15;text-wrap:balance}
+/* the title's two halves and the three questions carry their tool's colour: ideas/Copius green, Jobs blue, Manager brass */
+.display .hl{font-style:italic;font-weight:400}.hl-idea,.q-copius{color:var(--accent)}.hl-calm,.q-manager{color:var(--brass)}.q-jobs{color:var(--blue)}   /* questions, not figures: smaller and allowed to wrap */
 .stat-l{margin:0;font-size:14px;color:var(--ink-2)}
 
 /* ---------- sections ---------- */
@@ -264,12 +267,12 @@ p{margin:0 0 1em}
 /* ---------- hero still life: six atlas drawings, loosely set ---------- */
 .hero-art{position:relative;height:400px}
 .hero-art span{position:absolute;display:block}
-.hero-art span:nth-child(1){left:6%;top:30%;width:44%}
-.hero-art span:nth-child(2){left:60%;top:2%;width:22%}
-.hero-art span:nth-child(3){left:68%;top:58%;width:20%}
-.hero-art span:nth-child(4){left:40%;top:64%;width:22%}
-.hero-art span:nth-child(5){left:30%;top:0;width:24%}
-.hero-art span:nth-child(6){left:2%;top:0;width:20%}
+.hero-art span:nth-child(1){left:4%;top:22%;width:46%}
+.hero-art span:nth-child(2){left:62%;top:2%;width:24%}
+.hero-art span:nth-child(3){left:76%;top:46%;width:18%}
+.hero-art span:nth-child(4){left:52%;top:66%;width:22%}
+.hero-art span:nth-child(5){left:32%;top:0;width:22%}
+.hero-art span:nth-child(6){left:8%;top:78%;width:18%}
 .hero-art .art{width:100%;height:auto;aspect-ratio:1}
 .feature-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
 .feature .kicker{margin-bottom:12px}
