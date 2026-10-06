@@ -239,6 +239,7 @@ p{margin:0 0 1em}
 .prose{max-width:720px}
 .prose p,.prose li{font-size:17px;color:var(--ink-2)}
 .prose h2{font-size:clamp(24px,2.6vw,32px);margin:44px 0 12px;color:var(--ink)}
+.prose > h2:first-child{margin-top:0}   /* the page hero already spaces the first heading */
 .prose ul{padding-left:20px}
 .prose .state li{padding:12px 0;border-top:1px solid var(--hair);list-style:none}
 .prose .state{padding:0}
