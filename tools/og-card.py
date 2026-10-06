@@ -30,12 +30,14 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" vie
 .f1{{fill:#2F2F2C}}.f2{{fill:#3A3A36}}.f3{{fill:#4A4A45}}.dot{{fill:#B8B5AE}}
 .s{{fill:none;stroke:#B8B5AE;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}}
 .sf{{stroke:#B8B5AE;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}}
-</style></defs>
+</style>
+<!-- « sans se prendre la tête » fades from Jobs blue to Manager brass across its two lines, as on the site -->
+<linearGradient id="fade1" gradientUnits="userSpaceOnUse" x1="233" y1="0" x2="615" y2="0"><stop offset="0" stop-color="#93A3FF"/><stop offset="0.25" stop-color="#C198EE"/><stop offset="0.5" stop-color="#E091CD"/><stop offset="0.75" stop-color="#F092A6"/><stop offset="1" stop-color="#F19B82"/></linearGradient><linearGradient id="fade2" gradientUnits="userSpaceOnUse" x1="80" y1="0" x2="230" y2="0"><stop offset="0" stop-color="#F19B82"/><stop offset="0.25" stop-color="#EDA077"/><stop offset="0.5" stop-color="#E7A66F"/><stop offset="0.75" stop-color="#E0AD6A"/><stop offset="1" stop-color="#D6B36A"/></linearGradient></defs>
 <rect width="1200" height="1200" fill="#15170F"/>
 <g transform="translate(0,285)">
 <g transform="translate(80,70)"><g transform="scale(0.19)"><path fill="#ECEBE2" d="M15 181V59A44 44 0 0 1 59 15H150V137.65L67.5 41.65V225H59A44 44 0 0 1 15 181Z"/><path fill="#BBEB8A" d="M90 225V102.35L172.5 198.35V15H181A44 44 0 0 1 225 59V181A44 44 0 0 1 181 225Z"/></g><text x="60" y="36" font-family="Archivo, Helvetica, sans-serif" font-weight="700" font-size="36" letter-spacing="-0.5" fill="#ECEBE2">nokime</text></g>
 <text font-family="Fraunces, Georgia, serif" font-size="62" fill="#ECEBE2" letter-spacing="-0.5">
-<tspan x="80" y="232">Cuisiner avec <tspan class="idea">des idées</tspan>,</tspan><tspan x="80" y="306">gérer <tspan class="calm">sans se prendre</tspan></tspan><tspan x="80" y="380"><tspan class="calm">la tête</tspan>.</tspan></text>
+<tspan x="80" y="232">Cuisiner avec <tspan class="idea">des idées</tspan>,</tspan><tspan x="80" y="306">gérer <tspan class="calm" style="fill:url(#fade1)">sans se prendre</tspan></tspan><tspan x="80" y="380"><tspan class="calm" style="fill:url(#fade2)">la tête</tspan>.</tspan></text>
 <text font-family="IBM Plex Sans, Helvetica, sans-serif" font-size="23" fill="#BDBFAE">
 <tspan x="80" y="470">Copius pour trouver l’inspiration, Jobs pour recruter,</tspan><tspan x="80" y="504">Manager pour savoir si le plat est rentable.</tspan></text>
 {drawing("chicken", 770, 150, 290)}{drawing("langoustine", 1000, 50, 170)}{drawing("fraise-des-bois", 1010, 350, 150)}

@@ -7,6 +7,7 @@
   --accent:#BBEB8A;--accent-ink:#15170F;--accent-soft:#2C3F1F;--accent-soft-ink:#D9F2B8;
   --brass:#D6B36A;--brass-ink:#D6B36A;--brass-soft:#2E2716;
   --blue:#93A3FF;
+  --fade:linear-gradient(90deg,#93A3FF,#CF94E2,#EE91AF,#F09D7D,#D6B36A); /* Jobs blue to Manager brass, through the hue wheel */
   --ok:#A6E7A9;--bad:#E48B7C;--bad-soft:#35201C;
   --art-1:#2F2F2C;--art-2:#3A3A36;--art-3:#4A4A45;--art-line:#B8B5AE;
   --band:#0E100A;--band-ink:#ECEBE2;--band-ink-2:#BDBFAE;--band-hair:#262A1F;
@@ -141,7 +142,9 @@ p{margin:0 0 1em}
 .stat-n{font-family:var(--serif);font-size:34px;line-height:1;margin:0 0 6px;font-variant-numeric:tabular-nums}
 .problems .stat-n{font-size:26px;line-height:1.15;text-wrap:balance}
 /* the title's two halves and the three questions carry their tool's colour: ideas/Copius green, Jobs blue, Manager brass */
-.display .hl{font-style:italic;font-weight:400}.hl-idea,.q-copius{color:var(--accent)}.hl-calm,.q-manager{color:var(--brass)}.q-jobs{color:var(--blue)}   /* questions, not figures: smaller and allowed to wrap */
+.display .hl{font-style:italic;font-weight:400}.hl-idea,.q-copius{color:var(--accent)}.hl-calm,.q-manager{color:var(--brass)}.q-jobs{color:var(--blue)}
+/* « sans se prendre la tête » fades from Jobs to Manager; the padding keeps the italic's overhang inside the painted box */
+@supports ((-webkit-background-clip:text) or (background-clip:text)){.display .hl-calm{background:var(--fade);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;padding:0 .08em;margin:0 -.08em;-webkit-box-decoration-break:slice;box-decoration-break:slice}}   /* questions, not figures: smaller and allowed to wrap */
 .stat-l{margin:0;font-size:14px;color:var(--ink-2)}
 
 /* ---------- sections ---------- */
