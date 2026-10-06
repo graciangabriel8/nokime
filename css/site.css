@@ -192,6 +192,7 @@ p{margin:0 0 1em}
 .founders-card{background:var(--card);border:1px solid var(--hair);border-radius:var(--r);padding:28px;box-shadow:var(--shadow)}
 .founders-card .big{font-family:var(--serif);font-size:96px;line-height:.9;margin:6px 0 10px}
 .founders-card .btn{margin-top:14px}
+.founders-card .btn + .small{margin:12px 0 0}   /* the note under the button: room above, the card's padding below */
 
 /* ---------- sub-pages ---------- */
 .page-hero{padding:72px 0 40px}
