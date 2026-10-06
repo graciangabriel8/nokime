@@ -6,8 +6,8 @@
   --ink:#ECEBE2;--ink-2:#BDBFAE;--ink-3:#8C907F;
   --accent:#BBEB8A;--accent-ink:#15170F;--accent-soft:#2C3F1F;--accent-soft-ink:#D9F2B8;
   --brass:#D6B36A;--brass-ink:#D6B36A;--brass-soft:#2E2716;
-  --blue:#93A3FF;
-  --fade:linear-gradient(90deg,#93A3FF,#CF94E2,#EE91AF,#F09D7D,#D6B36A); /* Jobs blue to Manager brass, through the hue wheel */
+  --blue:#4B75FF;   /* the Jobs blue #2038D5, lifted to read on the dark ground (4.5:1) */
+  --fade:linear-gradient(90deg,#4B75FF,#B469E0,#E670A1,#EE8D6B,#D6B36A); /* Jobs blue to Manager brass, through the hue wheel */
   --ok:#A6E7A9;--bad:#E48B7C;--bad-soft:#35201C;
   --art-1:#2F2F2C;--art-2:#3A3A36;--art-3:#4A4A45;--art-line:#B8B5AE;
   --band:#0E100A;--band-ink:#ECEBE2;--band-ink-2:#BDBFAE;--band-hair:#262A1F;
@@ -45,8 +45,6 @@ p{margin:0 0 1em}
 .kicker + .lead{margin-top:2px}
 .kicker{font-family:var(--serif);font-size:clamp(26px,3vw,36px);line-height:1.15;margin:0 0 12px;text-wrap:balance}
 .eyebrow,.tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--ink-3);margin:0 0 14px}
-.tag.brass{color:var(--brass-ink)}
-.tag.live{color:var(--ok)}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 .small{font-size:13.5px;color:var(--ink-3)}
 .brandword{color:var(--ink-3)}
