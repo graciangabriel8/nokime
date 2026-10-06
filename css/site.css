@@ -35,6 +35,7 @@ a{color:inherit;text-decoration:none}
 img,svg{display:block;max-width:100%}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
 
+p,li{text-wrap:pretty}   /* no last word left alone on its line */
 h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.005em;margin:0;text-wrap:balance}
 .display{font-size:clamp(38px,5.6vw,68px);line-height:1.06;margin-bottom:.32em;font-variation-settings:"opsz" 96}
 .page-hero .display{font-size:clamp(34px,4.6vw,58px)}
@@ -91,6 +92,7 @@ p{margin:0 0 1em}
 /* ---------- the live demo ---------- */
 .demo{background:var(--card);border:1px solid var(--hair);border-radius:var(--r);padding:22px 22px 18px;box-shadow:var(--lift)}
 .demo.wide{max-width:720px}
+.kicker + .demo{margin-top:36px}   /* same room under a heading as the steps, views and tiers */
 .demo:empty{display:none}
 .demo-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:4px}
 .demo-title{font-family:var(--serif);font-size:22px;line-height:1.2;margin:0}
@@ -140,6 +142,7 @@ p{margin:0 0 1em}
 .stat-n{font-family:var(--serif);font-size:34px;line-height:1;margin:0 0 6px;font-variant-numeric:tabular-nums}
 .stats.problems{column-gap:40px}                 /* same columns as the three tools below */
 .problems .stat-n{font-size:26px;line-height:1.15;text-wrap:balance}
+@media (min-width:961px){.problems .stat-n{min-height:2.3em}}   /* two-line room, so the three descriptions start level */
 /* the title's two halves and the three questions carry their tool's colour: ideas/Copius green, Jobs blue, Manager brass */
 .display .hl{font-style:italic;font-weight:400}.hl-idea,.t-copius{color:var(--accent)}.hl-calm,.t-manager{color:var(--brass)}.t-jobs{color:var(--blue)}
 /* « sans se prendre la tête » fades from Jobs to Manager; the padding keeps the italic's overhang inside the painted box */
@@ -182,8 +185,7 @@ p{margin:0 0 1em}
 .step h3{font-size:22px;margin-bottom:8px}
 .step p{color:var(--band-ink-2);margin:0}
 
-.manifesto .wrap{max-width:760px}
-.manifesto .more{max-width:none}
+.manifesto .wrap > *{max-width:760px}   /* a narrow measure, on the page's left edge like every other section */
 .pull{margin:28px 0;padding:0 0 0 22px;border-left:2px solid var(--brass);font-family:var(--serif);font-style:italic;
   font-size:clamp(24px,2.6vw,32px);line-height:1.25;color:var(--ink)}
 
@@ -239,7 +241,7 @@ p{margin:0 0 1em}
 .prose{max-width:720px}
 .prose p,.prose li{font-size:17px;color:var(--ink-2)}
 .prose h2{font-size:clamp(24px,2.6vw,32px);margin:44px 0 12px;color:var(--ink)}
-.prose > h2:first-child{margin-top:0}   /* the page hero already spaces the first heading */
+.prose > h2:first-child,.prose > [data-lang] > h2:first-child{margin-top:0}   /* the page hero already spaces the first heading */
 .prose ul{padding-left:20px}
 .prose .state li{padding:12px 0;border-top:1px solid var(--hair);list-style:none}
 .prose .state{padding:0}
@@ -259,7 +261,7 @@ p{margin:0 0 1em}
 .art .sf{stroke:var(--art-line);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 
 /* ---------- footer ---------- */
-.site-foot{border-top:1px solid var(--hair);padding:48px 0 28px;margin-top:40px}
+.site-foot{border-top:1px solid var(--hair);padding:48px 0 28px}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
 .foot-grid nav,.foot-links{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
 .foot-grid a:not(.brand){color:var(--ink-2);font-size:15px}
