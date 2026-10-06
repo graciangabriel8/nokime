@@ -96,7 +96,7 @@ window.NOKIME_I18N = {
 
     /* manager */
     mgrEyebrow: "Nokime Manager",
-    mgrTitle: "What the plate costs, before service. Not after the year-end.",
+    mgrT1: "What the plate costs, ", mgrT2: "before service", mgrT3: ". Not after the year-end.",
     mgrLead: "One file, offline, with 1,839 products already priced.",
     mgrCta1: "Join the founders", mgrCta2: "Ask a question",
     mgrDemoKicker: "Try it on a dish.",
@@ -136,7 +136,7 @@ window.NOKIME_I18N = {
     fact5: "No photos, no mobile app: a desk tool, quiet, that shows four things per row and the detail when asked.",
 
     /* copius */
-    cpEyebrow: "Nokime Copius", cpTitle: "The illustrated atlas of cooking.",
+    cpEyebrow: "Nokime Copius", cpT1: "The ", cpT2: "illustrated", cpT3: " atlas of cooking.",
     cpLead: "Ingredients, techniques, bases and chefs, drawn, in French and English.",
     cpCta1: "Open copius.fr", cpCta2: "@copius.fr on Instagram",
     cpc1n: "1,888", cpc1l: "ingredients, with price, season and pairings", cpc2n: "135", cpc2l: "techniques", cpc3n: "45", cpc3l: "bases", cpc4n: "68", cpc4l: "chefs, and 44 dishes",
@@ -185,7 +185,7 @@ window.NOKIME_I18N = {
     /* Nokime Jobs */
     navJobs: "Jobs", titleJobs: "Nokime Jobs — internships, apprenticeships and seasons in hotels and restaurants",
     descJobs: "Nokime Jobs: internship, apprenticeship and seasonal offers in hotels and restaurants, in the kitchen, the dining room, the rooms division and the spa, from establishments worth working in. Free for candidates; establishments post and answer directly.",
-    jobsEyebrow: "Nokime Jobs", jobsTitle: "Internships and seasons in hotels and restaurants worth working in.",
+    jobsEyebrow: "Nokime Jobs", jobsT1: "Internships and seasons in hotels and restaurants ", jobsT2: "worth working in", jobsT3: ".",
     jobsLead: "Free for those who are looking, in the kitchen, the dining room, the rooms division and the spa. Hotels and restaurants post their offers and answer you directly.",
     jobsMore: "An offer says everything before you write: the position, the dates, the hours, the pay when the establishment states it, the lodging. You write to the establishment, not to us.",
     jobsCta1: "See the offers", jobsCta2: "Post an offer",
