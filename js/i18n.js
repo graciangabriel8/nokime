@@ -59,7 +59,7 @@ window.NOKIME_I18N = {
     /* home */
     featKicker: "The cost of a dish, live.", featLead: "Copius’s prices and seasons, Manager’s arithmetic: one set of data, from one tool to the next.",
     heroEyebrow: "Nokime",
-    heroTitle: "A house of tools for restaurants.",
+    heroTitle: "Solutions for the kitchen.",
     heroLead: "Tools that know each other, for the people who run a kitchen.",
     heroCta1: "See the tools", heroCta2: "Write to us",
     demoTitle: "One dish, live",
