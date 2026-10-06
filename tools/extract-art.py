@@ -11,7 +11,11 @@ SRC = pathlib.Path(sys.argv[1])
 IDS = ["sea-bass","asparagus","butter","lemon","rice","porcini","parmesan","shallot",
        "salmon","potato","scallop","truffle","lobster","artichoke","strawberry",
        "leek","cod","egg","basil","carrot","onion","garlic","thyme",
-       "chicken","langoustine","fraise-des-bois","cilantro"]
+       "chicken","langoustine","fraise-des-bois","cilantro",
+       # the home hero draws from these on each visit (js/site.js HERO_POOL)
+       "canard-colvert","venison","hare","lamb-shank","american-lobster","dungeness-crab","brown-shrimp",
+       "escargot-de-bourgogne","sea-urchin","squid","hake","anchovy","maitake","avocado","corn","kohlrabi",
+       "bell-pepper","musquee-de-provence-squash"]
 s = SRC.read_text(encoding="utf-8")
 rows = json.loads(s.split("=", 1)[1].strip().rstrip(";"))
 by = {r["id"]: r for r in rows}

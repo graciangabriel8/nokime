@@ -212,12 +212,41 @@
     });
   }
 
+  /* ---------- the home hero: a new set of drawings on each visit ----------
+     One large animal, then two more animals and three plants, never two of a kind, each a little tilted.
+     Without script the six in the page stay as written. */
+  var HERO_POOL = {
+    anchor: ["chicken", "canard-colvert", "venison", "hare", "american-lobster", "dungeness-crab", "sea-urchin", "escargot-de-bourgogne", "squid", "hake"],
+    animal: { bird: ["chicken", "canard-colvert"], meat: ["venison", "hare", "lamb-shank"], crustacean: ["langoustine", "american-lobster", "dungeness-crab", "brown-shrimp"],
+              sea: ["scallop", "sea-urchin", "squid"], fish: ["cod", "hake", "anchovy"], snail: ["escargot-de-bourgogne"] },
+    plant: { mushroom: ["porcini", "maitake"], fruit: ["fraise-des-bois", "avocado"], herb: ["cilantro"],
+             veg: ["corn", "garlic", "kohlrabi", "bell-pepper", "musquee-de-provence-squash"] }
+  };
+  function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
+  function shuffled(list) { return list.slice().sort(function () { return Math.random() - 0.5; }); }
+  function shuffleHero() {
+    var spans = $$(".hero-art [data-art]"); if (spans.length !== 6) return;
+    var anchor = pick(HERO_POOL.anchor.filter(function (id) { return ART[id]; })), kindOf = {};
+    Object.keys(HERO_POOL.animal).forEach(function (k) { HERO_POOL.animal[k].forEach(function (id) { kindOf[id] = k; }); });
+    var animals = shuffled(Object.keys(HERO_POOL.animal).filter(function (k) { return k !== kindOf[anchor]; })).slice(0, 2)
+      .map(function (k) { return pick(HERO_POOL.animal[k]); });
+    var plants = shuffled(Object.keys(HERO_POOL.plant)).slice(0, 3).map(function (k) { return pick(HERO_POOL.plant[k]); });
+    var ids = [anchor].concat(shuffled(animals.concat(plants)));
+    if (ids.some(function (id) { return !ART[id]; })) return;
+    spans.forEach(function (el, i) {
+      el.setAttribute("data-art", ids[i]);
+      var tilt = (Math.random() * 2 - 1) * (i === 0 ? 6 : 14);
+      el.style.transform = "rotate(" + tilt.toFixed(1) + "deg)";
+    });
+  }
+
   /* ---------- boot ---------- */
   /* reduced motion: the preview stays still on its poster, with controls to play it */
   if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     $$("video[data-src-fr]").forEach(function (v) { v.setAttribute("data-still", ""); v.removeAttribute("autoplay"); v.pause(); v.controls = true; });
   }
   harvest();
+  shuffleHero();
   applyLang();
   markCurrent();
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
