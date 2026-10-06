@@ -138,6 +138,7 @@ p{margin:0 0 1em}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:28px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
 .stats.three{grid-template-columns:repeat(3,1fr)}
 .stat-n{font-family:var(--serif);font-size:34px;line-height:1;margin:0 0 6px;font-variant-numeric:tabular-nums}
+.problems .stat-n{font-size:26px;line-height:1.15;text-wrap:balance}   /* questions, not figures: smaller and allowed to wrap */
 .stat-l{margin:0;font-size:14px;color:var(--ink-2)}
 
 /* ---------- sections ---------- */
