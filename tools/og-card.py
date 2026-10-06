@@ -31,10 +31,10 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" vie
 <rect width="1200" height="1200" fill="#15170F"/>
 <g transform="translate(0,285)">
 <g transform="translate(80,70)"><g transform="scale(0.19)"><path fill="#ECEBE2" d="M15 181V59A44 44 0 0 1 59 15H150V137.65L67.5 41.65V225H59A44 44 0 0 1 15 181Z"/><path fill="#BBEB8A" d="M90 225V102.35L172.5 198.35V15H181A44 44 0 0 1 225 59V181A44 44 0 0 1 181 225Z"/></g><text x="60" y="36" font-family="Archivo, Helvetica, sans-serif" font-weight="700" font-size="36" letter-spacing="-0.5" fill="#ECEBE2">nokime</text></g>
-<text x="80" y="176" font-family="IBM Plex Sans, Helvetica, sans-serif" font-size="17" letter-spacing="2.4" fill="#8C907F">OUTILS POUR LA RESTAURATION</text>
-<text font-family="Fraunces, Georgia, serif" font-size="74" fill="#ECEBE2" letter-spacing="-0.5">
-<tspan x="80" y="300">Une maison d’outils</tspan><tspan x="80" y="386">pour la restauration.</tspan></text>
-<text x="80" y="500" font-family="IBM Plex Sans, Helvetica, sans-serif" font-size="24" fill="#BDBFAE">Des outils qui se connaissent, pour ceux qui tiennent une cuisine.</text>
+<text font-family="Fraunces, Georgia, serif" font-size="62" fill="#ECEBE2" letter-spacing="-0.5">
+<tspan x="80" y="232">Cuisiner avec des idées,</tspan><tspan x="80" y="306">gérer sans se prendre</tspan><tspan x="80" y="380">la tête.</tspan></text>
+<text font-family="IBM Plex Sans, Helvetica, sans-serif" font-size="23" fill="#BDBFAE">
+<tspan x="80" y="470">Copius pour trouver l’inspiration, Jobs pour recruter,</tspan><tspan x="80" y="504">Manager pour savoir si le plat est rentable.</tspan></text>
 {drawing("sea-bass", 830, 150, 250)}{drawing("asparagus", 1000, 100, 170)}{drawing("lemon", 980, 330, 170)}
 <rect x="80" y="576" width="1040" height="1" fill="#2A2D22"/>
 </g>
