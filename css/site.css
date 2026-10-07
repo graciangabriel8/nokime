@@ -280,9 +280,7 @@ p{margin:0 0 1em}
 .hero-art span:nth-child(5){left:32%;top:0;width:22%}
 .hero-art span:nth-child(6){left:8%;top:78%;width:18%}
 .hero-art .art{width:100%;height:auto;aspect-ratio:1}
-.feature-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
-.feature .kicker{margin-bottom:12px}
-@media (max-width:960px){.feature-grid{grid-template-columns:1fr;gap:32px}.hero-art{height:300px}}
+@media (max-width:960px){.hero-art{height:300px}}
 @media (max-width:720px){.hero-art{height:auto;display:flex;gap:12px;margin-top:8px}.hero-art span{position:static;width:22%!important}}
 
 /* ---------- the Manager preview: a real recording of the tool ---------- */

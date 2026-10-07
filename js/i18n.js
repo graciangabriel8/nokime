@@ -57,7 +57,6 @@ window.NOKIME_I18N = {
     cpShotLabel: "Nokime Copius in use, from search to the pairing lab", cpShotCap: "The full version. Search for asparagus, step over to butter, and the lab judges the pairing.",
     jbShotLabel: "Nokime Jobs in use, filmed with example offers", jbShotCap: "The site, filmed with example offers. Filter the seasons, read the offer, write to the establishment.",
     /* home */
-    featKicker: "The cost of a dish, live.", featLead: "Copius’s prices and seasons, Manager’s arithmetic: one set of data, from one tool to the next.",
     heroEyebrow: "Nokime",
     heroT1: "Cook with ", heroT2: "ideas", heroT3: ", run things ", heroT4: "without the headache", heroT5: ".",
     heroCta1: "See the tools", heroCta2: "Write to us",
