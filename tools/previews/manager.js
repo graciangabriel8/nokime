@@ -8,7 +8,7 @@ return {
   duration: 14, cursor: 'dark', ripple: '#5E7D45',
   setup: () => { if (LANG === 'en') H.$('#langBtn').click(); },
   P: {
-    start: () => [innerWidth * 0.84, innerHeight * 0.86],
+    start: () => [innerWidth * 0.66, innerHeight * 0.955],   // empty space beside « Comment lire la ligne »: the poster shows no cursor over a figure
     row: () => { const r = dish().querySelector('.head').getBoundingClientRect(); return [r.left + Math.min(250, r.width * 0.22), r.top + r.height / 2]; },
     edit: () => H.ctr(H.btn(dish(), /Modifier|Edit/)),
     price: () => H.below(H.$('#d_price'), 0.3, 16),

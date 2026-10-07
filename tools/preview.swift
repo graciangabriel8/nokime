@@ -33,6 +33,9 @@ let ENGINE = #"""
   };
   window.__engine=function(cfg){
     const st=document.createElement('style'); st.textContent='html,body{scroll-behavior:auto!important}'; document.head.append(st);
+    /* The take opens on the page at rest: an off-screen view never runs the load animations (a card that
+       fades in), so every finite one still pending is completed here. The scene's own come later. */
+    for(const a of document.getAnimations()){ try{ if(isFinite(a.effect.getComputedTiming().endTime)) a.finish(); }catch(e){} }
     const dark=cfg.cursor!=='light';
     const cur=document.createElement('div');
     cur.innerHTML='<svg width="22" height="28" viewBox="0 0 22 28"><path d="M2 2v21l5.2-5 3.6 8.2 3.4-1.5-3.6-8H18z" fill="'+(dark?'#1B1E17':'#F1F0EA')+'" stroke="'+(dark?'#FFFFFF':'#15170F')+'" stroke-width="1.6" stroke-linejoin="round"/></svg>';
@@ -44,8 +47,9 @@ let ENGINE = #"""
     const E=p=>p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;
     const at=n=>S.pos[n]||(S.pos[n]=cfg.P[n]());
     /* The page's own animations are paused and stepped to each frame's video time, so they play at
-       their real speed however long a snapshot takes. */
-    const drive=t=>{for(const a of document.getAnimations()){ if(!A.has(a)){A.set(a,t);a.pause();} const el=(t-A.get(a))*1000, end=a.effect?a.effect.getComputedTiming().endTime:0; if(isFinite(end)&&el>=end) a.finish(); else a.currentTime=el; }};
+       their real speed however long a snapshot takes. One that already finished before the take (a card
+       that faded in on load) stays finished: replayed from zero, it would leave the poster frame empty. */
+    const drive=t=>{for(const a of document.getAnimations()){ if(!A.has(a)){A.set(a,a.playState==='finished'?-Infinity:t);a.pause();} const el=(t-A.get(a))*1000, end=a.effect?a.effect.getComputedTiming().endTime:0; if(isFinite(end)&&el>=end) a.finish(); else a.currentTime=el; }};
     window.__frame=function(t){ try {
       (cfg.SCROLLS||[]).forEach((s,i)=>{ if(t<s[0]) return; if(!S.sc[i]) S.sc[i]=[scrollY,s[2]()]; const q=E(Math.min(1,(t-s[0])/(s[1]-s[0]))); window.scrollTo(0,S.sc[i][0]+(S.sc[i][1]-S.sc[i][0])*q); });
       const done=cfg.MOVES.filter(m=>t>=m[0]); let p;

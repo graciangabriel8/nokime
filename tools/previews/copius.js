@@ -19,7 +19,7 @@ return {
     if (rgb.length === 3) { const st = document.createElement('style'); st.textContent = '.site-head{background:rgb(' + rgb.join(',') + ')!important}'; document.head.append(st); }
   },
   P: {
-    start: () => [innerWidth * 0.78, innerHeight * 0.78],
+    start: () => [innerWidth * 0.4, 44],   // the empty strip of the header, next to the search box: the poster shows no cursor over a card
     search: () => { const r = H.$('#search').getBoundingClientRect(); return [r.left + 70, r.top + r.height * 0.62]; },
     card: () => H.ctr(H.$('article.card[data-id=asparagus] .card-main')),
     chip: () => H.ctr(H.$('#modal .pair-chip[data-open=butter]')),
