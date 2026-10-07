@@ -12,6 +12,9 @@ Prints one line per failure and exits 1 on any.
    differs from the live branch needs a new ?v= (on GitHub the workflow fetches live; by hand, origin/live as last fetched)
 5. secrets: no live or test key, token or deploy-hook address in any tracked file (the scanner first proves it
    catches a planted fake of each kind), and no credential file (*.pem, *.key, .env, config.php) tracked
+6. Instagram queue: social/posts.json, when present, follows the rules tools/ig_post.py posts by (unique ids, known
+   accounts, an "at" with a UTC offset, carousels of 2-10 tracked 1080x1350 JPEGs, reels of one .mp4, a caption of at
+   most 2 200 characters without "#", no caption used twice on one account)
 """
 import hashlib, json, os, pathlib, re, shutil, subprocess, sys, tempfile
 
@@ -119,6 +122,14 @@ for f in tracked():   # every tracked file, read as bytes: no extension or encod
     rel = f.relative_to(root)
     if rel.suffix in (".pem", ".key", ".p12", ".pfx") or rel.name.startswith(".env") or rel.name == "config.php":
         fail("secret: %s is tracked; keys and credentials never go in the repository (the repository is public: rotate whatever it held)" % rel)
+
+# 6. Instagram queue
+if (root / "social/posts.json").is_file():
+    sys.dont_write_bytecode = True
+    sys.path.insert(0, str(root / "tools"))
+    import ig_post
+    _, queue_errors = ig_post.load_queue(ig_post.DiskTree(root), {p.relative_to(root).as_posix() for p in tracked()})
+    for msg in queue_errors: fail("social/posts.json: " + msg)
 
 for f in failures: print("FAIL " + f)
 print("%d page(s) checked: %s" % (len(pages), "all good" if not failures else "%d failure(s)" % len(failures)))

@@ -17,3 +17,5 @@ Before a commit that touches `css/` or `js/`: `python3 tools/bump.py` (raises `?
 Check that every French key has its English: `python3 tools/check-i18n.py`.
 
 The Manager, Copius and Jobs pages each carry a real recording of the tool (`media/<tool>-preview-{fr,en}.mp4` + posters), made by `tools/preview.swift` from the scene in `tools/previews/<tool>.js` — usage at the top of that file. Re-record a tool after a visible change to it.
+
+Instagram posts are queued in `social/posts.json` and posted by `.github/workflows/instagram.yml` (`tools/ig_post.py`); `social/README.md` explains the queue, the failure messages and the one-time key setup.

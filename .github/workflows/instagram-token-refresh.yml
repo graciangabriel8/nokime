@@ -1,0 +1,50 @@
+# Instagram tokens die after 60 days and cannot be revived. Once a week this refreshes each account's token and
+# writes it back into its repository secret. An account without a token is skipped. Weekly, not daily: Meta refuses
+# to refresh a token under 24 h old. Writing a secret needs a personal access token (secret SECRETS_PAT); the
+# built-in one cannot.
+name: Instagram token refresh
+on:
+  schedule:
+    - cron: "17 9 * * 1"      # Mondays (UTC); however late GitHub starts it, it is still Monday
+  workflow_dispatch:          # by hand, when a Monday was missed
+permissions:
+  contents: read
+jobs:
+  refresh-tokens:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Refresh each token
+        env:
+          IG_TOKEN_NOKIME: ${{ secrets.IG_TOKEN_NOKIME }}
+          IG_TOKEN_JOBS: ${{ secrets.IG_TOKEN_JOBS }}
+          IG_TOKEN_MANAGER: ${{ secrets.IG_TOKEN_MANAGER }}
+          GH_TOKEN: ${{ secrets.SECRETS_PAT }}
+        run: |
+          set -euo pipefail
+          failed=0
+          have=0
+          for ACC in NOKIME JOBS MANAGER; do
+            var="IG_TOKEN_$ACC"
+            if [ -n "${!var:-}" ]; then have=1; fi
+          done
+          if [ "$have" = 0 ]; then echo "::notice::no Instagram token is set yet — nothing to refresh"; exit 0; fi
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::error::SECRETS_PAT not set: the Instagram tokens will expire; add it or refresh by hand"; exit 1
+          fi
+          for ACC in NOKIME JOBS MANAGER; do
+            var="IG_TOKEN_$ACC"
+            if [ -z "${!var:-}" ]; then echo "::notice::no token for $ACC — skipped"; continue; fi
+            NEW="$(curl -sS -G --max-time 60 "https://graph.instagram.com/refresh_access_token" \
+              --data-urlencode "grant_type=ig_refresh_token" --data-urlencode "access_token=${!var}" \
+              | python3 -c 'import sys,json
+          try: print(json.load(sys.stdin).get("access_token",""))
+          except ValueError: print("")')" || NEW=""
+            if [ -z "$NEW" ]; then
+              echo "::error::refresh failed for $ACC — the token may be within 24 h of issue, or already dead"; failed=1; continue
+            fi
+            echo "::add-mask::$NEW"
+            printf '%s' "$NEW" | gh secret set "$var" --repo "$GITHUB_REPOSITORY"
+            echo "$ACC token refreshed (value never printed)"
+          done
+          exit "$failed"

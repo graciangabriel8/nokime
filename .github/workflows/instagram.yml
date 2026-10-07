@@ -1,0 +1,59 @@
+# Posts what social/posts.json queues, at the minute it queues it (tools/ig_post.py; social/README.md says how).
+# GitHub starts scheduled runs hours late (the Copius repository saw 3 to 6 h 36), so a run is started early and
+# holds: tools/ig_post.py posts every entry due within 3 h back and 5 h 30 ahead of its start, sleeping until each one's
+# minute (GitHub kills a job at 360 min whatever timeout-minutes says, so the hold stops at 330 and nothing is
+# published after 340). A run needs a start between 5 h 30 before an entry's time and 3 h after it. The slots are 15:30 and 18:00 in
+# Paris (13:30 or 14:30 and 16:00 or 17:00 UTC, summer or winter); a time outside them may find no start in reach.
+# Off the top of the hour, which GitHub delays most. A start that finds nothing due ends in seconds, and the starts
+# overlap on purpose: a later one queues behind a holding one and posts what it left, or finds it already up.
+# Every day, not weekdays only: an entry is the gate, and a weekend entry must not wait for Monday unseen.
+name: Instagram posts
+on:
+  schedule:
+    - cron: "40 7 * * *"
+    - cron: "40 9 * * *"
+    - cron: "40 11 * * *"
+  workflow_dispatch:          # by hand: one entry at once (id), or a dry run of what is due
+    inputs:
+      dry_run:
+        description: "Validate and show what is due; nothing is posted"
+        type: boolean
+        default: false
+      id:
+        description: "Post the entry with this id at once, whatever its time (required unless dry run)"
+        required: false
+concurrency:
+  # Scheduled starts queue in one lane (GitHub keeps one running and one waiting, the newest); a manual run has a lane
+  # per entry id, so it never waits hours behind a holding start and two ids never cancel each other. The duplicate
+  # guard, run before the wait and again before publishing, covers a manual run overlapping a scheduled one.
+  group: instagram-posts-${{ github.event_name == 'schedule' && 'cron' || format('manual-{0}', inputs.id) }}
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360      # GitHub's own ceiling: 5 h 30 of holding at most, then 30 min for the posting itself
+    steps:
+      - uses: actions/checkout@v4
+      - name: Post what is due
+        env:
+          DRY_RUN: ${{ inputs.dry_run }}
+          ENTRY_ID: ${{ inputs.id }}
+          EVENT: ${{ github.event_name }}
+          IG_USER_ID_NOKIME: ${{ secrets.IG_USER_ID_NOKIME }}
+          IG_TOKEN_NOKIME: ${{ secrets.IG_TOKEN_NOKIME }}
+          IG_USER_ID_JOBS: ${{ secrets.IG_USER_ID_JOBS }}
+          IG_TOKEN_JOBS: ${{ secrets.IG_TOKEN_JOBS }}
+          IG_USER_ID_MANAGER: ${{ secrets.IG_USER_ID_MANAGER }}
+          IG_TOKEN_MANAGER: ${{ secrets.IG_TOKEN_MANAGER }}
+        run: |
+          set -euo pipefail
+          args=()
+          if [ "${DRY_RUN:-}" = "true" ]; then args+=(--dry-run); fi
+          if [ -n "${ENTRY_ID:-}" ]; then args+=(--id "$ENTRY_ID"); fi
+          # A manual run without an id would wait for the same minutes as the scheduled run and race it.
+          if [ "$EVENT" = "workflow_dispatch" ] && [ "${DRY_RUN:-}" != "true" ] && [ -z "${ENTRY_ID:-}" ]; then
+            echo "::error::a manual run needs an entry id (or dry run); the schedule posts what is due"; exit 1
+          fi
+          python3 tools/ig_post.py ${args[@]+"${args[@]}"}
