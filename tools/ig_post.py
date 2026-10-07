@@ -99,7 +99,7 @@ def load_queue(tree, tracked=None):
             p = d.astimezone(PARIS)
             if d.utcoffset() != p.utcoffset(): bad('"at" says %s but Paris is %s on that day: write %s' % (d.strftime("%z"), p.strftime("%z"), p.isoformat()))
         kind, media = e.get("type"), e.get("media")
-        if kind not in ("carousel", "reel"): bad('type must be "carousel" or "reel"')
+        if kind not in ("carousel", "reel", "image"): bad('type must be "carousel", "reel" or "image"')
         if not (isinstance(media, list) and media and all(isinstance(m, str) for m in media)): bad("media must be a list of paths"); media = []
         files = [(m, "media") for m in media]
         if "cover" in e:
@@ -117,10 +117,12 @@ def load_queue(tree, tracked=None):
             if len(set(media)) != len(media): bad("a picture is listed twice")
         elif kind == "reel":
             if len(media) != 1: bad("a reel has exactly one video, this has %d" % len(media))
+        elif kind == "image":
+            if len(media) != 1: bad("an image post has exactly one picture, this has %d" % len(media))
         for m, role, data in ok:
             if kind == "reel" and role == "media":
                 if not m.endswith(".mp4") or data[4:8] != b"ftyp": bad("%s is not an .mp4 video" % m)
-            elif kind == "carousel":
+            elif kind in ("carousel", "image"):
                 if jpeg_size(data) != (1080, 1350): bad("%s is %s, not a 1080x1350 JPEG" % (m, "%dx%d" % jpeg_size(data) if jpeg_size(data) else "not a JPEG"))
             elif jpeg_size(data) is None: bad("cover %s is not a JPEG" % m)
         cap = e.get("caption")
@@ -237,6 +239,8 @@ def publish(entry, uid, token, clock):
         for n, cid in enumerate(kids, 1): wait_ready(cid, token, "picture %d" % n)
         # the caption belongs to the parent: a child that carries one is accepted and silently ignored
         parent = graph("POST", uid + "/media", {"media_type": "CAROUSEL", "children": ",".join(kids), "caption": entry["caption"]}, token, "carousel").get("id")
+    elif entry["type"] == "image":
+        parent = graph("POST", uid + "/media", {"image_url": SITE + entry["media"][0], "caption": entry["caption"]}, token, "image").get("id")
     else:
         params = {"media_type": "REELS", "video_url": SITE + entry["media"][0], "caption": entry["caption"], "share_to_feed": "true"}
         if entry.get("cover"): params["cover_url"] = SITE + entry["cover"]

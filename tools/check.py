@@ -13,7 +13,7 @@ Prints one line per failure and exits 1 on any.
 5. secrets: no live or test key, token or deploy-hook address in any tracked file (the scanner first proves it
    catches a planted fake of each kind), and no credential file (*.pem, *.key, .env, config.php) tracked
 6. Instagram queue: social/posts.json, when present, follows the rules tools/ig_post.py posts by (unique ids, known
-   accounts, an "at" with a UTC offset, carousels of 2-10 tracked 1080x1350 JPEGs, reels of one .mp4, a caption of at
+   accounts, an "at" with a UTC offset, carousels of 2-10 tracked 1080x1350 JPEGs, images of one, reels of one .mp4, a caption of at
    most 2 200 characters without "#", no caption used twice on one account)
 """
 import hashlib, json, os, pathlib, re, shutil, subprocess, sys, tempfile

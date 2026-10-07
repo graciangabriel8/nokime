@@ -218,5 +218,65 @@
    "social/2026-11-06-jobs-2.jpg"
   ],
   "caption": "Vous accompagnez des élèves en hôtellerie-restauration ?\nNokime Jobs, c’est une page à leur donner : chaque offre dit le type, les dates, les heures, la rémunération quand l’établissement l’indique, le logement. Ils écrivent eux-mêmes à l’établissement, sans compte, et la convention suit votre procédure.\nCe qu’on vous demande : un avis, et un lien vers la page si elle vous sert.\njobs.nokime.fr"
+ },
+ {
+  "id": "pinned-jobs-3-right",
+  "account": "nokime.jobs",
+  "at": "2026-10-07T23:40:00+02:00",
+  "type": "image",
+  "media": [
+   "social/pinned-jobs-3-right.jpg"
+  ],
+  "caption": "Nokime Jobs : stages, alternances et saisons en hôtellerie-restauration. Cuisine, salle, hébergement et spa.\njobs.nokime.fr"
+ },
+ {
+  "id": "pinned-jobs-2-middle",
+  "account": "nokime.jobs",
+  "at": "2026-10-07T23:43:00+02:00",
+  "type": "image",
+  "media": [
+   "social/pinned-jobs-2-middle.jpg"
+  ],
+  "caption": "Chaque offre dit tout d’avance : le poste, les dates, les heures et le logement. Vous écrivez directement à l’établissement.\njobs.nokime.fr"
+ },
+ {
+  "id": "pinned-jobs-1-left",
+  "account": "nokime.jobs",
+  "at": "2026-10-07T23:46:00+02:00",
+  "type": "image",
+  "media": [
+   "social/pinned-jobs-1-left.jpg"
+  ],
+  "caption": "Un stage ou une saison ? C’est gratuit pour ceux qui cherchent.\nUn outil @nokime.fr\njobs.nokime.fr"
+ },
+ {
+  "id": "pinned-manager-3-right",
+  "account": "nokime.manager",
+  "at": "2026-10-07T23:50:00+02:00",
+  "type": "image",
+  "media": [
+   "social/pinned-manager-3-right.jpg"
+  ],
+  "caption": "Nokime Manager chiffre vos plats et vos menus : le coût de l’assiette, avant le service.\nnokime.fr/manager"
+ },
+ {
+  "id": "pinned-manager-2-middle",
+  "account": "nokime.manager",
+  "at": "2026-10-07T23:53:00+02:00",
+  "type": "image",
+  "media": [
+   "social/pinned-manager-2-middle.jpg"
+  ],
+  "caption": "Chaque plat avec sa marge et son prix plancher. Hors ligne : vos données restent sur votre machine.\nnokime.fr/manager"
+ },
+ {
+  "id": "pinned-manager-1-left",
+  "account": "nokime.manager",
+  "at": "2026-10-07T23:56:00+02:00",
+  "type": "image",
+  "media": [
+   "social/pinned-manager-1-left.jpg"
+  ],
+  "caption": "Cinq places fondateurs ouvertes. Un courriel suffit : contact@nokime.fr\nUn outil @nokime.fr\nnokime.fr/manager"
  }
 ]

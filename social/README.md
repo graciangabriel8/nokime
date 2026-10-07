@@ -1,17 +1,17 @@
 # Instagram posting
 
-Nothing is posted unless an entry you approved sits in `posts.json`. The file is empty now.
+Nothing is posted unless an entry you approved sits in `posts.json`.
 
 ## Queue a post
 
-1. Put the pictures (carousel: 2 to 10 JPEGs, exactly 1080x1350) or the video (reel: one `.mp4`, optional cover JPEG) in this folder.
+1. Put the pictures (carousel: 2 to 10 JPEGs, exactly 1080x1350; image: one such JPEG) or the video (reel: one `.mp4`, optional cover JPEG) in this folder.
 2. Add an entry to `posts.json`:
 
        {"id": "2026-10-15-manager", "account": "nokime.manager", "at": "2026-10-15T15:30:00+02:00",
         "type": "carousel", "media": ["social/2026-10-15-manager-1.jpg", "social/2026-10-15-manager-2.jpg"],
         "caption": "..."}
 
-   `account` is `nokime.manager`, `nokime.jobs` or `nokime.fr`. A reel has `"type": "reel"`, `"media": ["social/x.mp4"]` and optionally `"cover": "social/x.jpg"`. The caption has no `#` and is at most 2 200 characters; two posts of one account never share a caption.
+   `account` is `nokime.manager`, `nokime.jobs` or `nokime.fr`. A reel has `"type": "reel"`, `"media": ["social/x.mp4"]` and optionally `"cover": "social/x.jpg"`. A single picture has `"type": "image"` and `"media": ["social/x.jpg"]` (1080x1350, like a carousel's). The caption has no `#` and is at most 2 200 characters; two posts of one account never share a caption.
    `at` carries Paris's offset for that day: `+02:00` until 25 Oct 2026, `+01:00` from then on, and `Z` is refused. `check.py` says what to write.
 3. `python3 tools/check.py` must pass. Push to main: the site goes live (nokime.fr/social/...) once the deploy gate lets it, and Instagram fetches the files from there.
 
