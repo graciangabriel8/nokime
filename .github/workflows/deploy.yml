@@ -2,7 +2,8 @@
 # commit; OVH deploys `live` (its Git link points at that branch), and GitHub's own webhook tells it when `live`
 # moves. A red check leaves `live`, so the site, on the last good version. Pushes keep going to main as before.
 # OVH only accepts notifications from GitHub's servers, so the deploy cannot be called from here directly.
-# `live` only moves forward along main; if main's history were ever rewritten, the move is refused and the run is red.
+# `live` only moves forward along main (GitHub's API refuses anything else, so the clone here needs no history);
+# if main's history were ever rewritten, the move is refused and the run is red. `live` is created once by hand.
 # Runs queue rather than cancel each other; a run whose commit is no longer main's newest stands down and lets
 # the newer run promote it.
 name: Checks, then deploy
@@ -23,10 +24,12 @@ jobs:
       - name: Checks
         run: python3 tools/check.py
       - name: Move live to this commit (OVH deploys live)
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           head=$(git ls-remote origin refs/heads/main) || { echo "::error::could not read main's newest commit"; exit 1; }
           head=${head%%[[:space:]]*}
           if [ -z "$head" ]; then echo "::error::could not read main's newest commit"; exit 1; fi
           if [ "$head" != "$GITHUB_SHA" ]; then echo "main has moved on to $head; that newer run promotes it"; exit 0; fi
-          git push origin "$GITHUB_SHA:refs/heads/live"
+          gh api -X PATCH "repos/$GITHUB_REPOSITORY/git/refs/heads/live" -f sha="$GITHUB_SHA" -F force=false --silent
           echo "live is now $GITHUB_SHA"
