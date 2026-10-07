@@ -1,0 +1,23 @@
+# Nokime
+
+> Copius pour trouver l’inspiration, Jobs pour recruter, Manager pour savoir si le plat est rentable.
+> Copius to find inspiration, Jobs to hire, Manager to know whether the dish pays.
+
+Nokime regroupe Copius, Manager et Jobs : des outils pour cuisiner avec des idées et gérer sans prise de tête.
+Nokime brings together Copius, Manager and Jobs: tools to cook with ideas and run things without the headache.
+
+## Tools
+
+- [Copius](https://copius.fr/): Copius : 1 888 ingrédients, 135 techniques, 45 bases et 68 chefs, dessinés et bilingues, chaque produit avec sa fourchette de prix, sa saison et ses accords. Trois versions : libre, complète, école. — Copius: 1,888 ingredients, 135 techniques, 45 bases and 68 chefs, drawn and bilingual, each product with its price band, season and pairings. Three versions: free, full, school.
+- [Nokime Jobs](https://jobs.nokime.fr/): Nokime Jobs : des stages, des alternances et des saisons en cuisine, en salle, à l’hébergement et au spa. Gratuit pour les candidats ; les hôtels et les restaurants publient et répondent direct. — Nokime Jobs: internships, apprenticeships and seasons in the kitchen, the dining room, the rooms division and the spa. Free for candidates; hotels and restaurants post and answer direct.
+- [Nokime Manager](https://nokime.fr/manager/): Nokime Manager : coût matière par portion, ratio, marge brute et prix plancher pour chaque plat ; vos prix d’achat ; le tableau des allergènes ; un service type lu en clair. Hors ligne, avec 1 839 produits déjà chiffrés. — Nokime Manager: food cost per portion, ratio, gross margin and floor price for every dish; your purchase prices; the allergen chart; one typical service read in plain words. Offline, with 1,839 products already priced.
+
+## Pages
+
+- [Le groupe · The group](https://nokime.fr/groupe/): Nokime regroupe Copius, Manager et Jobs : des outils pour cuisiner avec des idées et gérer sans prise de tête. — Nokime brings together Copius, Manager and Jobs: tools to cook with ideas and run things without the headache.
+- [Contact](https://nokime.fr/contact/): Un courriel suffit. Restaurants, enseignants, presse : une seule adresse. — One email is enough. Restaurants, teachers, press: one address.
+- [Mentions légales · Legal notice](https://nokime.fr/mentions-legales/): Éditeur, hébergeur, données personnelles et crédits du site Nokime. — Publisher, host, personal data and credits for the Nokime website.
+
+## Instagram
+
+[@nokime.fr](https://www.instagram.com/nokime.fr/) · [@copius.fr](https://www.instagram.com/copius.fr/) · [@nokime.jobs](https://www.instagram.com/nokime.jobs/) · [@nokime.manager](https://www.instagram.com/nokime.manager/)
