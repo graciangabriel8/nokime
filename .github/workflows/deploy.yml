@@ -1,0 +1,35 @@
+# Every push to main runs tools/check.py; only when it passes is OVH asked to deploy, by sending it the same push
+# notification GitHub used to send directly (the repo's own webhook to OVH is switched off). A red check leaves the
+# site on its last good version. The hook address is the secret OVH_DEPLOY_HOOK. OVH deploys the branch's newest
+# commit, so a run whose commit is no longer the newest stands down and lets the newer run deploy. Runs queue
+# rather than cancel each other, so a re-run of an old commit can never leave the newest one undeployed.
+name: Checks, then deploy
+on:
+  push:
+    branches: [main]
+concurrency:
+  group: deploy-main
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  check-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checks
+        run: python3 tools/check.py
+      - name: Deploy on OVH
+        env:
+          HOOK: ${{ secrets.OVH_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then echo "::error::the secret OVH_DEPLOY_HOOK is missing"; exit 1; fi
+          head=$(git ls-remote origin refs/heads/main) || { echo "::error::could not read main's newest commit"; exit 1; }
+          head=${head%%[[:space:]]*}
+          if [ -z "$head" ]; then echo "::error::could not read main's newest commit"; exit 1; fi
+          if [ "$head" != "$GITHUB_SHA" ]; then echo "main has moved on to $head; that newer run deploys it"; exit 0; fi
+          code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 30 --retry 3 --retry-delay 5 --retry-all-errors -X POST \
+            -H 'Content-Type: application/json' -H 'X-GitHub-Event: push' --data @"$GITHUB_EVENT_PATH" "$HOOK")
+          echo "OVH answered $code"
+          case "$code" in 2*) ;; *) echo "::error::OVH refused the deploy ($code)"; exit 1;; esac
