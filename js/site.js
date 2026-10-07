@@ -30,8 +30,9 @@
       return q[1];
     }
     try { var v = localStorage.getItem(LS_LANG); if (v === "fr" || v === "en") return v; } catch (e) {}
-    var n = (navigator.language || "fr").toLowerCase();
-    return n.indexOf("fr") === 0 ? "fr" : "en";
+    // then French, whatever the browser's language: the page is French, and search engines read it with an
+    // English browser, so guessing from navigator.language had Google index the site in English
+    return "fr";
   })();
   function T() { return I18N[lang] || I18N.fr; }
 
