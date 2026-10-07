@@ -28,12 +28,12 @@ At the `at` minute, from the 15:30 and 18:00 Paris slots: the workflow starts ea
 - `Instagram refused ...`: Instagram's own error text follows (an expired token and a picture of the wrong size are the usual ones).
 - `it may have gone out`: the publish call got no clear answer. Look at the account before running it again.
 - `missed its window`: an entry's time passed, up to 7 days ago, and no start reached it; it is not on the account. The run fails so GitHub emails you. Run it by `id`, or remove the entry.
-- `keys belong to @...`: the token stored under that account's name is another account's. Nothing was posted; store the right one with `ig-keys.sh`.
+- `keys belong to @...`: the token stored under that account's name is another account's. Nothing was posted; store that account's own key under its name.
 - `changed or removed after this run started`: the entry was edited or taken out of the queue while the run held. Not an error.
 - `too close to the 6 h job limit`: the run waited too long to publish safely; the next start posts it.
 
-## One-time steps per account
+## Keys
 
-1. In Meta's dashboard (developers.facebook.com, your app, Instagram, API setup with Instagram login) generate an access token for the account.
-2. On your Mac, with that token copied: `sh tools/ig-keys.sh manager` (or `jobs`, `nokime`). It reads the clipboard, asks you to copy the Instagram user id next, stores both as repository secrets and empties the clipboard. It prints only the secret names.
-3. Optional: a `SECRETS_PAT` secret (a personal access token allowed to write secrets) lets the weekly refresh renew the tokens before their 60 days end. Without it the weekly run fails (and GitHub emails you) rather than let the tokens expire quietly.
+Each account has two repository secrets, `IG_TOKEN_<ACC>` and `IG_USER_ID_<ACC>` (`ACC` = `NOKIME`, `JOBS`, `MANAGER`), set on 7 Oct 2026 through the Instagram business login of the Meta app and stored with `gh secret set`, never pasted anywhere else. A key lasts 60 days.
+
+A `SECRETS_PAT` secret (a personal access token allowed to write secrets) lets the weekly refresh renew the keys before their 60 days end. Without it the weekly run fails (and GitHub emails you) rather than let the keys expire quietly.

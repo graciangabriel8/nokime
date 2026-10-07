@@ -1,1 +1,222 @@
-[]
+[
+ {
+  "id": "2026-10-12-manager",
+  "account": "nokime.manager",
+  "at": "2026-10-12T15:30:00+02:00",
+  "type": "reel",
+  "media": [
+   "social/2026-10-12-manager.mp4"
+  ],
+  "cover": "social/2026-10-12-manager-cover.jpg",
+  "caption": "À ce prix-là, le plat est rentable ? Mieux vaut le savoir avant le service.\nNokime Manager vous donne le coût de chaque plat et son prix plancher, hors ligne.\nCinq places fondateurs ouvertes. Lien en bio.\nnokime.fr/manager"
+ },
+ {
+  "id": "2026-10-13-jobs",
+  "account": "nokime.jobs",
+  "at": "2026-10-13T18:00:00+02:00",
+  "type": "reel",
+  "media": [
+   "social/2026-10-13-jobs.mp4"
+  ],
+  "cover": "social/2026-10-13-jobs-cover.jpg",
+  "caption": "Un stage ou une saison ? Lisez l’offre avant de postuler.\nCuisine, salle, hébergement, spa : les dates, les heures et le logement sont écrits d’avance.\nGratuit pour vous. Lien en bio.\njobs.nokime.fr"
+ },
+ {
+  "id": "2026-10-14-nokime",
+  "account": "nokime.fr",
+  "at": "2026-10-14T15:30:00+02:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-10-14-nokime-1.jpg",
+   "social/2026-10-14-nokime-2.jpg"
+  ],
+  "caption": "Trois questions qu’on se pose tous en cuisine. Une réponse chacune.\nLe plat est rentable à ce prix-là ? Manager. En panne d’idées ? Copius. Personne pour la saison ? Jobs.\n@nokime.manager · @copius.fr · @nokime.jobs\nnokime.fr"
+ },
+ {
+  "id": "2026-10-15-manager",
+  "account": "nokime.manager",
+  "at": "2026-10-15T15:30:00+02:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-10-15-manager-1.jpg",
+   "social/2026-10-15-manager-2.jpg"
+  ],
+  "caption": "17 € HT sur la carte, 5,89 € dans l’assiette.\nC’est un exemple : un risotto aux cèpes, chiffré avec les prix moyens de Copius. 35 %, dans la cible (entre 30 et 38 %).\nSur la page du site, changez une quantité ou le prix : le calcul suit.\nnokime.fr/manager"
+ },
+ {
+  "id": "2026-10-16-jobs",
+  "account": "nokime.jobs",
+  "at": "2026-10-16T18:00:00+02:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-10-16-jobs-1.jpg",
+   "social/2026-10-16-jobs-2.jpg"
+  ],
+  "caption": "Chercher un stage ici, ça coûte combien ? Rien. Et ça reste comme ça.\nPas de compte, pas de CV gardé chez nous : vous lisez l’offre et vous écrivez direct à l’hôtel ou au restaurant.\nCe sont les établissements qui paient pour publier.\njobs.nokime.fr"
+ },
+ {
+  "id": "2026-10-19-manager",
+  "account": "nokime.manager",
+  "at": "2026-10-19T15:30:00+02:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-10-19-manager-1.jpg",
+   "social/2026-10-19-manager-2.jpg"
+  ],
+  "caption": "Votre plat se vend. Mais à ce prix-là, il paie la salle ?\nLe plancher, c’est le prix en dessous duquel il ne couvre plus sa part de main-d’œuvre et de charges. Moins de couverts, plancher plus haut.\nnokime.fr/manager"
+ },
+ {
+  "id": "2026-10-20-jobs",
+  "account": "nokime.jobs",
+  "at": "2026-10-20T18:00:00+02:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-10-20-jobs-1.jpg",
+   "social/2026-10-20-jobs-2.jpg"
+  ],
+  "caption": "Stage ou saison en cuisine ? Pas les mêmes règles.\nUn stage passe par une convention de votre école, et au-delà de deux mois il est payé. Une saison, c’est un contrat avec l’employeur.\nSur Nokime Jobs, l’offre dit son type, ses dates et ses heures avant que vous écriviez.\njobs.nokime.fr"
+ },
+ {
+  "id": "2026-10-21-nokime",
+  "account": "nokime.fr",
+  "at": "2026-10-21T15:30:00+02:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-10-21-nokime-1.jpg",
+   "social/2026-10-21-nokime-2.jpg"
+  ],
+  "caption": "Six logiciels et six mots de passe pour un restaurant ? Pas besoin.\nUn produit est le même dans l’atlas et dans vos fiches : vous tapez son prix une fois.\nDes chiffres quand ils servent encore.\nnokime.fr"
+ },
+ {
+  "id": "2026-10-22-manager",
+  "account": "nokime.manager",
+  "at": "2026-10-22T15:30:00+02:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-10-22-manager-1.jpg",
+   "social/2026-10-22-manager-2.jpg"
+  ],
+  "caption": "Ce plat est sur la carte. Mais à ce prix-là, il paie sa part ?\nDans l’exemple de l’outil, les côtes d’agneau grillées sont vendues 19,09 € HT, pour un plancher à 19,63 €. Juste en dessous.\nManager vous le montre plat par plat, avant le service. Données d’exemple.\nnokime.fr/manager"
+ },
+ {
+  "id": "2026-10-23-jobs",
+  "account": "nokime.jobs",
+  "at": "2026-10-23T18:00:00+02:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-10-23-jobs-1.jpg",
+   "social/2026-10-23-jobs-2.jpg"
+  ],
+  "caption": "Une saison d’hiver en salle ? Un contrat saisonnier, c’est des dates, des heures et souvent un logement.\nSur Nokime Jobs, tout ça est écrit sur l’offre avant que vous écriviez, et le filtre « Logé » est là pour les saisons.\njobs.nokime.fr"
+ },
+ {
+  "id": "2026-10-26-manager",
+  "account": "nokime.manager",
+  "at": "2026-10-26T15:30:00+01:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-10-26-manager-1.jpg",
+   "social/2026-10-26-manager-2.jpg"
+  ],
+  "caption": "Vos fiches existent déjà ? Collez-les.\nTexte collé, .txt, .csv, .docx ou .xlsx : chaque ligne est reconnue et chiffrée avec un produit de l’atlas, unités converties, et un drapeau « à vérifier » quand il faut.\n1 839 produits arrivent déjà chiffrés. Ensuite, vous corrigez avec vos prix d’achat : une fois, et ça reste.\nnokime.fr/manager"
+ },
+ {
+  "id": "2026-10-27-jobs",
+  "account": "nokime.jobs",
+  "at": "2026-10-27T18:00:00+01:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-10-27-jobs-1.jpg",
+   "social/2026-10-27-jobs-2.jpg"
+  ],
+  "caption": "Une alternance à l’hébergement, ça vous dit ?\nContrat d’apprentissage ou de professionnalisation : vous êtes payé, et vous alternez entre l’école et l’entreprise, sur six mois à trois ans.\nSur Nokime Jobs, l’offre dit le poste, les dates et les heures avant que vous écriviez.\njobs.nokime.fr"
+ },
+ {
+  "id": "2026-10-28-nokime",
+  "account": "nokime.fr",
+  "at": "2026-10-28T15:30:00+01:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-10-28-nokime-1.jpg",
+   "social/2026-10-28-nokime-2.jpg"
+  ],
+  "caption": "Des cèpes séchés au placard ? Gardez l’eau de trempage : elle fait déjà un bouillon.\nC’est la note de cuisine du cèpe dans Copius, avec sa saison (août à novembre) et son prix courant (25 à 60 €/kg).\n→ @copius.fr\nnokime.fr/copius"
+ },
+ {
+  "id": "2026-10-29-manager",
+  "account": "nokime.manager",
+  "at": "2026-10-29T15:30:00+01:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-10-29-manager-1.jpg",
+   "social/2026-10-29-manager-2.jpg"
+  ],
+  "caption": "Le tableau des allergènes, vous le refaites à chaque changement de carte ?\nDans Manager, chaque produit reconnu arrive avec ses allergènes proposés. Vous vérifiez, vous confirmez. Un « ? » marque ce qui dépend du produit acheté : à lever avant d’afficher.\nLe tableau s’imprime daté, pour un menu ou toute la carte, avec la mention du règlement européen 1169/2011 et du décret 2015-447. L’établissement reste responsable de l’information.\nnokime.fr/manager"
+ },
+ {
+  "id": "2026-10-30-jobs",
+  "account": "nokime.jobs",
+  "at": "2026-10-30T18:00:00+01:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-10-30-jobs-1.jpg",
+   "social/2026-10-30-jobs-2.jpg"
+  ],
+  "caption": "Un spa dans votre hôtel ? Vous pouvez publier un stage, une alternance ou une saison.\nSur Nokime Jobs, ça tient en un formulaire : métier, poste, dates, heures, logement. On relit sous quarante-huit heures, puis les candidats vous écrivent directement.\njobs.nokime.fr"
+ },
+ {
+  "id": "2026-11-02-manager",
+  "account": "nokime.manager",
+  "at": "2026-11-02T15:30:00+01:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-11-02-manager-1.jpg",
+   "social/2026-11-02-manager-2.jpg"
+  ],
+  "caption": "La connexion lâche ? Manager continue.\nIl fonctionne sans connexion : vos données restent sur votre machine, avec une sauvegarde d’un clic.\nUne licence par établissement, sans compte. Si vous voulez synchroniser, c’est en option, hébergé dans l’Union européenne.\nnokime.fr/manager"
+ },
+ {
+  "id": "2026-11-03-jobs",
+  "account": "nokime.jobs",
+  "at": "2026-11-03T18:00:00+01:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-11-03-jobs-1.jpg",
+   "social/2026-11-03-jobs-2.jpg"
+  ],
+  "caption": "Bien traité en stage ou en saison, ça veut dire quoi ?\nLa charte d’accueil de Nokime Jobs tient en six points : les heures prévues sont respectées, et celles en plus récupérées ou payées. Les pauses et les jours de repos aussi. La paie arrive à la date prévue. Chaque stagiaire et chaque apprenti a un tuteur nommé. Chacun est traité avec respect. Et le logement annoncé est fourni, comme annoncé.\nUn établissement y adhère par un simple mail. Ce n’est ni un contrat, ni un label.\njobs.nokime.fr"
+ },
+ {
+  "id": "2026-11-04-nokime",
+  "account": "nokime.fr",
+  "at": "2026-11-04T15:30:00+01:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-11-04-nokime-1.jpg",
+   "social/2026-11-04-nokime-2.jpg"
+  ],
+  "caption": "En panne d’idées en cuisine ? Copius, c’est 1 888 ingrédients dessinés, avec leur saison et leur prix.\nTrois versions : Libre (499 produits), Complète (tout l’atlas) et École.\n→ @copius.fr\nnokime.fr/copius"
+ },
+ {
+  "id": "2026-11-05-manager",
+  "account": "nokime.manager",
+  "at": "2026-11-05T15:30:00+01:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-11-05-manager-1.jpg",
+   "social/2026-11-05-manager-2.jpg"
+  ],
+  "caption": "Chiffrer votre carte plat par plat, avec l’outil offert six mois ?\nC’est l’offre fondateurs, pour cinq restaurants : l’outil offert six mois, l’Analyse à 99 € par mois. Ensuite, 49 € par mois si vous continuez.\nCe qu’on demande : vos vrais plats et votre avis franc.\nTVA non applicable, article 293 B du CGI.\nnokime.fr/manager"
+ },
+ {
+  "id": "2026-11-06-jobs",
+  "account": "nokime.jobs",
+  "at": "2026-11-06T18:00:00+01:00",
+  "type": "carousel",
+  "media": [
+   "social/2026-11-06-jobs-1.jpg",
+   "social/2026-11-06-jobs-2.jpg"
+  ],
+  "caption": "Vous accompagnez des élèves en hôtellerie-restauration ?\nNokime Jobs, c’est une page à leur donner : chaque offre dit le type, les dates, les heures, la rémunération quand l’établissement l’indique, le logement. Ils écrivent eux-mêmes à l’établissement, sans compte, et la convention suit votre procédure.\nCe qu’on vous demande : un avis, et un lien vers la page si elle vous sert.\njobs.nokime.fr"
+ }
+]
