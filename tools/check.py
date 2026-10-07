@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """The checks a change must pass before it goes live. .github/workflows/deploy.yml runs them on every push to main
-and moves the branch OVH deploys (live) only when they pass; run them by hand with `python3 tools/check.py`. Prints one line per
-failure and exits 1 on any.
+and moves the branch OVH deploys (live) only when they pass; run them by hand with `python3 tools/check.py`.
+Prints one line per failure and exits 1 on any.
 
 1. translations: tools/check-i18n.py (every key a page uses exists in English)
 2. scripts parse: node --check on js/*.js (skipped with a note where node is missing; never on GitHub)
