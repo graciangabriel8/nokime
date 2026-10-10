@@ -142,7 +142,7 @@ p{margin:0 0 1em}
 .stat-n{font-family:var(--serif);font-size:34px;line-height:1;margin:0 0 6px;font-variant-numeric:tabular-nums}
 .stats.problems{column-gap:40px}                 /* same columns as the three tools below */
 .problems .stat-n{font-size:26px;line-height:1.15;text-wrap:balance}
-@media (min-width:961px){.problems .stat-n{min-height:2.3em;display:flex;flex-direction:column;justify-content:flex-end}}   /* two-line room, each question on its bottom line, so the three descriptions start level and right under their question */
+@media (min-width:961px){.problems .stat-n{min-height:2.3em;max-width:9.5em}}   /* every question on two lines (FR and EN both hold from 8.5 to 10.5em), so the three descriptions start level */
 /* the title's two halves and the three questions carry their tool's colour: ideas/Copius green, Jobs blue, Manager brass */
 .display .hl{font-style:italic;font-weight:400}.hl-idea,.t-copius{color:var(--accent)}.hl-calm,.t-manager{color:var(--brass)}.t-jobs{color:var(--blue)}
 /* « sans se prendre la tête » fades from Jobs to Manager; the padding keeps the italic's overhang inside the painted box */
