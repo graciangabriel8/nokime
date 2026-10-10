@@ -1,11 +1,12 @@
-// Nokime Jobs: the welcome door (drawings drifting behind the line), then the board with its example offers
+// Nokime Jobs: the welcome door (job names sliding behind the line), then the board with its example offers
 // (each tagged "exemple" on the card) — press "Voir les offres", keep the seasons, open one, write to the
-// establishment, then the establishments' side. The door is held 1.5 s so the opening reads.
+// establishment, then the staff-wellbeing section (held 1.8 s) and the establishments' side. The door is held
+// 1.5 s so the opening reads.
 // Filmed on https://jobs.nokime.fr/?demo=1 (the live site; ?demo=1 is its
 // own switch for the example offers, never shown in the public list).
 const card = () => H.$$('article.job').find(a => a.offsetParent !== null);
 return {
-  duration: 14, cursor: 'dark', ripple: '#2038D5',
+  duration: 16.5, cursor: 'dark', ripple: '#2038D5',
   setup: () => { if (LANG === 'en') H.$('#langBtn').click(); },
   P: {
     start: () => [innerWidth * 0.8, innerHeight * 0.82],
@@ -16,7 +17,8 @@ return {
     all: () => H.ctr(H.$('[data-kind=all]')),
     rest: () => [innerWidth * 0.72, innerHeight * 0.6],
   },
-  SCROLLS: [[3.1, 4.2, () => H.top(H.$('#offres')) - 8], [11.0, 12.4, () => H.top(H.$('#prix')) - 24]],
+  SCROLLS: [[3.1, 4.2, () => H.top(H.$('#offres')) - 8], [11.0, 12.2, () => H.top(H.$('section[aria-labelledby="careTitle"]')) - 24],
+            [14.0, 15.3, () => H.top(H.$('#prix')) - 24]],
   MOVES: [[1.5, 2.7, 'start', 'see'], [4.3, 5.1, 'see', 'season'], [5.8, 6.6, 'season', 'more'], [8.0, 8.8, 'more', 'apply'],
           [9.5, 10.2, 'apply', 'all'], [10.8, 11.6, 'all', 'rest']],
   CLICKS: [[2.9, null],                                   // the door's button is pressed; the scroll below is the page's own anchor, driven per frame
