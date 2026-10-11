@@ -11,6 +11,17 @@
   "caption": "À ce prix-là, le plat est rentable ? Mieux vaut le savoir avant le service.\nNokime Manager vous donne le coût de chaque plat et son prix plancher, hors ligne.\nCinq places fondateurs ouvertes. Lien en bio.\nnokime.fr/manager"
  },
  {
+  "id": "2026-10-12-manager-v",
+  "account": "nokime.manager",
+  "at": "2026-10-12T15:30:00+02:00",
+  "type": "reel",
+  "media": [
+   "social/2026-10-12-manager-v.mp4"
+  ],
+  "cover": "social/2026-10-12-manager-v-cover.jpg",
+  "caption": "À ce prix-là, le plat est rentable ? Manager vous le dit avant le service.\nnokime.fr/manager"
+ },
+ {
   "id": "2026-10-13-jobs",
   "account": "nokime.jobs",
   "at": "2026-10-13T18:00:00+02:00",
@@ -20,6 +31,17 @@
   ],
   "cover": "social/2026-10-13-jobs-cover.jpg",
   "caption": "Un stage ou une saison ? Lisez l’offre avant de postuler.\nCuisine, salle, hébergement, spa : les dates, les heures et le logement sont écrits d’avance.\nGratuit pour vous. Lien en bio.\njobs.nokime.fr"
+ },
+ {
+  "id": "2026-10-13-jobs-v",
+  "account": "nokime.jobs",
+  "at": "2026-10-13T18:00:00+02:00",
+  "type": "reel",
+  "media": [
+   "social/2026-10-13-jobs-v.mp4"
+  ],
+  "cover": "social/2026-10-13-jobs-v-cover.jpg",
+  "caption": "Un stage ou une saison ? Lisez l’offre avant de postuler.\nLe bien-être des équipes, on y tient.\njobs.nokime.fr"
  },
  {
   "id": "2026-10-14-nokime",
