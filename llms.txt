@@ -1,7 +1,7 @@
 # Nokime
 
-> Copius pour trouver l’inspiration, Jobs pour recruter, Manager pour savoir si le plat est rentable.
-> Copius to find inspiration, Jobs to hire, Manager to know whether the dish pays.
+> Copius pour trouver l’inspiration, Jobs pour recruter en prenant soin des équipes, Manager pour savoir si le plat est rentable.
+> Copius to find inspiration, Jobs to hire while looking after the team, Manager to know whether the dish pays.
 
 Nokime regroupe Copius, Manager et Jobs : des outils pour cuisiner avec des idées et gérer sans prise de tête.
 Nokime brings together Copius, Manager and Jobs: tools to cook with ideas and run things without the headache.

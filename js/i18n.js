@@ -36,7 +36,7 @@ window.NOKIME_I18N = {
     langSwitch: "Passer en français", menuLabel: "Menu",
     titleNotFound: "Page not found — Nokime", nfEyebrow: "Error 404", nfTitle: "This page does not exist.", nfLead: "The address may have changed. Everything that exists is one click from here.", nfHome: "Back to the home page",
     titleHome: "Nokime — cook with ideas, run things without the headache",
-    descHome: "Copius to find inspiration, Jobs to hire, Manager to know whether the dish pays.",
+    descHome: "Copius to find inspiration, Jobs to hire while looking after the team, Manager to know whether the dish pays.",
     titleManager: "Nokime Manager — the cost of the plate",
     descManager: "Nokime Manager: food cost per portion, ratio, gross margin and floor price for every dish; your purchase prices; the allergen chart; one typical service read in plain words. Offline, with 1,887 products already priced.",
     titleCopius: "Nokime Copius — the illustrated atlas of cooking",
