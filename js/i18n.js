@@ -87,9 +87,6 @@ window.NOKIME_I18N = {
     manKicker: "The number while it still helps.",
     manP1: "A restaurant does not need six programs and six passwords. Here, a product is the same in the atlas and in your recipe sheets: you type its price once. Each new tool adds to the others. Our one promise: numbers while they still help, presented as neatly as a plate.",
     manQuote: "The accountant gives last year’s figure: correct, but too late to act on the year gone by. Manager handles management step by step through the year, with a tool available 24/7 and a monthly follow-up of your restaurant.",
-    fKicker: "Five founding restaurants.",
-    fText: "Five restaurants, the tool free for six months, the Analysis at €99 per month. In return: your real dishes and your honest opinion. Then €49 per month, if you carry on.",
-    fTag: "Founders’ offer", fSeats: "seats", fCta: "Ask for a seat", fSmall: "One email is enough.",
 
     /* manager */
     mgrEyebrow: "Nokime Manager",

@@ -193,7 +193,6 @@ p{margin:0 0 1em}
 .founders{background:var(--bg-2)}
 .founders-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
 .founders-card{background:var(--card);border:1px solid var(--hair);border-radius:var(--r);padding:28px;box-shadow:var(--shadow)}
-.founders-card .big{font-family:var(--serif);font-size:96px;line-height:.9;margin:6px 0 10px}
 .founders-card .btn{margin-top:14px}
 .founders-card .btn + .small{margin:12px 0 0}   /* the note under the button: room above, the card's padding below */
 
@@ -318,5 +317,4 @@ p{margin:0 0 1em}
   .demo-line{grid-template-columns:40px 1fr 88px 72px;gap:8px}
   .stat-n{font-size:28px}
   .mosaic{grid-template-columns:repeat(3,1fr);gap:12px}
-  .founders-card .big{font-size:72px}
 }
