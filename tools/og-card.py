@@ -24,7 +24,7 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" vie
 <defs><style>
 @font-face{{font-family:"Fraunces";src:url(data:font/ttf;base64,{fraunces}) format("truetype")}}
 @font-face{{font-family:"Fraunces";font-style:italic;src:url(data:font/ttf;base64,{fraunces_it}) format("truetype")}}
-.idea{{fill:#BBEB8A;font-style:italic}}.calm{{fill:#D6B36A;font-style:italic}}
+.idea{{fill:#BBEB8A;font-style:italic}}.calm{{fill:#E7C370;font-style:italic}}
 @font-face{{font-family:"IBM Plex Sans";src:url(data:font/ttf;base64,{plex}) format("truetype")}}
 @font-face{{font-family:"Archivo";font-weight:700;src:url(data:font/ttf;base64,{archivo}) format("truetype")}}
 .f1{{fill:#2F2F2C}}.f2{{fill:#3A3A36}}.f3{{fill:#4A4A45}}.dot{{fill:#B8B5AE}}

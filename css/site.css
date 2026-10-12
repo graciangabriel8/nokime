@@ -5,7 +5,7 @@
   --bg:#15170F;--bg-2:#1A1D14;--card:#1C1F16;--hair:#2A2D22;--rule:#3E4234;
   --ink:#ECEBE2;--ink-2:#BDBFAE;--ink-3:#8C907F;
   --accent:#BBEB8A;--accent-ink:#15170F;--accent-soft:#2C3F1F;--accent-soft-ink:#D9F2B8;
-  --brass:#D6B36A;--brass-ink:#D6B36A;--brass-soft:#2E2716;
+  --brass:#E7C370;--brass-ink:#E7C370;--brass-soft:#2E2716;
   --blue:#4B75FF;   /* the Jobs blue #2038D5, lifted to read on the dark ground (4.5:1) */
   --fade:linear-gradient(90deg,#4B75FF,#7592E2,#A1A9C2,#CEBB9A,#FBCA5F); /* Jobs blue straight to a brighter Manager brass, mixed in OKLab so the middle stays clean */
   --ok:#A6E7A9;--bad:#E48B7C;--bad-soft:#35201C;
