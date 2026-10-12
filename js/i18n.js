@@ -192,8 +192,8 @@ window.NOKIME_I18N = {
     ddTitle: "One restaurant, three questions.",
     ddQ1: "What to cook?", ddQ2: "At what price?", ddQ3: "With whom?",
     ddI1: "The ideas.", ddI2: "The right price.", ddI3: "The team.",
-    ddS1: "What’s in season, and what goes with it.", ddS2: "Know before service whether the dish pays.", ddS3: "Internships and seasons, with care for the team.",
-    ddDish: "Example: roast bass", ddCap: "Price per kg, from the atlas", ddMat: "€8.13 of ingredients", ddHT: "€30.91 excl. VAT", ddPct: "26%",
+    ddS1: "What’s in season, and what goes with it.", ddS2: "Know before service whether the dish pays.", ddS3: "Internships and seasons, looking after the team.",
+    ddDish: "Example: roast bass", ddCap: "Price per kg, from the atlas", ddMat: "€8.13 ingredients", ddHT: "€30.91 excl. VAT", ddPct: "26%",
     ddJ1: "Kitchen commis", ddJ2: "Chef de rang", ddJ3: "Sommelier", ddJ4: "Receptionist", ddJ5: "Spa therapist", ddJ6: "Waiter",
     ddScroll: "Scroll", ddSkip: "Skip", ddEnter: "Enter the site",
   }

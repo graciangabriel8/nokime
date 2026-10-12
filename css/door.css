@@ -9,6 +9,7 @@
 .d-paint,.d-hint{display:none}
 .d-end{display:block;height:0}
 .d-skip{position:absolute;right:16px;bottom:10px;z-index:6;padding:5px 12px;border-radius:999px;border:1px solid var(--hair);background:rgba(21,23,15,.7);font-size:13px;color:var(--ink-3)}
+.d-skip.done:not(:focus){opacity:0;pointer-events:none}
 .d-skip:hover{color:var(--ink);border-color:var(--ink-3)}
 
 /* the title */
@@ -21,7 +22,7 @@
 .d-copius{--c:var(--accent)}.d-manager{--c:var(--brass)}.d-jobs{--c:var(--blue)}
 .d-text{padding:14px 0 6px}
 .d-q{margin:0 0 10px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--ink-3)}
-.d-name{margin:0 0 6px;font-family:var(--serif);font-size:clamp(40px,min(5.2vw,8vh),76px);line-height:1;letter-spacing:-.01em;font-variation-settings:"opsz" 96;color:var(--c)}
+.d-name{margin:0 0 6px;font-family:var(--serif);font-size:clamp(40px,min(5.2vw,8vh),76px);line-height:1;letter-spacing:-.01em;font-variation-settings:"opsz" 96;color:var(--dyed,var(--c))}
 .d-inf{margin:0 0 6px;font-family:var(--serif);font-style:italic;font-size:clamp(20px,min(2.1vw,3.4vh),28px);line-height:1.15;color:var(--ink)}
 .d-sub{margin:0;font-size:15px;line-height:1.45;color:var(--ink-2);max-width:30ch}
 .d-world{position:relative;flex:1;min-height:clamp(250px,36vh,420px)}
@@ -40,17 +41,18 @@
 
 /* Jobs: a stack of big job names in blue */
 .d-names{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:clamp(4px,1.3vh,14px)}
-.d-job{align-self:flex-start;color:var(--blue);font-family:var(--serif);font-size:clamp(23px,min(2.75vw,4.6vh),42px);line-height:1.08;letter-spacing:-.01em;white-space:nowrap}
+.d-job{align-self:flex-start;color:var(--dyed,var(--blue));font-family:var(--serif);font-size:clamp(23px,min(2.75vw,4.6vh),42px);line-height:1.08;letter-spacing:-.01em;white-space:nowrap}
 .d-job .d-in{display:inline-block}
 
 /* Manager: the bar rôti being costed, one card */
-.d-panel{position:absolute;inset:4% 3%;color:var(--brass);border-radius:18px;background:var(--brass-soft);border:1px solid rgba(231,195,112,.4)}
+.d-panel{position:absolute;inset:4% 3%;color:var(--brass);border-radius:18px;background:var(--dbg,var(--brass-soft));border:1px solid var(--dbd,rgba(231,195,112,.4))}
 .d-mgr-in{position:absolute;inset:5% 7%;display:flex;flex-direction:column;justify-content:space-between;color:var(--brass)}
 .d-dish{align-self:flex-start;font-family:var(--serif);font-style:italic;font-size:clamp(22px,min(2.4vw,4vh),34px);line-height:1.1}
 .d-cap{font-family:var(--mono);font-size:clamp(9.5px,.8vw,11.5px);letter-spacing:.06em;text-transform:uppercase;color:rgba(231,195,112,.7)}
 .d-mrow{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding-top:7px;border-top:1px solid rgba(231,195,112,.28);font-size:clamp(12px,1.05vw,15px)}
 .d-mrow b{font-weight:500}
-.d-mrow span{font-family:var(--mono);font-size:.92em;white-space:nowrap}
+.d-mrow span,.d-fl span{white-space:nowrap}
+.d-mrow span{font-family:var(--mono);font-size:.92em}
 .d-mfig{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;padding-top:10px;border-top:1px solid rgba(231,195,112,.5)}
 .d-fl{display:flex;flex-direction:column;gap:2px;font-size:clamp(12px,1.05vw,15px);font-family:var(--mono)}
 .d-fr{font-family:var(--serif);font-size:clamp(34px,min(3.6vw,6vh),54px);line-height:.95;white-space:nowrap}
@@ -97,7 +99,8 @@
   .d-mgr-in{inset:4% 5%}
   .d-dish{font-size:17px;line-height:1.05}
   .d-cap{font-size:8.5px;line-height:1.25}
-  .d-mrow,.d-fl{font-size:10.5px}
+  .d-mrow{font-size:10.5px}
+  .d-fl{font-size:10px}
   .d-mrow{padding-top:4px}
   .d-mfig{padding-top:5px}
   .d-fl{gap:1px}
@@ -124,10 +127,8 @@
   .d-final.is-final{pointer-events:auto}
   .d-halves,.d-glow,.d-rim,.d-body,.d-word,.d-line,.d-act,.d-links{opacity:0}
   .d-wordbox{display:grid;justify-items:center;align-items:center}
-  .d-eq,.d-word{grid-area:1/1}
-  .d-eq{margin:0;opacity:0}
-  .d-eq .eq-is{display:none}
-  .d-word::before{content:"=";position:absolute;right:100%;top:50%;margin:0 .3em 0 0;transform:translateY(-52%);font-family:var(--serif);font-size:.62em;font-weight:400;font-stretch:100%;color:var(--ink-2);opacity:var(--eqo,0)}
+  .d-eq,.d-word{grid-area:1/1;will-change:transform,opacity}
+  .d-eq{margin:0;opacity:0;font-size:clamp(28px,4.4vw,62px)}
   .d-mark .d-knife{stroke-dashoffset:1}
   .d-piece{will-change:transform,opacity}
 
@@ -146,6 +147,7 @@
   .d-worlds{padding:0 16px;grid-template-rows:repeat(3,minmax(0,1fr))}
   .d-col{height:auto}
   .d-world{min-height:0}
+  .d-eq{font-size:clamp(22px,6.2vw,28px)}
   .d-hint i{display:none}
   .d-hint{bottom:10px}
 }
