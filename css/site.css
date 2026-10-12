@@ -289,6 +289,12 @@ p{margin:0 0 1em}
 .shot-video{display:block;width:100%;height:auto;aspect-ratio:1280/900;background:var(--card)}
 .shot figcaption{margin-top:12px;font-size:13.5px;color:var(--ink-3)}
 .shot-section{padding-top:8px}
+/* the Jobs page: l'hirondelle de Nokime Jobs, the swallow beside its title in the Jobs blue */
+.hd-section{padding-top:24px}
+.hd-row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 24px;align-items:start}
+.hd-row .lead{max-width:52ch}
+.hd-art{width:56px;height:auto;color:var(--blue);margin-top:2px}
+@media (max-width:720px){.hd-row{gap:0 16px}.hd-art{width:42px}}
 
 /* ---------- responsive ---------- */
 @media (max-width:960px){
