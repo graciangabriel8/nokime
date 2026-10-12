@@ -17,33 +17,28 @@
 <meta property="og:locale" content="fr_FR">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Cstyle%3E.a%7Bfill:%2315170F%7D.b%7Bfill:%233E6B1F%7D%40media (prefers-color-scheme:dark)%7B.a%7Bfill:%23ECEBE2%7D.b%7Bfill:%23BBEB8A%7D%7D%3C/style%3E%3Cpath class='a' d='M15 181V59A44 44 0 0 1 59 15H150V137.65L67.5 41.65V225H59A44 44 0 0 1 15 181Z'/%3E%3Cpath class='b' d='M90 225V102.35L172.5 198.35V15H181A44 44 0 0 1 225 59V181A44 44 0 0 1 181 225Z'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="css/fonts.css?v=80">
-<link rel="stylesheet" href="css/site.css?v=80">
-<link rel="stylesheet" href="css/door.css?v=80">
+<link rel="stylesheet" href="css/fonts.css?v=81">
+<link rel="stylesheet" href="css/site.css?v=81">
+<link rel="stylesheet" href="css/door.css?v=81">
 <script>(function(){try{var q=/[?&]lang=(fr|en)(?:&|$)/.exec(location.search),l=q?q[1]:localStorage.getItem("nokime-lang");if(l==="fr"||l==="en")document.documentElement.setAttribute("lang",l);}catch(e){}})();</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nokime.fr/#org","name":"Nokime","url":"https://nokime.fr/","sameAs":["https://www.instagram.com/nokime.fr/"],"logo":"https://nokime.fr/apple-touch-icon.png","description":"Copius pour trouver l’inspiration, Jobs pour recruter en prenant soin des équipes, Manager pour savoir si le plat est rentable.","brand":[{"@type":"Brand","name":"Copius","url":"https://copius.fr/","description":"Copius : 1 888 ingrédients, 135 techniques, 45 bases et 68 chefs, dessinés et bilingues, chaque produit avec sa fourchette de prix, sa saison et ses accords. Trois versions : libre, complète, école.","sameAs":["https://www.instagram.com/copius.fr/"]},{"@type":"Brand","name":"Nokime Jobs","url":"https://jobs.nokime.fr/","description":"Nokime Jobs : des stages, des alternances et des saisons en cuisine, en salle, à l’hébergement et au spa. Gratuit pour les candidats ; les hôtels et les restaurants publient et répondent direct.","sameAs":["https://www.instagram.com/nokime.jobs/"]},{"@type":"Brand","name":"Nokime Manager","url":"https://nokime.fr/manager/","description":"Nokime Manager : coût matière par portion, ratio, marge brute et prix plancher pour chaque plat ; vos prix d’achat ; le tableau des allergènes ; un service type lu en clair. Hors ligne, avec 1 887 produits déjà chiffrés.","sameAs":["https://www.instagram.com/nokime.manager/"]}]},{"@type":"WebSite","@id":"https://nokime.fr/#site","name":"Nokime","url":"https://nokime.fr/","inLanguage":["fr","en"],"publisher":{"@id":"https://nokime.fr/#org"}}]}</script>
 </head>
 <body data-title="titleHome" data-desc="descHome">
 
 <!-- the welcome door: Copius, Manager and Jobs pinned on one stage; Copius + Manager + Jobs melt, as paint mixes, into the mark and the name Nokime as the page scrolls (css/door.css, js/door.js) -->
-<section class="door" id="door" role="region" aria-labelledby="doorTitle">
+<section class="door" id="door" role="region" aria-labelledby="doorTitle" data-nosnippet>
   <div class="door-track" id="doorTrack">
     <div class="door-stage" id="doorStage">
-      <a class="d-skip" href="#doorEnd" data-t="ddSkip">Passer</a>
+      <div class="d-tools"><button class="d-lang" id="ddLang" type="button" hidden>EN</button><a class="d-skip" href="#doorEnd" data-t="ddSkip">Passer</a></div>
 
-      <svg class="d-paint" id="ddPaint" aria-hidden="true" focusable="false" viewBox="-720 -450 1440 900">
-        <defs>
-          <radialGradient id="ddGA"><stop offset="0" style="stop-color:var(--accent)"/><stop offset=".86" style="stop-color:var(--accent)"/><stop offset="1" style="stop-color:var(--accent)" stop-opacity="0"/></radialGradient>
-          <radialGradient id="ddGB"><stop offset="0" style="stop-color:var(--brass)"/><stop offset=".86" style="stop-color:var(--brass)"/><stop offset="1" style="stop-color:var(--brass)" stop-opacity="0"/></radialGradient>
-          <radialGradient id="ddGC"><stop offset="0" style="stop-color:var(--blue)"/><stop offset=".86" style="stop-color:var(--blue)"/><stop offset="1" style="stop-color:var(--blue)" stop-opacity="0"/></radialGradient>
-        </defs>
-        <!-- three pools of paint; mix-blend-mode multiply inside an isolated group = the colours mix like paint, never like light -->
-        <g id="ddPools" style="isolation:isolate">
-          <circle id="ddPA" r="1" fill="url(#ddGA)" style="mix-blend-mode:multiply"/>
-          <circle id="ddPB" r="1" fill="url(#ddGB)" style="mix-blend-mode:multiply"/>
-          <circle id="ddPC" r="1" fill="url(#ddGC)" style="mix-blend-mode:multiply"/>
-        </g>
-      </svg>
+      <!-- three pools of paint; mix-blend-mode multiply inside an isolated group = the colours mix like paint, never like light (divs moved by transform, so the compositor does it) -->
+      <div class="d-paint" id="ddPaint" aria-hidden="true">
+        <div class="d-pools" id="ddPools">
+          <i class="d-pool pa" id="ddPA"></i>
+          <i class="d-pool pb" id="ddPB"></i>
+          <i class="d-pool pc" id="ddPC"></i>
+        </div>
+      </div>
 
       <div class="d-head" id="ddHead"><p id="doorTitle" data-t="ddTitle">Un restaurant, trois questions.</p></div>
 
@@ -51,7 +46,7 @@
 
         <div class="d-col d-copius">
           <div class="d-text">
-            <p class="d-q" data-fade data-t="ddQ1">Quoi cuisiner ?</p>
+            <p class="d-q" data-fade data-t="ddQ1">Quoi cuisiner ?</p>
             <p class="d-name" data-w="c" data-t="navCopius">Copius</p>
             <p class="d-inf" data-fade data-t="ddI1">Les idées.</p>
             <p class="d-sub" data-fade data-t="ddS1">Les produits de saison, et ce qui va avec.</p>
@@ -68,7 +63,7 @@
 
         <div class="d-col d-manager">
           <div class="d-text">
-            <p class="d-q" data-fade data-t="ddQ2">À quel prix ?</p>
+            <p class="d-q" data-fade data-t="ddQ2">À quel prix ?</p>
             <p class="d-name" data-w="m" data-t="navManager">Manager</p>
             <p class="d-inf" data-fade data-t="ddI2">Le bon prix.</p>
             <p class="d-sub" data-fade data-t="ddS2">Savoir avant le service si le plat est rentable.</p>
@@ -83,7 +78,7 @@
 
         <div class="d-col d-jobs">
           <div class="d-text">
-            <p class="d-q" data-fade data-t="ddQ3">Avec qui ?</p>
+            <p class="d-q" data-fade data-t="ddQ3">Avec qui ?</p>
             <p class="d-name" data-w="j" data-t="navJobs">Jobs</p>
             <p class="d-inf" data-fade data-t="ddI3">L’équipe.</p>
             <p class="d-sub" data-fade data-t="ddS3">Des stages et des saisons, en prenant soin de l’équipe.</p>
@@ -269,9 +264,9 @@
   </div>
 </footer>
 
-<script src="js/art.js?v=80"></script>
-<script src="js/i18n.js?v=80"></script>
-<script src="js/site.js?v=80"></script>
-<script src="js/door.js?v=80"></script>
+<script src="js/art.js?v=81"></script>
+<script src="js/i18n.js?v=81"></script>
+<script src="js/site.js?v=81"></script>
+<script src="js/door.js?v=81"></script>
 </body>
 </html>

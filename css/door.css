@@ -8,9 +8,13 @@
 .door-stage{position:relative;overflow:hidden;isolation:isolate}
 .d-paint,.d-hint{display:none}
 .d-end{display:block;height:0}
-.d-skip{position:absolute;right:16px;bottom:10px;z-index:6;padding:5px 12px;border-radius:999px;border:1px solid var(--hair);background:rgba(21,23,15,.7);font-size:13px;color:var(--ink-3)}
-.d-skip.done:not(:focus){opacity:0;pointer-events:none}
-.d-skip:hover{color:var(--ink);border-color:var(--ink-3)}
+.d-end:focus{outline:none}   /* a landmark position the skip links move focus to, not a control */
+/* the way out of the door, from the first frame: skip, and the language (the site header only comes after the door). Static = at the top, so a keyboard visitor meets it first */
+.d-tools{position:absolute;right:16px;top:16px;z-index:6;display:flex;gap:8px;align-items:center}
+.d-skip,.d-lang{padding:5px 12px;border-radius:999px;border:1px solid var(--hair);background:rgba(21,23,15,.7);font:inherit;font-size:13px;line-height:1.6;color:var(--ink-3);cursor:pointer}
+.d-lang[hidden]{display:none}
+.d-skip.done:not(:focus),.d-lang.done:not(:focus){opacity:0;pointer-events:none}
+.d-skip:hover,.d-lang:hover{color:var(--ink);border-color:var(--ink-3)}
 
 /* the title */
 .d-head{padding:52px 24px 4px;text-align:center}
@@ -80,7 +84,7 @@
 
 /* phones: three rows, text left, the disc right; every disc the same size, all on one vertical axis, each centred on its row's text */
 @media (max-width:720px){
-  .d-head{padding:34px 16px 0}
+  .d-head{padding:60px 16px 0}
   .d-head p{font-size:21px}
   .d-worlds{grid-template-columns:1fr;grid-template-rows:none;gap:0;padding:6px 16px 28px}
   .d-col{grid-row:auto;grid-template-rows:none;grid-template-columns:minmax(0,.92fr) minmax(0,1fr);align-items:center;column-gap:6px;border-top:1px solid rgba(42,45,34,var(--hl,1))}
@@ -98,13 +102,18 @@
 }
 
 /* ---------- motion allowed and scripting on: pinned stage, layers stacked, door-js drives them ---------- */
-@media (prefers-reduced-motion:no-preference) and (scripting:enabled){
+@media (prefers-reduced-motion:no-preference) and (scripting:enabled) and (min-height:560px){   /* a shorter window (a phone on its side) gets the two calm blocks: the pinned stage would clip its own content */
   .door-track{height:300vh}
+  .d-tools{top:auto;bottom:10px}
   .door-stage{position:sticky;top:0;height:100vh;height:100svh}
-  .d-paint{display:block;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+  .d-paint{display:block;position:absolute;inset:0;pointer-events:none;z-index:1}
+  .d-pools{position:absolute;inset:0;isolation:isolate}
+  .d-pool{position:absolute;left:50%;top:50%;width:320px;height:320px;margin:-160px 0 0 -160px;border-radius:50%;transform:scale(0);will-change:transform;mix-blend-mode:multiply;
+    background:radial-gradient(closest-side,var(--pc),var(--pc) 86%,transparent)}   /* js/door.js moves and scales each by transform (radius 160 = scale 1) */
+  .d-pool.pa{--pc:var(--accent)}.d-pool.pb{--pc:var(--brass)}.d-pool.pc{--pc:var(--blue)}
   .d-head{position:absolute;top:clamp(18px,4.2vh,42px);left:0;right:0;padding:0 16px;z-index:3}
   .d-worlds{position:absolute;left:0;right:0;top:clamp(74px,12.5vh,120px);bottom:clamp(30px,6vh,58px);margin:0 auto;padding:0 24px;z-index:2;grid-template-rows:auto auto;align-content:center}   /* text and discs as one block, centred: the gap between them is the same at every size */
-  .d-world{max-width:max(250px,calc(100svh - 400px));justify-self:center;width:100%}
+  .d-world{max-width:max(200px,calc(100svh - 400px));justify-self:center;width:100%}
   .d-disc::before{display:none}
   .d-hint{display:flex;flex-direction:column;align-items:center;gap:6px;position:absolute;left:0;right:0;bottom:8px;z-index:3;pointer-events:none;
     font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
@@ -129,8 +138,9 @@
   .d-fi{will-change:transform,opacity;animation:ddFount var(--ft,9s) cubic-bezier(.25,.1,.45,1) infinite;animation-delay:var(--fd,0s)}
   .d-fi.idle{animation:none;opacity:0}
   .door.away *{animation-play-state:paused}
+  .door.melted .d-art .art{animation-play-state:paused}   /* every drawing is invisible once the melt is past; no need to animate them while the finished frame holds */
 }
-@media (prefers-reduced-motion:no-preference) and (scripting:enabled) and (max-width:720px){
+@media (prefers-reduced-motion:no-preference) and (scripting:enabled) and (min-height:560px) and (max-width:720px){
   .door-track{height:240vh}
   .d-worlds{padding:0 16px;grid-template-rows:repeat(3,minmax(0,1fr))}
   .d-col{height:auto}
@@ -150,3 +160,5 @@
   100%{opacity:0;transform:translate(calc(var(--dx) / var(--fs) * 100%),calc(var(--dy) / var(--fs) * 100%)) scale(1) rotate(var(--r1,0deg))}
 }
 @keyframes ddHint{0%{transform:scaleY(.2);transform-origin:top;opacity:.2}60%{transform:scaleY(1);transform-origin:top;opacity:1}100%{transform:scaleY(1);transform-origin:top;opacity:0}}
+/* browsers without container queries (iOS 15 and earlier): the disc fills its square world, so the drawings still show */
+@supports not (container-type:size){.d-disc{left:0;top:0;width:100%;height:100%;margin:0}}

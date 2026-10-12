@@ -38,12 +38,12 @@
   function lerp(a, b, t) { return a + (b - a) * t; }
 
   var rm = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : { matches: false };
-  var worldsEl = $("#ddWorlds"), head = $("#ddHead"), hint = $("#ddHint"), final = $("#ddFinal"), pools = $("#ddPools"), paint = $("#ddPaint");
+  var worldsEl = $("#ddWorlds"), head = $("#ddHead"), hint = $("#ddHint"), final = $("#ddFinal"), pools = $("#ddPools");
   var knife = $("#ddKnife"), halves = $("#ddHalves"), body = $("#ddBody"), rim = $("#ddRim"), glow = $("#ddGlow");
   var eq = $("#ddEq"), eqT = { c: $(".eq-c", eq), m: $(".eq-m", eq), j: $(".eq-j", eq) }, eqP = $$(".eq-p", eq), eqIs = $(".eq-is", eq), EQ = { c: 0, m: 0, j: 0 };
   var TW = { c: 0, m: 0, j: 0 }, TP = { c: 0, m: 0 }, T3 = { c: 0, m: 0, j: 0 };   // term widths, and where each lands side by side: as the pair, then as the triple
   var EG = { dy: 0, bs: 1, x: 0, wx: 0, ws: 1, wl: 0, wn: 1 };   // the equation line: drop, fit scale, centre, and where the name waits at its right end
-  var skip = $(".d-skip", door), word = $("#ddWord"), line = $("#ddLine"), act = $("#ddAct"), links = $("#ddLinks");
+  var skip = $(".d-skip", door), langTo = $("#ddLang", door), word = $("#ddWord"), line = $("#ddLine"), act = $("#ddAct"), links = $("#ddLinks");
   var POOL = { c: $("#ddPA"), m: $("#ddPB"), j: $("#ddPC") };
   var WORLD_X = { c: -1, m: 0, j: 1 };                     // which side of the block each world's pieces land on
   var START = { c: [.06, .45], m: [.06, .47], j: [.15, .5] };   // Copius and Manager meet first, Jobs pours in after: pair, then triple
@@ -63,7 +63,7 @@
   var worlds = { c: $(".d-copius .d-world", door), m: $(".d-manager .d-world", door), j: $(".d-jobs .d-world", door) };
   var discs = { c: $(".d-copius .d-disc", door), m: $(".d-manager .d-disc", door), j: $(".d-jobs .d-disc", door) };
   var G = { W: 1, H: 1, T: { x: 0, y: 0 }, s: 1, w: { c: {}, m: {}, j: {} }, range: 1, sw: 1.4, top: 0 };
-  var on = false, last = -1, queued = false, cur = 0, mw = 0, mh = 0, gone = false, dyed = "";
+  var on = false, last = -1, queued = false, cur = 0, mw = 0, msh = 0, mth = 0, gone = false, dyed = "";
 
 
   /* ---------- Copius's fountain: more ingredients of the atlas, born small and clear at the centre of its disc, growing and drifting outward along
@@ -101,7 +101,10 @@
     var off = p > .03;
     if (off !== fountOff) {
       fountOff = off;
-      if (!off) fountSel.forEach(function (el, i) { el.classList.remove("idle"); fountSpawn(el); el.style.setProperty("--fd", (-i * FOUNT_T / FOUNT_N).toFixed(2) + "s"); });
+      if (!off) fountSel.forEach(function (el, i) {   // only the idle ones start again; those still in flight run on and are reborn at their next iteration
+        if (!el.classList.contains("idle")) return;
+        el.classList.remove("idle"); fountSpawn(el); el.style.setProperty("--fd", (-i * FOUNT_T / FOUNT_N).toFixed(2) + "s");
+      });
     }
     fount.style.opacity = (1 - ease(seg(p, .03, .12))).toFixed(3);   // those in flight fade as the melt starts
   }
@@ -114,9 +117,8 @@
 
   function measure() {
     var sr = stage.getBoundingClientRect(), W = sr.width, H = sr.height, cx = sr.left + W / 2, cy = sr.top + H / 2;
-    G.W = W; G.H = H; mw = window.innerWidth; mh = window.innerHeight;
+    G.W = W; G.H = H; mw = window.innerWidth; msh = stage.offsetHeight; mth = track.offsetHeight;
     G.sw = W < 720 ? .9 : 1.4;
-    paint.setAttribute("viewBox", (-W / 2) + " " + (-H / 2) + " " + W + " " + H);
     pieces.forEach(function (P) { P.el.style.transform = ""; });
     NAMES.forEach(function (N) { N.el.style.transform = ""; });
     NAMES.forEach(function (N) { var r = N.el.getBoundingClientRect(); N.x0 = r.left + r.width / 2 - cx; N.y0 = r.top + r.height / 2 - cy; N.w0 = r.width; });
@@ -165,7 +167,7 @@
   }
   function remeasure() { if (!on) return; measure(); last = -1; schedule(); }
 
-  function blob(el, x, y, rx, ry) { el.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") scale(" + rx.toFixed(1) + " " + ry.toFixed(1) + ")"); }
+  function blob(el, x, y, rx, ry) { el.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) scale(" + (rx / 160).toFixed(4) + "," + (ry / 160).toFixed(4) + ")"; }   // a pool is a 320 px disc: radius 160 = scale 1
 
   function render(p) {
     if (p === last) return; last = p;
@@ -191,9 +193,9 @@
       });
     }
     if (p >= .68) {
-      if (!gone) { gone = true; pieces.forEach(function (P) { P.el.style.opacity = 0; }); }
+      if (!gone) { gone = true; door.classList.add("melted"); pieces.forEach(function (P) { P.el.style.opacity = 0; }); }
     } else {
-      gone = false;
+      if (gone) { gone = false; door.classList.remove("melted"); }
       for (i = 0; i < pieces.length; i++) {
         P = pieces[i];
         var e = eio(seg(p, P.t0, P.t0 + .4));
@@ -267,6 +269,7 @@
     act.style.transform = links.style.transform = "translateY(" + (12 * (1 - oa)).toFixed(1) + "px)";
     final.classList.toggle("is-final", p >= .94);
     skip.classList.toggle("done", p >= .94);           // the finished page has its own way in; the link stays for the keyboard
+    if (langTo) langTo.classList.toggle("done", p >= .94);   // and the site header, with its own language button, follows
   }
 
   function progress() { return clamp((window.pageYOffset - G.top) / G.range); }   // the track's offset is measured once, not every frame
@@ -288,23 +291,25 @@
       if (styles[i]) P.el.setAttribute("style", styles[i]); else P.el.removeAttribute("style");
     });
     fades.forEach(function (el) { el.removeAttribute("style"); });
-    [worldsEl, head, hint, pools, halves, body, rim, glow, knife, eq, eqT.c, eqT.m, eqT.j, eqP[0], eqP[1], eqIs, word, line, act, links, worlds.c, worlds.m, worlds.j].concat(NAMES.map(function (N) { return N.el; })).forEach(function (el) { el.removeAttribute("style"); });
-    gone = false; dyed = "";
+    [worldsEl, head, hint, pools, halves, body, rim, glow, knife, eq, eqT.c, eqT.m, eqT.j, eqP[0], eqP[1], eqIs, word, line, act, links, worlds.c, worlds.m, worlds.j, POOL.c, POOL.m, POOL.j].concat(NAMES.map(function (N) { return N.el; })).forEach(function (el) { el.removeAttribute("style"); });
+    gone = false; dyed = ""; door.classList.remove("melted");
     fountStop();
-    pools.setAttribute("style", "isolation:isolate");
     body.setAttribute("rx", "44"); rim.setAttribute("rx", "44");
-    final.classList.remove("is-final"); skip.classList.remove("done");
+    final.classList.remove("is-final"); skip.classList.remove("done"); if (langTo) langTo.classList.remove("done");
   }
 
   window.addEventListener("scroll", schedule, { passive: true });
-  /* a phone's URL bar resizes the view while scrolling: re-measure only for a real change of width, or of height by more than ~120 px */
+  /* the pinned or static choice follows the window (a phone turned on its side); a re-measure is for a change of width or of the boxes the maths depends on
+     (the stage and the track), so a phone's URL bar showing or hiding (svh and lvh units do not move) costs nothing, and a desktop window resized in height does */
   window.addEventListener("resize", function () {
-    if (!on) return;
-    if (Math.abs(window.innerWidth - mw) < 1 && Math.abs(window.innerHeight - mh) < 120) return;
+    var was = on; gate();
+    if (!was || !on) return;
+    if (Math.abs(window.innerWidth - mw) < 1 && stage.offsetHeight === msh && track.offsetHeight === mth) return;
     measure(); last = -1; schedule();
   }, { passive: true });
   window.addEventListener("load", remeasure);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure);
+  if (document.fonts && document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", remeasure);   // a web font that lands late (swap) changes the widths measured
   /* the pinned layout is the CSS's call (it needs motion and scripting allowed): the script runs only where the stage really is sticky */
   function gate() { if (rm.matches || window.getComputedStyle(stage).position !== "sticky") stop(); else start(); }
   if (rm.addEventListener) rm.addEventListener("change", gate); else if (rm.addListener) rm.addListener(gate);
@@ -312,6 +317,23 @@
 
   var langBtn = $("#langBtn");
   if (langBtn) langBtn.addEventListener("click", function () { setTimeout(remeasure, 0); });
+  /* the language button of the door (the site header comes after the door): it presses the header's own, then copies its label */
+  if (langBtn && langTo) {
+    langTo.hidden = false; langTo.textContent = langBtn.textContent; langTo.setAttribute("lang", langBtn.getAttribute("lang") || "en"); langTo.setAttribute("aria-label", langBtn.getAttribute("aria-label") || "");
+    langTo.addEventListener("click", function () {
+      langBtn.click();
+      langTo.textContent = langBtn.textContent; langTo.setAttribute("lang", langBtn.getAttribute("lang") || "en"); langTo.setAttribute("aria-label", langBtn.getAttribute("aria-label") || "");
+    });
+  }
+  /* « Passer » and « Entrer » cut to the end of the door (the site scrolls smoothly, which would play the whole melt fast-forwarded); without the script they are plain links */
+  $$("a[href='#doorEnd']", door).forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var end = $("#doorEnd"); if (!on || !end) return; e.preventDefault();
+      var y = end.getBoundingClientRect().top + window.pageYOffset;
+      try { window.scrollTo({ top: y, behavior: "instant" }); } catch (x) { window.scrollTo(0, y); }
+      end.focus({ preventScroll: true });
+    });
+  });
 
   /* keyboard: reaching the way in completes the melt first, so the focused link is never an invisible one */
   final.addEventListener("focusin", function () {
@@ -323,6 +345,6 @@
 
   /* nothing animates while the door is out of sight */
   if ("IntersectionObserver" in window) {
-    new IntersectionObserver(function (en) { door.classList.toggle("away", !en[0].isIntersecting); }).observe(door);
+    new IntersectionObserver(function (en) { door.classList.toggle("away", !en[en.length - 1].isIntersecting); }).observe(door);
   }
 })();
