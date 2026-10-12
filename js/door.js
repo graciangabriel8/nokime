@@ -66,53 +66,6 @@
   var on = false, last = -1, queued = false, cur = 0, mw = 0, msh = 0, mth = 0, gone = false, dyed = "";
 
 
-  /* ---------- Copius's fountain: more ingredients of the atlas, born small and clear at the centre of its disc, growing and drifting outward along
-     varied angles, each gone as it nears the rim, one after another. Time-based CSS (transform and opacity, staggered delays), built only where the
-     motion runs; it stops spawning as the melt starts. The pool is the curated list of the home page's hero, minus the thin and bare shapes. */
-  var FOUNT_POOL = ["chicken", "canard-colvert", "venison", "hare", "dungeness-crab", "sea-urchin", "escargot-de-bourgogne",
-    "squid", "lamb-shank", "maitake", "avocado", "corn", "garlic", "kohlrabi", "bell-pepper", "musquee-de-provence-squash"];
-  var FOUNT_N = 8, FOUNT_T = 9, fount = $("#ddFount"), fountOff = false, fountAng = 0, fountSel = [];
-  function rnd(a, b) { return a + Math.random() * (b - a); }
-  function fountTaken() {   // what is on screen now: the five of the circle and the fountain's own
-    var t = $$("[data-art]", worlds.c).map(function (el) { return el.getAttribute("data-art"); });
-    return t.concat(fountSel.map(function (el) { return el.getAttribute("data-art"); }));
-  }
-  function fountSpawn(el) {
-    var A = window.NOKIME_ART || {}, taken = fountTaken(), free = FOUNT_POOL.filter(function (id) { return A[id] && taken.indexOf(id) < 0; });
-    if (!free.length) { el.classList.add("idle"); return; }
-    var id = free[Math.floor(Math.random() * free.length)], fs = rnd(.1, .15), dist = rnd(.28, .34), r0 = rnd(-25, 25);
-    fountAng += 137.5 + rnd(-18, 18);
-    var an = fountAng * Math.PI / 180;
-    el.setAttribute("data-art", id);
-    el.innerHTML = '<svg class="art" viewBox="0 0 96 96" aria-hidden="true">' + A[id].svg + "</svg>";
-    el.style.setProperty("--fs", fs.toFixed(3)); el.style.setProperty("--dx", (dist * Math.cos(an)).toFixed(3)); el.style.setProperty("--dy", (dist * Math.sin(an)).toFixed(3));
-    el.style.setProperty("--r0", r0.toFixed(1) + "deg"); el.style.setProperty("--r1", (r0 + rnd(-30, 30)).toFixed(1) + "deg");
-  }
-  function fountStart() {
-    if (!fount || fountSel.length) return;
-    for (var i = 0; i < FOUNT_N; i++) {
-      var el = document.createElement("span"); el.className = "d-fi";
-      el.style.setProperty("--ft", FOUNT_T + "s"); el.style.setProperty("--fd", (-i * FOUNT_T / FOUNT_N).toFixed(2) + "s");
-      fountSel.push(el); fountSpawn(el); fount.appendChild(el);
-    }
-  }
-  function fountStop() { if (!fount) return; fountSel = []; fount.innerHTML = ""; fount.removeAttribute("style"); fountOff = false; }
-  function fountMelt(p) {
-    var off = p > .03;
-    if (off !== fountOff) {
-      fountOff = off;
-      if (!off) fountSel.forEach(function (el, i) {   // only the idle ones start again; those still in flight run on and are reborn at their next iteration
-        if (!el.classList.contains("idle")) return;
-        el.classList.remove("idle"); fountSpawn(el); el.style.setProperty("--fd", (-i * FOUNT_T / FOUNT_N).toFixed(2) + "s");
-      });
-    }
-    fount.style.opacity = (1 - ease(seg(p, .03, .12))).toFixed(3);   // those in flight fade as the melt starts
-  }
-  if (fount) fount.addEventListener("animationiteration", function (e) {
-    var el = e.target; if (e.animationName !== "ddFount" || !el.classList.contains("d-fi")) return;
-    if (fountOff) el.classList.add("idle"); else fountSpawn(el);   // reborn as another ingredient, at the instant it is clear at the centre
-  });
-
   function rot(x, y, a) { var c = Math.cos(a), s = Math.sin(a); return [x * c - y * s, x * s + y * c]; }
 
   function measure() {
@@ -172,7 +125,6 @@
   function render(p) {
     if (p === last) return; last = p;
     var T = G.T, i, P;
-    if (fount) fountMelt(p);
 
     /* the questions step aside; the names and the drawings carry on */
     var eh = ease(seg(p, .03, .2));
@@ -266,6 +218,11 @@
     word.style.transform = "translate(" + wx.toFixed(1) + "px," + dy.toFixed(1) + "px) scale(" + wsc.toFixed(3) + ")";
     line.style.opacity = ol.toFixed(3); line.style.transform = "translateY(" + (14 * (1 - ol)).toFixed(1) + "px)";
     act.style.opacity = oa.toFixed(3); links.style.opacity = oa.toFixed(3);
+    /* at zero they are hidden outright, not only transparent: Safari once kept a stale half-faded « Entrer sur le site » over the opening
+       after scrolling back (his screenshot, 12 Oct); a focused link keeps its place so the keyboard is never dropped */
+    var keep = final.contains(document.activeElement);
+    act.style.visibility = links.style.visibility = oa > 0 || keep ? "" : "hidden";
+    line.style.visibility = ol > 0 || keep ? "" : "hidden";
     act.style.transform = links.style.transform = "translateY(" + (12 * (1 - oa)).toFixed(1) + "px)";
     final.classList.toggle("is-final", p >= .94);
     skip.classList.toggle("done", p >= .94);           // the finished page has its own way in; the link stays for the keyboard
@@ -283,7 +240,7 @@
   var styles = pieces.map(function (P) { return P.el.getAttribute("style"); });
   function start() {
     if (on) return; on = true;
-    measure(); last = -1; fountStart(); frame();
+    measure(); last = -1; frame();
   }
   function stop() {
     if (!on) return; on = false;
@@ -293,7 +250,6 @@
     fades.forEach(function (el) { el.removeAttribute("style"); });
     [worldsEl, head, hint, pools, halves, body, rim, glow, knife, eq, eqT.c, eqT.m, eqT.j, eqP[0], eqP[1], eqIs, word, line, act, links, worlds.c, worlds.m, worlds.j, POOL.c, POOL.m, POOL.j].concat(NAMES.map(function (N) { return N.el; })).forEach(function (el) { el.removeAttribute("style"); });
     gone = false; dyed = ""; door.classList.remove("melted");
-    fountStop();
     body.setAttribute("rx", "44"); rim.setAttribute("rx", "44");
     final.classList.remove("is-final"); skip.classList.remove("done"); if (langTo) langTo.classList.remove("done");
   }
@@ -308,6 +264,8 @@
     measure(); last = -1; schedule();
   }, { passive: true });
   window.addEventListener("load", remeasure);
+  window.addEventListener("pageshow", function (e) { if (e.persisted) { last = -1; schedule(); } });   // back from another page (bfcache): draw the frame for where the page is now
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) { last = -1; schedule(); } });   // back to the tab: the frame for where the page is now
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure);
   if (document.fonts && document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", remeasure);   // a web font that lands late (swap) changes the widths measured
   /* the pinned layout is the CSS's call (it needs motion and scripting allowed): the script runs only where the stage really is sticky */

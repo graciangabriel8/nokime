@@ -39,7 +39,7 @@
 /* the drawings: the atlas hand, each world's line tinted in its colour (door-js dyes them through --da1…--dal as they melt).
    A drawing is placed by its centre (--cx, --cy) and size (--s), all fractions of the disc. */
 .d-art{position:absolute;display:block;left:calc((var(--cx) - var(--s) / 2) * 100%);top:calc((var(--cy) - var(--s) / 2) * 100%);width:calc(var(--s) * 100%)}
-.d-art .art,.d-fi .art{width:100%;height:auto;aspect-ratio:1;overflow:visible}
+.d-art .art{width:100%;height:auto;aspect-ratio:1;overflow:visible}
 .d-world .art{--art-1:var(--da1,#1F2B17);--art-2:var(--da2,#2A3B1F);--art-3:var(--da3,#35502A);--art-line:var(--dal,#B3E080)}
 .d-manager .art{--art-1:var(--da1,#272113);--art-2:var(--da2,#352D1A);--art-3:var(--da3,#453B22);--art-line:var(--dal,#E0BC6B)}
 .d-jobs .art{--art-1:var(--da1,#0E1730);--art-2:var(--da2,#142049);--art-3:var(--da3,#1B2A5E);--art-line:var(--dal,#5F84FF)}
@@ -57,9 +57,6 @@
 .d-jobs .a3{--cx:.73;--cy:.6;--s:.25}
 .d-jobs .a4{--cx:.34;--cy:.82;--s:.3}
 
-/* Copius's fountain: more atlas ingredients born at the centre of the disc (js/door.js builds them, only where the motion runs) */
-.d-fount{position:absolute;inset:0;pointer-events:none}
-.d-fi{position:absolute;display:block;left:calc((.5 - var(--fs) / 2) * 100%);top:calc((.5 - var(--fs) / 2) * 100%);width:calc(var(--fs) * 100%);opacity:0}
 
 /* the mark and what settles under it */
 .d-final{display:flex;flex-direction:column;align-items:center;text-align:center;padding:76px 24px 92px;border-top:1px solid var(--hair)}
@@ -135,8 +132,6 @@
   .d-art.a3 .art{animation-duration:8s;animation-delay:-5s}
   .d-art.a4 .art{animation-duration:10s;animation-delay:-2s}
   .d-art.a5 .art{animation-duration:6.5s;animation-delay:-4s}
-  .d-fi{will-change:transform,opacity;animation:ddFount var(--ft,9s) cubic-bezier(.25,.1,.45,1) infinite;animation-delay:var(--fd,0s)}
-  .d-fi.idle{animation:none;opacity:0}
   .door.away *{animation-play-state:paused}
   .door.melted .d-art .art{animation-play-state:paused}   /* every drawing is invisible once the melt is past; no need to animate them while the finished frame holds */
 }
@@ -151,15 +146,6 @@
   .d-hint{bottom:10px}
 }
 @keyframes ddFloat{from{transform:translateY(0) rotate(-2.5deg)}to{transform:translateY(-8px) rotate(2.5deg)}}
-/* born small and clear at the centre, grows and drifts outward along its own angle, gone as it reaches the rim */
-@keyframes ddFount{
-  0%{opacity:0;transform:translate(0,0) scale(.16) rotate(var(--r0,0deg))}
-  15%{opacity:.4}
-  42%{opacity:.55}
-  62%{opacity:.4}
-  84%{opacity:0}
-  100%{opacity:0;transform:translate(calc(var(--dx) / var(--fs) * 100%),calc(var(--dy) / var(--fs) * 100%)) scale(1) rotate(var(--r1,0deg))}
-}
 @keyframes ddHint{0%{transform:scaleY(.2);transform-origin:top;opacity:.2}60%{transform:scaleY(1);transform-origin:top;opacity:1}100%{transform:scaleY(1);transform-origin:top;opacity:0}}
 /* browsers without container queries (iOS 15 and earlier): the disc fills its square world, so the drawings still show */
 @supports not (container-type:size){.d-disc{left:0;top:0;width:100%;height:100%;margin:0}}
