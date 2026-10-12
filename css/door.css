@@ -1,0 +1,156 @@
+/* ---------- the welcome door: Copius + Manager + Jobs = Nokime ----------
+   Default = two calm static blocks (the three projects, then the equation and the mark): reduced-motion visitors and no-script visitors get this.
+   With motion and scripting allowed, the stage is pinned in a tall track and js/door.js drives every layer from the scroll progress.
+   The three colours are the site tokens (Copius --accent, Manager --brass, Jobs --blue). --mix is their paint (multiply) mix, per channel
+   r1*r2*r3 on 0-1 values: #BBEB8A x #E7C370 x #4B75FF = #32523D (js/door.js computes the same from the tokens). */
+.door{--mix:#32523D;position:relative;background:var(--bg);color:var(--ink)}
+.door-track{position:relative}
+.door-stage{position:relative;overflow:hidden;isolation:isolate}
+.d-paint,.d-hint{display:none}
+.d-end{display:block;height:0}
+.d-skip{position:absolute;right:16px;bottom:10px;z-index:6;padding:5px 12px;border-radius:999px;border:1px solid var(--hair);background:rgba(21,23,15,.7);font-size:13px;color:var(--ink-3)}
+.d-skip:hover{color:var(--ink);border-color:var(--ink-3)}
+
+/* the title */
+.d-head{padding:52px 24px 4px;text-align:center}
+.d-head p{margin:0;font-family:var(--serif);font-size:clamp(24px,2.6vw,36px);line-height:1.15;color:var(--ink-2)}
+
+/* the three worlds */
+.d-worlds{display:grid;grid-template-columns:repeat(3,1fr);gap:0 36px;max-width:1280px;margin:0 auto;padding:12px 24px 44px}
+.d-col{display:flex;flex-direction:column;min-width:0}
+.d-copius{--c:var(--accent)}.d-manager{--c:var(--brass)}.d-jobs{--c:var(--blue)}
+.d-text{padding:14px 0 6px}
+.d-q{margin:0 0 10px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--ink-3)}
+.d-name{margin:0 0 6px;font-family:var(--serif);font-size:clamp(40px,min(5.2vw,8vh),76px);line-height:1;letter-spacing:-.01em;font-variation-settings:"opsz" 96;color:var(--c)}
+.d-inf{margin:0 0 6px;font-family:var(--serif);font-style:italic;font-size:clamp(20px,min(2.1vw,3.4vh),28px);line-height:1.15;color:var(--ink)}
+.d-sub{margin:0;font-size:15px;line-height:1.45;color:var(--ink-2);max-width:30ch}
+.d-world{position:relative;flex:1;min-height:clamp(250px,36vh,420px)}
+.d-piece{transform:rotate(calc(var(--rot,0) * 1deg));transform-origin:50% 50%}
+.d-name.d-piece{align-self:flex-start;width:max-content}
+
+/* Copius: real atlas drawings, line tinted green (door-js dyes them through --da1…--dal as they melt) */
+.d-world .art{--art-1:var(--da1,#1F2B17);--art-2:var(--da2,#2A3B1F);--art-3:var(--da3,#35502A);--art-line:var(--dal,#B3E080)}
+.d-art{position:absolute;display:block}
+.d-art .art{width:100%;height:auto;aspect-ratio:1}
+.d-art.a1{left:1%;top:28%;width:46%}
+.d-art.a2{left:42%;top:2%;width:44%}
+.d-art.a3{left:60%;top:42%;width:34%}
+.d-art.a4{left:3%;top:68%;width:32%}
+.d-art.a5{left:38%;top:60%;width:28%}
+
+/* Jobs: a stack of big job names in blue */
+.d-names{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:clamp(4px,1.3vh,14px)}
+.d-job{align-self:flex-start;color:var(--blue);font-family:var(--serif);font-size:clamp(23px,min(2.75vw,4.6vh),42px);line-height:1.08;letter-spacing:-.01em;white-space:nowrap}
+.d-job .d-in{display:inline-block}
+
+/* Manager: the bar rôti being costed, one card */
+.d-panel{position:absolute;inset:4% 3%;color:var(--brass);border-radius:18px;background:var(--brass-soft);border:1px solid rgba(231,195,112,.4)}
+.d-mgr-in{position:absolute;inset:5% 7%;display:flex;flex-direction:column;justify-content:space-between;color:var(--brass)}
+.d-dish{align-self:flex-start;font-family:var(--serif);font-style:italic;font-size:clamp(22px,min(2.4vw,4vh),34px);line-height:1.1}
+.d-cap{font-family:var(--mono);font-size:clamp(9.5px,.8vw,11.5px);letter-spacing:.06em;text-transform:uppercase;color:rgba(231,195,112,.7)}
+.d-mrow{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding-top:7px;border-top:1px solid rgba(231,195,112,.28);font-size:clamp(12px,1.05vw,15px)}
+.d-mrow b{font-weight:500}
+.d-mrow span{font-family:var(--mono);font-size:.92em;white-space:nowrap}
+.d-mfig{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;padding-top:10px;border-top:1px solid rgba(231,195,112,.5)}
+.d-fl{display:flex;flex-direction:column;gap:2px;font-size:clamp(12px,1.05vw,15px);font-family:var(--mono)}
+.d-fr{font-family:var(--serif);font-size:clamp(34px,min(3.6vw,6vh),54px);line-height:.95;white-space:nowrap}
+.d-mbar{height:6px;border-radius:3px;background:rgba(231,195,112,.2);overflow:hidden}
+.d-mbar i{display:block;height:100%;width:100%;background:currentColor;transform:scaleX(.26);transform-origin:0 50%}
+
+/* the mark and what settles under it */
+.d-final{display:flex;flex-direction:column;align-items:center;text-align:center;padding:76px 24px 92px;border-top:1px solid var(--hair)}
+.d-markwrap{width:clamp(140px,min(22vw,27vh),230px);aspect-ratio:1;position:relative}
+.d-mark{width:100%;height:100%;overflow:visible}
+.d-mark .cut-a,.d-mark .cut-b{fill:var(--mix)}                 /* the multiply mix of Jobs blue, Manager gold and Copius green */
+.d-mark .d-body{fill:var(--mix)}
+.d-mark .d-knife{fill:none;stroke:var(--accent);stroke-width:30;stroke-dasharray:1 1}   /* the cut, opened in the site's bright green; the halves sit on top and hide the overshoot */
+.d-mark .d-rim{fill:none;stroke:var(--accent);stroke-opacity:.6;stroke-width:2}
+/* the equation: static = a line above the name, each term in its tool's colour; with motion it shares the name's place and melts into it */
+.d-wordbox{display:flex;flex-direction:column;align-items:center}
+.d-eq{margin:.9em 0 0;font-family:var(--serif);font-size:clamp(22px,2.6vw,36px);line-height:1.1;color:var(--ink-3);white-space:nowrap}
+.d-eq .eq-t{display:inline-block}
+.d-eq .eq-c{color:var(--accent)}.d-eq .eq-m{color:var(--brass)}.d-eq .eq-j{color:var(--blue)}
+.d-eq .eq-p,.d-eq .eq-is{display:inline-block;margin:0 .35em}
+.d-word{position:relative;margin:.12em 0 .22em;font-family:'Nokime Wordmark',var(--sans);font-weight:700;font-stretch:112%;font-size:clamp(46px,min(7vw,9.5vh),96px);letter-spacing:-.015em;line-height:1;color:var(--ink)}
+.d-line{margin:0 0 24px;max-width:26ch;font-family:var(--serif);font-size:clamp(20px,2.2vw,28px);line-height:1.2;color:var(--ink-2)}
+.d-act{margin:0 0 20px}
+.d-links{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 24px;margin:0;font-size:15px;font-weight:500}
+.d-links a{padding:4px 0;border-bottom:1px solid currentColor}
+.d-links a:hover{filter:brightness(1.15)}
+
+/* phones: three rows, text left, the world right */
+@media (max-width:720px){
+  .d-head{padding:34px 16px 0}
+  .d-head p{font-size:21px}
+  .d-worlds{grid-template-columns:1fr;gap:0;padding:6px 16px 28px}
+  .d-col{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1fr);align-items:center;column-gap:6px;border-top:1px solid rgba(42,45,34,var(--hl,1))}
+  .d-col:first-child{border-top:0}
+  .d-text{padding:12px 0}
+  .d-q{font-size:10.5px;margin-bottom:6px}
+  .d-name{font-size:clamp(34px,10.5vw,44px)}
+  .d-inf{font-size:17px}
+  .d-sub{font-size:12.5px;line-height:1.35}
+  .d-world{min-height:216px;align-self:stretch}
+  .d-job{font-size:clamp(17px,5.1vw,21px)}
+  .d-names{gap:4px}
+  .d-panel{inset:3% 0}
+  .d-mgr-in{inset:4% 5%}
+  .d-dish{font-size:17px;line-height:1.05}
+  .d-cap{font-size:8.5px;line-height:1.25}
+  .d-mrow,.d-fl{font-size:10.5px}
+  .d-mrow{padding-top:4px}
+  .d-mfig{padding-top:5px}
+  .d-fl{gap:1px}
+  .d-fr{font-size:25px}
+  .d-final{padding:56px 16px 64px}
+  .d-eq{font-size:clamp(19px,5.4vw,24px)}
+  .d-markwrap{width:clamp(120px,36vw,150px)}
+  .d-line{font-size:21px;margin-bottom:20px}
+}
+
+/* ---------- motion allowed and scripting on: pinned stage, layers stacked, door-js drives them ---------- */
+@media (prefers-reduced-motion:no-preference) and (scripting:enabled){
+  .door-track{height:300vh}
+  .door-stage{position:sticky;top:0;height:100vh;height:100svh}
+  .d-paint{display:block;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+  .d-head{position:absolute;top:clamp(18px,4.2vh,42px);left:0;right:0;padding:0 16px;z-index:3}
+  .d-worlds{position:absolute;left:0;right:0;top:clamp(74px,12.5vh,120px);bottom:clamp(30px,6vh,58px);margin:0 auto;padding:0 24px;z-index:2;grid-template-rows:minmax(0,1fr)}
+  .d-col{height:100%}
+  .d-world{min-height:0}
+  .d-hint{display:flex;flex-direction:column;align-items:center;gap:6px;position:absolute;left:0;right:0;bottom:8px;z-index:3;pointer-events:none;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+  .d-hint i{width:1px;height:20px;background:linear-gradient(var(--ink-3),transparent);animation:ddHint 2.2s ease-in-out infinite}
+  .d-final{position:absolute;inset:0;justify-content:center;padding:0 16px;border:0;z-index:4;pointer-events:none}
+  .d-final.is-final{pointer-events:auto}
+  .d-halves,.d-glow,.d-rim,.d-body,.d-word,.d-line,.d-act,.d-links{opacity:0}
+  .d-wordbox{display:grid;justify-items:center;align-items:center}
+  .d-eq,.d-word{grid-area:1/1}
+  .d-eq{margin:0;opacity:0}
+  .d-eq .eq-is{display:none}
+  .d-word::before{content:"=";position:absolute;right:100%;top:50%;margin:0 .3em 0 0;transform:translateY(-52%);font-family:var(--serif);font-size:.62em;font-weight:400;font-stretch:100%;color:var(--ink-2);opacity:var(--eqo,0)}
+  .d-mark .d-knife{stroke-dashoffset:1}
+  .d-piece{will-change:transform,opacity}
+
+  /* the worlds are alive before any scroll */
+  .d-art .art{animation:ddFloat 7s ease-in-out infinite alternate}
+  .d-art.a2 .art{animation-duration:9s;animation-delay:-3s}
+  .d-art.a3 .art{animation-duration:8s;animation-delay:-5s}
+  .d-art.a4 .art{animation-duration:10s;animation-delay:-2s}
+  .d-art.a5 .art{animation-duration:6.5s;animation-delay:-4s}
+  .d-job .d-in{animation:ddSway 6s ease-in-out infinite alternate,ddGlint 5.4s ease-in-out infinite;animation-delay:calc(var(--i) * -.9s),calc(var(--i) * -.9s)}
+  .d-mbar i{animation:ddFill 6.5s ease-in-out infinite}
+  .door.away *{animation-play-state:paused}
+}
+@media (prefers-reduced-motion:no-preference) and (scripting:enabled) and (max-width:720px){
+  .door-track{height:240vh}
+  .d-worlds{padding:0 16px;grid-template-rows:repeat(3,minmax(0,1fr))}
+  .d-col{height:auto}
+  .d-world{min-height:0}
+  .d-hint i{display:none}
+  .d-hint{bottom:10px}
+}
+@keyframes ddFloat{from{transform:translateY(0) rotate(-2.5deg)}to{transform:translateY(-8px) rotate(2.5deg)}}
+@keyframes ddSway{from{transform:translateX(0)}to{transform:translateX(9px)}}
+@keyframes ddGlint{0%,100%{opacity:.78}45%{opacity:1}}
+@keyframes ddFill{0%{transform:scaleX(.04)}40%,88%{transform:scaleX(.26)}100%{transform:scaleX(.04)}}
+@keyframes ddHint{0%{transform:scaleY(.2);transform-origin:top;opacity:.2}60%{transform:scaleY(1);transform-origin:top;opacity:1}100%{transform:scaleY(1);transform-origin:top;opacity:0}}

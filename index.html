@@ -17,12 +17,135 @@
 <meta property="og:locale" content="fr_FR">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Cstyle%3E.a%7Bfill:%2315170F%7D.b%7Bfill:%233E6B1F%7D%40media (prefers-color-scheme:dark)%7B.a%7Bfill:%23ECEBE2%7D.b%7Bfill:%23BBEB8A%7D%7D%3C/style%3E%3Cpath class='a' d='M15 181V59A44 44 0 0 1 59 15H150V137.65L67.5 41.65V225H59A44 44 0 0 1 15 181Z'/%3E%3Cpath class='b' d='M90 225V102.35L172.5 198.35V15H181A44 44 0 0 1 225 59V181A44 44 0 0 1 181 225Z'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="css/fonts.css?v=74">
-<link rel="stylesheet" href="css/site.css?v=74">
+<link rel="stylesheet" href="css/fonts.css?v=75">
+<link rel="stylesheet" href="css/site.css?v=75">
+<link rel="stylesheet" href="css/door.css?v=75">
 <script>(function(){try{var q=/[?&]lang=(fr|en)(?:&|$)/.exec(location.search),l=q?q[1]:localStorage.getItem("nokime-lang");if(l==="fr"||l==="en")document.documentElement.setAttribute("lang",l);}catch(e){}})();</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nokime.fr/#org","name":"Nokime","url":"https://nokime.fr/","sameAs":["https://www.instagram.com/nokime.fr/"],"logo":"https://nokime.fr/apple-touch-icon.png","description":"Copius pour trouver l’inspiration, Jobs pour recruter en prenant soin des équipes, Manager pour savoir si le plat est rentable.","brand":[{"@type":"Brand","name":"Copius","url":"https://copius.fr/","description":"Copius : 1 888 ingrédients, 135 techniques, 45 bases et 68 chefs, dessinés et bilingues, chaque produit avec sa fourchette de prix, sa saison et ses accords. Trois versions : libre, complète, école.","sameAs":["https://www.instagram.com/copius.fr/"]},{"@type":"Brand","name":"Nokime Jobs","url":"https://jobs.nokime.fr/","description":"Nokime Jobs : des stages, des alternances et des saisons en cuisine, en salle, à l’hébergement et au spa. Gratuit pour les candidats ; les hôtels et les restaurants publient et répondent direct.","sameAs":["https://www.instagram.com/nokime.jobs/"]},{"@type":"Brand","name":"Nokime Manager","url":"https://nokime.fr/manager/","description":"Nokime Manager : coût matière par portion, ratio, marge brute et prix plancher pour chaque plat ; vos prix d’achat ; le tableau des allergènes ; un service type lu en clair. Hors ligne, avec 1 887 produits déjà chiffrés.","sameAs":["https://www.instagram.com/nokime.manager/"]}]},{"@type":"WebSite","@id":"https://nokime.fr/#site","name":"Nokime","url":"https://nokime.fr/","inLanguage":["fr","en"],"publisher":{"@id":"https://nokime.fr/#org"}}]}</script>
 </head>
 <body data-title="titleHome" data-desc="descHome">
+
+<!-- the welcome door: Copius, Manager and Jobs pinned on one stage; Copius + Manager + Jobs melt, as paint mixes, into the mark and the name Nokime as the page scrolls (css/door.css, js/door.js) -->
+<section class="door" id="door" role="region" aria-labelledby="doorTitle">
+  <a class="d-skip" href="#doorEnd" data-t="ddSkip">Passer</a>
+  <div class="door-track" id="doorTrack">
+    <div class="door-stage" id="doorStage">
+
+      <svg class="d-paint" id="ddPaint" aria-hidden="true" focusable="false" viewBox="-720 -450 1440 900">
+        <defs>
+          <radialGradient id="ddGA"><stop offset="0" style="stop-color:var(--accent)"/><stop offset=".86" style="stop-color:var(--accent)"/><stop offset="1" style="stop-color:var(--accent)" stop-opacity="0"/></radialGradient>
+          <radialGradient id="ddGB"><stop offset="0" style="stop-color:var(--brass)"/><stop offset=".86" style="stop-color:var(--brass)"/><stop offset="1" style="stop-color:var(--brass)" stop-opacity="0"/></radialGradient>
+          <radialGradient id="ddGC"><stop offset="0" style="stop-color:var(--blue)"/><stop offset=".86" style="stop-color:var(--blue)"/><stop offset="1" style="stop-color:var(--blue)" stop-opacity="0"/></radialGradient>
+        </defs>
+        <!-- three pools of paint; mix-blend-mode multiply inside an isolated group = the colours mix like paint, never like light -->
+        <g id="ddPools" style="isolation:isolate">
+          <circle id="ddPA" r="1" fill="url(#ddGA)" style="mix-blend-mode:multiply"/>
+          <circle id="ddPB" r="1" fill="url(#ddGB)" style="mix-blend-mode:multiply"/>
+          <circle id="ddPC" r="1" fill="url(#ddGC)" style="mix-blend-mode:multiply"/>
+        </g>
+      </svg>
+
+      <div class="d-head" id="ddHead"><p id="doorTitle" data-t="ddTitle">Un restaurant, trois questions.</p></div>
+
+      <div class="d-worlds" id="ddWorlds">
+
+        <div class="d-col d-copius">
+          <div class="d-text">
+            <p class="d-q" data-fade data-t="ddQ1">Quoi cuisiner ?</p>
+            <p class="d-name d-piece" data-w="c" data-kind="name" data-t="navCopius">Copius</p>
+            <p class="d-inf" data-fade data-t="ddI1">Les idées.</p>
+            <p class="d-sub" data-fade data-t="ddS1">Les produits de saison, et ce qui va avec.</p>
+          </div>
+          <div class="d-world" aria-hidden="true">
+            <span class="d-piece d-art a1" data-w="c" data-kind="art" data-art="porcini" style="--rot:-6"></span>
+            <span class="d-piece d-art a2" data-w="c" data-kind="art" data-art="langoustine" style="--rot:7"></span>
+            <span class="d-piece d-art a3" data-w="c" data-kind="art" data-art="fraise-des-bois" style="--rot:-10"></span>
+            <span class="d-piece d-art a4" data-w="c" data-kind="art" data-art="scallop" style="--rot:8"></span>
+            <span class="d-piece d-art a5" data-w="c" data-kind="art" data-art="cilantro" style="--rot:-4"></span>
+          </div>
+        </div>
+
+        <div class="d-col d-manager">
+          <div class="d-text">
+            <p class="d-q" data-fade data-t="ddQ2">À quel prix ?</p>
+            <p class="d-name d-piece" data-w="m" data-kind="name" data-t="navManager">Manager</p>
+            <p class="d-inf" data-fade data-t="ddI2">Le bon prix.</p>
+            <p class="d-sub" data-fade data-t="ddS2">Savoir avant le service si le plat est rentable.</p>
+          </div>
+          <div class="d-world d-mgr" aria-hidden="true">
+            <div class="d-piece d-panel" data-w="m" data-kind="panel">
+              <div class="d-mgr-in">
+                <div class="d-dish"><span class="d-in" data-t="ddDish">Exemple : bar rôti</span></div>
+                <div class="d-cap" data-t="ddCap">Prix au kg, d’après l’atlas</div>
+                <div class="d-mrow" data-row="sea-bass"><b></b><span></span></div>
+                <div class="d-mrow" data-row="asparagus"><b></b><span></span></div>
+                <div class="d-mrow" data-row="butter"><b></b><span></span></div>
+                <div class="d-mfig">
+                  <div class="d-fl"><span data-t="ddMat">8,13 € de matières</span><span data-t="ddHT">30,91 € HT</span></div>
+                  <div class="d-fr" data-t="ddPct">26 %</div>
+                </div>
+                <div class="d-mbar"><i></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-col d-jobs">
+          <div class="d-text">
+            <p class="d-q" data-fade data-t="ddQ3">Avec qui ?</p>
+            <p class="d-name d-piece" data-w="j" data-kind="name" data-t="navJobs">Jobs</p>
+            <p class="d-inf" data-fade data-t="ddI3">L’équipe.</p>
+            <p class="d-sub" data-fade data-t="ddS3">Des stages et des saisons, avec du soin pour l’équipe.</p>
+          </div>
+          <div class="d-world" aria-hidden="true">
+            <div class="d-names">
+              <div class="d-piece d-job" data-w="j" data-kind="job" style="--i:0;margin-left:0"><span class="d-in" data-t="ddJ1">Commis de cuisine</span></div>
+              <div class="d-piece d-job" data-w="j" data-kind="job" style="--i:1;margin-left:9%"><span class="d-in" data-t="ddJ2">Chef de rang</span></div>
+              <div class="d-piece d-job" data-w="j" data-kind="job" style="--i:2;margin-left:3%"><span class="d-in" data-t="ddJ3">Sommelier·ère</span></div>
+              <div class="d-piece d-job" data-w="j" data-kind="job" style="--i:3;margin-left:11%"><span class="d-in" data-t="ddJ4">Réceptionniste</span></div>
+              <div class="d-piece d-job" data-w="j" data-kind="job" style="--i:4;margin-left:5%"><span class="d-in" data-t="ddJ5">Praticien·ne spa</span></div>
+              <div class="d-piece d-job" data-w="j" data-kind="job" style="--i:5;margin-left:10%"><span class="d-in" data-t="ddJ6">Serveur·se</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="d-hint" aria-hidden="true" id="ddHint"><span data-t="ddScroll">Faites défiler</span><i></i></div>
+
+      <div class="d-final" id="ddFinal">
+        <div class="d-markwrap">
+          <svg class="d-mark" id="ddMark" viewBox="0 0 240 240" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="ddGlowG" cx="50%" cy="50%" r="50%">
+                <stop offset="0" style="stop-color:var(--accent)" stop-opacity=".30"/>
+                <stop offset=".55" style="stop-color:var(--accent)" stop-opacity=".09"/>
+                <stop offset="1" style="stop-color:var(--accent)" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle class="d-glow" id="ddGlow" cx="120" cy="120" r="215" fill="url(#ddGlowG)"/>
+            <rect class="d-body" id="ddBody" x="15" y="15" width="210" height="210" rx="44"/>
+            <g class="d-halves" id="ddHalves">
+              <path class="d-knife" id="ddKnife" pathLength="1" d="M78.75 225V72L161.25 168V15"/>
+              <path class="cut-a" id="ddCutA" d="M15 181V59A44 44 0 0 1 59 15H150V137.65L67.5 41.65V225H59A44 44 0 0 1 15 181Z"/>
+              <path class="cut-b" id="ddCutB" d="M90 225V102.35L172.5 198.35V15H181A44 44 0 0 1 225 59V181A44 44 0 0 1 181 225Z"/>
+            </g>
+            <rect class="d-rim" id="ddRim" x="15" y="15" width="210" height="210" rx="44" vector-effect="non-scaling-stroke"/>
+          </svg>
+        </div>
+        <div class="d-wordbox">
+          <p class="d-eq" id="ddEq" aria-hidden="true"><span class="eq-t eq-c">Copius</span><span class="eq-p">+</span><span class="eq-t eq-m">Manager</span><span class="eq-p">+</span><span class="eq-t eq-j">Jobs</span><span class="eq-is">=</span></p>
+          <p class="d-word" id="ddWord">nokime</p>
+        </div>
+        <p class="d-line" id="ddLine" data-t="grTitle">Un seul nom, plusieurs outils.</p>
+        <div class="d-act" id="ddAct"><a class="btn primary" href="#doorEnd"><span data-t="ddEnter">Entrer sur le site</span><span class="arrow" aria-hidden="true">→</span></a></div>
+        <p class="d-links" id="ddLinks"><a class="t-manager" href="manager/" data-t="navManager">Manager</a><a class="t-copius" href="copius/" data-t="navCopius">Copius</a><a class="t-jobs" href="jobs/" data-t="navJobs">Jobs</a></p>
+      </div>
+
+    </div>
+  </div>
+  <span class="d-end" id="doorEnd" tabindex="-1"></span>
+</section>
 
 <header class="site-head">
   <div class="wrap head-row">
@@ -159,8 +282,9 @@
   </div>
 </footer>
 
-<script src="js/art.js?v=74"></script>
-<script src="js/i18n.js?v=74"></script>
-<script src="js/site.js?v=74"></script>
+<script src="js/art.js?v=75"></script>
+<script src="js/i18n.js?v=75"></script>
+<script src="js/site.js?v=75"></script>
+<script src="js/door.js?v=75"></script>
 </body>
 </html>
