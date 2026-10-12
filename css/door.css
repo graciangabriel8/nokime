@@ -109,12 +109,12 @@
     background:radial-gradient(closest-side,var(--pc),var(--pc) 86%,transparent)}   /* js/door.js moves and scales each by transform (radius 160 = scale 1) */
   .d-pool.pa{--pc:var(--accent)}.d-pool.pb{--pc:var(--brass)}.d-pool.pc{--pc:var(--blue)}
   .d-head{position:relative;z-index:3;padding:0 0 clamp(20px,3.4vh,38px)}
-  .d-worlds{position:absolute;left:0;right:0;top:clamp(24px,4vh,48px);bottom:clamp(30px,6vh,58px);margin:0 auto;padding:0 24px;z-index:2;grid-template-rows:auto auto auto;align-content:center}   /* text and discs as one block, centred: the gap between them is the same at every size */
+  .d-worlds{position:absolute;left:0;right:0;top:clamp(24px,4vh,48px);bottom:clamp(72px,9vh,96px);margin:0 auto;padding:0 24px;z-index:2;grid-template-rows:auto auto auto;align-content:center}   /* text and discs as one block, centred: the gap between them is the same at every size */
   .d-world{max-width:max(200px,calc(100svh - 400px));justify-self:center;width:100%}
   .d-disc::before{display:none}
-  .d-hint{display:flex;flex-direction:column;align-items:center;gap:6px;position:absolute;left:0;right:0;bottom:8px;z-index:3;pointer-events:none;
-    font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
-  .d-hint i{width:1px;height:20px;background:linear-gradient(var(--ink-3),transparent);animation:ddHint 2.2s ease-in-out infinite}
+  .d-hint{display:flex;flex-direction:column;align-items:center;gap:10px;position:absolute;left:0;right:0;bottom:16px;z-index:3;pointer-events:none;
+    font-size:16px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);animation:ddBob 1.8s ease-in-out infinite}   /* bigger and moving: people must see they can scroll (his girlfriend did not, 12 Oct) */
+  .d-hint i{width:15px;height:15px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg);animation:ddArrow 1.8s ease-in-out infinite}
   .d-final{position:absolute;inset:0;justify-content:center;padding:0 16px;border:0;z-index:4;pointer-events:none}
   .d-final.is-final{pointer-events:auto}
   .d-halves,.d-glow,.d-rim,.d-body,.d-word,.d-line,.d-act,.d-links{opacity:0}
@@ -142,10 +142,11 @@
   .d-col{height:auto}
   .d-world{align-self:stretch;aspect-ratio:auto;min-height:0;max-width:none;margin-top:0}
   .d-eq{font-size:clamp(22px,6.2vw,28px)}
-  .d-hint i{display:none}
-  .d-hint{bottom:10px}
+  .d-hint{flex-direction:row;gap:12px;left:16px;right:auto;bottom:22px;font-size:14px}   /* beside the EN / Passer buttons, never under them */
+  .d-hint i{margin-top:-6px}
 }
 @keyframes ddFloat{from{transform:translateY(0) rotate(-2.5deg)}to{transform:translateY(-8px) rotate(2.5deg)}}
-@keyframes ddHint{0%{transform:scaleY(.2);transform-origin:top;opacity:.2}60%{transform:scaleY(1);transform-origin:top;opacity:1}100%{transform:scaleY(1);transform-origin:top;opacity:0}}
+@keyframes ddBob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@keyframes ddArrow{0%,100%{transform:translateY(0) rotate(45deg);opacity:.55}50%{transform:translateY(5px) rotate(45deg);opacity:1}}
 /* browsers without container queries (iOS 15 and earlier): the disc fills its square world, so the drawings still show */
 @supports not (container-type:size){.d-disc{left:0;top:0;width:100%;height:100%;margin:0}}
