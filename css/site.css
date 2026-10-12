@@ -293,6 +293,7 @@ p{margin:0 0 1em}
 .hd-section{padding-top:24px}
 .hd-row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 24px;align-items:start}
 .hd-row .lead{max-width:52ch}
+.hd-more{margin:18px 0 0}
 .hd-art{width:56px;height:auto;color:var(--blue);margin-top:2px}
 @media (max-width:720px){.hd-row{gap:0 16px}.hd-art{width:42px}}
 
