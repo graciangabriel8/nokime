@@ -69,7 +69,7 @@
   /* ---------- Copius's fountain: more ingredients of the atlas, born small and clear at the centre of its disc, growing and drifting outward along
      varied angles, each gone as it nears the rim, one after another. Time-based CSS (transform and opacity, staggered delays), built only where the
      motion runs; it stops spawning as the melt starts. The pool is the curated list of the home page's hero, minus the thin and bare shapes. */
-  var FOUNT_POOL = ["chicken", "canard-colvert", "venison", "hare", "american-lobster", "dungeness-crab", "sea-urchin", "escargot-de-bourgogne",
+  var FOUNT_POOL = ["chicken", "canard-colvert", "venison", "hare", "dungeness-crab", "sea-urchin", "escargot-de-bourgogne",
     "squid", "lamb-shank", "maitake", "avocado", "corn", "garlic", "kohlrabi", "bell-pepper", "musquee-de-provence-squash"];
   var FOUNT_N = 8, FOUNT_T = 9, fount = $("#ddFount"), fountOff = false, fountAng = 0, fountSel = [];
   function rnd(a, b) { return a + Math.random() * (b - a); }
@@ -80,7 +80,7 @@
   function fountSpawn(el) {
     var A = window.NOKIME_ART || {}, taken = fountTaken(), free = FOUNT_POOL.filter(function (id) { return A[id] && taken.indexOf(id) < 0; });
     if (!free.length) { el.classList.add("idle"); return; }
-    var id = free[Math.floor(Math.random() * free.length)], fs = rnd(.2, .29), dist = rnd(.36, .43), r0 = rnd(-25, 25);
+    var id = free[Math.floor(Math.random() * free.length)], fs = rnd(.1, .15), dist = rnd(.28, .34), r0 = rnd(-25, 25);
     fountAng += 137.5 + rnd(-18, 18);
     var an = fountAng * Math.PI / 180;
     el.setAttribute("data-art", id);
