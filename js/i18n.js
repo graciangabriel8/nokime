@@ -182,7 +182,7 @@ window.NOKIME_I18N = {
     jobsLead: "Free for those who are looking, in the kitchen, the dining room, the rooms division and the spa. Hotels and restaurants post their offers and answer you directly. Staff wellbeing matters.",
     jobsMore: "An offer says everything before you write: the position, the dates, the hours, the pay when the establishment states it, the lodging. You write to the establishment, not to us.",
     jobsCta1: "See the offers", jobsCta2: "Post an offer",
-    jbHdT: "The Nokime Jobs hirondelle.", jbHdP: "It goes to the places interns, apprentices and seasonal staff want to come back to. It comes from their answers, cannot be bought, and ranks no one. No place has it yet.", jbHdLink: "How it is earned",
+    jbHdT: "The Nokime Jobs hirondelle.", jbHdP: "It goes to the places interns, apprentices and seasonal staff want to come back to. It comes from their answers, cannot be bought, and ranks no one. No place has it yet.", jbHdLink: "The Nokime Jobs hirondelle: how it is earned", jbRead: "Read:", jbRead1: "What should be normal during an internship or a season", jbRead2: "Housing and meals: what to ask before you sign",
 
     jTag: "Open for offers", jSub: "Internships, apprenticeships and seasons in hotels and restaurants. Staff wellbeing matters.", jHdNote: "In preparation: the Nokime Jobs hirondelle.", jLink: "See Nokime Jobs",
 
