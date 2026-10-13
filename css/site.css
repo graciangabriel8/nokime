@@ -176,6 +176,10 @@ p{margin:0 0 1em}
 .art-cluster.spread span:nth-child(1){left:0;top:24px}
 .art-cluster.spread span:nth-child(2){left:64px;top:0}
 .art-cluster.spread span:nth-child(3){left:128px;top:22px}
+.jobs-cluster{width:252px}
+.hd-fly{position:absolute;left:204px;top:-4px;width:46px;height:auto;color:var(--blue);transform:rotate(-10deg)}   /* l’hirondelle de Nokime Jobs flies over its card (his ask 13 Oct) */
+.hd-note{margin:0 0 14px;font-size:14px;font-weight:500}
+.hd-note a{color:var(--blue);border-bottom:1px solid currentColor}
 
 .band{background:var(--band);color:var(--band-ink);padding:88px 0}
 .band .kicker,.band h3{color:var(--band-ink)}
