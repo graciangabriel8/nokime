@@ -300,5 +300,71 @@
    "social/pinned-manager-1-left.jpg"
   ],
   "caption": "Cinq places fondateurs ouvertes. Un courriel suffit : contact@nokime.fr\nUn outil @nokime.fr\nnokime.fr/manager"
+ },
+ {
+  "id": "2026-10-13-lecon-1",
+  "account": "nokime.manager",
+  "at": "2026-10-13T18:00:00+02:00",
+  "type": "reel",
+  "media": [
+   "social/2026-10-13-lecon-1.mp4"
+  ],
+  "cover": "social/2026-10-13-lecon-1-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 1 : le ratio matières.\nLa part du prix qui part dans l’assiette, en une seule division.\nDans deux jours : le seuil de rentabilité."
+ },
+ {
+  "id": "2026-10-15-lecon-2",
+  "account": "nokime.manager",
+  "at": "2026-10-15T18:00:00+02:00",
+  "type": "reel",
+  "media": [
+   "social/2026-10-15-lecon-2.mp4"
+  ],
+  "cover": "social/2026-10-15-lecon-2-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 2 : le seuil de rentabilité.\nLe chiffre d’affaires à partir duquel vous arrêtez de perdre de l’argent.\nDans deux jours : l’EBE."
+ },
+ {
+  "id": "2026-10-17-lecon-3",
+  "account": "nokime.manager",
+  "at": "2026-10-17T18:00:00+02:00",
+  "type": "reel",
+  "media": [
+   "social/2026-10-17-lecon-3.mp4"
+  ],
+  "cover": "social/2026-10-17-lecon-3-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 3 : l’EBE.\nCe que gagne vraiment l’activité, avant les amortissements, les intérêts et l’impôt.\nDans deux jours : le BFR."
+ },
+ {
+  "id": "2026-10-19-lecon-4",
+  "account": "nokime.manager",
+  "at": "2026-10-19T18:00:00+02:00",
+  "type": "reel",
+  "media": [
+   "social/2026-10-19-lecon-4.mp4"
+  ],
+  "cover": "social/2026-10-19-lecon-4-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 4 : le BFR.\nL’argent à avancer, parce qu’on paie avant d’être payé.\nDans deux jours : le prime cost."
+ },
+ {
+  "id": "2026-10-21-lecon-5",
+  "account": "nokime.manager",
+  "at": "2026-10-21T18:00:00+02:00",
+  "type": "reel",
+  "media": [
+   "social/2026-10-21-lecon-5.mp4"
+  ],
+  "cover": "social/2026-10-21-lecon-5-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 5 : le prime cost.\nVos deux plus gros coûts réunis : les matières et le personnel.\nDans deux jours : coefficient ou marge ?"
+ },
+ {
+  "id": "2026-10-23-lecon-6",
+  "account": "nokime.manager",
+  "at": "2026-10-23T18:00:00+02:00",
+  "type": "reel",
+  "media": [
+   "social/2026-10-23-lecon-6.mp4"
+  ],
+  "cover": "social/2026-10-23-lecon-6-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 6 : coefficient ou marge ?\nCoefficient 4, ça veut dire 400 % de marge ? Non. On vous montre pourquoi."
  }
 ]
