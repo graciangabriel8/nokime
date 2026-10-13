@@ -184,7 +184,7 @@
       });
       $("[data-total]", el).textContent = money(total);
       var price = Math.max(0, parseFloat(st.price) || 0), ratio = price > 0 ? total / price * 100 : 0;
-      $("[data-ratio]", el).textContent = price > 0 ? Math.round(ratio) + "\u202f%" : "—";
+      $("[data-ratio]", el).textContent = price > 0 ? Math.round(ratio) + (lang === "fr" ? "\u202f%" : "%") : "—";
       var v = $("[data-verdict]", el);
       v.className = "verdict " + (price <= 0 ? "under" : ratio > 38 ? "over" : ratio < 30 ? "under" : "in");
       v.textContent = price <= 0 ? "—" : ratio > 38 ? t.demoOver : ratio < 30 ? t.demoUnder : t.demoIn;
