@@ -15,7 +15,7 @@ js = (root / "js" / "i18n.js").read_text(encoding="utf-8")
 en_block = js[js.index("\n  en: {"):]
 en = set(re.findall(r'(?m)^\s*(\w+):\s', en_block)) | set(re.findall(r'[,{]\s*(\w+):\s*"', en_block))
 missing = {k: v for k, v in used.items() if k not in en}
-unused = sorted(k for k in en if k not in used and k not in ("demoTitle","demoHint","demoTotal","demoPrice","demoRatio","demoIn","demoUnder","demoOver","demoSeason","demoAllYear","demoFrom","demoNote","demoQtyLabel","demoPriceLabel","preset1","preset2","months","langSwitch","themeSwitch","menuLabel"))
+unused = sorted(k for k in en if k not in used and k not in ("langSwitch","menuLabel"))
 print(f"{len(pages)} pages, {len(used)} keys used, {len(en)} keys in en")
 for k, v in sorted(missing.items()): print("MISSING in en:", k, "←", ", ".join(sorted(v)))
 if unused: print("en keys no page uses:", ", ".join(unused))
