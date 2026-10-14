@@ -3,7 +3,8 @@
    progress p = how far the pinned stage has scrolled through its track (0 → 1); every layer is a pure function of p,
    so the melt runs the same in both scroll directions. Only transform, opacity, colour (through a few custom properties set once per
    column), a light blur on the equation and stroke-dashoffset change, plus the corner radius of one rectangle as the mass settles.
-   The three column names are not part of the swirl: each travels down to its own term of the equation and hands over to it. */
+   The three column names are not part of the swirl: each travels down to its own term of the equation and hands over to it.
+   Once scrolled past, the door is gone until the next load (drop, below). */
 (function () {
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -269,7 +270,7 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure);
   if (document.fonts && document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", remeasure);   // a web font that lands late (swap) changes the widths measured
   /* the pinned layout is the CSS's call (it needs motion and scripting allowed): the script runs only where the stage really is sticky */
-  function gate() { if (rm.matches || window.getComputedStyle(stage).position !== "sticky") stop(); else start(); }
+  function gate() { if (door.hidden || rm.matches || window.getComputedStyle(stage).position !== "sticky") stop(); else start(); }
   if (rm.addEventListener) rm.addEventListener("change", gate); else if (rm.addListener) rm.addListener(gate);
   gate();
 
@@ -283,12 +284,45 @@
       langTo.textContent = langBtn.textContent; langTo.setAttribute("lang", langBtn.getAttribute("lang") || "en"); langTo.setAttribute("aria-label", langBtn.getAttribute("aria-label") || "");
     });
   }
-  /* « Passer » and « Entrer » cut to the end of the door (the site scrolls smoothly, which would play the whole melt fast-forwarded); without the script they are plain links */
+  /* an instant jump, even where "instant" is unknown and the page's smooth scrolling would apply (older Safari); the style is read first,
+     as a scroll to the very top does not refresh it on its own (Chrome) and would glide */
+  function jump(y) {
+    var root = document.documentElement, was = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto"; root.getBoundingClientRect(); window.scrollTo(0, y); root.style.scrollBehavior = was;
+  }
+
+  /* once scrolled past, the door goes, until the next load: scrolling back up ends at the site's header, never in the melt again (his ask, 14 Oct).
+     It goes while the scrolling goes on (a trackpad's momentum keeps scrolling for seconds): the browser keeps the view where it is
+     (scroll anchoring), or, where it does not, the page is put back by the door's height, so nothing moves on screen. As jobs.nokime.fr's door. */
+  var end = $("#doorEnd");
+  function drop() {
+    if (door.hidden || !end) return;
+    window.removeEventListener("scroll", passed);
+    var before = end.getBoundingClientRect().top;
+    door.hidden = true;
+    var shift = end.getBoundingClientRect().top - before;   // 0 where the browser kept the view itself
+    if (Math.abs(shift) >= 1) jump(window.pageYOffset + shift);   // not for a sub-pixel rest: a jump would stop a smooth scroll on its way
+    stop();
+    /* a reload opens on the door, at its start: the place the browser would restore was taken without the door and would land mid-melt */
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  }
+  function passed() { if (door.getBoundingClientRect().bottom <= 0) drop(); }
+  window.addEventListener("scroll", passed, { passive: true });
+  /* a jump to a part of the page past the door (opened at #outils, a link to it): the door goes first, because the browser's smooth scroll
+     keeps the target it took at the start and would land a door's height too far if the door went on the way */
+  function outside(hash) { var t = hash.length > 1 && document.getElementById(hash.slice(1)); return !!t && !door.contains(t); }
+  if (outside(location.hash)) drop(); else passed();   // or a reload that lands past it
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("a[href*='#']") : null;
+    if (a && !e.metaKey && !e.ctrlKey && !e.shiftKey && a.pathname === location.pathname && outside(a.hash)) drop();
+  });
+
+  /* « Passer » and « Entrer » go past the door at once, and the page opens on the site (the site scrolls smoothly, which would play the whole
+     melt fast-forwarded); without the script they are plain links to the same place */
   $$("a[href='#doorEnd']", door).forEach(function (a) {
     a.addEventListener("click", function (e) {
-      var end = $("#doorEnd"); if (!on || !end) return; e.preventDefault();
-      var y = end.getBoundingClientRect().top + window.pageYOffset;
-      try { window.scrollTo({ top: y, behavior: "instant" }); } catch (x) { window.scrollTo(0, y); }
+      if (!end) return; e.preventDefault();
+      drop(); jump(end.getBoundingClientRect().top + window.pageYOffset);
       end.focus({ preventScroll: true });
     });
   });
@@ -296,8 +330,7 @@
   /* keyboard: reaching the way in completes the melt first, so the focused link is never an invisible one */
   final.addEventListener("focusin", function () {
     if (!on || cur >= .9) return;
-    var y = G.top + G.range * .92;
-    try { window.scrollTo({ top: y, behavior: "instant" }); } catch (e) { window.scrollTo(0, y); }
+    jump(G.top + G.range * .92);
     schedule();
   });
 
