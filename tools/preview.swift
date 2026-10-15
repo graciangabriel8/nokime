@@ -7,7 +7,8 @@
 //   /tmp/preview <url> <fr|en> media/<tool>-preview-<lang> tools/previews/<tool>.js [dark]
 //
 // Each scene file names the page it films at its top. FRAMES=30,90,200 writes those frames as PNGs
-// next to the output. Any error in a scene stops the run with exit 4, so a broken take never ships.
+// next to the output. COOKIE=name=value signs the page in on a test server before it loads. Any
+// error in a scene stops the run with exit 4, so a broken take never ships.
 import AVFoundation
 import Cocoa
 import WebKit
@@ -114,6 +115,11 @@ let ENGINE = #"""
         window = NSWindow(contentRect: NSRect(x: -6000, y: -6000, width: VW, height: VH), styleMask: [.borderless], backing: .buffered, defer: false)
         window.contentView = web
         window.orderFrontRegardless()
+        // COOKIE=name=value signs the page in (a test server's session) before it loads.
+        if let c = ProcessInfo.processInfo.environment["COOKIE"], let eq = c.firstIndex(of: "="), let host = URL(string: URLSTR)?.host,
+           let ck = HTTPCookie(properties: [.name: String(c[..<eq]), .value: String(c[c.index(after: eq)...]), .domain: host, .path: "/"]) {
+            await cfg.websiteDataStore.httpCookieStore.setCookie(ck)
+        } else if ProcessInfo.processInfo.environment["COOKIE"] != nil { FileHandle.standardError.write("COOKIE is not name=value for this URL\n".data(using: .utf8)!); exit(1) }
 
         await withCheckedContinuation { (k: CheckedContinuation<Void, Never>) in loaded = k; web.load(URLRequest(url: URL(string: URLSTR)!)) }
         await pause(900)
