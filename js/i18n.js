@@ -55,7 +55,7 @@ window.NOKIME_I18N = {
     mgrEyebrow: "Nokime Manager",
     mgrT1: "What the plate costs, ", mgrT2: "before service", mgrT3: ". Not after the year-end.",
     mgrLead: "One file, offline, with 1,887 products already priced.",
-    mgrCta1: "Join the founders", mgrCta2: "Ask a question",
+    mgrCta1: "Join the founders", mgrSite: "Go to manager.nokime.fr",
 
     /* copius */
     cpEyebrow: "Nokime Copius", cpT1: "The ", cpT2: "illustrated", cpT3: " atlas of cooking.",

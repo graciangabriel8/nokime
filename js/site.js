@@ -52,13 +52,11 @@
   var MAIL = {
     fr: {
       founders: { subject: "Nokime Manager — établissement fondateur", body: "Établissement :\nVille :\nCouverts par service :\nCe qui me fait écrire :\n" },
-      manager: { subject: "Nokime Manager — question", body: "" },
       copius: { subject: "Nokime Copius — classe pilote", body: "Établissement :\nClasse, niveau :\nCe que j’aimerais en faire :\n" },
       general: { subject: "Nokime — contact", body: "" }
     },
     en: {
       founders: { subject: "Nokime Manager — founding restaurant", body: "Restaurant:\nCity:\nCovers per service:\nWhy I am writing:\n" },
-      manager: { subject: "Nokime Manager — question", body: "" },
       copius: { subject: "Nokime Copius — pilot class", body: "School:\nClass, level:\nWhat I would like to do with it:\n" },
       general: { subject: "Nokime — contact", body: "" }
     }
