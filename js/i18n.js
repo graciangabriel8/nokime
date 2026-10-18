@@ -22,7 +22,7 @@ window.NOKIME_I18N = {
     titleManager: "Nokime Manager — the cost of the plate",
     descManager: "Nokime Manager: food cost per portion, ratio, gross margin and floor price for every dish; your purchase prices; the allergen chart; one typical service read in plain words. On your account, with 1,887 products already priced.",
     titleCopius: "Nokime Copius — the illustrated atlas of cooking",
-    descCopius: "Copius: 1,888 ingredients, 135 techniques, 45 bases and 68 chefs, drawn and bilingual, each product with its price band, season and pairings. Three versions: free, full, school.",
+    descCopius: "Copius: 1,889 ingredients, 135 techniques, 45 bases and 68 chefs, drawn and bilingual, each product with its price band, season and pairings. Three versions: free, full, school (coming soon).",
     titleGroup: "The group — Nokime",
     descGroup: "Nokime brings together Copius, Manager and Jobs: tools to cook with ideas and run things without the headache.",
     titleContact: "Contact — Nokime",
