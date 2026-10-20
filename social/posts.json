@@ -366,5 +366,38 @@
   ],
   "cover": "social/2026-10-23-lecon-6-cover.jpg",
   "caption": "Les bases de la gestion · Leçon 6 : coefficient ou marge ?\nCoefficient 4, ça veut dire 400 % de marge ? Non. On vous montre pourquoi."
+ },
+ {
+  "id": "2026-10-20-manager-tomates",
+  "account": "nokime.manager",
+  "at": "2026-10-20T15:30:00+02:00",
+  "type": "reel",
+  "media": [
+   "social/2026-10-20-manager-tomates.mp4"
+  ],
+  "cover": "social/2026-10-20-manager-tomates-cover.jpg",
+  "caption": "Tomates, courgettes & cie : +36 % en un an, à l’achat. Les prix au resto : +2 %. Et votre carte, elle a suivi ?\n\nD’après l’Insee (prix à la consommation de septembre 2026, publiés le 15 octobre) : légumes frais à fruits +35,8 % sur un an, services de restauration +2,1 %. Ce sont des prix au détail, pas vos prix fournisseurs.\n\nÀ ce prix-là, le plat est rentable ?\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-10-21-jobs-saison",
+  "account": "nokime.jobs",
+  "at": "2026-10-21T18:00:00+02:00",
+  "type": "reel",
+  "media": [
+   "social/2026-10-21-jobs-saison.mp4"
+  ],
+  "cover": "social/2026-10-21-jobs-saison-cover.jpg",
+  "caption": "En hiver, la montagne emploie environ 120 000 personnes en direct, d’après l’ANMSM et France Travail. Les premières stations devraient ouvrir dès le 21 novembre (date prévue, d’après Alti-Mag), et les offres d’hiver sortent dès septembre : c’est le moment.\n\nLogé ou pas ? Sur Nokime Jobs, c’est écrit sur chaque offre, et le filtre « logé » est là pour les saisons. Gratuit pour les candidats, toujours.\n\njobs.nokime.fr"
+ },
+ {
+  "id": "2026-10-22-nokime-hiver",
+  "account": "nokime.fr",
+  "at": "2026-10-22T15:30:00+02:00",
+  "type": "reel",
+  "media": [
+   "social/2026-10-22-nokime-hiver.mp4"
+  ],
+  "cover": "social/2026-10-22-nokime-hiver-cover.jpg",
+  "caption": "L’hiver arrive vite, en cuisine comme en salle.\n1er novembre : nouvelle grille des salaires HCR (d’après le GHR).\n21 novembre : Val Thorens et Orelle devraient ouvrir les premières, dates encore provisoires (d’après Alti-Mag).\n11 janvier : finale du Meilleur Apprenti Cuisinier de France à Bourges, pour les moins de 21 ans (d’après les Maîtres Cuisiniers de France).\nDu 21 au 25 janvier : Sirha, à Eurexpo Lyon (d’après Worldchefs).\nEt toi, tu prépares quoi cet hiver ? Quoi cuisiner, à quel prix, avec qui : nokime.fr"
  }
 ]
