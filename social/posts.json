@@ -324,28 +324,6 @@
   "caption": "Les bases de la gestion · Leçon 4 : le BFR.\nL’argent à avancer, parce qu’on paie avant d’être payé.\nDans deux jours : le prime cost."
  },
  {
-  "id": "2026-10-21-lecon-5",
-  "account": "nokime.manager",
-  "at": "2026-10-21T18:00:00+02:00",
-  "type": "reel",
-  "media": [
-   "social/2026-10-21-lecon-5.mp4"
-  ],
-  "cover": "social/2026-10-21-lecon-5-cover.jpg",
-  "caption": "Les bases de la gestion · Leçon 5 : le prime cost.\nVos deux plus gros coûts réunis : les matières et le personnel.\nDans deux jours : coefficient ou marge ?"
- },
- {
-  "id": "2026-10-23-lecon-6",
-  "account": "nokime.manager",
-  "at": "2026-10-23T18:00:00+02:00",
-  "type": "reel",
-  "media": [
-   "social/2026-10-23-lecon-6.mp4"
-  ],
-  "cover": "social/2026-10-23-lecon-6-cover.jpg",
-  "caption": "Les bases de la gestion · Leçon 6 : coefficient ou marge ?\nCoefficient 4, ça veut dire 400 % de marge ? Non. On vous montre pourquoi."
- },
- {
   "id": "2026-10-20-manager-tomates",
   "account": "nokime.manager",
   "at": "2026-10-20T15:30:00+02:00",
