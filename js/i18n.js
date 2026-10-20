@@ -102,7 +102,6 @@ window.NOKIME_I18N = {
     ddTitle: "One restaurant, three questions.",
     ddQ1: "What to cook?", ddQ2: "At what price?", ddQ3: "With whom?",
     ddI1: "The ideas.", ddI2: "The right price.", ddI3: "The team.",
-    ddS1: "What’s in season, and what goes with it.", ddS2: "Know before service whether the dish pays.", ddS3: "Internships and seasons, looking after the team.",
     ddScroll: "Scroll", ddSkip: "Skip", ddEnter: "Enter the site",
   }
 };
