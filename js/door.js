@@ -23,9 +23,8 @@
   }
   var GREEN = token("--paint-c", "#BBEB8A"), GOLD = token("--paint-m", "#E7C370"), BLUE = token("--paint-j", "#4B75FF");   // the paint: Copius, Manager, Jobs
   var MIX = mul3(GREEN, GOLD, BLUE);                           // #32523D, the deep green of the mark (same as --mix in css/door.css)
-  var PAIR = mul3(GREEN, GOLD, [255, 255, 255]);               // Copius + Manager meet first: #A9B43D
   var TXT = { c: token("--accent", "#3E6B1F"), m: token("--brass", "#876510"), j: token("--blue", "#2038D5") };   // the names' readable colours, which the equation's terms take over
-  var PAIRT = mix(TXT.c, TXT.m, .5);                           // the pair as text: halfway between the two readable colours (the paint pair is too pale to read on the paper)
+  var PAIR = mix(TXT.c, TXT.m, .5);                            // Copius + Manager meet first: halfway between their readable colours, #636818 (their paint mix #A9B43D is too pale to read on the paper)
   /* each world's drawings: line and the three fills, tinted in its colour (the same as the CSS defaults of css/door.css) */
   var ART = {
     c: { line: hex("#3E6B1F"), f: [hex("#E4F0DB"), hex("#D0E2C0"), hex("#B4CE9B")] },
@@ -49,6 +48,7 @@
   var POOL = { c: $("#ddPA"), m: $("#ddPB"), j: $("#ddPC") };
   var WORLD_X = { c: -1, m: 0, j: 1 };                     // which side of the block each world's pieces land on
   var START = { c: [.06, .45], m: [.06, .47], j: [.15, .5] };   // Copius and Manager meet first, Jobs pours in after: pair, then triple
+  var SWING = { c: 3.6, m: 5.7, j: 1.5 };                        // the angle each pool swings out at as it leaves its disc
 
   var fades = $$("[data-fade]", door);
   var pieces = $$(".d-piece", door).map(function (el, i) {
@@ -109,7 +109,15 @@
     var bs = Math.min(1, (G.W - 28) / tot), ts = tot * bs;
     EG.bs = bs; EG.x = (er.width * bs - ts) / 2; EG.ws = sn * bs; EG.wn = wr.width;
     EG.wx = -ts / 2 + (er.width + gw) * bs + wr.width * sn * bs / 2; EG.wl = EG.wx - wr.width * EG.ws / 2;
-    EG.dy = Math.max(0, G.H * (G.W < 720 ? .29 : .34) - (wr.top + wr.height / 2 - cy));
+    /* on a phone the worlds are rows and the Jobs pool pours out of the bottom one, so the line waits lower: midway between the
+       paint's lowest reach and the foot of the stage, never off it (on the Jobs row the paint took « Manager » down to 2.2:1, 27 Oct) */
+    var low = G.H * .34;
+    if (G.W < 720) {
+      var reach = -G.H / 2;
+      for (var i = 0; i < 3; i++) for (var s = 0; s <= 1; s += .02) { var b = poolAt(i, s); reach = Math.max(reach, b.y + b.ry); }
+      low = Math.min((reach + G.H / 2) / 2, G.H / 2 - Math.max(er.height * bs, wr.height * EG.ws) / 2 - 12);
+    }
+    EG.dy = Math.max(0, low - (wr.top + wr.height / 2 - cy));
     /* where each name lands: on its own term of the equation, the line as it stands before the terms melt */
     eq.style.transform = "translate(" + EG.x.toFixed(1) + "px," + EG.dy.toFixed(1) + "px) scale(" + EG.bs.toFixed(3) + ")";
     NAMES.forEach(function (N) {
@@ -122,6 +130,12 @@
   }
   function remeasure() { if (!on) return; measure(); last = -1; schedule(); }
 
+  /* where pool i (Copius, Manager, Jobs) is at its own progress s: it leaves its disc, swells and swings out, and settles on the mark */
+  function poolAt(i, s) {
+    var k = "cmj".charAt(i), w = G.w[k], g = ease(s), orb = Math.sin(Math.PI * s);
+    var R = lerp(w.R, 100 * G.s, g) * (1 + .22 * orb), rho = .5 * R * orb, an = SWING[k] + 4 * g, wob = .1 * Math.sin(6 * g + i * 2.1) * orb;
+    return { x: G.T.x + (w.x - G.T.x) * (1 - g) + rho * Math.cos(an), y: G.T.y + (w.y - G.T.y) * (1 - g) + rho * Math.sin(an), rx: R * (1 + wob), ry: R * (1 - wob) };
+  }
   function blob(el, x, y, rx, ry) { el.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) scale(" + (rx / 160).toFixed(4) + "," + (ry / 160).toFixed(4) + ")"; }   // a pool is a 320 px disc: radius 160 = scale 1
 
   function render(p) {
@@ -162,14 +176,9 @@
     }
 
     /* three pools of paint bleed into each other; where they overlap the multiply mix shows: pair, then triple, then #32523D */
-    var Rend = 100 * G.s, order = ["c", "m", "j"], ang = { c: 3.6, m: 5.7, j: 1.5 };
     for (i = 0; i < 3; i++) {
-      var k2 = order[i], w = G.w[k2], s = seg(p, START[k2][0], START[k2][1]);
-      var g = ease(s), orb = Math.sin(Math.PI * s);
-      var R = lerp(w.R, Rend, g) * (1 + .22 * orb), rho = .5 * R * orb, an = ang[k2] + 4 * g;
-      var x = T.x + (w.x - T.x) * (1 - g) + rho * Math.cos(an), y = T.y + (w.y - T.y) * (1 - g) + rho * Math.sin(an);
-      var wob = .1 * Math.sin(6 * g + i * 2.1) * orb;
-      blob(POOL[k2], x, y, R * (1 + wob), R * (1 - wob));
+      var k2 = "cmj".charAt(i), b = poolAt(i, seg(p, START[k2][0], START[k2][1]));
+      blob(POOL[k2], b.x, b.y, b.rx, b.ry);
     }
     var pop = lerp(.22, .72, ease(seg(p, .06, .36)));
     pop = lerp(pop, 1, ease(seg(p, .4, .52))) * (1 - ease(seg(p, .6, .67)));
@@ -204,7 +213,7 @@
     [["c", TXT.c], ["m", TXT.m], ["j", TXT.j]].forEach(function (t) {
       var k3 = t[0], el = eqT[k3], pair = k3 !== "j";
       var x = pair ? lerp(lerp(EQ[k3], TP[k3], q1), T3[k3], q2) : lerp(EQ[k3], T3[k3], q2);
-      var col = pair ? mix(mix(t[1], PAIRT, q1), MIX, q2) : mix(t[1], MIX, q2);
+      var col = pair ? mix(mix(t[1], PAIR, q1), MIX, q2) : mix(t[1], MIX, q2);
       var bl = pair ? 1.2 * q1 + 1.8 * q2 : 3 * q2;
       el.style.transform = "translateX(" + (x - EQ[k3]).toFixed(1) + "px)"; el.style.color = rgb(col); el.style.opacity = p >= NAMES[k3 === "c" ? 0 : k3 === "m" ? 1 : 2].b ? tOp : 0;
       el.style.filter = bl > .2 ? "blur(" + bl.toFixed(1) + "px)" : "";
