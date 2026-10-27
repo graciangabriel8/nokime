@@ -2,8 +2,11 @@
    Runs after js/site.js, which draws the data-art drawings and translates every data-t of the door.
    progress p = how far the pinned stage has scrolled through its track (0 → 1); every layer is a pure function of p,
    so the melt runs the same in both scroll directions. Only transform, opacity, colour (through a few custom properties set once per
-   column), a light blur on the equation and stroke-dashoffset change, plus the corner radius of one rectangle as the mass settles.
+   column), a light blur on the equation and stroke-dashoffset change, plus the corner radius of one rectangle as the mass settles,
+   and one canvas, where the shooting star is drawn.
    The three column names are not part of the swirl: each travels down to its own term of the equation and hands over to it.
+   Melted into one, the three terms squeeze into a shooting star, which circles the forming block and dives into it at the foot of the N:
+   the knife draws behind it (his ask, 27 Oct).
    Once scrolled past, the door is gone until the next load (drop, below). */
 (function () {
   "use strict";
@@ -17,6 +20,7 @@
   function mul3(a, b, c) { return [0, 1, 2].map(function (i) { return Math.round(a[i] * b[i] * c[i] / 65025); }); }   // paint: channel product on 0-1 values, rounded once
   function mix(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
   function rgb(c) { return "rgb(" + Math.round(c[0]) + "," + Math.round(c[1]) + "," + Math.round(c[2]) + ")"; }
+  function rgba(c, a) { return "rgba(" + Math.round(c[0]) + "," + Math.round(c[1]) + "," + Math.round(c[2]) + "," + a.toFixed(3) + ")"; }
   function token(name, fallback) {
     var v = (window.getComputedStyle(document.documentElement).getPropertyValue(name) || "").trim();
     return /^#[0-9a-fA-F]{6}$/.test(v) ? hex(v) : hex(fallback);
@@ -25,6 +29,7 @@
   var MIX = mul3(GREEN, GOLD, BLUE);                           // #32523D, the deep green of the mark (same as --mix in css/door.css)
   var TXT = { c: token("--accent", "#3E6B1F"), m: token("--brass", "#876510"), j: token("--blue", "#2038D5") };   // the names' readable colours, which the equation's terms take over
   var PAIR = mix(TXT.c, TXT.m, .5);                            // Copius + Manager meet first: halfway between their readable colours, #636818 (their paint mix #A9B43D is too pale to read on the paper)
+  var CREAM = hex("#FFFDF4");                                  // the star's white-hot head
   /* each world's drawings: line and the three fills, tinted in its colour (the same as the CSS defaults of css/door.css) */
   var ART = {
     c: { line: hex("#3E6B1F"), f: [hex("#E4F0DB"), hex("#D0E2C0"), hex("#B4CE9B")] },
@@ -46,6 +51,11 @@
   var EG = { dy: 0, bs: 1, x: 0, wx: 0, ws: 1, wl: 0, wn: 1 };   // the equation line: drop, fit scale, centre, and where the name waits at its right end
   var skip = $(".d-skip", door), langTo = $("#ddLang", door), word = $("#ddWord"), line = $("#ddLine"), act = $("#ddAct"), links = $("#ddLinks");
   var POOL = { c: $("#ddPA"), m: $("#ddPB"), j: $("#ddPC") };
+  var star = $("#ddStar"), pen = star && star.getContext ? star.getContext("2d") : null;
+  /* the star's flight, one path sampled into points (pts, and the length run up to each): the loop round the block, then the N.
+     D1 = the loop's length, L = the N's, VE = the speed it enters the N at (px per unit of p), E0 = the equation line's centre untransformed,
+     box = what the last frame drew, cleared before the next, m = the canvas's density and centre, lit = whether the canvas shows */
+  var FLY = { pts: [[0, 0]], run: [0], D1: 1, L: 1, VE: 0, h: 1, E0: { x: 0, y: 0 }, box: null, m: [1, 0, 0], lit: null };
   var WORLD_X = { c: -1, m: 0, j: 1 };                     // which side of the block each world's pieces land on
   var START = { c: [.06, .45], m: [.06, .47], j: [.15, .5] };   // Copius and Manager meet first, Jobs pours in after: pair, then triple
   var SWING = { c: 3.6, m: 5.7, j: 1.5 };                        // the angle each pool swings out at as it leaves its disc
@@ -65,7 +75,7 @@
   var worlds = { c: $(".d-copius .d-world", door), m: $(".d-manager .d-world", door), j: $(".d-jobs .d-world", door) };
   var discs = { c: $(".d-copius .d-disc", door), m: $(".d-manager .d-disc", door), j: $(".d-jobs .d-disc", door) };
   var G = { W: 1, H: 1, T: { x: 0, y: 0 }, s: 1, w: { c: {}, m: {}, j: {} }, range: 1, sw: 1.4, top: 0 };
-  var on = false, last = -1, queued = false, cur = 0, mw = 0, msh = 0, mth = 0, gone = false, dyed = "";
+  var on = false, last = -1, queued = false, cur = 0, mw = 0, msh = 0, mth = 0, md = 0, gone = false, dyed = "";
 
 
   function rot(x, y, a) { var c = Math.cos(a), s = Math.sin(a); return [x * c - y * s, x * s + y * c]; }
@@ -99,6 +109,7 @@
        the whole line is scaled to fit the stage, and it sits low, clear of the pools, until the terms melt */
     [eq, word, eqIs, eqT.c, eqT.m, eqT.j].forEach(function (el) { el.style.transform = ""; });
     var er = eq.getBoundingClientRect(), ex = er.left + er.width / 2;
+    FLY.E0 = { x: ex - cx, y: er.top + er.height / 2 - cy };
     ["c", "m", "j"].forEach(function (k) { var r = eqT[k].getBoundingClientRect(); EQ[k] = r.left + r.width / 2 - ex; TW[k] = r.width; });
     /* the terms melt into each other side by side (no letter on top of another): « CopiusManager », then « CopiusManagerJobs » */
     var mid0 = (EQ.c + EQ.m) / 2, t3 = TW.c + TW.m + TW.j;
@@ -127,6 +138,141 @@
     eq.style.transform = "";
     G.top = track.getBoundingClientRect().top + window.pageYOffset;
     G.range = Math.max(1, track.offsetHeight - stage.offsetHeight);
+    flight();
+    canvas();
+  }
+  /* the star's canvas at the screen's density, at most 2x and at most 6 million pixels (a 5K screen at 2x would hold 59 MB for one star;
+     1440 x 900 still gets 2x), drawn in px from the stage's centre like everything above; remade when the window moves to another screen */
+  function canvas() {
+    md = window.devicePixelRatio || 1;
+    if (!pen) return;
+    var W = G.W, H = G.H, dpr = Math.min(2, md, Math.sqrt(6e6 / (W * H))), cw = Math.round(W * dpr), ch = Math.round(H * dpr);
+    if (star.width !== cw || star.height !== ch) { star.width = cw; star.height = ch; }
+    FLY.m = [dpr, W / 2 * dpr, H / 2 * dpr];
+    FLY.box = [-W / 2, -H / 2, W / 2, H / 2];
+  }
+
+  /* the star's flight, measured with the rest. From the line's centre at launch it goes out to the left and up, over the top, down the right
+     side, round the block's corner and along its foot, then turns up into the foot of the N and follows the knife to its end. Hermite curves
+     through those waypoints, each crossed in the direction given, sampled into one polyline the star is placed on by length */
+  function flight() {
+    var C = G.T, s = G.s, h = 105 * s, g = Math.max(4, .08 * h), d = Math.SQRT1_2;   // g: how close it hugs the block's corner and foot, above « nokime »
+    var rx = Math.max(1.4 * h, Math.min(2.8 * h, G.W / 2 - 14 - .3 * h - Math.abs(C.x))), rt = Math.max(1.4 * h, Math.min(2.5 * h, C.y + G.H / 2 - 14 - .3 * h));   // the rays' tips 14 px inside the stage
+    var K = [[78.75, 225], [78.75, 72], [161.25, 168], [161.25, 15]].map(function (v) { return [C.x + (v[0] - 120) * s, C.y + (v[1] - 120) * s]; });   // the knife of the mark (its path, ddKnife), in the stage
+    var B = [FLY.E0.x + EG.x, FLY.E0.y + EG.dy * (1 - eio(seg(.6, .5, .68)))];   // where the terms squeezed in, as the line stands at launch
+    var way = [
+      [B, [-.45, -.9]],
+      [[C.x - rx, C.y + .1 * h], [0, -1]],
+      [[C.x, C.y - rt], [1, 0]],
+      [[C.x + rx, C.y + .1 * h], [0, 1]],
+      [[C.x + .88 * h + g * d, C.y + .88 * h + g * d], [-.8, .6]],
+      [[C.x + .58 * h, C.y + h + g], [-1, 0]],   // the corner rounded, so the run along the foot never sags towards the name
+      [[K[0][0] + g, K[0][1] + g], [-1, 0]],
+      [K[0], [0, -1]]
+    ];
+    var pts = [], run = [], tot = 0;
+    function put(x, y) { if (pts.length) tot += Math.hypot(x - pts[pts.length - 1][0], y - pts[pts.length - 1][1]); pts.push([x, y]); run.push(tot); }
+    function unit(v) { var n = Math.hypot(v[0], v[1]) || 1; return [v[0] / n, v[1] / n]; }
+    put(B[0], B[1]);
+    for (var i = 1; i < way.length; i++) {
+      var P0 = way[i - 1][0], P1 = way[i][0], T0 = unit(way[i - 1][1]), T1 = unit(way[i][1]);
+      var m = 1.17 * Math.hypot(P1[0] - P0[0], P1[1] - P0[1]);   // a quarter turn's tangent, so each piece bends like an arc
+      for (var n = 1; n <= 40; n++) {
+        var t = n / 40, t2 = t * t, t3 = t2 * t, a = 2 * t3 - 3 * t2 + 1, b = (t3 - 2 * t2 + t) * m, c = 3 * t2 - 2 * t3, e = (t3 - t2) * m;
+        put(a * P0[0] + b * T0[0] + c * P1[0] + e * T1[0], a * P0[1] + b * T0[1] + c * P1[1] + e * T1[1]);
+      }
+    }
+    FLY.D1 = tot;
+    for (i = 1; i < K.length; i++) put(K[i][0], K[i][1]);
+    FLY.L = tot - FLY.D1; FLY.pts = pts; FLY.run = run; FLY.h = h;
+    FLY.VE = 1.6 * FLY.L / .09;   // it enters the N at 1.6 times the N's mean speed, then slows to a stop at its end
+  }
+  /* how far along the flight the star is at progress p: at rest until .6, round the loop to the foot of the N at .78, then along the N to .87;
+     each stretch a Hermite in p, joined at the same speed, so it never jumps */
+  function along(p) {
+    var t;
+    if (p <= .6) return 0;
+    if (p < .78) { t = (p - .6) / .18; return FLY.D1 * (3 * t * t - 2 * t * t * t) + FLY.VE * .18 * (t * t * t - t * t); }
+    if (p < .87) { t = (p - .78) / .09; return FLY.D1 + FLY.VE * .09 * (t * t * t - 2 * t * t + t) + FLY.L * (3 * t * t - 2 * t * t * t); }
+    return FLY.D1 + FLY.L;
+  }
+  function speed(p) {
+    var t;
+    if (p <= .6 || p >= .87) return 0;
+    if (p < .78) { t = (p - .6) / .18; return (FLY.D1 * (6 * t - 6 * t * t) + FLY.VE * .18 * (3 * t * t - 2 * t)) / .18; }
+    t = (p - .78) / .09; return (FLY.VE * .09 * (3 * t * t - 4 * t + 1) + FLY.L * (6 * t - 6 * t * t)) / .09;
+  }
+  function at(d) {
+    var run = FLY.run, pts = FLY.pts, lo = 0, hi = run.length - 1, mid;
+    if (d <= 0) return pts[0];
+    if (d >= run[hi]) return pts[hi];
+    while (hi - lo > 1) { mid = (lo + hi) >> 1; if (run[mid] < d) lo = mid; else hi = mid; }
+    var f = (d - run[lo]) / ((run[hi] - run[lo]) || 1);
+    return [lerp(pts[lo][0], pts[hi][0], f), lerp(pts[lo][1], pts[hi][1], f)];
+  }
+
+  /* the star: a white-hot head in a gold and green halo with four thin rays turning as it flies, and a tail as long as it is fast: three
+     strands (Copius green, Manager gold, Jobs blue) braided behind it, in their readable colours on the paper and their bright paint on the block */
+  function drawStar(p) {
+    if (!pen) return;
+    var b = FLY.box, h = FLY.h, m = FLY.m;
+    pen.setTransform(m[0], 0, 0, m[0], m[1], m[2]);   // every frame: a canvas the browser dropped and gave back has lost it
+    if (b) { pen.clearRect(b[0], b[1], b[2] - b[0], b[3] - b[1]); FLY.box = null; }
+    var life = ease(seg(p, .56, .6)) * (1 - ease(seg(p, .875, .905))), lit = life > 0;
+    if (lit !== FLY.lit) { FLY.lit = lit; star.style.visibility = lit ? "" : "hidden"; }   // no star, no canvas for the page to composite
+    if (!lit) return;
+    var d = along(p), hd = p < .6 ? [FLY.E0.x + EG.x, FLY.E0.y + EG.dy * (1 - eio(seg(p, .5, .68)))] : at(d);   // until launch it sits where the terms squeeze in
+    var x0 = hd[0], y0 = hd[1], x1 = hd[0], y1 = hd[1], i, k;
+    var tl = Math.min(2.6 * h, speed(p) * .024), n = 20, amp = .07 * h, w0 = Math.max(1.6, .03 * h);
+    var inside = function (q) { return ease(seg(q, FLY.D1 - .1 * h, FLY.D1 + .3 * h)); };
+    if (tl > 1) {
+      var q = [], nr = [], u, gw;
+      for (i = 0; i <= n; i++) { q.push(at(d - tl * i / n)); x0 = Math.min(x0, q[i][0]); y0 = Math.min(y0, q[i][1]); x1 = Math.max(x1, q[i][0]); y1 = Math.max(y1, q[i][1]); }
+      for (i = 0; i <= n; i++) {
+        var A = q[Math.max(0, i - 1)], Z = q[Math.min(n, i + 1)], dx = A[0] - Z[0], dy = A[1] - Z[1], l = Math.hypot(dx, dy) || 1;
+        nr.push([-dy / l, dx / l]);
+      }
+      if (tl > .3 * h) {   /* a soft gold glow under the tail: one shape, narrowing and fading to its end */
+        var gg = pen.createLinearGradient(q[0][0], q[0][1], q[n][0], q[n][1]);
+        gg.addColorStop(0, rgba(GOLD, .4 * life)); gg.addColorStop(.5, rgba(GOLD, .1 * life)); gg.addColorStop(1, rgba(GOLD, 0));
+        pen.fillStyle = gg; pen.beginPath();
+        for (i = 0; i <= n; i++) { gw = .09 * h * (1 - .7 * i / n); pen.lineTo(q[i][0] + nr[i][0] * gw, q[i][1] + nr[i][1] * gw); }
+        for (i = n; i >= 0; i--) { gw = .09 * h * (1 - .7 * i / n); pen.lineTo(q[i][0] - nr[i][0] * gw, q[i][1] - nr[i][1] * gw); }
+        pen.closePath(); pen.fill();
+      }
+      pen.lineCap = "round";
+      var col = [[TXT.c, GREEN], [TXT.m, GOLD], [TXT.j, BLUE]];
+      for (k = 0; k < 3; k++) {
+        var off = [];
+        for (i = 0; i <= n; i++) { u = i / n; off.push(amp * Math.pow(u, .7) * Math.sin(2 * Math.PI * (d - tl * u) / (.9 * h) + k * 2.0944)); }
+        for (i = 0; i < n; i++) {
+          u = i / n;
+          var qd = d - tl * (i + .5) / n;
+          pen.strokeStyle = rgba(mix(col[k][0], col[k][1], inside(qd)), .95 * life * Math.pow(1 - u, 1.3)); pen.lineWidth = w0 * (1 - .75 * u);
+          pen.beginPath();
+          pen.moveTo(q[i][0] + nr[i][0] * off[i], q[i][1] + nr[i][1] * off[i]);
+          pen.lineTo(q[i + 1][0] + nr[i + 1][0] * off[i + 1], q[i + 1][1] + nr[i + 1][1] * off[i + 1]);
+          pen.stroke();
+        }
+      }
+    }
+    var low = ease(seg(d, FLY.D1 - 2 * h, FLY.D1 - 1.4 * h)) * (1 - ease(seg(d, FLY.D1 + .1 * h, FLY.D1 + .6 * h)));   // under the block, just over « nokime », the head draws in
+    var fl = (1 + .8 * Math.sin(Math.PI * seg(p, .86, .9))) * (1 - .5 * low), R = .2 * h * fl;   // it flares at the end of the N, as the cut opens
+    var gr = pen.createRadialGradient(hd[0], hd[1], 0, hd[0], hd[1], R);
+    gr.addColorStop(0, rgba(CREAM, life)); gr.addColorStop(.16, rgba(GOLD, .85 * life)); gr.addColorStop(.45, rgba(GREEN, .3 * life)); gr.addColorStop(1, rgba(GREEN, 0));
+    pen.fillStyle = gr; pen.beginPath(); pen.arc(hd[0], hd[1], R, 0, 2 * Math.PI); pen.fill();
+    var an = d / (1.5 * h) + .3, rl = .3 * h * fl, rw = .03 * h;
+    pen.fillStyle = rgba(mix(TXT.m, CREAM, inside(d)), .95 * life);
+    for (k = 0; k < 2; k++) {   /* four rays: two thin diamonds across each other */
+      var ca = Math.cos(an + k * Math.PI / 2), sa = Math.sin(an + k * Math.PI / 2);
+      pen.beginPath();
+      pen.moveTo(hd[0] + ca * rl, hd[1] + sa * rl); pen.lineTo(hd[0] - sa * rw, hd[1] + ca * rw);
+      pen.lineTo(hd[0] - ca * rl, hd[1] - sa * rl); pen.lineTo(hd[0] + sa * rw, hd[1] - ca * rw);
+      pen.closePath(); pen.fill();
+    }
+    pen.fillStyle = rgba(CREAM, life); pen.beginPath(); pen.arc(hd[0], hd[1], Math.max(1.6, .03 * h) * fl, 0, 2 * Math.PI); pen.fill();
+    var M = Math.max(R, rl) + amp + .07 * h + 4;
+    FLY.box = [x0 - M, y0 - M, x1 + M, y1 + M];
   }
   function remeasure() { if (!on) return; measure(); last = -1; schedule(); }
 
@@ -190,7 +336,7 @@
     body.setAttribute("rx", rx.toFixed(1)); rim.setAttribute("rx", rx.toFixed(1));
     rim.style.opacity = ease(seg(p, .72, .82)).toFixed(3);
     halves.style.opacity = ease(seg(p, .765, .785)).toFixed(3);                  // same colour and same shape as the body once the corners are in
-    knife.style.strokeDashoffset = (1 - ease(seg(p, .78, .87))).toFixed(4);      // the knife draws, thin, from the bottom
+    knife.style.strokeDashoffset = (1 - clamp((along(p) - FLY.D1) / FLY.L)).toFixed(4);   // the knife draws, thin, behind the star, from the foot of the N
     knife.style.strokeWidth = lerp(3.4, 30, eio(seg(p, .87, .93))).toFixed(2);   // then the cut opens to its full width
     glow.style.opacity = (ease(seg(p, .62, .92)) * .95).toFixed(3);
 
@@ -209,13 +355,15 @@
     var dy = EG.dy * (1 - ew), wx = lerp(EG.wx, 0, ew), wsc = lerp(EG.ws, 1, ew);
     var ap = ease(seg(p, .17, .25));                                              // the « + » signs and the « = » appear around the landing names
     eq.style.transform = "translate(" + EG.x.toFixed(1) + "px," + dy.toFixed(1) + "px) scale(" + EG.bs.toFixed(3) + ")";
-    var tOp = (1 - ease(seg(q2, .6, 1))).toFixed(3);
+    /* melted, the line squeezes into one point at its centre, where the star lights up */
+    var cz = ease(seg(p, .545, .6)), tOp = (1 - ease(seg(p, .575, .6))).toFixed(3);
+    var sq = cz > 0 ? " scale(" + lerp(1, .03, cz).toFixed(3) + "," + lerp(1, .25, cz).toFixed(3) + ")" : "";
     [["c", TXT.c], ["m", TXT.m], ["j", TXT.j]].forEach(function (t) {
       var k3 = t[0], el = eqT[k3], pair = k3 !== "j";
-      var x = pair ? lerp(lerp(EQ[k3], TP[k3], q1), T3[k3], q2) : lerp(EQ[k3], T3[k3], q2);
+      var x = (pair ? lerp(lerp(EQ[k3], TP[k3], q1), T3[k3], q2) : lerp(EQ[k3], T3[k3], q2)) * (1 - cz);
       var col = pair ? mix(mix(t[1], PAIR, q1), MIX, q2) : mix(t[1], MIX, q2);
       var bl = pair ? 1.2 * q1 + 1.8 * q2 : 3 * q2;
-      el.style.transform = "translateX(" + (x - EQ[k3]).toFixed(1) + "px)"; el.style.color = rgb(col); el.style.opacity = p >= NAMES[k3 === "c" ? 0 : k3 === "m" ? 1 : 2].b ? tOp : 0;
+      el.style.transform = "translateX(" + (x - EQ[k3]).toFixed(1) + "px)" + sq; el.style.color = rgb(col); el.style.opacity = p >= NAMES[k3 === "c" ? 0 : k3 === "m" ? 1 : 2].b ? tOp : 0;
       el.style.filter = bl > .2 ? "blur(" + bl.toFixed(1) + "px)" : "";
     });
     eqP[0].style.opacity = (ap * (1 - ease(seg(q1, 0, .25)))).toFixed(3);
@@ -238,10 +386,15 @@
     final.classList.toggle("is-final", p >= .94);
     skip.classList.toggle("done", p >= .94);           // the finished page has its own way in; the link stays for the keyboard
     if (langTo) langTo.classList.toggle("done", p >= .94);   // and the site header, with its own language button, follows
+    drawStar(p);
   }
 
   function progress() { return clamp((window.pageYOffset - G.top) / G.range); }   // the track's offset is measured once, not every frame
-  function frame() { queued = false; if (on) { cur = progress(); render(clamp(cur / .9)); } }   // the last tenth of the track holds the finished mark
+  function frame() {   // the last tenth of the track holds the finished mark
+    queued = false; if (!on) return;
+    if ((window.devicePixelRatio || 1) !== md) { canvas(); last = -1; }   // a move to another screen fires no resize everywhere
+    cur = progress(); render(clamp(cur / .9));
+  }
   function schedule() {
     if (queued || !on) return; queued = true;
     if (window.requestAnimationFrame) requestAnimationFrame(frame);
@@ -263,6 +416,7 @@
     gone = false; dyed = ""; door.classList.remove("melted");
     body.setAttribute("rx", "44"); rim.setAttribute("rx", "44");
     final.classList.remove("is-final"); skip.classList.remove("done"); if (langTo) langTo.classList.remove("done");
+    if (pen) { pen.setTransform(1, 0, 0, 1, 0, 0); pen.clearRect(0, 0, star.width, star.height); FLY.box = null; FLY.lit = null; star.style.visibility = ""; }
   }
 
   window.addEventListener("scroll", schedule, { passive: true });

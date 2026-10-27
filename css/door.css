@@ -7,7 +7,7 @@
 .door{--mix:#32523D;position:relative;background:var(--bg);color:var(--ink)}
 .door-track{position:relative}
 .door-stage{position:relative;overflow:hidden;isolation:isolate}
-.d-paint,.d-hint{display:none}
+.d-paint,.d-hint,.d-star{display:none}
 .d-end{display:block;height:0}
 .d-end:focus{outline:none}   /* a landmark position the skip links move focus to, not a control */
 /* the way out of the door, from the first frame: skip, and the language (the site header only comes after the door). Static = at the top, so a keyboard visitor meets it first */
@@ -116,6 +116,7 @@
   .d-hint i{width:15px;height:15px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg);animation:ddArrow 1.8s ease-in-out infinite}
   .d-final{position:absolute;inset:0;justify-content:center;padding:0 16px;border:0;z-index:4;pointer-events:none}
   .d-final.is-final{pointer-events:auto}
+  .d-star{display:block;position:absolute;left:0;top:0;width:100%;height:100%;z-index:5;pointer-events:none}   /* above the mark, under « Passer » and the language */
   .d-halves,.d-glow,.d-rim,.d-body,.d-word,.d-line,.d-act,.d-links{opacity:0}
   .d-wordbox{display:grid;justify-items:center;align-items:center}
   .d-eq,.d-word{grid-area:1/1;will-change:transform,opacity}
