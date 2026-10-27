@@ -5,8 +5,8 @@
    column), a light blur on the equation and stroke-dashoffset change, plus the corner radius of one rectangle as the mass settles,
    and one canvas, where the shooting star is drawn.
    The three column names are not part of the swirl: each travels down to its own term of the equation and hands over to it.
-   Melted into one, the three terms squeeze into a shooting star, which circles the forming block and dives into it at the foot of the N:
-   the knife draws behind it (his ask, 27 Oct).
+   Melted into one, the three terms squeeze into a shooting star, which circles the forming block, swings round through « nokime » and dives
+   into the block at the foot of the N: the knife draws behind it (his ask, 27 Oct).
    Once scrolled past, the door is gone until the next load (drop, below). */
 (function () {
   "use strict";
@@ -54,8 +54,9 @@
   var star = $("#ddStar"), pen = star && star.getContext ? star.getContext("2d") : null;
   /* the star's flight, one path sampled into points (pts, and the length run up to each): the loop round the block, then the N.
      D1 = the loop's length, L = the N's, VE = the speed it enters the N at (px per unit of p), E0 = the equation line's centre untransformed,
-     box = what the last frame drew, cleared before the next, m = the canvas's density and centre, lit = whether the canvas shows */
-  var FLY = { pts: [[0, 0]], run: [0], D1: 1, L: 1, VE: 0, h: 1, E0: { x: 0, y: 0 }, box: null, m: [1, 0, 0], lit: null };
+     W = how low the middle of « nokime » sits once in place, box = what the last frame drew, cleared before the next, m = the canvas's density
+     and centre, lit = whether the canvas shows */
+  var FLY = { pts: [[0, 0]], run: [0], D1: 1, L: 1, VE: 0, h: 1, E0: { x: 0, y: 0 }, W: 0, box: null, m: [1, 0, 0], lit: null };
   var WORLD_X = { c: -1, m: 0, j: 1 };                     // which side of the block each world's pieces land on
   var START = { c: [.06, .45], m: [.06, .47], j: [.15, .5] };   // Copius and Manager meet first, Jobs pours in after: pair, then triple
   var SWING = { c: 3.6, m: 5.7, j: 1.5 };                        // the angle each pool swings out at as it leaves its disc
@@ -117,6 +118,7 @@
     T3.c = -t3 / 2 + TW.c / 2; T3.m = T3.c + TW.c / 2 + TW.m / 2; T3.j = T3.m + TW.m / 2 + TW.j / 2;
     var E = parseFloat(window.getComputedStyle(eq).fontSize) || 40, FW = parseFloat(window.getComputedStyle(word).fontSize) || 80;
     var wr = word.getBoundingClientRect(), sn = Math.min(1, E * 1.12 / FW), gw = .12 * E, tot = er.width + gw + wr.width * sn;
+    FLY.W = wr.top + wr.height / 2 - cy;
     var bs = Math.min(1, (G.W - 28) / tot), ts = tot * bs;
     EG.bs = bs; EG.x = (er.width * bs - ts) / 2; EG.ws = sn * bs; EG.wn = wr.width;
     EG.wx = -ts / 2 + (er.width + gw) * bs + wr.width * sn * bs / 2; EG.wl = EG.wx - wr.width * EG.ws / 2;
@@ -128,7 +130,7 @@
       for (var i = 0; i < 3; i++) for (var s = 0; s <= 1; s += .02) { var b = poolAt(i, s); reach = Math.max(reach, b.y + b.ry); }
       low = Math.min((reach + G.H / 2) / 2, G.H / 2 - Math.max(er.height * bs, wr.height * EG.ws) / 2 - 12);
     }
-    EG.dy = Math.max(0, low - (wr.top + wr.height / 2 - cy));
+    EG.dy = Math.max(0, low - FLY.W);
     /* where each name lands: on its own term of the equation, the line as it stands before the terms melt */
     eq.style.transform = "translate(" + EG.x.toFixed(1) + "px," + EG.dy.toFixed(1) + "px) scale(" + EG.bs.toFixed(3) + ")";
     NAMES.forEach(function (N) {
@@ -152,22 +154,22 @@
     FLY.box = [-W / 2, -H / 2, W / 2, H / 2];
   }
 
-  /* the star's flight, measured with the rest. From the line's centre at launch it goes out to the left and up, over the top, down the right
-     side, round the block's corner and along its foot, then turns up into the foot of the N and follows the knife to its end. Hermite curves
-     through those waypoints, each crossed in the direction given, sampled into one polyline the star is placed on by length */
+  /* the star's flight, measured with the rest. From the line's centre at launch it goes out to the left and up, over the top and down the
+     right side, then swings round through « nokime » in one wide turn, comes up into the foot of the N from below and follows the knife
+     to its end. Hermite curves through those waypoints, each crossed in the direction given, sampled into one polyline the star is placed
+     on by length */
   function flight() {
-    var C = G.T, s = G.s, h = 105 * s, g = Math.max(4, .08 * h), d = Math.SQRT1_2;   // g: how close it hugs the block's corner and foot, above « nokime »
+    var C = G.T, s = G.s, h = 105 * s;
     var rx = Math.max(1.4 * h, Math.min(2.8 * h, G.W / 2 - 14 - .3 * h - Math.abs(C.x))), rt = Math.max(1.4 * h, Math.min(2.5 * h, C.y + G.H / 2 - 14 - .3 * h));   // the rays' tips 14 px inside the stage
     var K = [[78.75, 225], [78.75, 72], [161.25, 168], [161.25, 15]].map(function (v) { return [C.x + (v[0] - 120) * s, C.y + (v[1] - 120) * s]; });   // the knife of the mark (its path, ddKnife), in the stage
     var B = [FLY.E0.x + EG.x, FLY.E0.y + EG.dy * (1 - eio(seg(.6, .5, .68)))];   // where the terms squeezed in, as the line stands at launch
+    var r = Math.max(.3 * h, FLY.W - K[0][1]);   // the last turn's radius: from the foot of the N down to the middle of « nokime » (the floor only guards a word moved up)
     var way = [
       [B, [-.45, -.9]],
       [[C.x - rx, C.y + .1 * h], [0, -1]],
       [[C.x, C.y - rt], [1, 0]],
       [[C.x + rx, C.y + .1 * h], [0, 1]],
-      [[C.x + .88 * h + g * d, C.y + .88 * h + g * d], [-.8, .6]],
-      [[C.x + .58 * h, C.y + h + g], [-1, 0]],   // the corner rounded, so the run along the foot never sags towards the name
-      [[K[0][0] + g, K[0][1] + g], [-1, 0]],
+      [[K[0][0] + r, K[0][1] + r], [-1, 0]],   // the bottom of the turn, across the middle of « nokime »
       [K[0], [0, -1]]
     ];
     var pts = [], run = [], tot = 0;
@@ -256,7 +258,7 @@
         }
       }
     }
-    var low = ease(seg(d, FLY.D1 - 2 * h, FLY.D1 - 1.4 * h)) * (1 - ease(seg(d, FLY.D1 + .1 * h, FLY.D1 + .6 * h)));   // under the block, just over « nokime », the head draws in
+    var low = ease(seg(d, FLY.D1 - 2 * h, FLY.D1 - 1.4 * h)) * (1 - ease(seg(d, FLY.D1 + .1 * h, FLY.D1 + .6 * h)));   // across « nokime » and up into the foot of the N, the head draws in
     var fl = (1 + .8 * Math.sin(Math.PI * seg(p, .86, .9))) * (1 - .5 * low), R = .2 * h * fl;   // it flares at the end of the N, as the cut opens
     var gr = pen.createRadialGradient(hd[0], hd[1], 0, hd[0], hd[1], R);
     gr.addColorStop(0, rgba(CREAM, life)); gr.addColorStop(.16, rgba(GOLD, .85 * life)); gr.addColorStop(.45, rgba(GREEN, .3 * life)); gr.addColorStop(1, rgba(GREEN, 0));
