@@ -6,9 +6,16 @@ AddType font/woff2 .woff2
 AddCharset utf-8 .js .css .xml .txt
 RewriteEngine On
 # OVH's load balancer ends TLS, so the port tells http from https (OVH's own .htaccess guide).
-# Let's Encrypt renewals fetch /.well-known/acme-challenge/ over http: leave it alone. (A and (B or C).)
-# C: every other name on this folder (www.nokime.fr, nokime.com, www.nokime.com, the cluster's own) moves to nokime.fr.
+# Let's Encrypt renewals fetch /.well-known/acme-challenge/ over http: leave it alone. Each rule is A and B and (C or D).
+# nokime.com is the English address of the same files (js/site.js opens it in English): http and www.nokime.com move to it.
 RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
+RewriteCond %{HTTP_HOST} ^(www\.)?nokime\.com\.?(:\d+)?$ [NC]
+RewriteCond %{SERVER_PORT} ^80$ [OR]
+RewriteCond %{HTTP_HOST} !^nokime\.com$ [NC]
+RewriteRule ^ https://nokime.com%{REQUEST_URI} [R=301,L]
+# Every other name on this folder (www.nokime.fr, the cluster's own) and http move to nokime.fr.
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
+RewriteCond %{HTTP_HOST} !^nokime\.com$ [NC]
 RewriteCond %{SERVER_PORT} ^80$ [OR]
 RewriteCond %{HTTP_HOST} !^nokime\.fr$ [NC]
 RewriteRule ^ https://nokime.fr%{REQUEST_URI} [R=301,L]

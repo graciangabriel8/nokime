@@ -28,9 +28,10 @@
       return q[1];
     }
     try { var v = localStorage.getItem(LS_LANG); if (v === "fr" || v === "en") return v; } catch (e) {}
-    // then French, whatever the browser's language: the page is French, and search engines read it with an
-    // English browser, so guessing from navigator.language had Google index the site in English
-    return "fr";
+    // then the address: English on nokime.com, French everywhere else (the inline script in every page's head does
+    // the same), whatever the browser's language: search engines read pages with an English browser, so guessing
+    // from navigator.language had Google index nokime.fr in English
+    return /(^|\.)nokime\.com$/.test(location.hostname) ? "en" : "fr";
   })();
   function T() { return I18N[lang] || I18N.fr; }
 
