@@ -24,24 +24,24 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" vie
 <defs><style>
 @font-face{{font-family:"Fraunces";src:url(data:font/ttf;base64,{fraunces}) format("truetype")}}
 @font-face{{font-family:"Fraunces";font-style:italic;src:url(data:font/ttf;base64,{fraunces_it}) format("truetype")}}
-.idea{{fill:#BBEB8A;font-style:italic}}.calm{{fill:#E7C370;font-style:italic}}
+.idea{{fill:#3E6B1F;font-style:italic}}.calm{{fill:#876510;font-style:italic}}
 @font-face{{font-family:"IBM Plex Sans";src:url(data:font/ttf;base64,{plex}) format("truetype")}}
 @font-face{{font-family:"Archivo";font-weight:700;src:url(data:font/ttf;base64,{archivo}) format("truetype")}}
-.f1{{fill:#2F2F2C}}.f2{{fill:#3A3A36}}.f3{{fill:#4A4A45}}.dot{{fill:#B8B5AE}}
-.s{{fill:none;stroke:#B8B5AE;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}}
-.sf{{stroke:#B8B5AE;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}}
+.f1{{fill:#E9E9E6}}.f2{{fill:#D7D7D3}}.f3{{fill:#BCBCB6}}.dot{{fill:#585853}}
+.s{{fill:none;stroke:#585853;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}}
+.sf{{stroke:#585853;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}}
 </style>
 <!-- « sans se prendre la tête » fades from Jobs blue to Manager brass across its two lines, as on the site -->
-<linearGradient id="fade1" gradientUnits="userSpaceOnUse" x1="233" y1="0" x2="615" y2="0"><stop offset="0" stop-color="#4B75FF"/><stop offset="0.25" stop-color="#698BEB"/><stop offset="0.5" stop-color="#889DD5"/><stop offset="0.75" stop-color="#A8ACBC"/><stop offset="1" stop-color="#C8B9A0"/></linearGradient><linearGradient id="fade2" gradientUnits="userSpaceOnUse" x1="80" y1="0" x2="230" y2="0"><stop offset="0" stop-color="#C8B9A0"/><stop offset="0.25" stop-color="#D5BD93"/><stop offset="0.5" stop-color="#E1C284"/><stop offset="0.75" stop-color="#EEC673"/><stop offset="1" stop-color="#FBCA5F"/></linearGradient></defs>
-<rect width="1200" height="1200" fill="#15170F"/>
+<linearGradient id="fade1" gradientUnits="userSpaceOnUse" x1="233" y1="0" x2="615" y2="0"><stop offset="0" stop-color="#2038D5"/><stop offset="0.25" stop-color="#304DB8"/><stop offset="0.5" stop-color="#43599B"/><stop offset="0.75" stop-color="#58607C"/><stop offset="1" stop-color="#6C645A"/></linearGradient><linearGradient id="fade2" gradientUnits="userSpaceOnUse" x1="80" y1="0" x2="230" y2="0"><stop offset="0" stop-color="#6C645A"/><stop offset="0.25" stop-color="#73654D"/><stop offset="0.5" stop-color="#7A653F"/><stop offset="0.75" stop-color="#80652D"/><stop offset="1" stop-color="#876510"/></linearGradient></defs>
+<rect width="1200" height="1200" fill="#F3F1E8"/>
 <g transform="translate(0,285)">
-<g transform="translate(80,70)"><g transform="scale(0.19)"><path fill="#ECEBE2" d="M15 181V59A44 44 0 0 1 59 15H150V137.65L67.5 41.65V225H59A44 44 0 0 1 15 181Z"/><path fill="#BBEB8A" d="M90 225V102.35L172.5 198.35V15H181A44 44 0 0 1 225 59V181A44 44 0 0 1 181 225Z"/></g><text x="60" y="36" font-family="Archivo, Helvetica, sans-serif" font-weight="700" font-size="36" letter-spacing="-0.5" fill="#ECEBE2">nokime</text></g>
-<text font-family="Fraunces, Georgia, serif" font-size="62" fill="#ECEBE2" letter-spacing="-0.5">
+<g transform="translate(80,70)"><g transform="scale(0.19)"><path fill="#15170F" d="M15 181V59A44 44 0 0 1 59 15H150V137.65L67.5 41.65V225H59A44 44 0 0 1 15 181Z"/><path fill="#3E6B1F" d="M90 225V102.35L172.5 198.35V15H181A44 44 0 0 1 225 59V181A44 44 0 0 1 181 225Z"/></g><text x="60" y="36" font-family="Archivo, Helvetica, sans-serif" font-weight="700" font-size="36" letter-spacing="-0.5" fill="#15170F">nokime</text></g>
+<text font-family="Fraunces, Georgia, serif" font-size="62" fill="#15170F" letter-spacing="-0.5">
 <tspan x="80" y="232">Cuisiner avec <tspan class="idea">des idées</tspan>,</tspan><tspan x="80" y="306">gérer <tspan class="calm" style="fill:url(#fade1)">sans se prendre</tspan></tspan><tspan x="80" y="380"><tspan class="calm" style="fill:url(#fade2)">la tête</tspan>.</tspan></text>
-<text font-family="IBM Plex Sans, Helvetica, sans-serif" font-size="23" fill="#BDBFAE">
+<text font-family="IBM Plex Sans, Helvetica, sans-serif" font-size="23" fill="#45483C">
 <tspan x="80" y="470">Copius pour trouver l’inspiration, Jobs pour recruter,</tspan><tspan x="80" y="504">Manager pour savoir si le plat est rentable.</tspan></text>
 {drawing("chicken", 770, 150, 290)}{drawing("langoustine", 1000, 50, 170)}{drawing("fraise-des-bois", 1010, 350, 150)}
-<rect x="80" y="576" width="1040" height="1" fill="#2A2D22"/>
+<rect x="80" y="576" width="1040" height="1" fill="#E2DFD3"/>
 </g>
 </svg>'''
 tmp = pathlib.Path(tempfile.mkdtemp()); src = tmp / "og.svg"; src.write_text(svg, encoding="utf-8")
