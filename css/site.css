@@ -1,17 +1,18 @@
-/* Nokime — site stylesheet. Dark only, his call (22 Sept 2026): one token set on :root,
+/* Nokime — site stylesheet. Paper only, his call (27 Oct 2026; dark only from 22 Sept): one token set on :root,
    every colour through a token. The typefaces and the serif/sans tokens sit below. */
 
 :root{
-  --bg:#15170F;--bg-2:#1A1D14;--card:#1C1F16;--hair:#2A2D22;--rule:#3E4234;
-  --ink:#ECEBE2;--ink-2:#BDBFAE;--ink-3:#8C907F;
-  --accent:#BBEB8A;--accent-ink:#15170F;
-  --brass:#E7C370;
-  --blue:#4B75FF;   /* the Jobs blue #2038D5, lifted to read on the dark ground (4.5:1) */
-  --fade:linear-gradient(90deg,#4B75FF,#7592E2,#A1A9C2,#CEBB9A,#FBCA5F); /* Jobs blue straight to a brighter Manager brass, mixed in OKLab so the middle stays clean */
-  --art-1:#2F2F2C;--art-2:#3A3A36;--art-3:#4A4A45;--art-line:#B8B5AE;
-  --head:rgba(21,23,15,.88);
-  --shadow:0 1px 2px rgba(0,0,0,.35);--lift:0 18px 48px rgba(0,0,0,.5);
-  color-scheme:dark;
+  --bg:#F3F1E8;--bg-2:#ECE9DE;--card:#FBFAF5;--hair:#E2DFD3;--rule:#CFCBBC;   /* the paper of the logo's light version */
+  --ink:#15170F;--ink-2:#45483C;--ink-3:#64675B;
+  --accent:#3E6B1F;--accent-ink:#FFFFFF;   /* the logo's green on a light ground (5.6:1 on the paper) */
+  --brass:#876510;   /* Manager's gold, deepened to read on the paper (4.8:1) */
+  --blue:#2038D5;    /* the Jobs blue itself */
+  --fade:linear-gradient(90deg,#2038D5,#3652AE,#515E86,#6C645A,#876510); /* Jobs blue straight to the Manager brass, mixed in OKLab so the middle stays clean; every stop reads at 4.5:1 or more */
+  --paint-c:#BBEB8A;--paint-m:#E7C370;--paint-j:#4B75FF;   /* the three bright brand colours, used as paint on the paper (the welcome door), never for text */
+  --art-1:#E9E9E6;--art-2:#D7D7D3;--art-3:#BCBCB6;--art-line:#585853;   /* the atlas's own light drawings (copius.fr) */
+  --head:rgba(243,241,232,.88);
+  --shadow:0 1px 2px rgba(21,23,15,.08);--lift:0 18px 48px rgba(21,23,15,.14);
+  color-scheme:light;
   --serif:"Fraunces",Georgia,"Iowan Old Style","Times New Roman",serif;
   --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
   --r:14px;

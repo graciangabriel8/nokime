@@ -1,8 +1,9 @@
 /* ---------- the welcome door: Copius + Manager + Jobs = Nokime ----------
    Default = two calm static blocks (the three projects, then the equation and the mark): reduced-motion visitors and no-script visitors get this.
    With motion and scripting allowed, the stage is pinned in a tall track and js/door.js drives every layer from the scroll progress.
-   The three colours are the site tokens (Copius --accent, Manager --brass, Jobs --blue). --mix is their paint (multiply) mix, per channel
-   r1*r2*r3 on 0-1 values: #BBEB8A x #E7C370 x #4B75FF = #32523D (js/door.js computes the same from the tokens). */
+   The text takes the site's readable tool colours (Copius --accent, Manager --brass, Jobs --blue); the paint takes the bright ones
+   (--paint-c, --paint-m, --paint-j). --mix is the paint's multiply mix, per channel r1*r2*r3 on 0-1 values:
+   #BBEB8A x #E7C370 x #4B75FF = #32523D (js/door.js computes the same from the tokens). */
 .door{--mix:#32523D;position:relative;background:var(--bg);color:var(--ink)}
 .door-track{position:relative}
 .door-stage{position:relative;overflow:hidden;isolation:isolate}
@@ -11,7 +12,7 @@
 .d-end:focus{outline:none}   /* a landmark position the skip links move focus to, not a control */
 /* the way out of the door, from the first frame: skip, and the language (the site header only comes after the door). Static = at the top, so a keyboard visitor meets it first */
 .d-tools{position:absolute;right:16px;top:16px;z-index:6;display:flex;gap:8px;align-items:center}
-.d-skip,.d-lang{padding:5px 12px;border-radius:999px;border:1px solid var(--hair);background:rgba(21,23,15,.7);font:inherit;font-size:13px;line-height:1.6;color:var(--ink-3);cursor:pointer}
+.d-skip,.d-lang{padding:5px 12px;border-radius:999px;border:1px solid var(--hair);background:rgba(243,241,232,.8);font:inherit;font-size:13px;line-height:1.6;color:var(--ink-3);cursor:pointer}
 .d-lang[hidden]{display:none}
 .d-skip.done:not(:focus),.d-lang.done:not(:focus){opacity:0;pointer-events:none}
 .d-skip:hover,.d-lang:hover{color:var(--ink);border-color:var(--ink-3)}
@@ -25,23 +26,23 @@
    (--D, the same for the three, never wider than its column) centred on its column, its centres on one horizontal line. The drawings are placed on the disc, not on the column. */
 .d-worlds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto auto auto;gap:0 36px;max-width:1280px;margin:0 auto;padding:12px 24px 44px}
 .d-col{display:grid;grid-row:2/4;grid-template-rows:subgrid;min-width:0}
-.d-copius{--c:var(--accent)}.d-manager{--c:var(--brass)}.d-jobs{--c:var(--blue)}
+.d-copius{--c:var(--accent);--p:var(--paint-c)}.d-manager{--c:var(--brass);--p:var(--paint-m)}.d-jobs{--c:var(--blue);--p:var(--paint-j)}
 .d-text{position:relative;z-index:3;padding:14px 0 6px;text-align:center}
 .d-q{margin:0 0 10px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--ink-3)}
 .d-name{margin:0 auto 6px;width:max-content;font-family:var(--serif);font-size:clamp(40px,min(5.2vw,8vh),76px);line-height:1;letter-spacing:-.01em;font-variation-settings:"opsz" 96;color:var(--c)}
 .d-inf{margin:0 0 6px;font-family:var(--serif);font-style:italic;font-size:clamp(20px,min(2.1vw,3.4vh),28px);line-height:1.15;color:var(--ink)}
 .d-world{position:relative;z-index:1;container-type:size;aspect-ratio:1;--k:1;margin-top:clamp(10px,2vh,22px)}   /* a disc as wide as its column at most, so the gutters stay clear between the three */
 .d-disc{position:absolute;left:50%;top:50%;--D:min(calc(var(--k) * 100cqw),100cqh);width:var(--D);height:var(--D);margin:calc(var(--D) / -2) 0 0 calc(var(--D) / -2)}
-.d-disc::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--c) 22%,transparent) 86%,transparent)}   /* the static pool; with motion the paint layer draws it */
+.d-disc::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--p) 34%,transparent) 86%,transparent)}   /* the static pool; with motion the paint layer draws it */
 .d-piece{transform:rotate(calc(var(--rot,0) * 1deg));transform-origin:50% 50%}
 
 /* the drawings: the atlas hand, each world's line tinted in its colour (door-js dyes them through --da1…--dal as they melt).
    A drawing is placed by its centre (--cx, --cy) and size (--s), all fractions of the disc. */
 .d-art{position:absolute;display:block;left:calc((var(--cx) - var(--s) / 2) * 100%);top:calc((var(--cy) - var(--s) / 2) * 100%);width:calc(var(--s) * 100%)}
 .d-art .art{width:100%;height:auto;aspect-ratio:1;overflow:visible}
-.d-world .art{--art-1:var(--da1,#1F2B17);--art-2:var(--da2,#2A3B1F);--art-3:var(--da3,#35502A);--art-line:var(--dal,#B3E080)}
-.d-manager .art{--art-1:var(--da1,#272113);--art-2:var(--da2,#352D1A);--art-3:var(--da3,#453B22);--art-line:var(--dal,#E0BC6B)}
-.d-jobs .art{--art-1:var(--da1,#0E1730);--art-2:var(--da2,#142049);--art-3:var(--da3,#1B2A5E);--art-line:var(--dal,#5F84FF)}
+.d-world .art{--art-1:var(--da1,#E4F0DB);--art-2:var(--da2,#D0E2C0);--art-3:var(--da3,#B4CE9B);--art-line:var(--dal,#3E6B1F)}
+.d-manager .art{--art-1:var(--da1,#F4EAD5);--art-2:var(--da2,#E9D9B6);--art-3:var(--da3,#D9C18C);--art-line:var(--dal,#876510)}
+.d-jobs .art{--art-1:var(--da1,#E2EBFF);--art-2:var(--da2,#CCDBFD);--art-3:var(--da3,#AEC3F6);--art-line:var(--dal,#2038D5)}
 .d-copius .a1{--cx:.29;--cy:.445;--s:.372}
 .d-copius .a2{--cx:.613;--cy:.152;--s:.356}
 .d-copius .a3{--cx:.718;--cy:.55;--s:.275}
@@ -63,8 +64,8 @@
 .d-mark{width:100%;height:100%;overflow:visible}
 .d-mark .cut-a,.d-mark .cut-b{fill:var(--mix)}                 /* the multiply mix of Jobs blue, Manager gold and Copius green */
 .d-mark .d-body{fill:var(--mix)}
-.d-mark .d-knife{fill:none;stroke:var(--accent);stroke-width:30;stroke-dasharray:1 1}   /* the cut, opened in the site's bright green; the halves sit on top and hide the overshoot */
-.d-mark .d-rim{fill:none;stroke:var(--accent);stroke-opacity:.6;stroke-width:2}
+.d-mark .d-knife{fill:none;stroke:var(--paint-c);stroke-width:30;stroke-dasharray:1 1}   /* the cut, opened in the bright paint green; the halves sit on top and hide the overshoot */
+.d-mark .d-rim{fill:none;stroke:var(--paint-c);stroke-opacity:.6;stroke-width:2}
 /* the equation: static = a line above the name, each term in its tool's colour; with motion it shares the name's place and melts into it */
 .d-wordbox{display:flex;flex-direction:column;align-items:center}
 .d-eq{margin:.9em 0 0;font-family:var(--serif);font-size:clamp(22px,2.6vw,36px);line-height:1.1;color:var(--ink-3);white-space:nowrap}
@@ -83,7 +84,7 @@
   .d-head{padding:44px 0 6px}
   .d-head p{font-size:21px}
   .d-worlds{grid-template-columns:1fr;grid-template-rows:none;gap:0;padding:6px 16px 28px}
-  .d-col{grid-row:auto;grid-template-rows:none;grid-template-columns:minmax(0,.92fr) minmax(0,1fr);align-items:center;column-gap:6px;border-top:1px solid rgba(42,45,34,var(--hl,1))}
+  .d-col{grid-row:auto;grid-template-rows:none;grid-template-columns:minmax(0,.92fr) minmax(0,1fr);align-items:center;column-gap:6px;border-top:1px solid rgba(226,223,211,var(--hl,1))}
   .d-head + .d-col{border-top:0}
   .d-text{padding:12px 0;text-align:left}
   .d-q{font-size:10.5px;margin-bottom:6px}
@@ -105,7 +106,7 @@
   .d-pools{position:absolute;inset:0;isolation:isolate}
   .d-pool{position:absolute;left:50%;top:50%;width:320px;height:320px;margin:-160px 0 0 -160px;border-radius:50%;transform:scale(0);will-change:transform;mix-blend-mode:multiply;
     background:radial-gradient(closest-side,var(--pc),var(--pc) 86%,transparent)}   /* js/door.js moves and scales each by transform (radius 160 = scale 1) */
-  .d-pool.pa{--pc:var(--accent)}.d-pool.pb{--pc:var(--brass)}.d-pool.pc{--pc:var(--blue)}
+  .d-pool.pa{--pc:var(--paint-c)}.d-pool.pb{--pc:var(--paint-m)}.d-pool.pc{--pc:var(--paint-j)}
   .d-head{position:relative;z-index:3;padding:0 0 clamp(20px,3.4vh,38px)}
   .d-worlds{position:absolute;left:0;right:0;top:clamp(24px,4vh,48px);bottom:clamp(72px,9vh,96px);margin:0 auto;padding:0 24px;z-index:2;grid-template-rows:auto auto auto;align-content:center}   /* text and discs as one block, centred: the gap between them is the same at every size */
   .d-world{max-width:max(200px,calc(100svh - 400px));justify-self:center;width:100%}

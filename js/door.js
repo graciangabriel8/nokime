@@ -21,15 +21,16 @@
     var v = (window.getComputedStyle(document.documentElement).getPropertyValue(name) || "").trim();
     return /^#[0-9a-fA-F]{6}$/.test(v) ? hex(v) : hex(fallback);
   }
-  var GREEN = token("--accent", "#BBEB8A"), GOLD = token("--brass", "#E7C370"), BLUE = token("--blue", "#4B75FF");   // Copius, Manager, Jobs
+  var GREEN = token("--paint-c", "#BBEB8A"), GOLD = token("--paint-m", "#E7C370"), BLUE = token("--paint-j", "#4B75FF");   // the paint: Copius, Manager, Jobs
   var MIX = mul3(GREEN, GOLD, BLUE);                           // #32523D, the deep green of the mark (same as --mix in css/door.css)
   var PAIR = mul3(GREEN, GOLD, [255, 255, 255]);               // Copius + Manager meet first: #A9B43D
-  var OWN = { c: GREEN, m: GOLD, j: BLUE };
+  var TXT = { c: token("--accent", "#3E6B1F"), m: token("--brass", "#876510"), j: token("--blue", "#2038D5") };   // the names' readable colours, which the equation's terms take over
+  var PAIRT = mix(TXT.c, TXT.m, .5);                           // the pair as text: halfway between the two readable colours (the paint pair is too pale to read on the paper)
   /* each world's drawings: line and the three fills, tinted in its colour (the same as the CSS defaults of css/door.css) */
   var ART = {
-    c: { line: hex("#B3E080"), f: [hex("#1F2B17"), hex("#2A3B1F"), hex("#35502A")] },
-    m: { line: hex("#E0BC6B"), f: [hex("#272113"), hex("#352D1A"), hex("#453B22")] },
-    j: { line: hex("#5F84FF"), f: [hex("#0E1730"), hex("#142049"), hex("#1B2A5E")] }
+    c: { line: hex("#3E6B1F"), f: [hex("#E4F0DB"), hex("#D0E2C0"), hex("#B4CE9B")] },
+    m: { line: hex("#876510"), f: [hex("#F4EAD5"), hex("#E9D9B6"), hex("#D9C18C")] },
+    j: { line: hex("#2038D5"), f: [hex("#E2EBFF"), hex("#CCDBFD"), hex("#AEC3F6")] }
   };
 
   function clamp(x) { return x < 0 ? 0 : x > 1 ? 1 : x; }
@@ -200,10 +201,10 @@
     var ap = ease(seg(p, .17, .25));                                              // the « + » signs and the « = » appear around the landing names
     eq.style.transform = "translate(" + EG.x.toFixed(1) + "px," + dy.toFixed(1) + "px) scale(" + EG.bs.toFixed(3) + ")";
     var tOp = (1 - ease(seg(q2, .6, 1))).toFixed(3);
-    [["c", GREEN], ["m", GOLD], ["j", BLUE]].forEach(function (t) {
+    [["c", TXT.c], ["m", TXT.m], ["j", TXT.j]].forEach(function (t) {
       var k3 = t[0], el = eqT[k3], pair = k3 !== "j";
       var x = pair ? lerp(lerp(EQ[k3], TP[k3], q1), T3[k3], q2) : lerp(EQ[k3], T3[k3], q2);
-      var col = pair ? mix(mix(t[1], PAIR, q1), MIX, q2) : mix(t[1], MIX, q2);
+      var col = pair ? mix(mix(t[1], PAIRT, q1), MIX, q2) : mix(t[1], MIX, q2);
       var bl = pair ? 1.2 * q1 + 1.8 * q2 : 3 * q2;
       el.style.transform = "translateX(" + (x - EQ[k3]).toFixed(1) + "px)"; el.style.color = rgb(col); el.style.opacity = p >= NAMES[k3 === "c" ? 0 : k3 === "m" ? 1 : 2].b ? tOp : 0;
       el.style.filter = bl > .2 ? "blur(" + bl.toFixed(1) + "px)" : "";
