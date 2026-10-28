@@ -82,7 +82,7 @@ window.NOKIME_I18N = {
 
     /* contact */
     ctEyebrow: "Contact", ctTitle: "One email is enough.",
-    ctLead: "One address, and an answer.",
+    ctLead: "One address, and an answer within 2 working days.",
     r1t: "You run a restaurant", r1p: "To join the five founding restaurants of Nokime Manager, or to ask about the tool.", r1cta: "Write about Manager",
     r2t: "You teach", r2p: "For a pilot class with Copius, or to talk about the school version.", r2cta: "Write about Copius",
     r3t: "Press, partners, the curious", r3p: "For everything else.", r3cta: "Write",
