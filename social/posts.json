@@ -388,5 +388,27 @@
   ],
   "cover": "social/2026-10-23-lecon-6-cover.jpg",
   "caption": "Les bases de la gestion · Leçon 6 : coefficient ou marge ?\nCoefficient 4, ça veut dire 400 % de marge ? Non. On vous montre pourquoi."
+ },
+ {
+  "id": "2026-11-12-manager-rentable",
+  "account": "nokime.manager",
+  "at": "2026-11-12T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-12-manager-rentable.mp4"
+  ],
+  "cover": "social/2026-11-12-manager-rentable-cover.jpg",
+  "caption": "Restauration : 1 694 défaillances au troisième trimestre, près de 10 % de plus qu’un an plus tôt (Altares). Pour savoir si un plat tient la route, trois chiffres suffisent : ce qu’il vous coûte, son plancher, et son objectif.\nLe plancher, c’est le prix sous lequel le plat ne paie plus sa part d’équipe et de charges, aux couverts que vous indiquez. L’objectif ajoute votre marge cible.\nManager vous les donne, plat par plat.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-19-manager-tableur",
+  "account": "nokime.manager",
+  "at": "2026-11-19T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-19-manager-tableur.mp4"
+  ],
+  "cover": "social/2026-11-19-manager-tableur-cover.jpg",
+  "caption": "Vos fiches existent déjà, quelque part entre un tableur, un document texte et un carnet. Pas besoin de tout ressaisir.\nManager lit le texte collé, les .txt, .csv, .docx et .xlsx. Les produits reconnus arrivent chiffrés, le reste est listé pour que vous l’ajoutiez à la main. Ensuite, vous corrigez avec vos prix d’achat.\nmanager.nokime.fr"
  }
 ]
