@@ -96,7 +96,7 @@ window.NOKIME_I18N = {
     jobsCta1: "See the offers", jobsCta2: "Post an offer",
     jbHdT: "The Nokime Jobs hirondelle.", jbHdP: "It goes to the places interns, apprentices and seasonal staff want to come back to. It comes from their answers, cannot be bought, and ranks no one. No place has it yet.", jbHdLink: "The Nokime Jobs hirondelle: how it is earned", jbRead: "Read:", jbRead1: "What should be normal during an internship or a season", jbRead2: "Housing and meals: what to ask before you sign",
 
-    jTag: "Open for offers", jSub: "Internships, apprenticeships and seasons in hotels and restaurants. Staff wellbeing matters.", jHdNote: "In preparation: the Nokime Jobs hirondelle.", jLink: "See Nokime Jobs",
+    jTag: "Coming soon", jSub: "Internships, apprenticeships and seasons in hotels and restaurants. Staff wellbeing matters.", jHdNote: "In preparation: the Nokime Jobs hirondelle.", jLink: "See Nokime Jobs",
 
     /* welcome door (home page) */
     ddTitle: "One restaurant, three questions.",

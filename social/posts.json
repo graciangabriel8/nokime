@@ -187,17 +187,6 @@
   "caption": "La connexion lâche ? Manager continue.\nVos changements restent sur l’appareil, et Manager réessaie d’enregistrer toutes les minutes. Le voyant du compte vous dit où ça en est.\nVos données sont sur votre compte, hébergées en France : vous les ouvrez sur n’importe quel ordinateur.\nmanager.nokime.fr"
  },
  {
-  "id": "2026-11-03-jobs",
-  "account": "nokime.jobs",
-  "at": "2026-11-03T18:00:00+01:00",
-  "type": "carousel",
-  "media": [
-   "social/2026-11-03-jobs-1.jpg",
-   "social/2026-11-03-jobs-2.jpg"
-  ],
-  "caption": "Bien traité en stage ou en saison, ça veut dire quoi ?\nLa charte d’accueil de Nokime Jobs tient en six points : les heures prévues sont respectées, et celles en plus récupérées ou payées. Les pauses et les jours de repos aussi. La paie arrive à la date prévue. Chaque stagiaire et chaque apprenti a un tuteur nommé. Chacun est traité avec respect. Et le logement annoncé est fourni, comme annoncé.\nUn établissement y adhère par un simple mail. Ce n’est ni un contrat, ni un label.\njobs.nokime.fr"
- },
- {
   "id": "2026-11-04-nokime",
   "account": "nokime.fr",
   "at": "2026-11-04T15:30:00+01:00",
@@ -218,17 +207,6 @@
    "social/2026-11-05-manager-2.jpg"
   ],
   "caption": "Chiffrer votre carte plat par plat, avec l’outil offert six mois ?\nC’est l’offre fondateurs, pour cinq restaurants : l’outil offert six mois, l’Analyse à 99 € par mois. Ensuite, 49 € par mois si vous continuez.\nCe qu’on demande : vos vrais plats et votre avis franc.\nTVA non applicable, article 293 B du CGI.\nmanager.nokime.fr"
- },
- {
-  "id": "2026-11-06-jobs",
-  "account": "nokime.jobs",
-  "at": "2026-11-06T18:00:00+01:00",
-  "type": "carousel",
-  "media": [
-   "social/2026-11-06-jobs-1.jpg",
-   "social/2026-11-06-jobs-2.jpg"
-  ],
-  "caption": "Vous accompagnez des élèves en hôtellerie-restauration ?\nNokime Jobs, c’est une page à leur donner : chaque offre dit le type, les dates, les heures, la rémunération quand l’établissement l’indique, le logement. Ils écrivent eux-mêmes à l’établissement et la convention suit votre procédure.\nCe qu’on vous demande : un avis, et un lien vers la page si elle vous sert.\njobs.nokime.fr"
  },
  {
   "id": "pinned-jobs-3-right",
