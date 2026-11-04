@@ -11,7 +11,7 @@ import hashlib, http.client, json, os, subprocess, sys, time, urllib.error, urll
 
 API = "https://eu.api.ovh.com/1.0"
 SITE = "https://nokime.fr/"
-WAIT, SETTLE, EVERY, TRIES, GAP = 12 * 60, 3 * 60, 15, 3, 30
+WAIT, SETTLE, EVERY, TRIES, GAP = 12 * 60, 3 * 60, 15, 6, 30
 LOOK = 12
 # Working material, or what the site never serves as is.
 NOT_SERVED = (".", "_", "tools/", "design/", "social/")
@@ -57,7 +57,7 @@ def ask_once(keys):
             why = hide(e.read().decode("utf-8", "replace"))[:300]
         except NET + (ValueError,):
             why = "its answer was cut off"
-        return "OVH refused the deploy (%d): %s" % (e.code, why), e.code >= 500
+        return "OVH refused the deploy (%d): %s" % (e.code, why), e.code == 409 or e.code >= 500
     except (urllib.error.URLError, OSError) as e:
         return "OVH's API could not be reached: " + hide(str(e)), True
     except (http.client.HTTPException, ValueError) as e:
@@ -74,7 +74,9 @@ def deploy():
     keys = [os.environ.get(k, "").strip() for k in ("OVH_APP_KEY", "OVH_APP_SECRET", "OVH_CONSUMER_KEY", "OVH_SERVICE")]
     if not all(keys):
         return "the OVH_* secrets are not set, so no deploy was asked"
-    for attempt in range(TRIES):   # bounded; a blip or a 5xx only, and a second deploy changes nothing
+    # Bounded, and a second deploy changes nothing: a blip, a 5xx, or a 409, OVH's answer while another deployment runs,
+    # which may have started before `live` moved.
+    for attempt in range(TRIES):
         answer = ask_once(keys)
         if answer is None:
             return None
