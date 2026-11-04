@@ -35,13 +35,12 @@ window.NOKIME_I18N = {
 
     shotLabel: "Nokime Manager in use, with the example dishes", shotCap: "The tool, with its example dishes. Lower the price, and the dish drops below its floor.",
     cpShotLabel: "Nokime Copius in use, from search to the pairing lab", cpShotCap: "The full version. Search for asparagus, step over to butter, and the lab judges the pairing.",
-    jbShotLabel: "Nokime Jobs in use, filmed with example offers", jbShotCap: "The site, filmed with example offers. Filter the seasons, read the offer, write to the establishment.",
     /* home */
     heroEyebrow: "Nokime",
     heroT1: "Cook with ", heroT2: "ideas", heroT3: ", run things ", heroT4: "without the headache", heroT5: ".",
     heroCta1: "See the tools", heroCta2: "Write to us",
     stat1n: "Out of ideas in the kitchen?", stat1l: "Copius: what’s in season, and what goes with it.",
-    stat2n: "Nobody for the season?", stat2l: "Jobs: your internship and seasonal offers, with a welcome charter.",
+    stat2n: "Nobody for the season?", stat2l: "Nokime Jobs is coming back soon.",
     stat3n: "At that price, does the dish pay?", stat3l: "Manager tells you before service.",
     prodKicker: "Our three tools.",
     mTag: "Founders’ offer open", mSub: "The cost of the plate, and what the service does.",
@@ -77,7 +76,7 @@ window.NOKIME_I18N = {
     stateKicker: "Where we are.",
     state1: "Nokime Copius is live, readable without an account.",
     state2: "Nokime Manager is built and opens to five founding restaurants.",
-    state3: "Nokime Jobs is open to internship, apprenticeship and season offers. Staff wellbeing matters.",
+    state3: "Nokime Jobs is coming back soon.",
     grCta: "Write to us",
 
     /* contact */
@@ -88,15 +87,13 @@ window.NOKIME_I18N = {
     r3t: "Press, partners, the curious", r3p: "For everything else.", r3cta: "Write",
     ctMailLabel: "The address",
     /* Nokime Jobs */
-    navJobs: "Jobs", titleJobs: "Nokime Jobs — internships, apprenticeships and seasons in hotels and restaurants",
-    descJobs: "Nokime Jobs: internship, apprenticeship and seasonal offers in hotels and restaurants, in the kitchen, the dining room, the rooms division and the spa, from establishments worth working in. Free for candidates; establishments post one offer at a time for free and answer directly.",
-    jobsEyebrow: "Nokime Jobs", jobsT1: "Internships and seasons in hotels and restaurants ", jobsT2: "worth working in", jobsT3: ".",
-    jobsLead: "Free for those who are looking, in the kitchen, the dining room, the rooms division and the spa. Hotels and restaurants post their offers and answer you directly. Staff wellbeing matters.",
-    jobsMore: "An offer says everything before you write: the position, the dates, the hours, the pay when the establishment states it, the lodging. You write to the establishment, not to us.",
-    jobsCta1: "See the offers", jobsCta2: "Post an offer",
-    jbHdT: "The Nokime Jobs hirondelle.", jbHdP: "It goes to the places interns, apprentices and seasonal staff want to come back to. It comes from their answers, cannot be bought, and ranks no one. No place has it yet.", jbHdLink: "The Nokime Jobs hirondelle: how it is earned", jbRead: "Read:", jbRead1: "What should be normal during an internship or a season", jbRead2: "Housing and meals: what to ask before you sign",
+    navJobs: "Jobs", titleJobs: "Nokime Jobs is coming back soon",
+    descJobs: "Internships, apprenticeships and seasons in hotels and restaurants, with a welcome charter. Meanwhile, see you on Instagram.",
+    jobsT1: "Nokime Jobs ", jobsT2: "is coming back soon.",
+    jobsLead: "Internships, apprenticeships and seasons in hotels and restaurants, with a welcome charter. Meanwhile, see you on Instagram.",
+    jobsCta1: "Follow @nokime.jobs",
 
-    jTag: "Coming soon", jSub: "Internships, apprenticeships and seasons in hotels and restaurants. Staff wellbeing matters.", jHdNote: "In preparation: the Nokime Jobs hirondelle.", jLink: "See Nokime Jobs",
+    jTag: "Coming soon", jSub: "Internships, apprenticeships and seasons in hotels and restaurants. Staff wellbeing matters.", jLink: "See Nokime Jobs",
 
     /* welcome door (home page) */
     ddTitle: "One restaurant, three questions.",
