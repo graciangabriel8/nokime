@@ -17,6 +17,8 @@ return {
     // actually sees, the content behind blurred to nothing.
     const rgb = (getComputedStyle(H.$('.site-head')).backgroundColor.match(/[\d.]+/g) || []).slice(0, 3);
     if (rgb.length === 3) { const st = document.createElement('style'); st.textContent = '.site-head{background:rgb(' + rgb.join(',') + ')!important}'; document.head.append(st); }
+    // The opening rows stop at the frame's edge: in English the absinthe card would lose its health notice to it (loi Évin), so that card sits out the take.
+    const noAbsinthe = document.createElement('style'); noAbsinthe.textContent = 'article.card[data-id=absinthe]{display:none!important}'; document.head.append(noAbsinthe);
   },
   P: {
     start: () => [innerWidth * 0.4, 44],   // the empty strip of the header, next to the search box: the poster shows no cursor over a card
