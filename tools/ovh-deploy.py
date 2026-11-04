@@ -11,9 +11,9 @@ import hashlib, http.client, json, os, subprocess, sys, time, urllib.error, urll
 
 API = "https://eu.api.ovh.com/1.0"
 SITE = "https://nokime.fr/"
-WAIT, SETTLE, EVERY, TRIES, GAP = 12 * 60, 3 * 60, 15, 6, 30
+WAIT, SETTLE, EVERY, TRIES, GAP = 12 * 60, 3 * 60, 15, 12, 30
 LOOK = 12
-# Working material, or what the site never serves as is.
+# Working material; tools/ig_post.py checks social/ itself before each post, and its films are 16 MB a pass here.
 NOT_SERVED = (".", "_", "tools/", "design/", "social/")
 SERVED = (".html", ".css", ".js", ".xml", ".json", ".txt", ".svg", ".png", ".jpg", ".webp", ".ico", ".mp4", ".woff2")
 # Loaded on every visit, and rewritten by every version bump.
@@ -88,12 +88,12 @@ def deploy():
 
 
 def fetch(path):
-    # The site's bytes, its error status, or None on a network blip. A fresh query every time, and no-cache, so that
+    # The site's bytes, its error or redirect status, or None on a network blip. A fresh query every time, and no-cache, so that
     # no cache between here and the site answers with what it kept from an earlier fetch.
     url = SITE + urllib.parse.quote(path[:-len("index.html")] if path.endswith("index.html") else path)
     req = urllib.request.Request(url + "?deploy=%d" % time.time_ns(), headers={"Cache-Control": "no-cache"})
     try:
-        with urllib.request.urlopen(req, timeout=20) as r:
+        with urllib.request.build_opener(NoRedirect).open(req, timeout=20) as r:
             return r.read()
     except urllib.error.HTTPError as e:
         return e.code
@@ -118,8 +118,14 @@ def files():
     names = [os.fsdecode(n) for n in git("diff", "-z", "--name-only", "--no-renames", base, "HEAD").split(b"\0")]
     moved = [p for p in names if p and not p.startswith(NOT_SERVED) and p.endswith(SERVED)]
     if len(moved) > LOOK:
-        print("%d changed files, comparing the first %d" % (len(moved), LOOK))
-    return {p: committed(p) for p in moved[:LOOK] + [p for p in FRONT if p not in moved[:LOOK]]}
+        print("%d changed files, comparing %d from first to last" % (len(moved), LOOK))
+        moved = [moved[i * (len(moved) - 1) // (LOOK - 1)] for i in range(LOOK)]
+    return {p: committed(p) for p in moved + [p for p in FRONT if p not in moved]}
+
+
+def came_out(answer, want):
+    # A deleted page may have been retired by a redirect rather than a 404.
+    return answer == want or (want == 404 and isinstance(answer, int) and 300 <= answer < 400)
 
 
 picked = None
@@ -129,15 +135,15 @@ except (subprocess.CalledProcessError, OSError) as e:
     # Comparing is only how the run checks the deploy: the deploy is still asked for, then the run is red.
     picked = "the files to compare could not be picked (%s)" % type(e).__name__
 
-asked = time.time()
 problem = deploy()
+asked = time.time()   # once OVH took it: slow asking must not eat SETTLE
 if problem or picked:
     print("::error::" + "; ".join(filter(None, (problem, picked))))
     sys.exit(1)
 
 while True:
     last = {p: fetch(p) for p in expected}
-    pending = [p for p in expected if last[p] != expected[p]]
+    pending = [p for p in expected if not came_out(last[p], expected[p])]
     waited = time.time() - asked
     if (not pending and waited >= SETTLE) or waited > WAIT:
         break
