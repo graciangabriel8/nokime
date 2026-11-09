@@ -368,6 +368,17 @@
   "caption": "Les bases de la gestion · Leçon 6 : coefficient ou marge ?\nCoefficient 4, ça veut dire 400 % de marge ? Non. On vous montre pourquoi."
  },
  {
+  "id": "2026-11-11-manager-3d-fois-3-5",
+  "account": "nokime.manager",
+  "at": "2026-11-11T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-11-manager-3d-fois-3-5.mp4"
+  ],
+  "cover": "social/2026-11-11-manager-3d-fois-3-5-cover.jpg",
+  "caption": "× 3,5 sur le coût matière, et le prix est bon ?\nPas forcément. Le bon prix dépend aussi de vos charges, de votre équipe et de vos couverts.\nManager vous donne, plat par plat, le plancher sous lequel le plat ne paie plus sa part d’équipe et de charges, et le prix qui atteint votre objectif.\nmanager.nokime.fr"
+ },
+ {
   "id": "2026-11-12-manager-rentable",
   "account": "nokime.manager",
   "at": "2026-11-12T15:30:00+01:00",
@@ -377,6 +388,28 @@
   ],
   "cover": "social/2026-11-12-manager-rentable-cover.jpg",
   "caption": "Restauration : 1 694 défaillances au troisième trimestre, près de 10 % de plus qu’un an plus tôt (Altares). Pour savoir si un plat tient la route, trois chiffres suffisent : ce qu’il vous coûte, son plancher, et son objectif.\nLe plancher, c’est le prix sous lequel le plat ne paie plus sa part d’équipe et de charges, aux couverts que vous indiquez. L’objectif ajoute votre marge cible.\nManager vous les donne, plat par plat.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-13-manager-3d-saisie",
+  "account": "nokime.manager",
+  "at": "2026-11-13T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-13-manager-3d-saisie.mp4"
+  ],
+  "cover": "social/2026-11-13-manager-3d-saisie-cover.jpg",
+  "caption": "Encore une fiche technique à retaper ligne par ligne ?\nCollez-la dans Manager. Il lit le texte collé et les fichiers .txt, .csv, .docx et .xlsx, chiffre les produits qu’il reconnaît et liste le reste pour que vous l’ajoutiez.\nEnsuite, tapez votre prix : vous voyez tout de suite s’il atteint votre objectif.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-15-manager-3d-calculette",
+  "account": "nokime.manager",
+  "at": "2026-11-15T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-15-manager-3d-calculette.mp4"
+  ],
+  "cover": "social/2026-11-15-manager-3d-calculette-cover.jpg",
+  "caption": "Le coût de vos plats, encore à la calculette ?\nDans Manager, chaque fiche se chiffre avec vos prix d’achat, et chaque plat vous dit s’il atteint votre objectif.\nUn plat sous le plancher ressort en rouge.\nmanager.nokime.fr"
  },
  {
   "id": "2026-11-19-manager-tableur",
