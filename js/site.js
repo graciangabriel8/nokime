@@ -52,14 +52,14 @@
 
   var MAIL = {
     fr: {
-      founders: { subject: "Nokime Manager — établissement fondateur", body: "Établissement :\nVille :\nCouverts par service :\nCe qui me fait écrire :\n" },
-      copius: { subject: "Nokime Copius — classe pilote", body: "Établissement :\nClasse, niveau :\nCe que j’aimerais en faire :\n" },
-      general: { subject: "Nokime — contact", body: "" }
+      founders: { subject: "Nokime Manager : établissement fondateur", body: "Établissement :\nVille :\nCouverts par service :\nCe qui me fait écrire :\n" },
+      copius: { subject: "Nokime Copius : classe pilote", body: "Établissement :\nClasse, niveau :\nCe que j’aimerais en faire :\n" },
+      general: { subject: "Nokime : contact", body: "" }
     },
     en: {
-      founders: { subject: "Nokime Manager — founding restaurant", body: "Restaurant:\nCity:\nCovers per service:\nWhy I am writing:\n" },
-      copius: { subject: "Nokime Copius — pilot class", body: "School:\nClass, level:\nWhat I would like to do with it:\n" },
-      general: { subject: "Nokime — contact", body: "" }
+      founders: { subject: "Nokime Manager: founding restaurant", body: "Restaurant:\nCity:\nCovers per service:\nWhy I am writing:\n" },
+      copius: { subject: "Nokime Copius: pilot class", body: "School:\nClass, level:\nWhat I would like to do with it:\n" },
+      general: { subject: "Nokime: contact", body: "" }
     }
   };
 
@@ -87,9 +87,15 @@
     $$("video[data-src-fr]").forEach(function (v) {
       var src = v.getAttribute("data-src-" + lang) || v.getAttribute("data-src-fr"), poster = v.getAttribute("data-poster-" + lang);
       if (poster) v.setAttribute("poster", poster);
-      if (v.currentSrc.indexOf(src.replace(/^(\.\.\/)+/, "")) === -1) {
+      var cur = v.currentSrc || (v.querySelector("source") ? v.querySelector("source").src : "");
+      if (cur.indexOf(src.replace(/^(\.\.\/)+/, "")) === -1) {
         /* play only once the new source can: a play() issued with the swap is aborted by the load */
-        if (!v.hasAttribute("data-still")) v.addEventListener("canplay", function () { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }, { once: true });
+        if (!v.hasAttribute("data-still")) v.addEventListener("canplay", function () {
+          /* not a film the visitor paused, and not one off screen */
+          var r = v.getBoundingClientRect();
+          if ($(".shot-toggle.held", v.parentNode) || r.bottom < 0 || r.top > window.innerHeight) return;
+          var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+        }, { once: true });
         v.src = src; v.load();
       }
     });
@@ -156,14 +162,48 @@
   shuffleHero();
   applyLang();
   markCurrent();
+  /* back from a page where the language changed, the page restored from memory follows it */
+  window.addEventListener("pageshow", function (e) {
+    if (!e.persisted) return;
+    var l = null; try { l = localStorage.getItem(LS_LANG); } catch (x) {}
+    if ((l === "fr" || l === "en") && l !== lang) { lang = l; applyLang(); }
+  });
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
   var lb = $("#langBtn"); if (lb) lb.addEventListener("click", function () { setLang(lang === "fr" ? "en" : "fr"); });
   var mb = $("#menuBtn"), nav = $("#nav");
   if (mb && nav) {
-    mb.addEventListener("click", function () {
-      var open = nav.classList.toggle("open"); mb.setAttribute("aria-expanded", String(open));
-    });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && nav.classList.contains("open")) { nav.classList.remove("open"); mb.setAttribute("aria-expanded", "false"); } });
+    var setMenu = function (open) {
+      nav.classList.toggle("open", open); mb.setAttribute("aria-expanded", String(open));
+      mb.setAttribute("aria-label", open ? (T().menuClose || "") : (T().menuLabel || "Menu"));
+    };
+    mb.addEventListener("click", function () { setMenu(!nav.classList.contains("open")); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && nav.classList.contains("open")) { setMenu(false); mb.focus(); } });
+    document.addEventListener("click", function (e) { if (nav.classList.contains("open") && !nav.contains(e.target) && !mb.contains(e.target)) setMenu(false); });
+    window.addEventListener("scroll", function () { if (nav.classList.contains("open")) setMenu(false); }, { passive: true });
   }
+
+  /* ---------- the product films: a pause button, and no play while off screen ---------- */
+  $$("video[data-src-fr]").forEach(function (v) {
+    if (v.hasAttribute("data-still")) return;
+    var box = v.parentNode, b = document.createElement("button"), held = false;
+    b.type = "button"; b.className = "shot-toggle";
+    b.innerHTML = '<svg viewBox="0 0 16 16" aria-hidden="true"><path class="i-pause" d="M5 3v10M11 3v10"/><path class="i-play" d="M5 3l8 5-8 5z"/></svg>';
+    function label() { var t = T(); b.setAttribute("aria-label", held ? (t.shotPlay || "") : (t.shotPause || "")); b.classList.toggle("held", held); }
+    b.addEventListener("click", function () { held = !held; label(); if (held) v.pause(); else { var p = v.play(); if (p && p.catch) p.catch(function () {}); } });
+    if (box.classList) { box.classList.add("shot-box"); box.appendChild(b); label(); }
+    if (lb) lb.addEventListener("click", label);
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (held) return; if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause(); });
+    }, { threshold: 0.05 }).observe(v);
+  });
+
+  /* ---------- a mail link does nothing without a mail program: the address can be copied ---------- */
+  $$("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var a = b.getAttribute("data-copy"), s = b.querySelector("[data-t]");
+      if (!navigator.clipboard) return;
+      navigator.clipboard.writeText(a).then(function () { if (s) { var k = s.getAttribute("data-t"), t = T(); s.textContent = t.ctCopied || ""; setTimeout(function () { s.textContent = T()[k] || I18N.fr[k] || ""; }, 1800); } }, function () {});
+    });
+  });
 })();

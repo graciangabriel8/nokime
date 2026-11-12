@@ -8,8 +8,12 @@
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#F3F1E8">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Cstyle%3E.a%7Bfill:%2315170F%7D.b%7Bfill:%233E6B1F%7D%40media (prefers-color-scheme:dark)%7B.a%7Bfill:%23ECEBE2%7D.b%7Bfill:%23BBEB8A%7D%7D%3C/style%3E%3Cpath class='a' d='M15 181V59A44 44 0 0 1 59 15H150V137.65L67.5 41.65V225H59A44 44 0 0 1 15 181Z'/%3E%3Cpath class='b' d='M90 225V102.35L172.5 198.35V15H181A44 44 0 0 1 225 59V181A44 44 0 0 1 181 225Z'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="css/fonts.css?v=108">
-<link rel="stylesheet" href="css/site.css?v=108">
+<link rel="preload" href="fonts/archivo-wordmark.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/fraunces-normal-300-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/ibm-plex-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css?v=129">
+<link rel="stylesheet" href="css/site.css?v=129">
+<link rel="stylesheet" href="css/atlas.css?v=129">
 <script>(function(){var l;try{var q=/[?&]lang=(fr|en)(?:&|$)/.exec(location.search);l=q?q[1]:localStorage.getItem("nokime-lang");}catch(e){}if(l!=="fr"&&l!=="en")l=/(^|\.)nokime\.com$/.test(location.hostname)?"en":"fr";document.documentElement.setAttribute("lang",l);})();</script>
 </head>
 <body data-title="titleNotFound">
@@ -24,6 +28,7 @@
       <a href="manager/" data-t="navManager">Manager</a>
       <a href="copius/" data-t="navCopius">Copius</a>
       <a href="jobs/" data-t="navJobs">Jobs</a>
+      <a href="au-quotidien/" data-t="navDay">Au quotidien</a>
       <a href="groupe/" data-t="navGroup">Le groupe</a>
       <a href="contact/" data-t="navContact">Contact</a>
     </nav>
@@ -35,16 +40,18 @@
   </div>
 </header>
 
-<main>
+<main id="main">
   <section class="page-hero">
-    <div class="wrap">
+    <div class="wrap"><div class="hero-split"><div>
       <p class="eyebrow" data-t="nfEyebrow">Erreur 404</p>
       <h1 class="display" data-t="nfTitle">Cette page n’existe pas.</h1>
       <p class="lead" data-t="nfLead">L’adresse a peut-être changé. Tout ce qui existe est à un clic d’ici.</p>
       <div class="cta-row">
-        <a class="btn primary" href="./"><span data-t="nfHome">Retour à l’accueil</span><span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn primary" href="./"><span data-t="nfHome">Retour à l’accueil</span></a>
         <a class="btn" href="contact/"><span data-t="navCta">Nous écrire</span></a>
       </div>
+      <p class="nf-tools"><a class="t-manager" href="manager/" data-t="navManager">Manager</a><a class="t-copius" href="copius/" data-t="navCopius">Copius</a><a class="t-jobs" href="jobs/" data-t="navJobs">Jobs</a></p>
+    </div><span class="nf-art" data-art="escargot-de-bourgogne" aria-hidden="true"></span></div>
     </div>
   </section>
 </main>
@@ -60,6 +67,7 @@
         <a href="manager/" data-t="navManager">Manager</a>
         <a href="copius/" data-t="navCopius">Copius</a>
         <a href="jobs/" data-t="navJobs">Jobs</a>
+        <a href="au-quotidien/" data-t="navDay">Au quotidien</a>
         <a href="groupe/" data-t="navGroup">Le groupe</a>
         <a href="contact/" data-t="navContact">Contact</a>
       </nav>
@@ -76,10 +84,13 @@
       <a href="mentions-legales/" data-t="footLegal">Mentions légales</a>
     </div>
   </div>
+  <div class="foot-word" aria-hidden="true">nokime</div>
 </footer>
 
-<script src="js/art.js?v=108"></script>
-<script src="js/i18n.js?v=108"></script>
-<script src="js/site.js?v=108"></script>
+<script src="js/art.js?v=129"></script>
+<script src="js/art-wall.js?v=129"></script>
+<script src="js/i18n.js?v=129"></script>
+<script src="js/atlas.js?v=129"></script>
+<script src="js/site.js?v=129"></script>
 </body>
 </html>

@@ -1,0 +1,374 @@
+/* Au quotidien: one day in a restaurant, told by the light. The time is the colour:
+   Copius green is the morning, Manager gold the afternoon, Jobs blue the night; noon is near white.
+   Each scene carries its own segment of the sky, and the segments share their end colours. */
+.day{--hour:clamp(68px,10.5vw,150px);--pale:#BCC9FF;overflow-x:clip;
+  --sky-0:#F3F1E8;--sky-1:#E4EED3;--sky-2:#FBFAF3;--sky-3:#F9F3DC;--sky-4:#F6E8BE;--sky-5:#F0D9A4;--sky-6:#CFA7A6;--sky-7:#6E67AE;--sky-8:#2B3596;--sky-9:#141A52;--sky-10:#0D1136}
+.day .site-head{position:relative;background:none;-webkit-backdrop-filter:none;backdrop-filter:none;border-bottom:0}
+
+.day-opening{padding:clamp(24px,3.5vw,48px) 0 clamp(24px,3vw,40px);background:linear-gradient(var(--sky-0),#EFF0E0)}
+.day-opening .display{margin:0 0 .35em}
+.day-says{margin:0;max-width:36em;font-size:clamp(17px,1.5vw,19px);line-height:1.5;color:var(--ink-2)}
+.day-says b{font-weight:500}
+.day-subline{margin:.5em 0 0;font-size:16px;color:var(--ink-3)}
+
+.day-hour{margin:0;font-family:var(--serif);font-weight:300;font-size:var(--hour);line-height:.92;letter-spacing:-.03em;font-variation-settings:"opsz" 144;white-space:nowrap}
+.day-hour i{font-style:italic;font-weight:300;margin:0 .1em 0 .03em;font-size:.82em}
+.day-line{margin:.45em 0 0;font-family:var(--serif);font-size:clamp(19px,1.7vw,24px);line-height:1.25;letter-spacing:-.005em;max-width:20em;font-variation-settings:"opsz" 48}
+.day-line span{display:block}
+.day-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(24px,4vw,64px);align-items:start}
+
+.day-tool{--tool:var(--ink);max-width:28em}
+.day-tool h3{margin:0 0 .4em;font-size:clamp(24px,2.4vw,34px);line-height:1.1;font-weight:400;letter-spacing:-.01em;font-variation-settings:"opsz" 72;color:var(--tool)}
+.day-name{margin:0 0 2px;font-family:var(--serif);font-size:19px;line-height:1.25}
+.day-sub{margin:0 0 12px;font-size:16px;line-height:1.5;color:var(--ink-2)}
+.day-foot{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px}
+.day-go{color:var(--ink);font-weight:500;font-size:15.5px;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px;text-decoration-color:var(--tool,var(--ink))}
+.day-state{font-size:13.5px;color:var(--ink-3)}
+.copius{--tool:var(--accent)}.manager{--tool:#7A5A0B}.jobs{--tool:var(--pale)}
+
+/* 9 h */
+.day-morning{background:linear-gradient(#EFF0E0,var(--sky-1) 34%,var(--sky-1) 62%,var(--sky-2));padding:clamp(12px,2vw,24px) 0 clamp(64px,8vw,100px)}
+.day-morning .day-hour{color:var(--accent)}
+.day-morning .day-tool{margin-top:clamp(28px,3.4vw,44px)}
+.day-plate{margin:0;width:100%;max-width:480px;justify-self:end}
+.day-panel{display:flex;flex-direction:column}
+.day-panel[hidden]{display:none}
+.day-panel.in{animation:dayFade .18s ease-out}
+@keyframes dayFade{from{opacity:0}to{opacity:1}}
+.day-ring{position:relative;aspect-ratio:1}
+.day-fact{order:2;margin:10px 0 0;text-align:center;font-size:15.5px;line-height:1.4;color:var(--ink-2)}
+.day-fact b{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--accent);margin-right:.25em;font-variation-settings:"opsz" 36}
+/* the same drawings, each in its own colours */
+[data-id=butternut],[data-go=butternut]{--art-1:#FBE3B4;--art-2:#F2BC6C;--art-3:#DE9440;--art-line:#7C4A10}
+[data-id=sage],[data-go=sage]{--art-1:#D5E5C0;--art-2:#AECB93;--art-3:#86A96B;--art-line:#35601A}
+[data-id=butter],[data-go=butter]{--art-1:#FCEBA2;--art-2:#F6D967;--art-3:#E5BC41;--art-line:#7A5A0E}
+[data-id=hazelnut],[data-go=hazelnut]{--art-1:#EFD3AC;--art-2:#D2A571;--art-3:#AD7D49;--art-line:#58331B}
+[data-id=chestnut],[data-go=chestnut]{--art-1:#DDB08A;--art-2:#B97F55;--art-3:#905A36;--art-line:#452510}
+[data-id=cream],[data-go=cream]{--art-1:#FFF8E4;--art-2:#F4E7C4;--art-3:#E0CC99;--art-line:#7A6230}
+[data-id=parmesan],[data-go=parmesan]{--art-1:#FAE9B3;--art-2:#EFD07C;--art-3:#D8B14E;--art-line:#6C4E10}
+.day-drawing{position:absolute;inset:27%;width:46%;height:46%;overflow:visible}
+.day-drawing .s,.day-drawing .sf{vector-effect:non-scaling-stroke;stroke-width:2.1px}
+.day-thumb .s,.day-thumb .sf{vector-effect:non-scaling-stroke;stroke-width:1.5px}
+/* the centre sits on a real plate: a flat rim, and a flat shadow on the table */
+.day-dish{position:absolute;inset:26%}
+.day-lean{position:absolute;inset:0;transition:transform .5s ease-out}
+.day-lean::before{content:"";position:absolute;inset:0;border-radius:50%;background:#FFFEF8;box-shadow:inset 0 0 0 1px var(--art-3),inset 0 0 0 9px #FFFEF8,inset 0 0 0 10px var(--art-1),0 7px 0 rgba(62,58,30,.1)}
+.day-dish .day-drawing{inset:7%;width:86%;height:86%}
+.day-orbit{position:absolute;inset:0}
+.day-leaders{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.day-leaders line{stroke:var(--accent);stroke-width:1px;vector-effect:non-scaling-stroke;stroke-linecap:round;opacity:.45}
+.day-seed{display:none}
+.day-pairs{list-style:none;margin:0;padding:0}
+.day-pairs li{position:absolute;transform:translate(-50%,-50%);font-family:var(--serif);font-style:italic;font-size:clamp(17px,1.5vw,19px);color:var(--accent);white-space:nowrap;font-variation-settings:"opsz" 36}
+/* each pairing is its own drawing on a small plate, with its name under it: a thing to press */
+.day-hop{-webkit-appearance:none;appearance:none;display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:0;margin:0;padding:2px 6px;min-height:44px;font:inherit;font-variation-settings:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
+.day-disc{display:block;box-sizing:border-box;width:var(--disc,56px);height:var(--disc,56px);padding:9%;border-radius:50%;background:#FFFEF8;box-shadow:inset 0 0 0 1px var(--art-3),0 3px 0 rgba(62,58,30,.12);transition:transform .2s cubic-bezier(.2,.8,.2,1.3),background-color .2s}
+.day-hop-up{flex-direction:column-reverse}
+.day-thumb{display:block;width:100%;height:100%;overflow:visible}
+@media (hover:hover){
+  .day-hop:hover .day-disc{animation:none;transform:translateY(-3px) scale(1.12);background:var(--art-1)}
+  .day-hop:hover .day-thumb{animation:dayWiggle .5s ease-in-out}
+  .day-hop:hover>[data-t]{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+}
+.day-hop:active .day-disc{animation:none;transform:scale(.93)}
+@keyframes dayWiggle{25%{transform:rotate(-7deg)}60%{transform:rotate(5deg)}}
+/* the hint and the caption share one slot, so nothing moves when one replaces the other */
+.day-slot{display:grid;margin-top:6px;text-align:center;font-size:14px;line-height:1.4;color:var(--ink-2)}
+.day-slot p{grid-area:1/1;margin:0}
+.day-slot .off{visibility:hidden}
+#hopHint{font-family:var(--serif);font-style:italic;font-size:clamp(16px,1.4vw,18px);color:var(--accent);font-variation-settings:"opsz" 36}
+
+/* 12 h 30 */
+.day-noon{background:linear-gradient(var(--sky-2),var(--sky-2) 70%,var(--sky-3));padding:clamp(40px,6vw,80px) 0 clamp(64px,8vw,100px);text-align:center}
+.day-noon .day-line{margin-inline:auto}
+
+
+/* 15 h 30 */
+.day-break{background:linear-gradient(var(--sky-3),var(--sky-4) 42%,var(--sky-5));padding:clamp(20px,3vw,40px) 0 clamp(64px,7vw,90px)}
+.day-break .day-hour{color:var(--brass);text-align:right}
+.day-break .day-line{margin-left:auto;text-align:right}
+.day-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,96px);align-items:start;margin-top:clamp(32px,4vw,56px)}
+.manager .day-sub,.manager .day-state{color:#4A4426}
+.day-bill ul{list-style:none;margin:0;padding:0;font-family:var(--serif);font-size:clamp(16px,1.35vw,18px);line-height:1.2;font-variation-settings:"opsz" 24}
+.day-bill li,.day-total{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.day-bill li{align-items:center;gap:12px;padding:5px 0;background:radial-gradient(circle at 1px 1px,rgba(21,23,15,.3) 1px,transparent 1.3px) left bottom/7px 3px repeat-x}
+.day-bill li>span[data-t]{flex:1;min-width:0}
+.day-bill .day-disc{--disc:var(--rowdisc,34px);flex:none;padding:calc(var(--disc) * .09)}
+.day-bill li:hover .day-disc{transform:scale(1.14)}
+.day-bill b{font-weight:400;font-variant-numeric:tabular-nums lining-nums;white-space:nowrap}
+.day-dishname{margin:0;font-family:var(--serif);font-style:italic;font-size:clamp(17px,1.5vw,19px);line-height:1.3;font-variation-settings:"opsz" 36}
+.day-total,.day-sold{font-family:var(--serif);font-size:clamp(20px,1.9vw,26px);line-height:1.1;font-variation-settings:"opsz" 48}
+.day-total{margin:16px 0 0}
+.day-total b{color:#7A5A0B}
+.day-sold{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;margin:10px 0 0}
+.day-stepper{display:inline-flex;align-items:center;gap:6px}
+.day-stepper b{min-width:2.3em;text-align:center}
+.day-step[hidden]+b{min-width:0}
+.day-step{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;margin:0;padding:0;border:0;border-radius:50%;background:#7A5A0B;color:#FFFEF8;font:400 21px/1 var(--sans);box-shadow:0 3px 0 rgba(62,46,5,.28);cursor:pointer;touch-action:manipulation;transition:transform .16s cubic-bezier(.2,.8,.2,1.3)}
+.day-step[hidden]{display:none}
+@media (hover:hover){.day-step:hover{transform:scale(1.1)}}
+.day-step:active{transform:translateY(2px) scale(.96);box-shadow:0 1px 0 rgba(62,46,5,.28)}
+.day-step[aria-disabled="true"]{opacity:.3;cursor:default;transform:none}
+.day-sold #pxVal{font-size:1.25em;color:#7A5A0B}
+.day-rest b{display:inline-block;font-family:var(--serif);font-weight:500;font-size:1.22em;color:#7A5A0B;font-variation-settings:"opsz" 36}
+/* the dish on its plate; around it, the price before VAT */
+.day-serve{position:relative;grid-area:2/1;margin:18px 0 0;width:min(100%,340px);aspect-ratio:1}
+.day-serve[hidden]{display:none}
+.day-serve-in{position:absolute;inset:0}
+.day-arcs{position:absolute;inset:0;width:100%;height:100%;overflow:visible;font-family:var(--serif);font-style:italic}
+.day-arcs text{font-size:var(--fs,3.6px);fill:#4A3A0C;font-variation-settings:"opsz" 24;text-rendering:geometricPrecision}
+.day-arc-m{fill:#7A5A0B}
+.day-arc-base{fill:none;stroke:#7A5A0B;stroke-width:2}
+.day-arc{fill:none;stroke:var(--art-3);stroke-width:5.4;transition:stroke-width .18s ease-out}
+.day-arc.on{stroke-width:8}
+.day-serve-plate{position:absolute;inset:13.5%;border-radius:50%;background:#FFFEF8;box-shadow:inset 0 0 0 1px var(--art-3),inset 0 0 0 11px #FFFEF8,inset 0 0 0 12px var(--art-1),0 8px 0 rgba(62,46,5,.13)}
+.day-gar{position:absolute;display:block;transition:filter .2s}
+.day-gar-main{inset:19%}
+.day-gar .art{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.day-gar.on{animation:dayWiggle .5s ease-in-out}
+.day-serve-run{display:none}
+.day-fly{display:none}
+.day-rest{margin:10px 0 0;font-size:15.5px;line-height:1.45;color:var(--ink);font-variant-numeric:tabular-nums lining-nums}
+.day-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.day-after{margin:6px 0 0;font-size:15.5px;line-height:1.45;color:#4A4426}
+.day-note{margin:2px 0 8px;font-size:13.5px;color:#4A4426}
+
+/* 19 h */
+.day-dusk{background:linear-gradient(var(--sky-5),var(--sky-6) 24%,var(--sky-7) 56%,var(--sky-8));padding:clamp(90px,10vw,130px) 0 clamp(40px,5vw,64px);color:#fff;text-align:right}
+.day-dusk .day-hour{font-size:calc(var(--hour) * .62)}
+.day-dusk .day-line{margin-left:auto}
+
+/* 23 h 30 */
+.day-night,.day-end{color:var(--bg);--ink:#F3F1E8;--ink-2:#CDD3EA;--ink-3:#AEB6D6}
+.day-night{background:linear-gradient(var(--sky-8),var(--sky-9) 34%,var(--sky-10));padding:clamp(48px,6vw,72px) 0 0}
+.day-end{background:var(--sky-10);padding:clamp(48px,6vw,80px) 0 clamp(56px,6vw,80px)}
+.day-night .day-hour{color:var(--pale)}
+.day-night .day-tool{margin-top:clamp(28px,3.4vw,44px)}
+.day-night .brandword{color:var(--ink-3)}
+.day-night .hd-mark{color:var(--pale)}
+.day-peg{position:relative;margin:0;width:min(100%,340px);aspect-ratio:1}
+.day-hang,.day-sway{position:absolute;inset:0;transform-origin:49.5% 11%}
+.day-peg .art{position:absolute;inset:0;width:100%;height:100%;overflow:visible;--art-1:#FBFAF3;--art-2:#E2E5F4;--art-3:#C3CAEC;--art-line:#2B3596}
+.day-peg .day-dark{--art-1:#161D5C;--art-2:#222B74;--art-3:#2B3596;--art-line:var(--pale);display:none}
+.day-tag{fill:none;stroke:var(--art-line);stroke-width:1px;stroke-dasharray:2 2;vector-effect:non-scaling-stroke}
+.day-peg.swing .day-sway{animation:daySwing 1.8s ease-out 1}
+.day-lamp{display:none}
+@keyframes daySwing{0%{transform:rotate(0)}18%{transform:rotate(2.6deg)}42%{transform:rotate(-1.7deg)}66%{transform:rotate(.9deg)}84%{transform:rotate(-.35deg)}100%{transform:rotate(0)}}
+.day-peg .art .s,.day-peg .art .sf{vector-effect:non-scaling-stroke;stroke-width:1.8px}
+.day-peg-cap{position:absolute;left:0;right:0;top:95%;text-align:center;font-family:var(--serif);font-style:italic;font-size:clamp(18px,1.6vw,21px);line-height:1.25;color:var(--pale);font-variation-settings:"opsz" 36}
+.day-rail{position:absolute;inset:0;transform-origin:0 0;width:100%;height:100%;overflow:visible;fill:none;stroke:var(--pale);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round}
+.day-rail *{vector-effect:non-scaling-stroke}
+.day-close{padding-top:clamp(24px,3vw,36px);border-top:1px solid rgba(188,201,255,.22)}
+.day-recap{margin:0 0 14px;max-width:30em;font-family:var(--serif);font-size:clamp(20px,2vw,27px);line-height:1.28;letter-spacing:-.005em;font-variation-settings:"opsz" 48}
+.day-recap a{font-style:italic;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.day-recap a:hover{text-decoration-thickness:2px}
+.day-recap .c{color:var(--paint-c)}.day-recap .m{color:var(--paint-m)}.day-recap .j{color:var(--pale)}
+.day-back{--tool:var(--pale)}
+
+.day .site-foot{background:var(--sky-10);color:#CDD3EA;border-top:0;--ink:#F3F1E8;--ink-2:#CDD3EA;--ink-3:#AEB6D6;--hair:rgba(188,201,255,.2)}
+.day .site-foot .brand{color:#F3F1E8}
+.day .site-foot .mark .cut-b{fill:var(--pale)}
+
+.day-clock{position:fixed;right:max(clamp(14px,2vw,24px),env(safe-area-inset-right));bottom:max(clamp(14px,2vw,24px),env(safe-area-inset-bottom));z-index:30;width:clamp(40px,3.6vw,48px);height:clamp(40px,3.6vw,48px);pointer-events:none;transition:opacity .25s}
+.day-clock[hidden]{display:none}
+.day-clock.over{opacity:0}
+.day-clock svg{display:block;width:100%;height:100%}
+.day-clock .face{fill:#FBFAF3;stroke:var(--ink);stroke-width:1.4}
+.day-clock .ticks{stroke:var(--ink);stroke-width:1.2;stroke-linecap:round}
+.day-clock .hh{stroke:var(--ink);stroke-width:2.4;stroke-linecap:round}
+.day-clock .mm{stroke:var(--ink);stroke-width:1.5;stroke-linecap:round}
+.day-clock .pin{fill:var(--ink)}
+.day :focus-visible{outline-color:currentColor}
+
+/* wide, the drawing stands beside the words and the tool; on a phone the scene simply follows the source order */
+@media (min-width:861px){
+  .day-morning .day-cols{grid-template-rows:auto 1fr}
+  .day-morning .day-plate{grid-area:1/2/3/3}
+  .day-morning .day-tool{grid-area:2/1}
+}
+@media (max-width:860px){
+  .day{--hour:clamp(64px,19vw,120px)}
+  .day-cols{grid-template-columns:minmax(0,1fr)}
+  .day-morning{padding-bottom:64px}
+  .day-plate{justify-self:center;margin-top:12px;max-width:440px}
+  .day-fact{min-height:3.15em}
+  .day-step{width:44px;height:44px}
+  .day-morning .day-tool{margin-top:8px}
+  .day-split{grid-template-columns:minmax(0,1fr);gap:32px}
+  .day-peg{margin:28px auto 2.6em;width:min(64vw,300px)}
+  .day-dusk .day-hour{font-size:calc(var(--hour) * .8)}
+}
+
+/* ---------- the scroll version: js/quotidien.js adds .day-on where it can run, and everything above stays the page for everyone else.
+   One pinned stage, and the scroll is the time. The hours stand on the edge of a table, rise and sink behind it, and cast a shadow that swings with the sun. ---------- */
+.day-sky,.day-table,.day-time,.day-shadow,.day-count,.day-cue,.day-probe{display:none}
+.day-probe{position:absolute;top:0;left:0;width:0;height:100vh;height:100svh;visibility:hidden;pointer-events:none}
+html.day-on{scroll-behavior:auto}
+html.day-on .day-probe{display:block}
+html.day-on .site-head{position:absolute;left:0;right:0;top:0;z-index:40}
+.day-on .day-track{position:relative}
+.day-on .day-stage{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;overflow:clip;background:#EFF0E0;--g:24px}
+.day-on .day-sky{display:block;position:absolute;inset:0}
+.day-sky i{position:absolute;inset:0;opacity:0;visibility:hidden}
+.day-sky .s0{background:linear-gradient(var(--sky-0),#EFF0E0)}
+.day-sky .s1{background:linear-gradient(#EFF0E0,var(--sky-1) 60%)}
+.day-sky .s2{background:linear-gradient(var(--sky-2),var(--sky-2) 70%,var(--sky-3))}
+.day-sky .s3{background:linear-gradient(var(--sky-3),var(--sky-4) 42%,var(--sky-5))}
+.day-sky .s4{background:linear-gradient(var(--sky-5),var(--sky-6) 24%,var(--sky-7) 56%,var(--sky-8))}
+.day-sky .s5{background:linear-gradient(var(--sky-8),var(--sky-9) 34%,var(--sky-10))}
+/* the table: a tone of whatever sky is behind it, and its edge is the horizon */
+.day-on .day-table{display:block;position:absolute;left:0;right:0;top:var(--hz);bottom:0;background:rgba(21,23,15,.05);border-top:1px solid rgba(21,23,15,.5)}
+.day-on .day-table.pale{background:rgba(188,201,255,.05);border-top-color:rgba(188,201,255,.55);opacity:0}
+
+.day-on .day-opening,.day-on .day-scene{position:absolute;left:0;right:0;top:0;height:var(--f);padding:0;background:none;pointer-events:none;text-align:left}
+.day-on .day-opening>.wrap,.day-on .day-scene>.wrap{position:relative;height:100%;max-width:1120px;width:100%}
+.day-on .wrap.day-cols{display:block}
+.day-on .day-cols,.day-on .day-left,.day-on .day-split{display:contents}
+.day-on .day-opening>.wrap{padding-top:clamp(76px,11vh,116px)}
+.day-on .day-cue{display:block;margin:clamp(14px,3vh,30px) 0 0;font-size:15px;font-weight:500;color:var(--ink-2)}
+
+/* an hour: the box stops at the baseline, so whatever goes below it is behind the table */
+.day-shadow{font-family:var(--serif);font-weight:300;font-size:var(--hour);letter-spacing:-.03em;font-variation-settings:"opsz" 144;white-space:nowrap;color:var(--ink);transform-origin:50% 100%;will-change:transform,opacity;visibility:hidden;
+  filter:blur(1.4px);-webkit-mask-image:linear-gradient(to top,#000,rgba(0,0,0,.12));mask-image:linear-gradient(to top,#000,rgba(0,0,0,.12))}
+.day-on .day-hour,.day-on .day-shadow{display:block;position:absolute;left:var(--g);bottom:calc(var(--f) - var(--hz));height:var(--hb);margin:0;padding:0 .12em;margin-left:-.12em;line-height:1;overflow:hidden}
+.day-on .day-hour{overflow:hidden}
+.day-hour-in{display:inline}
+.day-on .day-hour-in{display:block;will-change:transform}
+.day-on .day-hour [data-lang="en"] i,.day-on .day-shadow [data-lang="en"] i{position:relative;top:-.16em}
+.day-on .day-noon .day-hour,.day-on .day-noon .day-shadow{left:0;right:0;width:fit-content;margin-inline:auto}
+.day-on .day-break .day-hour,.day-on .day-break .day-shadow,.day-on .day-dusk .day-hour,.day-on .day-dusk .day-shadow{left:auto;right:var(--g);margin:0 -.12em 0 0}
+.day-on .day-dusk .day-hour{color:#fff;font-size:var(--hour)}
+.day-on .day-dusk .day-shadow{font-size:var(--hour);color:#0D1136}
+.day-on .day-night .day-shadow{color:var(--pale)}
+.day-on .day-break .day-shadow{color:#3E2E05}
+
+/* the words sit right above the hour they belong to, except where the wide layout gives them the top of the column */
+.day-on .day-line{position:absolute;margin:0;left:var(--g);right:var(--g);max-width:none;bottom:calc(var(--f) - var(--hz) + var(--hb) + 12px)}
+.day-on .day-noon .day-line{text-align:center}
+.day-on .day-break .day-line,.day-on .day-dusk .day-line{text-align:right}
+.day-on .day-tool{position:absolute;margin:0;left:var(--g);right:var(--g);bottom:calc(var(--f) - var(--hz) + var(--hb) + 14px);pointer-events:none}
+.day-on .day-plate{position:absolute;margin:0;left:50%;margin-left:calc(var(--ring) / -2);width:var(--ring);max-width:none;bottom:calc(var(--f) - var(--hz) + var(--hb) + 10px)}
+.day-on .day-plate{--disc:clamp(44px,calc(var(--ring) * .14),68px)}
+/* while the scene is up: the drawing sways on its plate, the little plates float, and one seed at a time runs out to a plate, which answers */
+.day-on .day-dish,.day-on .day-dish .day-drawing,.day-on .day-hop{will-change:transform}
+.day-on .day-seed{display:block;position:absolute;left:0;top:0;width:6px;height:6px;margin:-3px;border-radius:50%;background:var(--accent);opacity:0;will-change:transform,opacity}
+.day-live .day-dish .day-drawing{animation:daySway 6.5s ease-in-out infinite alternate}
+.day-live .day-hop{animation:dayFloat 5.2s ease-in-out infinite alternate}
+.day-live li:nth-child(2) .day-hop{animation-duration:4.4s;animation-delay:-1.6s}
+.day-live li:nth-child(3) .day-hop{animation-duration:5.8s;animation-delay:-3.1s}
+.day-live li:nth-child(4) .day-hop{animation-duration:4.8s;animation-delay:-.7s}
+.day-live li:nth-child(5) .day-hop{animation-duration:6.2s;animation-delay:-4.2s}
+.day-live li:nth-child(6) .day-hop{animation-duration:5.5s;animation-delay:-2.3s}
+.day-live .day-hop:hover{animation-play-state:paused}
+.day-live .day-seed{animation:daySeed 5.4s linear infinite}
+.day-live .day-disc{animation:dayPop 5.4s ease-out infinite}
+.day-ripple{position:absolute;inset:26%;border-radius:50%;box-shadow:inset 0 0 0 2px var(--accent);pointer-events:none}
+@keyframes daySway{from{transform:rotate(-2.4deg) translateY(1.5px)}to{transform:rotate(2.4deg) translateY(-1.5px)}}
+@keyframes dayFloat{from{transform:translateY(-3px)}to{transform:translateY(3px)}}
+@keyframes daySeed{0%{opacity:0;transform:translate(calc(var(--x1) * var(--ring)),calc(var(--y1) * var(--ring)))}2%{opacity:.85}13%{opacity:.85;transform:translate(calc(var(--x2) * var(--ring)),calc(var(--y2) * var(--ring)))}15%,100%{opacity:0;transform:translate(calc(var(--x2) * var(--ring)),calc(var(--y2) * var(--ring)))}}
+@keyframes dayPop{0%,12%,26%,100%{transform:none}17%{transform:scale(1.1)}}
+.day-on .day-panel.in{animation:none}
+/* whatever fades keeps its own layer for the whole visit: painted into a shared one, Safari left it half there on the way back up */
+.day-on .day-opening>.wrap,.day-on .day-line,.day-on .day-tool,.day-on .day-plate,.day-on .day-bill li,.day-on .day-dishname,.day-on .day-note,.day-on .day-total,.day-on .day-sold,.day-on .day-rest,.day-on .day-after,.day-on .day-peg{will-change:opacity,transform}
+.day-on .day-bill{position:absolute;left:var(--g);right:var(--g);top:var(--billtop,12px)}
+.day-on .day-bill-b{position:absolute!important;left:0;right:0;top:var(--billb,40px)}
+.day-on .day-total{margin-top:12px}
+.day-on #dayCost{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.day-on .day-count{display:inline;color:#7A5A0B;font-weight:400;white-space:nowrap}
+.day-on .day-peg{position:absolute;margin:0;right:var(--g);top:0;width:var(--peg);pointer-events:auto;cursor:pointer}
+.day-on .day-peg{top:var(--pegtop,0px)}
+.day-on .day-peg .day-dark{display:block;will-change:opacity}
+.day-on .day-hang{will-change:transform}
+.day-on .day-rail{will-change:transform}
+.day-rail path{transform-box:fill-box;transform-origin:50% 0}
+/* the one lamp left on: its cone is flat, like everything else */
+.day-on .day-lamp{display:block;position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;will-change:transform}
+.day-cone{fill:#FFF4D6;opacity:0;will-change:opacity}
+.day-peg .day-cone{fill-opacity:.13}
+.day-cord{fill:none;stroke:var(--pale);stroke-width:1.4px;vector-effect:non-scaling-stroke}
+.day-shade{fill:var(--pale)}
+.day-bulb{fill:#FFF4D6}
+.day-peg.live .day-sway{animation:dayHang 7s ease-in-out infinite alternate}
+.day-peg.live.swing .day-sway{animation:daySwing 1.8s ease-out 1}
+.day-peg.swing .day-cone{animation:dayStutter .9s linear 1}
+@media (hover:hover){.day-on .day-peg:hover .art{transform:translateY(-3px)}.day-peg .art{transition:transform .3s ease-out}}
+@keyframes dayHang{from{transform:rotate(-.9deg)}to{transform:rotate(.9deg)}}
+@keyframes dayStutter{0%,100%{opacity:1}12%{opacity:.25}24%{opacity:1}38%{opacity:.5}52%{opacity:1}}
+
+/* 15 h 30 on the stage: the ticket hangs from the top of the screen, and each ingredient flies to the plate */
+.day-paper{display:none}
+.day-on .day-paper{display:block;position:absolute;left:-14px;right:-14px;bottom:auto;height:var(--paperh,300px);top:-14px;background:#FFFEF8;box-shadow:0 7px 0 rgba(62,46,5,.13);will-change:transform,opacity;pointer-events:none}
+.day-on .day-paper::after{content:"";position:absolute;left:0;right:0;top:100%;height:7px;background:linear-gradient(135deg,#FFFEF8 50%,transparent 50%) 0 0/14px 7px repeat-x,linear-gradient(-135deg,#FFFEF8 50%,transparent 50%) 7px 0/14px 7px repeat-x}
+.day-wide .day-paper{top:calc(var(--top) * -1)}
+.day-on .day-bill-a,.day-on .day-total,.day-on .day-bill-b{position:relative}
+.day-on .day-serve{position:absolute;margin:0;left:var(--svx);top:var(--svy);width:var(--svp);transform-origin:50% 0;will-change:transform,opacity;visibility:hidden}
+.day-narrow .day-serve{transform-origin:50% 0}
+.day-wide .day-serve{transform-origin:50% 50%}
+.day-on .day-gar{will-change:transform}
+.day-on .day-arc-words{will-change:opacity}
+.day-on .day-fly{display:block;position:absolute;left:0;top:0;width:var(--flyw,34px);height:var(--flyw,34px);visibility:hidden;will-change:transform;z-index:3}
+.day-on .day-serve-run{display:block;position:absolute;inset:0;pointer-events:none;will-change:transform}
+.day-serve-run::before{content:"";position:absolute;left:50%;top:9%;width:7px;height:7px;margin:-3.5px;border-radius:50%;background:#FFFEF8;box-shadow:0 0 0 1.5px #7A5A0B}
+.day-serve.live .day-serve-run{animation:dayRun 11s linear infinite}
+.day-serve.live .day-gar-main .art{animation:daySway 6.5s ease-in-out infinite alternate}
+.day-sold.fresh #pxUp{animation:dayNudge 3.2s ease-out infinite}
+@keyframes dayRun{to{transform:rotate(360deg)}}
+@keyframes dayNudge{0%,74%,100%{transform:none}82%{transform:scale(1.16)}90%{transform:scale(.97)}}
+
+/* 12 h 30: the rail of tickets and the fire behind the table */
+.day-rush,.day-pass{display:none}
+.day-on .day-rush,.day-on .day-pass{display:block;position:absolute;inset:0;pointer-events:none;visibility:hidden}
+.day-rush-rail{position:absolute;left:0;right:0;top:0;height:clamp(14px,2vh,20px);background:#2E2F27;box-shadow:0 3px 0 rgba(21,23,15,.14);will-change:transform;z-index:2}
+.day-ticket{position:absolute;top:8px;width:clamp(70px,8.6vw,132px);height:clamp(112px,27vh,240px);margin-left:calc(clamp(70px,8.6vw,132px) / -2);transform-origin:50% 0;will-change:transform}
+.day-ticket svg{display:block;width:100%;height:100%;overflow:visible}
+.day-ticket .p{fill:#FFFEF8;stroke:rgba(21,23,15,.26);stroke-width:1px;vector-effect:non-scaling-stroke}
+.day-ticket rect{fill:#2E2F27;opacity:.62}
+.day-flames{position:absolute;left:0;right:0;bottom:calc(var(--f) - var(--hz));height:calc(var(--hz) * .3);overflow:hidden}
+.day-narrow .day-flames{height:calc(var(--hz) * .17)}
+.day-flame-row{position:absolute;inset:0;will-change:transform}
+.day-fire{display:block;width:100%;height:100%}
+.day-heat{position:absolute;left:0;right:0;top:0;bottom:calc(var(--f) - var(--hz) - 90px);opacity:0;will-change:opacity;background:linear-gradient(to bottom,rgba(248,160,60,0) 40%,rgba(248,160,60,.2) calc(100% - 90px),rgba(238,124,44,.15) calc(100% - 89px),rgba(238,124,44,0))}
+.day-rush.live .day-ticket:nth-child(2n) svg{animation:dayTick 1.4s ease-in-out infinite alternate}
+@keyframes dayTick{from{transform:rotate(-.7deg)}to{transform:rotate(.7deg)}}
+
+/* 19 h: the kitchen at sunset, the lamps of the pass, and under each one the dish a little further along */
+.day-kit{position:absolute;inset:0;opacity:0;will-change:opacity}
+.day-ksky{position:absolute;left:0;right:0;top:0;height:var(--hz);background:linear-gradient(var(--sky-8),var(--sky-7) 26%,var(--sky-6) 48%,var(--sky-5) 66%,#F8D08E 76%)}
+.day-kfar,.day-knear{position:absolute;left:0;top:0;right:0;height:var(--hz);overflow:hidden;will-change:transform}
+.day-knear{overflow:visible}
+.day-kfar svg,.day-knear svg{position:absolute;left:0;top:0;display:block}
+.day-kpass{position:absolute;left:0;right:0;top:var(--hz);bottom:0;background:linear-gradient(#6F76BE,#50579F 4px,#3D438F 34%,#2C3078);box-shadow:inset 0 2px 0 rgba(230,235,255,.6)}
+.day-kflame{position:absolute;border-radius:50% 50% 45% 45%/70% 70% 30% 30%;background:linear-gradient(#8FB6FF,#3D6BFF 70%,#FFC979);transform-origin:50% 100%;opacity:.95;animation:dayFlick .5s ease-in-out infinite alternate;animation-play-state:paused}
+.day-ksteam{position:absolute;border-radius:50%;background:rgba(255,246,226,.3);filter:blur(9px);opacity:0;animation:daySteam 3.900s ease-out infinite;animation-play-state:paused}
+.day-pass.live .day-kflame,.day-pass.live .day-ksteam{animation-play-state:running}
+.day-night-dish{position:absolute;inset:0;will-change:transform}
+.d-root{position:absolute;left:0;top:0;width:0;height:0;transform-origin:0 0}
+.d-l{position:absolute;display:block;max-width:none;pointer-events:none;user-select:none}
+@keyframes dayFlick{from{transform:scaleY(.82) scaleX(1.05)}to{transform:scaleY(1.14) scaleX(.94)}}
+@keyframes daySteam{0%{transform:translateY(46px) scale(.7);opacity:0}30%{opacity:.8}100%{transform:translateY(-54px) scale(1.5);opacity:0}}
+
+/* the clock on its rail, at the very bottom of the screen: drag it, or tap a mark */
+.day-on .day-time{display:block;position:absolute;left:50%;top:calc(var(--f) - 44px - env(safe-area-inset-bottom,0px));width:min(1120px,100%);margin-left:max(-560px,-50%);padding:0 calc(var(--g) + 20px);height:44px;z-index:5;pointer-events:none}
+.day-track-line{position:relative;height:44px}
+.day-track-line::before{content:"";position:absolute;left:0;right:0;top:22px;height:1px;background:currentColor;opacity:.4}
+.day-on .day-time{color:var(--ink)}
+.day-time.pale{color:var(--pale)}
+.day-mark{position:absolute;top:0;width:44px;height:44px;margin:0 0 0 -22px;padding:0;border:0;background:none;color:inherit;cursor:pointer;pointer-events:auto;touch-action:manipulation}
+.day-mark::before{content:"";position:absolute;left:21px;top:16px;width:2px;height:12px;background:currentColor;border-radius:1px}
+.day-puck{position:absolute;left:0;top:0;width:44px;height:44px;margin:0 0 0 -22px;padding:0;border:0;background:none;cursor:grab;pointer-events:auto;touch-action:none;will-change:transform;border-radius:50%}
+.day-puck:active{cursor:grabbing}
+.day-puck:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.day-on .day-clock{position:absolute;left:2px;top:2px;right:auto;bottom:auto;width:40px;height:40px;z-index:auto;transition:none}
+.day-on .day-clock.over{opacity:1}
+
+/* wide: the hour and the column share the screen with what the tool shows */
+.day-wide .day-morning .day-line,.day-wide .day-night .day-line{bottom:auto;top:var(--top);right:auto;width:44%}
+.day-wide .day-morning .day-tool,.day-wide .day-night .day-tool{bottom:auto;top:calc(var(--top) + 96px);right:auto;width:44%;max-width:26em}
+.day-wide .day-plate{left:auto;margin-left:0;right:var(--g);bottom:auto;top:16px}
+.day-wide .day-break>.wrap,.day-wide .day-dusk>.wrap{max-width:1560px}
+.day-wide .day-break .day-tool{left:var(--toolx);right:var(--g);bottom:auto;top:var(--top);max-width:none}
+.day-wide .day-break .day-line{left:var(--toolx)}
+.day-wide .day-bill{right:auto;width:var(--tkt,400px);top:var(--top)}
+.day-wide .day-bill-b{left:var(--bbx);right:auto;width:var(--bbw);top:var(--bby)}
+.day-wide .day-peg{right:calc(var(--g) + 4%)}
+@media (max-width:860px){.day-on .day-stage{--g:16px}}

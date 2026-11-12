@@ -1,7 +1,7 @@
 # Nokime
 
-> Copius pour trouver l’inspiration, Jobs pour recruter en prenant soin des équipes, Manager pour savoir si le plat est rentable.
-> Copius to find inspiration, Jobs to hire while looking after the team, Manager to know whether the dish pays.
+> Copius pour trouver l’inspiration, Manager pour savoir si le plat est rentable et, bientôt, Jobs pour recruter en prenant soin des équipes.
+> Copius to find inspiration, Manager to know whether the dish pays and, soon, Jobs to hire while looking after the team.
 
 Nokime regroupe Copius, Manager et Jobs : des outils pour cuisiner avec des idées et gérer sans prise de tête.
 Nokime brings together Copius, Manager and Jobs: tools to cook with ideas and run things without the headache.
@@ -9,11 +9,12 @@ Nokime brings together Copius, Manager and Jobs: tools to cook with ideas and ru
 ## Tools
 
 - [Copius](https://copius.fr/): Copius : 1 889 ingrédients, 135 techniques, 45 bases et 68 chefs, dessinés et bilingues, chaque produit avec sa fourchette de prix, sa saison et ses accords. Trois versions : libre, complète, école (bientôt). — Copius: 1,889 ingredients, 135 techniques, 45 bases and 68 chefs, drawn and bilingual, each product with its price band, season and pairings. Three versions: free, full, school (coming soon).
-- [Nokime Jobs](https://jobs.nokime.fr/): Des stages, des alternances et des saisons en hôtellerie-restauration, avec une charte d’accueil. Nokime Jobs revient bientôt. — Internships, apprenticeships and seasons in hotels and restaurants, with a welcome charter. Nokime Jobs is coming back soon.
+- [Nokime Jobs](https://nokime.fr/jobs/): Des stages, des alternances et des saisons en hôtellerie-restauration, avec une charte d’accueil. Nokime Jobs revient bientôt. — Internships, apprenticeships and seasons in hotels and restaurants, with a welcome charter. Nokime Jobs is coming back soon.
 - [Nokime Manager](https://manager.nokime.fr/): Nokime Manager : coût matière par portion, ratio, marge brute et prix plancher pour chaque plat ; vos prix d’achat ; le tableau des allergènes ; un service type lu en clair. Sur votre compte, avec 1 887 produits déjà chiffrés. — Nokime Manager: food cost per portion, ratio, gross margin and floor price for every dish; your purchase prices; the allergen chart; one typical service read in plain words. On your account, with 1,887 products already priced.
 
 ## Pages
 
+- [Au quotidien · Day to day](https://nokime.fr/au-quotidien/): Une journée dans un restaurant, de 9 h à la fermeture : Copius pour trouver l’idée, Manager pour savoir si le plat est rentable et, bientôt, Jobs pour recruter. — One day in a restaurant, from 9 am to closing time: Copius to find the idea, Manager to know whether the dish pays and, soon, Jobs to hire.
 - [Le groupe · The group](https://nokime.fr/groupe/): Nokime regroupe Copius, Manager et Jobs : des outils pour cuisiner avec des idées et gérer sans prise de tête. — Nokime brings together Copius, Manager and Jobs: tools to cook with ideas and run things without the headache.
 - [Contact](https://nokime.fr/contact/): Un courriel suffit. Restaurants, enseignants, presse : une seule adresse. — One email is enough. Restaurants, teachers, press: one address.
 - [Mentions légales · Legal notice](https://nokime.fr/mentions-legales/): Éditeur, hébergeur, données personnelles et crédits du site Nokime. — Publisher, host, personal data and credits for the Nokime website.

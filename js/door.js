@@ -123,12 +123,13 @@
     EG.bs = bs; EG.x = (er.width * bs - ts) / 2; EG.ws = sn * bs; EG.wn = wr.width;
     EG.wx = -ts / 2 + (er.width + gw) * bs + wr.width * sn * bs / 2; EG.wl = EG.wx - wr.width * EG.ws / 2;
     /* on a phone the worlds are rows and the Jobs pool pours out of the bottom one, so the line waits lower: midway between the
-       paint's lowest reach and the foot of the stage, never off it (on the Jobs row the paint took « Manager » down to 2.2:1, 27 Oct) */
+       paint's lowest reach and the foot of the stage (on the Jobs row the paint took « Manager » down to 2.2:1, 27 Oct),
+       and always above the EN / Passer row there, which would otherwise cover « = nokime » */
     var low = G.H * .34;
     if (G.W < 720) {
       var reach = -G.H / 2;
       for (var i = 0; i < 3; i++) for (var s = 0; s <= 1; s += .02) { var b = poolAt(i, s); reach = Math.max(reach, b.y + b.ry); }
-      low = Math.min((reach + G.H / 2) / 2, G.H / 2 - Math.max(er.height * bs, wr.height * EG.ws) / 2 - 12);
+      low = Math.min((reach + G.H / 2) / 2, $(".d-tools", door).offsetTop - G.H / 2 - Math.max(er.height * bs, wr.height * EG.ws) / 2 - 6);
     }
     EG.dy = Math.max(0, low - FLY.W);
     /* where each name lands: on its own term of the equation, the line as it stands before the terms melt */
