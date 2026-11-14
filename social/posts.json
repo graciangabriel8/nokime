@@ -575,5 +575,159 @@
   ],
   "cover": "social/2026-11-22-nokime-paie-cover.jpg",
   "caption": "Quel plat rapporte, lequel passe sous son plancher ?\nManager le montre, plat par plat.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-23-nokime-rendement",
+  "account": "nokime.fr",
+  "at": "2026-11-23T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-23-nokime-rendement.mp4"
+  ],
+  "cover": "social/2026-11-23-nokime-rendement-cover.jpg",
+  "caption": "160 g de filet dans l’assiette. Combien de poisson à acheter ?\nÀ 45 % de rendement, 356 g de poisson entier. Dans Manager, vous entrez le rendement de chaque produit, et le coût du plat suit.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-23-nokime-endive",
+  "account": "nokime.fr",
+  "at": "2026-11-23T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-23-nokime-endive.mp4"
+  ],
+  "cover": "social/2026-11-23-nokime-endive-cover.jpg",
+  "caption": "Une caisse d’endives. À part en salade, on en fait quoi ?\nNoix, bleu, orange : ce que Copius propose avec l’endive. Elle est de saison d’octobre à mars.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-24-nokime-oyster",
+  "account": "nokime.fr",
+  "at": "2026-11-24T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-24-nokime-oyster.mp4"
+  ],
+  "cover": "social/2026-11-24-nokime-oyster-cover.jpg",
+  "caption": "Les huîtres sont là. On met quoi avec ?\nCitron, poivre noir, ciboulette : ce que Copius propose avec l’huître.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-24-nokime-point-mort",
+  "account": "nokime.fr",
+  "at": "2026-11-24T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-24-nokime-point-mort.mp4"
+  ],
+  "cover": "social/2026-11-24-nokime-point-mort-cover.jpg",
+  "caption": "Combien de couverts pour ne pas perdre d’argent ?\nManager calcule votre point mort dès que vous entrez la brigade et les charges fixes.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-25-nokime-allergenes-imprimer",
+  "account": "nokime.fr",
+  "at": "2026-11-25T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-25-nokime-allergenes-imprimer.mp4"
+  ],
+  "cover": "social/2026-11-25-nokime-allergenes-imprimer-cover.jpg",
+  "caption": "Le tableau des allergènes, il est à jour ?\nManager le propose d’après vos produits. Vous vérifiez, puis vous imprimez.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-25-nokime-clementine",
+  "account": "nokime.fr",
+  "at": "2026-11-25T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-25-nokime-clementine.mp4"
+  ],
+  "cover": "social/2026-11-25-nokime-clementine-cover.jpg",
+  "caption": "Les clémentines sont arrivées. Un dessert, vite ?\nChocolat noir, vanille, amande : ce que Copius propose avec la clémentine. Elle est de saison de novembre à janvier.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-26-nokime-jerusalem-artichoke",
+  "account": "nokime.fr",
+  "at": "2026-11-26T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-26-nokime-jerusalem-artichoke.mp4"
+  ],
+  "cover": "social/2026-11-26-nokime-jerusalem-artichoke-cover.jpg",
+  "caption": "Du topinambour au menu du jour. Avec quoi ?\nNoisette, châtaigne, persil : ce que Copius propose avec le topinambour.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-26-nokime-produits-chers",
+  "account": "nokime.fr",
+  "at": "2026-11-26T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-26-nokime-produits-chers.mp4"
+  ],
+  "cover": "social/2026-11-26-nokime-produits-chers-cover.jpg",
+  "caption": "La marge qui file, où regarder d’abord ?\nManager liste les produits chers de votre carte : prix d’achat, portions, pertes. C’est là que la marge file.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-27-nokime-ratio",
+  "account": "nokime.fr",
+  "at": "2026-11-27T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-27-nokime-ratio.mp4"
+  ],
+  "cover": "social/2026-11-27-nokime-ratio-cover.jpg",
+  "caption": "Votre ratio matières, plat par plat, vous le connaissez ?\nManager le calcule pour chaque plat.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-27-nokime-monkfish",
+  "account": "nokime.fr",
+  "at": "2026-11-27T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-27-nokime-monkfish.mp4"
+  ],
+  "cover": "social/2026-11-27-nokime-monkfish-cover.jpg",
+  "caption": "De la lotte à l’ardoise demain. Avec quoi ?\nAil, safran, thym : ce que Copius propose avec la lotte. Elle est de saison d’octobre à mars.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-28-nokime-leek",
+  "account": "nokime.fr",
+  "at": "2026-11-28T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-28-nokime-leek.mp4"
+  ],
+  "cover": "social/2026-11-28-nokime-leek-cover.jpg",
+  "caption": "Le maraîcher a livré des poireaux. On les fait comment ?\nPomme de terre, moutarde, œuf : ce que Copius propose avec le poireau.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-28-nokime-fiche-imprimer",
+  "account": "nokime.fr",
+  "at": "2026-11-28T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-28-nokime-fiche-imprimer.mp4"
+  ],
+  "cover": "social/2026-11-28-nokime-fiche-imprimer-cover.jpg",
+  "caption": "Nouveau plat demain. Sa fiche technique, elle est faite ?\nDans Manager, elle est prête avec le plat, et elle s’imprime. Toute la carte sort aussi en Excel.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-29-nokime-objectif",
+  "account": "nokime.fr",
+  "at": "2026-11-29T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-29-nokime-objectif.mp4"
+  ],
+  "cover": "social/2026-11-29-nokime-objectif-cover.jpg",
+  "caption": "Ce plat à 24 €. Ça passe ?\nTapez votre prix dans Manager : vous voyez tout de suite s’il atteint votre objectif.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-29-nokime-pear",
+  "account": "nokime.fr",
+  "at": "2026-11-29T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-29-nokime-pear.mp4"
+  ],
+  "cover": "social/2026-11-29-nokime-pear-cover.jpg",
+  "caption": "Il reste des poires. Dessert ou fromage ?\nBleu, noix, miel : ce que Copius propose avec la poire.\ncopius.fr"
  }
 ]
