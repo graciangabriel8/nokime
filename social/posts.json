@@ -421,5 +421,159 @@
   ],
   "cover": "social/2026-11-19-manager-tableur-cover.jpg",
   "caption": "Vos fiches existent déjà, quelque part entre un tableur, un document texte et un carnet. Pas besoin de tout ressaisir.\nManager lit le texte collé, les .txt, .csv, .docx et .xlsx. Les produits reconnus arrivent chiffrés, le reste est listé pour que vous l’ajoutiez à la main. Ensuite, vous corrigez avec vos prix d’achat.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-16-nokime-chicken",
+  "account": "nokime.fr",
+  "at": "2026-11-16T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-16-nokime-chicken.mp4"
+  ],
+  "cover": "social/2026-11-16-nokime-chicken-cover.jpg",
+  "caption": "Il reste du poulet. On en fait quoi ?\nAil, citron, estragon : ce que Copius propose avec le poulet. Chaque produit a sa page, avec ce qui va avec.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-16-nokime-plancher",
+  "account": "nokime.fr",
+  "at": "2026-11-16T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-16-nokime-plancher.mp4"
+  ],
+  "cover": "social/2026-11-16-nokime-plancher-cover.jpg",
+  "caption": "Le plat du jour part bien. Il rapporte, au moins ?\nManager met chaque plat face à son plancher : le prix sous lequel il ne paie plus sa part d’équipe et de charges.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-17-nokime-fiche",
+  "account": "nokime.fr",
+  "at": "2026-11-17T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-17-nokime-fiche.mp4"
+  ],
+  "cover": "social/2026-11-17-nokime-fiche-cover.jpg",
+  "caption": "Encore une fiche technique à retaper ?\nCollez-la dans Manager. Il lit le texte collé et les fichiers texte, CSV, Word et Excel.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-17-nokime-musquee-de-provence-squash",
+  "account": "nokime.fr",
+  "at": "2026-11-17T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-17-nokime-musquee-de-provence-squash.mp4"
+  ],
+  "cover": "social/2026-11-17-nokime-musquee-de-provence-squash-cover.jpg",
+  "caption": "Demain, nouvelle carte. En panne d’idées ?\nPartez d’un produit. La courge musquée, par exemple : sauge, châtaigne, parmesan. Copius montre ce qui va avec.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-18-nokime-hake",
+  "account": "nokime.fr",
+  "at": "2026-11-18T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-18-nokime-hake.mp4"
+  ],
+  "cover": "social/2026-11-18-nokime-hake-cover.jpg",
+  "caption": "La marée est livrée. Du merlu. Avec quoi ?\nAil, persil, palourde : ce que Copius propose avec le merlu.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-18-nokime-x35",
+  "account": "nokime.fr",
+  "at": "2026-11-18T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-18-nokime-x35.mp4"
+  ],
+  "cover": "social/2026-11-18-nokime-x35-cover.jpg",
+  "caption": "× 3,5 sur le coût matière, et le prix est bon ?\nPas toujours. Manager calcule le plancher de chaque plat : en dessous, le plat ne paie plus sa part d’équipe et de charges.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-19-nokime-allergenes",
+  "account": "nokime.fr",
+  "at": "2026-11-19T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-19-nokime-allergenes.mp4"
+  ],
+  "cover": "social/2026-11-19-nokime-allergenes-cover.jpg",
+  "caption": "« Il y a des noix dans ce plat ? »\nDans Manager, le tableau des allergènes est prêt, avec vos vrais plats.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-19-nokime-scallop",
+  "account": "nokime.fr",
+  "at": "2026-11-19T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-19-nokime-scallop.mp4"
+  ],
+  "cover": "social/2026-11-19-nokime-scallop-cover.jpg",
+  "caption": "Les Saint-Jacques sont arrivées. On les sert avec quoi ?\nBeurre, ciboulette, safran : ce que Copius propose avec la Saint-Jacques.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-20-nokime-porcini",
+  "account": "nokime.fr",
+  "at": "2026-11-20T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-20-nokime-porcini.mp4"
+  ],
+  "cover": "social/2026-11-20-nokime-porcini-cover.jpg",
+  "caption": "Un cageot de cèpes, là, maintenant. On en fait quoi ?\nAil, persil, thym : ce que Copius propose avec le cèpe.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-20-nokime-prix",
+  "account": "nokime.fr",
+  "at": "2026-11-20T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-20-nokime-prix.mp4"
+  ],
+  "cover": "social/2026-11-20-nokime-prix-cover.jpg",
+  "caption": "Cette assiette, elle coûte combien, vraiment ?\nDans Manager, chaque produit a déjà un prix estimé. Mettez le vôtre : il sert dans tous vos plats.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-21-nokime-couverts",
+  "account": "nokime.fr",
+  "at": "2026-11-21T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-21-nokime-couverts.mp4"
+  ],
+  "cover": "social/2026-11-21-nokime-couverts-cover.jpg",
+  "caption": "Quarante couverts ce soir, pas soixante. Les prix tiennent ?\nDans Manager, le plancher de chaque plat suit les couverts que vous indiquez : moins de couverts, plancher plus haut.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-21-nokime-venison",
+  "account": "nokime.fr",
+  "at": "2026-11-21T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-21-nokime-venison.mp4"
+  ],
+  "cover": "social/2026-11-21-nokime-venison-cover.jpg",
+  "caption": "Du gibier à la carte. Qu’est-ce qui va avec ?\nGenièvre, mûre, céleri-rave : ce que Copius propose avec la venaison.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-22-nokime-langoustine",
+  "account": "nokime.fr",
+  "at": "2026-11-22T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-22-nokime-langoustine.mp4"
+  ],
+  "cover": "social/2026-11-22-nokime-langoustine-cover.jpg",
+  "caption": "Il reste des langoustines. Demain, on les sert comment ?\nBeurre, citron, cerfeuil : ce que Copius propose avec la langoustine.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-22-nokime-paie",
+  "account": "nokime.fr",
+  "at": "2026-11-22T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-22-nokime-paie.mp4"
+  ],
+  "cover": "social/2026-11-22-nokime-paie-cover.jpg",
+  "caption": "Quel plat rapporte, lequel passe sous son plancher ?\nManager le montre, plat par plat.\nmanager.nokime.fr"
  }
 ]
