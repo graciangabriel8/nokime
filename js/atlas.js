@@ -29,7 +29,10 @@
     var f = FAM[el.getAttribute("data-art")]; if (f) el.setAttribute("data-fam", f);
   });
   if (calm) return;
-  var frames = [].slice.call(document.querySelectorAll(".shot-frame"));
+  /* the films grow from 94 % as they come into view, on screens with a mouse only: on a touch tablet, rescaling a playing
+     video every scroll frame made the Manager film stutter (his iPad, 16 Nov) */
+  var touch = window.matchMedia && matchMedia("(hover: none) and (pointer: coarse)").matches;
+  var frames = touch ? [] : [].slice.call(document.querySelectorAll(".shot-frame"));
   var queued = false;
   function paint() {
     queued = false;

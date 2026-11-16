@@ -52,7 +52,7 @@ main .cta-row{gap:14px;align-items:center}
 .chapter .shot,.page-film .shot{width:var(--shot);margin:clamp(28px,4vw,52px) 0 0 calc((100% - var(--shot))/2)}
 .page-film{--shot:min(calc(100vw - 48px),1280px)}
 .page-film .shot{margin-top:0}
-main .shot-frame{border-radius:10px;box-shadow:none;transform-origin:50% 0;background:var(--bg-2)}
+main .shot-frame{border-radius:10px;box-shadow:none;transform-origin:50% 0;background:var(--bg-2);will-change:transform}   /* its own layer: the scroll scale moves it without repainting the film */
 main .shot figcaption{max-width:64ch;margin:14px auto 0;font-size:15px;color:var(--ink-3);text-align:center;text-wrap:balance}
 .chapter-jobs{padding:clamp(28px,4vw,48px) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 .chapter-jobs h3{font-size:clamp(30px,3.6vw,44px)}
