@@ -27,6 +27,7 @@
   var GREEN = token("--paint-c", "#BBEB8A"), GOLD = token("--paint-m", "#E7C370"), BLUE = token("--paint-j", "#4B75FF");   // the paint: Copius, Manager, Jobs
   var MIX = mul3(GREEN, GOLD, BLUE);                           // #32523D, the deep green of the mark (same as --mix in css/door.css)
   var TXT = { c: token("--accent", "#3E6B1F"), m: token("--brass", "#876510"), j: token("--blue", "#2038D5") };   // the names' readable colours, which the equation's terms take over
+  var INK = token("--ink", "#15170F"), BG = token("--bg", "#F3F1E8");   // the mark's own colours on the paper (css/site.css .mark): ink and --accent, the cut in the ground
   var PAIR = mix(TXT.c, TXT.m, .5);                            // Copius + Manager meet first: halfway between their readable colours, #636818 (their paint mix #A9B43D is too pale to read on the paper)
   /* each world's drawings: line and the three fills, tinted in its colour (the same as the CSS defaults of css/door.css) */
   var ART = {
@@ -43,6 +44,7 @@
 
   var rm = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : { matches: false };
   var worldsEl = $("#ddWorlds"), head = $("#ddHead"), hint = $("#ddHint"), final = $("#ddFinal"), pools = $("#ddPools");
+  var cutA = $("#ddCutA"), cutB = $("#ddCutB");
   var knife = $("#ddKnife"), halves = $("#ddHalves"), body = $("#ddBody"), rim = $("#ddRim"), glow = $("#ddGlow");
   var eq = $("#ddEq"), eqT = { c: $(".eq-c", eq), m: $(".eq-m", eq), j: $(".eq-j", eq) }, eqP = $$(".eq-p", eq), eqIs = $(".eq-is", eq), EQ = { c: 0, m: 0, j: 0 };
   var TW = { c: 0, m: 0, j: 0 }, TP = { c: 0, m: 0 }, T3 = { c: 0, m: 0, j: 0 };   // term widths, and where each lands side by side: as the pair, then as the triple
@@ -252,13 +254,17 @@
 
     /* the mass congeals into the block: a circle of the same radius takes over, its corners come in, the knife cuts, the cut opens */
     var rx = lerp(105, 44, eio(seg(p, .62, .78)));
-    body.style.opacity = ease(seg(p, .46, .56)).toFixed(3);
     body.setAttribute("rx", rx.toFixed(1)); rim.setAttribute("rx", rx.toFixed(1));
-    rim.style.opacity = ease(seg(p, .72, .82)).toFixed(3);
     halves.style.opacity = ease(seg(p, .765, .785)).toFixed(3);                  // same colour and same shape as the body once the corners are in
     knife.style.strokeDashoffset = (1 - clamp((along(p) - FLY.D1) / FLY.L)).toFixed(4);   // the knife draws, thin, from the foot of the N
     knife.style.strokeWidth = lerp(3.4, 30, eio(seg(p, .87, .93))).toFixed(2);   // then the cut opens to its full width
     glow.style.opacity = (ease(seg(p, .62, .92)) * .95).toFixed(3);
+    /* once the cut is open the mark takes its real colours (his ask, 16 Nov): ink and green halves, the cut in the paper, no rim */
+    var real = eio(seg(p, .88, .95));
+    cutA.style.fill = rgb(mix(MIX, INK, real)); cutB.style.fill = rgb(mix(MIX, TXT.c, real));
+    knife.style.stroke = rgb(mix(GREEN, BG, real));
+    rim.style.opacity = (ease(seg(p, .72, .82)) * (1 - real)).toFixed(3);
+    body.style.opacity = (ease(seg(p, .46, .56)) * (1 - real)).toFixed(3);
 
     /* the column names travel down to the equation: each leaves its column, shrinks to the size of its term and lands on it; the term takes over
        the frame the name arrives (same place, size, face and colour, so no double is ever seen), and the name is gone. Back up, the other way round. */
@@ -330,7 +336,7 @@
       if (styles[i]) P.el.setAttribute("style", styles[i]); else P.el.removeAttribute("style");
     });
     fades.forEach(function (el) { el.removeAttribute("style"); });
-    [worldsEl, head, hint, pools, halves, body, rim, glow, knife, eq, eqT.c, eqT.m, eqT.j, eqP[0], eqP[1], eqIs, word, line, act, links, worlds.c, worlds.m, worlds.j, POOL.c, POOL.m, POOL.j].concat(NAMES.map(function (N) { return N.el; })).forEach(function (el) { el.removeAttribute("style"); });
+    [worldsEl, head, hint, pools, halves, body, rim, glow, knife, cutA, cutB, eq, eqT.c, eqT.m, eqT.j, eqP[0], eqP[1], eqIs, word, line, act, links, worlds.c, worlds.m, worlds.j, POOL.c, POOL.m, POOL.j].concat(NAMES.map(function (N) { return N.el; })).forEach(function (el) { el.removeAttribute("style"); });
     gone = false; dyed = ""; door.classList.remove("melted");
     body.setAttribute("rx", "44"); rim.setAttribute("rx", "44");
     final.classList.remove("is-final"); skip.classList.remove("done"); if (langTo) langTo.classList.remove("done");
