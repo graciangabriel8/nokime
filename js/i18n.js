@@ -37,7 +37,7 @@ window.NOKIME_I18N = {
 
     whyKicker: "Why everything under one name?", whyS: "A restaurant that trusts one tool takes a second from the same hand.", methodS: "One tool at a time, quiet rather than complete.",
 
-    shotLabel: "Nokime Manager in use, with the example dishes", shotCap: "The tool, with its example dishes. Lower the price, and the dish drops below its floor.",
+    shotLabel: "Nokime Manager in use, with its example dish", shotCap: "The example dish, read step by step: its cost, its floor, its price.",
     cpShotLabel: "Nokime Copius in use, from search to the pairing lab", cpShotCap: "The full version. Search for asparagus, step over to butter, and the lab judges the pairing.",
     /* home */
     heroEyebrow: "Nokime",
