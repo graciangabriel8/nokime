@@ -522,6 +522,17 @@
   "caption": "Un cageot de cèpes, là, maintenant. On en fait quoi ?\nAil, persil, thym : ce que Copius propose avec le cèpe.\ncopius.fr"
  },
  {
+  "id": "2026-11-20-manager-lecon-7",
+  "account": "nokime.manager",
+  "at": "2026-11-20T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-20-manager-lecon-7.mp4"
+  ],
+  "cover": "social/2026-11-20-manager-lecon-7-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 7 : Cuisine, le rendement.\nLe prix au kilo n’est pas le prix dans l’assiette.\nDemain : la salle."
+ },
+ {
   "id": "2026-11-20-nokime-prix",
   "account": "nokime.fr",
   "at": "2026-11-20T18:00:00+01:00",
@@ -544,6 +555,17 @@
   "caption": "Quarante couverts ce soir, pas soixante. Les prix tiennent ?\nDans Manager, le plancher de chaque plat suit les couverts que vous indiquez : moins de couverts, plancher plus haut.\nmanager.nokime.fr"
  },
  {
+  "id": "2026-11-21-manager-lecon-8",
+  "account": "nokime.manager",
+  "at": "2026-11-21T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-21-manager-lecon-8.mp4"
+  ],
+  "cover": "social/2026-11-21-manager-lecon-8-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 8 : Salle, le revenu par siège.\nLe ticket moyen ne dit pas tout : regardez ce que rapporte chaque siège.\nDemain : le bar."
+ },
+ {
   "id": "2026-11-21-nokime-venison",
   "account": "nokime.fr",
   "at": "2026-11-21T18:00:00+01:00",
@@ -564,6 +586,17 @@
   ],
   "cover": "social/2026-11-22-nokime-langoustine-cover.jpg",
   "caption": "Il reste des langoustines. Demain, on les sert comment ?\nBeurre, citron, cerfeuil : ce que Copius propose avec la langoustine.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-22-manager-lecon-9",
+  "account": "nokime.manager",
+  "at": "2026-11-22T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-22-manager-lecon-9.mp4"
+  ],
+  "cover": "social/2026-11-22-manager-lecon-9-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 9 : Bar, le coût boisson.\nUn petit écart au verre, et le ratio bouge.\nDemain : la réception."
  },
  {
   "id": "2026-11-22-nokime-paie",
