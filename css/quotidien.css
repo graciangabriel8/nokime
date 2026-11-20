@@ -179,6 +179,7 @@
 .day-clock .mm{stroke:var(--ink);stroke-width:1.5;stroke-linecap:round}
 .day-clock .pin{fill:var(--ink)}
 .day :focus-visible{outline-color:currentColor}
+.day [tabindex="-1"]:focus{outline:none}   /* the hour and the fact the script moves focus to are positions, not controls (Safari ringed the 9 h after « back to 9 h ») */
 
 /* wide, the drawing stands beside the words and the tool; on a phone the scene simply follows the source order */
 @media (min-width:861px){
