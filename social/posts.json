@@ -621,6 +621,17 @@
   "caption": "160 g de filet dans l’assiette. Combien de poisson à acheter ?\nÀ 45 % de rendement, 356 g de poisson entier. Dans Manager, vous entrez le rendement de chaque produit, et le coût du plat suit.\nmanager.nokime.fr"
  },
  {
+  "id": "2026-11-23-manager-lecon-10",
+  "account": "nokime.manager",
+  "at": "2026-11-23T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-23-manager-lecon-10.mp4"
+  ],
+  "cover": "social/2026-11-23-manager-lecon-10-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 10 : Réception, le RevPAR.\nDeux hôtels, deux stratégies, le même chiffre."
+ },
+ {
   "id": "2026-11-23-nokime-endive",
   "account": "nokime.fr",
   "at": "2026-11-23T18:00:00+01:00",
@@ -630,6 +641,17 @@
   ],
   "cover": "social/2026-11-23-nokime-endive-cover.jpg",
   "caption": "Une caisse d’endives. À part en salade, on en fait quoi ?\nNoix, bleu, orange : ce que Copius propose avec l’endive. Elle est de saison d’octobre à mars.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-23-manager-lecon-11",
+  "account": "nokime.manager",
+  "at": "2026-11-23T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-23-manager-lecon-11.mp4"
+  ],
+  "cover": "social/2026-11-23-manager-lecon-11-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 11 : Étages, le coût par chambre.\nUne facture qui monte, ce n’est pas toujours un coût qui monte."
  },
  {
   "id": "2026-11-24-nokime-oyster",
@@ -643,6 +665,17 @@
   "caption": "Les huîtres sont là. On met quoi avec ?\nCitron, poivre noir, ciboulette : ce que Copius propose avec l’huître.\ncopius.fr"
  },
  {
+  "id": "2026-11-24-manager-lecon-12",
+  "account": "nokime.manager",
+  "at": "2026-11-24T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-24-manager-lecon-12.mp4"
+  ],
+  "cover": "social/2026-11-24-manager-lecon-12-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 12 : Économat, vos jours de stock.\nLe stock, c’est aussi de l’argent qui dort."
+ },
+ {
   "id": "2026-11-24-nokime-point-mort",
   "account": "nokime.fr",
   "at": "2026-11-24T18:00:00+01:00",
@@ -652,6 +685,17 @@
   ],
   "cover": "social/2026-11-24-nokime-point-mort-cover.jpg",
   "caption": "Combien de couverts pour ne pas perdre d’argent ?\nManager calcule votre point mort dès que vous entrez la brigade et les charges fixes.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-24-manager-lecon-13",
+  "account": "nokime.manager",
+  "at": "2026-11-24T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-24-manager-lecon-13.mp4"
+  ],
+  "cover": "social/2026-11-24-manager-lecon-13-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 13 : Cuisine, la perte à la cuisson.\nCe qui sort du four pèse moins que ce que vous avez acheté."
  },
  {
   "id": "2026-11-25-nokime-allergenes-imprimer",
@@ -665,6 +709,17 @@
   "caption": "Le tableau des allergènes, il est à jour ?\nManager le propose d’après vos produits. Vous vérifiez, puis vous imprimez.\nmanager.nokime.fr"
  },
  {
+  "id": "2026-11-25-manager-lecon-14",
+  "account": "nokime.manager",
+  "at": "2026-11-25T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-25-manager-lecon-14.mp4"
+  ],
+  "cover": "social/2026-11-25-manager-lecon-14-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 14 : Salle, le ticket moyen.\nQuelques euros de plus par client, et c’est tout le service qui change."
+ },
+ {
   "id": "2026-11-25-nokime-clementine",
   "account": "nokime.fr",
   "at": "2026-11-25T18:00:00+01:00",
@@ -674,6 +729,17 @@
   ],
   "cover": "social/2026-11-25-nokime-clementine-cover.jpg",
   "caption": "Les clémentines sont arrivées. Un dessert, vite ?\nChocolat noir, vanille, amande : ce que Copius propose avec la clémentine. Elle est de saison de novembre à janvier.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-25-manager-lecon-15",
+  "account": "nokime.manager",
+  "at": "2026-11-25T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-25-manager-lecon-15.mp4"
+  ],
+  "cover": "social/2026-11-25-manager-lecon-15-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 15 : Réception, le prix moyen.\nLe prix qui compte, c’est celui que vos clients paient vraiment."
  },
  {
   "id": "2026-11-26-nokime-jerusalem-artichoke",
@@ -687,6 +753,17 @@
   "caption": "Du topinambour au menu du jour. Avec quoi ?\nNoisette, châtaigne, persil : ce que Copius propose avec le topinambour.\ncopius.fr"
  },
  {
+  "id": "2026-11-26-manager-lecon-16",
+  "account": "nokime.manager",
+  "at": "2026-11-26T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-26-manager-lecon-16.mp4"
+  ],
+  "cover": "social/2026-11-26-manager-lecon-16-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 16 : Bar, le coût par dose.\nUne bouteille de sirop se compte dose par dose, comme un ingrédient."
+ },
+ {
   "id": "2026-11-26-nokime-produits-chers",
   "account": "nokime.fr",
   "at": "2026-11-26T18:00:00+01:00",
@@ -696,6 +773,17 @@
   ],
   "cover": "social/2026-11-26-nokime-produits-chers-cover.jpg",
   "caption": "La marge qui file, où regarder d’abord ?\nManager liste les produits chers de votre carte : prix d’achat, portions, pertes. C’est là que la marge file.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-26-manager-lecon-17",
+  "account": "nokime.manager",
+  "at": "2026-11-26T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-26-manager-lecon-17.mp4"
+  ],
+  "cover": "social/2026-11-26-manager-lecon-17-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 17 : Étages, les produits d’accueil.\nQuelques centimes par chambre, et c’est un vrai poste du mois."
  },
  {
   "id": "2026-11-27-nokime-ratio",
@@ -709,6 +797,17 @@
   "caption": "Votre ratio matières, plat par plat, vous le connaissez ?\nManager le calcule pour chaque plat.\nmanager.nokime.fr"
  },
  {
+  "id": "2026-11-27-manager-lecon-18",
+  "account": "nokime.manager",
+  "at": "2026-11-27T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-27-manager-lecon-18.mp4"
+  ],
+  "cover": "social/2026-11-27-manager-lecon-18-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 18 : Économat, la consommation.\nCe que vous achetez n’est pas ce que vous consommez."
+ },
+ {
   "id": "2026-11-27-nokime-monkfish",
   "account": "nokime.fr",
   "at": "2026-11-27T18:00:00+01:00",
@@ -718,6 +817,17 @@
   ],
   "cover": "social/2026-11-27-nokime-monkfish-cover.jpg",
   "caption": "De la lotte à l’ardoise demain. Avec quoi ?\nAil, safran, thym : ce que Copius propose avec la lotte. Elle est de saison d’octobre à mars.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-27-manager-lecon-19",
+  "account": "nokime.manager",
+  "at": "2026-11-27T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-27-manager-lecon-19.mp4"
+  ],
+  "cover": "social/2026-11-27-manager-lecon-19-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 19 : Cuisine, le coût d’une portion.\nUne portion coûte ce que la recette donne vraiment, pas ce qu’elle promet."
  },
  {
   "id": "2026-11-28-nokime-leek",
@@ -731,6 +841,17 @@
   "caption": "Le maraîcher a livré des poireaux. On les fait comment ?\nPomme de terre, moutarde, œuf : ce que Copius propose avec le poireau.\ncopius.fr"
  },
  {
+  "id": "2026-11-28-manager-lecon-20",
+  "account": "nokime.manager",
+  "at": "2026-11-28T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-28-manager-lecon-20.mp4"
+  ],
+  "cover": "social/2026-11-28-manager-lecon-20-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 20 : Réception, le taux d’annulation.\nChaque annulation est une chambre à revendre : comptez-les."
+ },
+ {
   "id": "2026-11-28-nokime-fiche-imprimer",
   "account": "nokime.fr",
   "at": "2026-11-28T18:00:00+01:00",
@@ -740,6 +861,17 @@
   ],
   "cover": "social/2026-11-28-nokime-fiche-imprimer-cover.jpg",
   "caption": "Nouveau plat demain. Sa fiche technique, elle est faite ?\nDans Manager, elle est prête avec le plat, et elle s’imprime. Toute la carte sort aussi en Excel.\nmanager.nokime.fr"
+ },
+ {
+  "id": "2026-11-28-manager-lecon-21",
+  "account": "nokime.manager",
+  "at": "2026-11-28T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-28-manager-lecon-21.mp4"
+  ],
+  "cover": "social/2026-11-28-manager-lecon-21-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 21 : Salle, la table qui ne vient pas.\nUne table vide se compte en euros, avant de décider quoi faire."
  },
  {
   "id": "2026-11-29-nokime-objectif",
@@ -753,6 +885,17 @@
   "caption": "Ce plat à 24 €. Ça passe ?\nTapez votre prix dans Manager : vous voyez tout de suite s’il atteint votre objectif.\nmanager.nokime.fr"
  },
  {
+  "id": "2026-11-29-manager-lecon-22",
+  "account": "nokime.manager",
+  "at": "2026-11-29T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-29-manager-lecon-22.mp4"
+  ],
+  "cover": "social/2026-11-29-manager-lecon-22-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 22 : Étages, le stock de linge.\nLe linge, c’est du stock : il se compte et il se chiffre."
+ },
+ {
   "id": "2026-11-29-nokime-pear",
   "account": "nokime.fr",
   "at": "2026-11-29T18:00:00+01:00",
@@ -762,5 +905,16 @@
   ],
   "cover": "social/2026-11-29-nokime-pear-cover.jpg",
   "caption": "Il reste des poires. Dessert ou fromage ?\nBleu, noix, miel : ce que Copius propose avec la poire.\ncopius.fr"
+ },
+ {
+  "id": "2026-11-29-manager-lecon-23",
+  "account": "nokime.manager",
+  "at": "2026-11-29T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-29-manager-lecon-23.mp4"
+  ],
+  "cover": "social/2026-11-29-manager-lecon-23-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 23 : Bar, la marge brute par verre.\nLe ratio dit si le prix tient, la marge dit ce que chaque verre rapporte."
  }
 ]
