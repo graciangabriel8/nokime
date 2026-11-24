@@ -47,7 +47,7 @@ window.NOKIME_I18N = {
     stat2n: "Nobody for the season?", stat2l: "Nokime Jobs is coming back soon.",
     stat3n: "At that price, does the dish pay?", stat3l: "Manager tells you before service.",
     prodKicker: "Our three tools.",
-    mTag: "Founders’ offer open", mSub: "The cost of the plate, and what the service does.",
+    mTag: "Free setup", mSub: "The cost of the plate, and what the service does.",
     mText: "Cost per portion, food-cost ratio, gross margin and floor price for every dish; your purchase prices and yields per product; one typical service — brigade, overheads, break-even — read in plain words. On your account, with Copius’s 1,887 products already priced.",
     mLink: "See Nokime Manager",
     cTag: "Live · copius.fr", cSub: "The illustrated atlas of cooking.",
@@ -58,7 +58,7 @@ window.NOKIME_I18N = {
     mgrEyebrow: "Nokime Manager",
     mgrT1: "What the plate costs, ", mgrT2: "before service", mgrT3: ". Not after the year-end.",
     mgrLead: "Online, on your account, with 1,887 products already priced.",
-    mgrCta1: "Join the founders", mgrSite: "Open Manager",
+    mgrCta1: "See the prices", mgrSite: "Open Manager",
 
     /* copius */
     cpEyebrow: "Nokime Copius", cpT1: "The ", cpT2: "illustrated", cpT3: " atlas of cooking.",
@@ -79,14 +79,14 @@ window.NOKIME_I18N = {
     methodP2: "Quiet rather than complete. A tool shows few things and gives the detail when asked; a dull job deserves some pleasure.",
     stateKicker: "Where we are.",
     state1: "Nokime Copius is live: a free version with no account, a full version with all the pairings, and one for schools to come.",
-    state2: "Nokime Manager is built and opens to five founding restaurants.",
+    state2: "Nokime Manager is built and open to restaurants.",
     state3: "Nokime Jobs is coming back soon.",
     grCta: "Write to us",
 
     /* contact */
     ctEyebrow: "Contact", ctTitle: "One email is enough.",
     ctLead: "One address, and an answer within 2 working days.",
-    r1t: "You run a restaurant", r1p: "To join the five founding restaurants of Nokime Manager, or to ask about the tool.", r1cta: "Write about Manager",
+    r1t: "You run a restaurant", r1p: "To try Nokime Manager, or to ask about the tool.", r1cta: "Write about Manager",
     r2t: "You teach", r2p: "For a pilot class with Copius, or to talk about the school version.", r2cta: "Write about Copius",
     r3t: "Press, partners, the curious", r3p: "For everything else.", r3cta: "Write",
     ctMailLabel: "The address",
