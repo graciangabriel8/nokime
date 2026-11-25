@@ -210,29 +210,14 @@
 
 /* Smooth wheel scrolling (his ask, 25 Nov 2026, after cantor8.io, which uses Lenis): each wheel step moves a target and
    the page eases toward it, 10 % of the way per 60 Hz frame, never faster than VMAX, and a flick aims at most LEAD
-   screens ahead, so a hard flick does not land at the bottom (his ask, same day). The Copius and Manager films are stops:
-   a glide halts with the film centred, and the next wheel gesture moves on (his ask, same day). Touch, keyboard, scrollbar, anchors and the pages' own
+   screens ahead, so a hard flick does not land at the bottom (his ask, same day). Touch, keyboard, scrollbar, anchors and the pages' own
    scrollTo stay native: a scroll this code did not make cancels the glide. Off under reduced motion, for pinch-zoom
    (ctrl + wheel) or a pinch-zoomed page, for sideways wheels, and inside any box that can still scroll itself (the open menu). */
 (function () {
   var mq = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)");
   if (!window.requestAnimationFrame || (mq && mq.matches)) return;
   var VMAX = 35, LEAD = 0.75;   // px per 60 Hz frame at most (~2 100 px/s), and how far ahead of the page a flick may aim, in screens
-  var root = document.documentElement, cur = 0, target = 0, set = -1, raf = 0, last = 0, was = "", lastWheel = 0;
-  var stops = [].slice.call(document.querySelectorAll(".shot-frame")), head = document.querySelector(".site-head");
-  function stopAt(el) {   // the scroll position that centres a film between the sticky header and the window's bottom
-    var r = el.getBoundingClientRect(), h = head ? head.offsetHeight : 0;
-    return Math.max(0, Math.min(max(), Math.round(window.pageYOffset + r.top - h - (root.clientHeight - h - r.height) / 2)));
-  }
-  function hold(from, to, fresh) {   // a glide halts on each film it reaches; a new wheel gesture (after a 250 ms pause) moves on from it
-    for (var i = 0; i < stops.length; i++) {
-      if (!stops[i].offsetParent) continue;
-      var s = stopAt(stops[i]);
-      if (Math.abs(from - s) < 6) { if (!fresh) return s; continue; }
-      if ((from < s && to > s) || (from > s && to < s)) to = s;
-    }
-    return to;
-  }
+  var root = document.documentElement, cur = 0, target = 0, set = -1, raf = 0, last = 0, was = "";
   function max() { return Math.max(0, root.scrollHeight - root.clientHeight); }
   function inner(el, dy) {   // an element between the pointer and the page that can still scroll this way
     for (; el && el !== document.body && el !== root; el = el.parentElement) {
@@ -259,8 +244,7 @@
     var d = e.deltaY * (e.deltaMode === 1 ? 40 : e.deltaMode === 2 ? innerHeight : 1);
     if (!raf) { cur = target = set = window.pageYOffset; was = root.style.scrollBehavior; root.style.scrollBehavior = "auto"; last = 0; }
     var lead = LEAD * root.clientHeight;   // a hard flick never runs more than this far ahead of the page
-    var t = e.timeStamp || performance.now(), fresh = t - lastWheel > 250; lastWheel = t;
-    target = hold(cur, Math.max(0, Math.min(max(), Math.max(cur - lead, Math.min(cur + lead, target + d)))), fresh && !raf);
+    target = Math.max(0, Math.min(max(), Math.max(cur - lead, Math.min(cur + lead, target + d))));
     e.preventDefault();
     if (!raf) raf = requestAnimationFrame(frame);
   }, { passive: false });

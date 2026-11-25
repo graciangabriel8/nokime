@@ -53,6 +53,12 @@ main .cta-row{gap:14px;align-items:center}
 .page-film{--shot:min(calc(100vw - 48px),1280px,calc((100vh - 104px) * 1280 / 900));--shot:min(calc(100vw - 48px),1280px,calc((100svh - 104px) * 1280 / 900))}   /* the whole film fits under the 64 px header with 20 px to spare above and below (his 14" Mac, 25 Nov) */
 .page-film .shot{margin-top:0}
 main .shot-frame{border-radius:10px;box-shadow:none;transform-origin:50% 0;background:var(--bg-2);will-change:transform}   /* its own layer: the scroll scale moves it without repainting the film */
+/* the films hold (his ask 25 Nov): each stays centred under the header for --pin of scrolling, then the page moves on */
+main .shot{--shot-h:calc(var(--shot) * 900 / 1280 + 2px);--head:64px;--pin:60vh}
+main .shot-pin{height:calc(var(--shot-h) + var(--pin))}
+main .shot-pin .shot-frame{position:sticky;top:calc(var(--head) + (100vh - var(--head) - var(--shot-h)) / 2)}
+@supports (height:100svh){main .shot-pin .shot-frame{top:calc(var(--head) + (100svh - var(--head) - var(--shot-h)) / 2)}}
+@media (max-width:720px){main .shot{--shot-h:calc(var(--shot) + 2px);--head:56px}}
 main .shot figcaption{max-width:64ch;margin:14px auto 0;font-size:15px;color:var(--ink-3);text-align:center;text-wrap:balance}
 .chapter-jobs{padding:clamp(28px,4vw,48px) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 .chapter-jobs h3{font-size:clamp(30px,3.6vw,44px)}
