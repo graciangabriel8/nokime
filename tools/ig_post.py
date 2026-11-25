@@ -233,16 +233,20 @@ def too_late(clock):
 RETRY_PAUSES = (60, 180)   # seconds before a new container: Meta's container ERROR on a reel has cleared on a later try with the same files
 
 def publish(entry, uid, token, clock):
-    """Builds the containers (again, up to twice, after a container ERROR: nothing was published, so no duplicate), then publishes."""
+    """Builds the containers (again, up to twice, after a container ERROR: nothing was published, so no duplicate), then publishes.
+    True once published; False if, after a retry, the duplicate guard finds it already up."""
     for attempt, pause in enumerate(RETRY_PAUSES + (None,), 1):
         try: parent = containers(entry, uid, token); break
         except ContainerError as x:
             if pause is None: raise
             say("%s: %s; a new container in %d min (attempt %d/%d)" % (entry["id"], x, pause // 60, attempt + 1, len(RETRY_PAUSES) + 1), "warning")
-            too_late(clock)
             time.sleep(pause)
+            too_late(clock)
     too_late(clock)   # the containers took time too
+    if attempt > 1 and already_up(entry, uid, token):   # the retries took minutes: a manual run may have posted it meanwhile
+        say("%s: already up after the retries, nothing to do" % entry["id"], "notice"); return False
     send(entry, uid, token, parent)
+    return True
 
 def containers(entry, uid, token):
     """The container to publish, once Meta has it FINISHED; ContainerError if Meta gives up on it, Fail otherwise."""
@@ -334,8 +338,7 @@ def run_entry(e, args, clock, tree):
     too_late(clock)
     if already_up(e, uid, token):   # again: a manual run may have gone out while this one waited
         say("%s: already up, nothing to do" % e["id"], "notice"); return "skipped"
-    publish(e, uid, token, clock)
-    return "posted"
+    return "posted" if publish(e, uid, token, clock) else "skipped"
 
 def missed(queue, clock, args):
     """Entries whose time passed beyond any start's reach (up to 7 days back) and which are not on their account: reported, and counted."""
