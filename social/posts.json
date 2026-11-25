@@ -949,5 +949,159 @@
   ],
   "cover": "social/2026-12-02-manager-lecon-26-cover.jpg",
   "caption": "Les bases de la gestion · Leçon 26 : Salle, la rotation des tables.\nLa rotation se compte service par service, sur les sièges."
+ },
+ {
+  "id": "2026-11-30-nokime-parsnip",
+  "account": "nokime.fr",
+  "at": "2026-11-30T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-11-30-nokime-parsnip.mp4"
+  ],
+  "cover": "social/2026-11-30-nokime-parsnip-cover.jpg",
+  "caption": "Des panais à la livraison. On les cuisine comment ?\nMiel, thym, muscade : ce que Copius propose avec le panais. Il est de saison d’octobre à mars.\ncopius.fr"
+ },
+{
+  "id": "2026-12-01-nokime-pdf",
+  "account": "nokime.fr",
+  "at": "2026-12-01T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-12-01-nokime-pdf.mp4"
+  ],
+  "cover": "social/2026-12-01-nokime-pdf-cover.jpg",
+  "caption": "Vos fiches techniques sont en PDF ?\nManager lit les PDF faits avec Word ou Excel. Pour un scan ou une photo, collez plutôt le tableau.\nmanager.nokime.fr"
+ },
+{
+  "id": "2026-12-01-nokime-alerte",
+  "account": "nokime.fr",
+  "at": "2026-12-01T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-12-01-nokime-alerte.mp4"
+  ],
+  "cover": "social/2026-12-01-nokime-alerte-cover.jpg",
+  "caption": "Le beurre augmente. Quels plats en souffrent ?\nTapez le nouveau prix d’achat dans Manager : il vous dit quels plats passent sous le plancher.\nmanager.nokime.fr"
+ },
+{
+  "id": "2026-12-02-nokime-persimmon",
+  "account": "nokime.fr",
+  "at": "2026-12-02T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-12-02-nokime-persimmon.mp4"
+  ],
+  "cover": "social/2026-12-02-nokime-persimmon-cover.jpg",
+  "caption": "Des kakis bien mûrs. Sucré ou salé ?\nCannelle, vanille, orange : ce que Copius propose avec le kaki. Il est de saison d’octobre à décembre.\ncopius.fr"
+ },
+{
+  "id": "2026-12-02-nokime-red-cabbage",
+  "account": "nokime.fr",
+  "at": "2026-12-02T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-12-02-nokime-red-cabbage.mp4"
+  ],
+  "cover": "social/2026-12-02-nokime-red-cabbage-cover.jpg",
+  "caption": "Du chou rouge pour la semaine. Avec quoi ?\nPomme, genièvre, châtaigne : ce que Copius propose avec le chou rouge.\ncopius.fr"
+ },
+{
+  "id": "2026-12-03-nokime-menu-fetes",
+  "account": "nokime.fr",
+  "at": "2026-12-03T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-12-03-nokime-menu-fetes.mp4"
+  ],
+  "cover": "social/2026-12-03-nokime-menu-fetes-cover.jpg",
+  "caption": "Le menu de fêtes est prêt. Il est chiffré ?\nDans Manager, chaque plat a son coût et son plancher, et le tableau des allergènes sort pour ce menu seulement.\nmanager.nokime.fr"
+ },
+{
+  "id": "2026-12-03-nokime-premier-plat",
+  "account": "nokime.fr",
+  "at": "2026-12-03T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-12-03-nokime-premier-plat.mp4"
+  ],
+  "cover": "social/2026-12-03-nokime-premier-plat-cover.jpg",
+  "caption": "Manager, ouvert pour la première fois. Par où commencer ?\n« Chiffrer mon premier plat » : trois étapes, et votre premier plat est chiffré avec vos prix.\nmanager.nokime.fr"
+ },
+{
+  "id": "2026-12-04-nokime-mandarin",
+  "account": "nokime.fr",
+  "at": "2026-12-04T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-12-04-nokime-mandarin.mp4"
+  ],
+  "cover": "social/2026-12-04-nokime-mandarin-cover.jpg",
+  "caption": "Des mandarines plein le cageot. Un dessert ?\nChocolat noir, badiane, gingembre : ce que Copius propose avec la mandarine. Elle est de saison de novembre à février.\ncopius.fr"
+ },
+{
+  "id": "2026-12-04-nokime-cod",
+  "account": "nokime.fr",
+  "at": "2026-12-04T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-12-04-nokime-cod.mp4"
+  ],
+  "cover": "social/2026-12-04-nokime-cod-cover.jpg",
+  "caption": "Du cabillaud au menu du jour. Avec quoi ?\nPoireau, câpres, safran : ce que Copius propose avec le cabillaud.\ncopius.fr"
+ },
+{
+  "id": "2026-12-05-nokime-argot",
+  "account": "nokime.fr",
+  "at": "2026-12-05T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-12-05-nokime-argot.mp4"
+  ],
+  "cover": "social/2026-12-05-nokime-argot-cover.jpg",
+  "caption": "« Poudre d’amande », « amandes en poudre » : c’est pareil ?\nManager lit vos fiches avec vos mots de cuisine. Quand il hésite, il marque « à vérifier ».\nmanager.nokime.fr"
+ },
+{
+  "id": "2026-12-05-nokime-mise-en-place",
+  "account": "nokime.fr",
+  "at": "2026-12-05T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-12-05-nokime-mise-en-place.mp4"
+  ],
+  "cover": "social/2026-12-05-nokime-mise-en-place-cover.jpg",
+  "caption": "Pas le temps de tout saisir ?\nAvec Manager, la mise en place est offerte : envoyez vos fiches et vos prix d’achat.\nmanager.nokime.fr"
+ },
+{
+  "id": "2026-12-06-nokime-capon",
+  "account": "nokime.fr",
+  "at": "2026-12-06T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-12-06-nokime-capon.mp4"
+  ],
+  "cover": "social/2026-12-06-nokime-capon-cover.jpg",
+  "caption": "Chapon pour Noël. On le sert avec quoi ?\nChâtaigne, truffe, échalote : ce que Copius propose avec le chapon.\ncopius.fr"
+ },
+{
+  "id": "2026-12-06-nokime-celeriac",
+  "account": "nokime.fr",
+  "at": "2026-12-06T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-12-06-nokime-celeriac.mp4"
+  ],
+  "cover": "social/2026-12-06-nokime-celeriac-cover.jpg",
+  "caption": "Un céleri-rave entier. On en fait quoi ?\nPomme, moutarde, truffe : ce que Copius propose avec le céleri-rave. Il est de saison de septembre à mars.\ncopius.fr"
+ },
+{
+  "id": "2026-12-07-nokime-marge-euros",
+  "account": "nokime.fr",
+  "at": "2026-12-07T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-12-07-nokime-marge-euros.mp4"
+  ],
+  "cover": "social/2026-12-07-nokime-marge-euros-cover.jpg",
+  "caption": "Le plat au meilleur ratio vous rapporte le plus ?\nPas forcément : regardez aussi la marge en euros. Manager montre les deux, plat par plat.\nmanager.nokime.fr"
  }
 ]
