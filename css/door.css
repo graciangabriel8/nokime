@@ -99,7 +99,7 @@
 
 /* ---------- motion allowed and scripting on: pinned stage, layers stacked, door-js drives them ---------- */
 @media (prefers-reduced-motion:no-preference) and (scripting:enabled) and (min-height:560px){   /* a shorter window (a phone on its side) gets the two calm blocks: the pinned stage would clip its own content */
-  .door-track{height:300vh}
+  .door-track{height:500vh}   /* 400vh of scrolling for the melt, twice the old 200vh (his « the animation goes too fast », 25 Nov) */
   .d-tools{top:auto;bottom:10px}
   .door-stage{position:sticky;top:0;height:100vh;height:100svh}
   .d-paint{display:block;position:absolute;inset:0;pointer-events:none;z-index:1}

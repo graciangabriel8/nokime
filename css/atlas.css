@@ -54,7 +54,7 @@ main .cta-row{gap:14px;align-items:center}
 .page-film .shot{margin-top:0}
 main .shot-frame{border-radius:10px;box-shadow:none;transform-origin:50% 0;background:var(--bg-2);will-change:transform}   /* its own layer: the scroll scale moves it without repainting the film */
 /* the films hold (his ask 25 Nov): each stays centred under the header for --pin of scrolling, then the page moves on */
-main .shot{--shot-h:calc(var(--shot) * 900 / 1280 + 2px);--head:64px;--pin:60vh}
+main .shot{--shot-h:calc(var(--shot) * 900 / 1280 + 2px);--head:64px;--pin:120vh}   /* 60vh was « too short » (25 Nov) */
 main .shot-pin{height:calc(var(--shot-h) + var(--pin))}
 main .shot-pin .shot-frame{position:sticky;top:calc(var(--head) + (100vh - var(--head) - var(--shot-h)) / 2)}
 @supports (height:100svh){main .shot-pin .shot-frame{top:calc(var(--head) + (100svh - var(--head) - var(--shot-h)) / 2)}}
