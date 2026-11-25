@@ -39,7 +39,7 @@ main .cta-row{gap:14px;align-items:center}
 /* the tools: the real films, large */
 .tools{padding-top:clamp(64px,10vw,140px)}
 .tools .section-head{margin:0}
-.chapter{--shot:min(calc(100vw - 48px),1280px);padding:clamp(40px,6vw,80px) 0 clamp(56px,8vw,112px)}
+.chapter{--shot:min(calc(100vw - 48px),1280px,calc((100vh - 104px) * 1280 / 900));--shot:min(calc(100vw - 48px),1280px,calc((100svh - 104px) * 1280 / 900));padding:clamp(40px,6vw,80px) 0 clamp(56px,8vw,112px)}
 .chapter-name{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:40px;align-items:end}
 .chapter-name>*{grid-column:1}
 .chapter .tag{margin:0 0 10px;font-size:15px}
@@ -50,7 +50,7 @@ main .cta-row{gap:14px;align-items:center}
 .chapter-name .btn{min-height:54px;padding:0 28px;font-size:16px}
 .chapter-copius .chapter-name .link{grid-row:2;align-self:end;margin-bottom:6px}
 .chapter .shot,.page-film .shot{width:var(--shot);margin:clamp(28px,4vw,52px) 0 0 calc((100% - var(--shot))/2)}
-.page-film{--shot:min(calc(100vw - 48px),1280px)}
+.page-film{--shot:min(calc(100vw - 48px),1280px,calc((100vh - 104px) * 1280 / 900));--shot:min(calc(100vw - 48px),1280px,calc((100svh - 104px) * 1280 / 900))}   /* the whole film fits under the 64 px header with 20 px to spare above and below (his 14" Mac, 25 Nov) */
 .page-film .shot{margin-top:0}
 main .shot-frame{border-radius:10px;box-shadow:none;transform-origin:50% 0;background:var(--bg-2);will-change:transform}   /* its own layer: the scroll scale moves it without repainting the film */
 main .shot figcaption{max-width:64ch;margin:14px auto 0;font-size:15px;color:var(--ink-3);text-align:center;text-wrap:balance}
