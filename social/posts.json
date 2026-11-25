@@ -916,5 +916,38 @@
   ],
   "cover": "social/2026-11-29-manager-lecon-23-cover.jpg",
   "caption": "Les bases de la gestion · Leçon 23 : Bar, la marge brute par verre.\nLe ratio dit si le prix tient, la marge dit ce que chaque verre rapporte."
+ },
+ {
+  "id": "2026-12-01-manager-lecon-24",
+  "account": "nokime.manager",
+  "at": "2026-12-01T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-12-01-manager-lecon-24.mp4"
+  ],
+  "cover": "social/2026-12-01-manager-lecon-24-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 24 : Économat, le stock moyen.\nUn seul inventaire peut tromper : prenez la moyenne de deux."
+ },
+{
+  "id": "2026-12-01-manager-lecon-25",
+  "account": "nokime.manager",
+  "at": "2026-12-01T18:00:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-12-01-manager-lecon-25.mp4"
+  ],
+  "cover": "social/2026-12-01-manager-lecon-25-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 25 : Cuisine, le coût du gaspillage.\nCe qui part à la poubelle, vous l’avez déjà payé."
+ },
+{
+  "id": "2026-12-02-manager-lecon-26",
+  "account": "nokime.manager",
+  "at": "2026-12-02T15:30:00+01:00",
+  "type": "reel",
+  "media": [
+   "social/2026-12-02-manager-lecon-26.mp4"
+  ],
+  "cover": "social/2026-12-02-manager-lecon-26-cover.jpg",
+  "caption": "Les bases de la gestion · Leçon 26 : Salle, la rotation des tables.\nLa rotation se compte service par service, sur les sièges."
  }
 ]
