@@ -13,7 +13,8 @@ only if it is still there unchanged; entries added while it holds are picked up.
 its account (IG_USER_ID_<ACC> and IG_TOKEN_<ACC>, ACC = NOKIME, JOBS or MANAGER; missing = that entry fails), a check
 that the keys belong to the entry's account, the duplicate guard (the account's latest 50 posts: one with the same
 caption means it is already up), the wait, the live media check (nokime.fr serves each file with the committed bytes
-and content type), the guard again, then the Graph API. A scheduled run also fails for an entry whose time passed
+and content type), the guard again, then the Graph API (a container Meta ends as ERROR or EXPIRED is built again, twice at
+most, 1 min then 3 min later: nothing was published, so no duplicate). A scheduled run also fails for an entry whose time passed
 (up to 7 days back) beyond any start's reach and which is not on its account.
 Exit 1 if any entry failed or was missed, or the queue is invalid; an entry that is already up is not a failure.
 The token travels in a POST body (a GET carries it in the query string), and no URL or token is ever printed.
@@ -148,6 +149,7 @@ def say(msg, level=None):
     print(("::%s::%s" % (level, msg)) if CI and level else ("%s: %s" % (level.upper(), msg) if level else msg), flush=True)
 
 class Fail(Exception): pass
+class ContainerError(Fail): pass   # Meta processed a container and gave up on it: nothing was published
 
 class Clock:   # the real clock, or a faked start that keeps running
     def __init__(self, start=None):
@@ -206,7 +208,7 @@ def wait_ready(cid, token, what):   # Meta: ask once a minute, five minutes at m
         d = graph("GET", cid, {"fields": "status_code,status"}, token, what + " status")
         say("%s container %s: %s (check %d/6)" % (what, cid, d.get("status_code") or "no status", i))
         if d.get("status_code") == "FINISHED": return
-        if d.get("status_code") in ("ERROR", "EXPIRED"): raise Fail("%s container ended as %s: %s" % (what, d["status_code"], d.get("status", "")))
+        if d.get("status_code") in ("ERROR", "EXPIRED"): raise ContainerError("%s container ended as %s: %s" % (what, d["status_code"], d.get("status", "")))
     raise Fail("%s container still not ready after five minutes" % what)
 
 def captions_up(uid, token):
@@ -228,8 +230,22 @@ published_attempt = False   # set just before media_publish: from then on the po
 def too_late(clock):
     if clock.elapsed() > TOO_LATE: raise Fail("too close to the 6 h job limit to publish safely; the next start posts it")
 
+RETRY_PAUSES = (60, 180)   # seconds before a new container: Meta's container ERROR on a reel has cleared on a later try with the same files
+
 def publish(entry, uid, token, clock):
-    global published_attempt
+    """Builds the containers (again, up to twice, after a container ERROR: nothing was published, so no duplicate), then publishes."""
+    for attempt, pause in enumerate(RETRY_PAUSES + (None,), 1):
+        try: parent = containers(entry, uid, token); break
+        except ContainerError as x:
+            if pause is None: raise
+            say("%s: %s; a new container in %d min (attempt %d/%d)" % (entry["id"], x, pause // 60, attempt + 1, len(RETRY_PAUSES) + 1), "warning")
+            too_late(clock)
+            time.sleep(pause)
+    too_late(clock)   # the containers took time too
+    send(entry, uid, token, parent)
+
+def containers(entry, uid, token):
+    """The container to publish, once Meta has it FINISHED; ContainerError if Meta gives up on it, Fail otherwise."""
     if entry["type"] == "carousel":
         kids = []
         for n, m in enumerate(entry["media"], 1):
@@ -247,7 +263,10 @@ def publish(entry, uid, token, clock):
         parent = graph("POST", uid + "/media", params, token, "reel").get("id")
     if not parent: raise Fail("no container id")
     wait_ready(parent, token, entry["type"])
-    too_late(clock)   # the containers took time too
+    return parent
+
+def send(entry, uid, token, parent):
+    global published_attempt
     published_attempt = True
     try: done = graph("POST", uid + "/media_publish", {"creation_id": parent}, token, "publish").get("id")
     except Fail as e: raise Fail("%s (it may have gone out: the duplicate guard checks before any retry)" % e)
