@@ -109,6 +109,12 @@ main .mail{font-size:clamp(30px,6.4vw,84px);font-weight:300;letter-spacing:-.024
 main .address{display:block;border:0;background:none;padding:0;margin:0 0 clamp(36px,5vw,64px);box-shadow:none}
 main .address .tag{display:none}
 main .address .btn{margin-top:18px;min-height:48px;padding:0 22px}
+/* colour with a meaning on contact and the group (his ask 25 Nov): each tool in its own colour */
+main .address .mail{text-decoration-color:var(--accent);text-decoration-thickness:2px}
+main .reason[data-tool] h2{color:var(--tool)}
+.gr-row .state li{position:relative;padding-left:22px}
+.gr-row .state li[data-tool]::before{content:"";position:absolute;left:0;top:.58em;width:9px;height:9px;border-radius:50%;background:var(--tool)}
+.gr-row .state li[data-tool] a{text-decoration-color:var(--tool)}
 main .contact-grid{display:block;border-top:1px solid var(--rule)}
 main .reason{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr) auto;column-gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(20px,2.6vw,32px) 0;border-top:0;border-bottom:1px solid var(--rule)}
 main .reason h2{font-size:clamp(23px,2.4vw,30px);font-weight:300;letter-spacing:-.012em;margin:0;font-variation-settings:"opsz" 96}

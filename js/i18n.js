@@ -70,8 +70,8 @@ window.NOKIME_I18N = {
     cpCta3: "Propose a pilot class",
 
     /* group */
-    grEyebrow: "The group", grTitle: "One name, several tools.",
-    grLead: "One name for the group, one name for each tool: Nokime Copius, Nokime Manager, Nokime Jobs.",
+    grEyebrow: "The group", grTitle: "One name, several tools.", grT1: "One name, ", grT2: "several tools", grT3: ".",
+    grL1: "One name for the group, one name for each tool: ",
     grP1: "The idea is simple. A restaurant that trusts one tool will take a second from the same hand more readily than it will go looking for a new one. So every tool is built to be joined by the next: same products, same prices, same seasons, same way of presenting a number.",
     grP2: "Copius, the atlas, is the base: it knows the products. Manager uses it to price a menu.",
     methodKicker: "The method.",
@@ -84,7 +84,7 @@ window.NOKIME_I18N = {
     grCta: "Write to us",
 
     /* contact */
-    ctEyebrow: "Contact", ctTitle: "One email is enough.",
+    ctEyebrow: "Contact", ctT1: "One email ", ctT2: "is enough", ctT3: ".",
     ctLead: "One address, and an answer within 2 working days.",
     r1t: "You run a restaurant", r1p: "To try Nokime Manager, or to ask about the tool.", r1cta: "Write about Manager",
     r2t: "You teach", r2p: "For a pilot class with Copius, or to talk about the school version.", r2cta: "Write about Copius",
